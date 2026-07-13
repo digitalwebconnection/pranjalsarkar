@@ -116,7 +116,7 @@ export default function PhilosophySection() {
   return (
     <section id="philosophy" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[450px] h-[450px] rounded-full bg-[#D4A853]/[0.02] blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[450px] h-[450px] rounded-full bg-[#D4A853]/2 blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
