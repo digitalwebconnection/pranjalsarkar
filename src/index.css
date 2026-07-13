@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+html, body {
+  background-color: #000001;
+  color: #F3F4F6;
+  margin: 0;
+  padding: 0;
+}
+
+@utility grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+@utility flip-char {
+  display: inline-block;
+  transform-style: preserve-3d;
+  animation: flip-char-anim var(--flip-duration, 2.2s) cubic-bezier(0.76, 0, 0.24, 1) var(--flip-delay, 0s) var(--flip-iteration, infinite);
+  backface-visibility: hidden;
+}
+
+@utility logo-marquee {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes flip-char-anim {
+  0% {
+    transform: rotateX(0deg);
+  }
+  30%, 100% {
+    transform: rotateX(360deg);
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+::selection {
+  background: rgba(212, 168, 83, 0.25);
+  color: #fff;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #080808; }
+::-webkit-scrollbar-thumb {
+  background: #1F1F1F;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+}
+
+/* Lenis smooth scrolling support */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
