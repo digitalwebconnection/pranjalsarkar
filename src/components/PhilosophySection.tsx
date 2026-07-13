@@ -52,7 +52,7 @@ const bookPages: BookPage[] = [
     title: 'Pillar II & III',
     backContent: (
       <div className="flex flex-col items-center text-center justify-center h-full px-2 py-4">
-        <div className="text-3xl font-serif font-extrabold text-[#D4A853] mb-1">02</div>
+        <div className="text-3xl font-serif font-extrabold text-[#D4A853] mb-1">03</div>
         <div className="w-9 h-9 rounded-full bg-[#D4A853]/10 border border-[#D4A853]/30 flex items-center justify-center text-[#D4A853] mb-3">
           <PracticeIcon />
         </div>
@@ -64,7 +64,7 @@ const bookPages: BookPage[] = [
     ),
     content: (
       <div className="flex flex-col items-center text-center justify-center h-full px-2 py-4">
-        <div className="text-3xl font-serif font-extrabold text-[#D4A853] mb-1">03</div>
+        <div className="text-3xl font-serif font-extrabold text-[#D4A853] mb-1">02</div>
         <div className="w-9 h-9 rounded-full bg-[#D4A853]/10 border border-[#D4A853]/30 flex items-center justify-center text-[#D4A853] mb-3">
           <AmplificationIcon />
         </div>
