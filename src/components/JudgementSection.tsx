@@ -86,7 +86,7 @@ export default function JudgementSection() {
         >
           {stages.map((s, i) => (
             <ScrollStackItem key={i}>
-              <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 lg:gap-12 p-8 md:p-12 rounded-xl bg-[#121212] border border-white/[0.08] border-l-4 border-l-[#D4A853] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] min-h-[460px] flex flex-col justify-between">
+              <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 lg:gap-12 p-8 md:p-12 rounded-xl bg-[#121212] border border-white/8 border-l-4 border-l-[#D4A853] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] min-h-[460px] flex-col justify-between">
                 
                 {/* Left Column */}
                 <div className="flex flex-col justify-between h-full min-h-[160px] lg:min-h-0">
@@ -102,7 +102,7 @@ export default function JudgementSection() {
                     </p>
                   </div>
                   <div>
-                    <span className="inline-block text-[11px] font-bold tracking-wider text-[#D4A853] bg-[#D4A853]/[0.08] border border-[#D4A853]/[0.2] px-3.5 py-1.5 rounded-[4px] font-mono">
+                    <span className="inline-block text-[11px] font-bold tracking-wider text-[#D4A853] bg-[#D4A853]/8 border border-[#D4A853]/20 px-3.5 py-1.5 rounded-[4px] font-mono">
                       {s.weeks}
                     </span>
                   </div>
@@ -116,7 +116,7 @@ export default function JudgementSection() {
                     </p>
                     
                     {/* Divider */}
-                    <div className="h-[1px] bg-white/[0.08] w-full my-5" />
+                    <div className="h-px bg-white/8 w-full my-5" />
 
                     {/* Core Deliverables */}
                     <h4 className="text-white text-[11px] font-bold uppercase tracking-wider mb-3.5">
@@ -139,7 +139,7 @@ export default function JudgementSection() {
                       {s.actions.map((a, j) => (
                         <span
                           key={j}
-                          className="px-3.5 py-1.5 rounded-[4px] bg-white/[0.03] border border-white/[0.08] text-white text-[11px] font-semibold tracking-wide hover:border-[#D4A853]/30 transition-colors"
+                          className="px-3.5 py-1.5 rounded-[4px] bg-white/3 border border-white/8 text-white text-[11px] font-semibold tracking-wide hover:border-[#D4A853]/30 transition-colors"
                         >
                           {a}
                         </span>

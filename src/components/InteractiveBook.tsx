@@ -158,7 +158,7 @@ export default function InteractiveBook({
               className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
               style={{ backgroundImage: `url(${coverImage})` }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
 
             <div className="absolute bottom-6 left-5 right-5 text-white text-left z-10">
               <h1 className="text-lg font-serif font-extrabold tracking-wide mb-2 leading-tight drop-shadow-md">
@@ -170,8 +170,8 @@ export default function InteractiveBook({
             </div>
 
             {/* Spine Highlight */}
-            <div className="absolute left-0 top-0 bottom-0 w-3 bg-gradient-to-r from-white/10 to-transparent opacity-30" />
-            <div className="absolute left-[8px] top-0 bottom-0 w-[1px] bg-black/40" />
+            <div className="absolute left-0 top-0 bottom-0 w-3 bg-linear-to-r from-white/10 to-transparent opacity-30" />
+            <div className="absolute left-[8px] top-0 bottom-0 w-px bg-black/40" />
           </div>
 
           {/* Back Face (Inner Cover) */}
@@ -234,7 +234,7 @@ export default function InteractiveBook({
                       {page.content}
                     </div>
                   </div>
-                  <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-black/[0.04] to-transparent pointer-events-none mix-blend-multiply" />
+                  <div className="absolute left-0 top-0 bottom-0 w-6 bg-linear-to-r from-black/4 to-transparent pointer-events-none mix-blend-multiply" />
                 </div>
 
                 {/* Back Face (Left Side Page) */}
@@ -246,7 +246,7 @@ export default function InteractiveBook({
                     prevPage();
                   }}
                 >
-                  <div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-black/[0.04] to-transparent pointer-events-none mix-blend-multiply" />
+                  <div className="absolute right-0 top-0 bottom-0 w-6 bg-linear-to-l from-black/4 to-transparent pointer-events-none mix-blend-multiply" />
 
                   <div className="flex-1 flex flex-col justify-between overflow-hidden">
                     <div className="text-[10px] text-neutral-400 text-left font-sans font-semibold tracking-wider">
@@ -303,7 +303,7 @@ export default function InteractiveBook({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             onClick={handleCloseBook}
-            className="absolute top-0 right-4 p-2 rounded-full bg-[#121212] border border-white/10 hover:border-[#D4A853]/30 text-white/60 hover:text-white z-[1000] transition-all hover:scale-105 shadow-md"
+            className="absolute top-0 right-4 p-2 rounded-full bg-[#121212] border border-white/10 hover:border-[#D4A853]/30 text-white/60 hover:text-white z-1000 transition-all hover:scale-105 shadow-md"
           >
             <X size={16} />
           </motion.button>

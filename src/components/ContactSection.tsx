@@ -34,7 +34,7 @@ export default function ContactSection() {
                 { label: 'Response time', value: 'Within 5 business days', icon: '⏱️' },
               ].map((c, i) => (
                 <div key={i} className="flex gap-4 items-center">
-                  <div className="w-10 h-10 rounded-[4px] bg-white/[0.03] border border-white/[0.08] flex items-center justify-center text-[16px] shrink-0">
+                  <div className="w-10 h-10 rounded-[4px] bg-white/3 border border-white/8 flex items-center justify-center text-[16px] shrink-0">
                     {c.icon}
                   </div>
                   <div>
@@ -47,7 +47,7 @@ export default function ContactSection() {
           </div>
 
           {/* Right Column — Form */}
-          <div className="p-6 md:p-8 rounded-lg bg-[#121212] border border-white/[0.08]">
+          <div className="p-6 md:p-8 rounded-lg bg-[#121212] border border-white/8">
             {submitted ? (
               <div className="text-center py-10">
                 <div className="text-5xl mb-5">🎉</div>
@@ -82,7 +82,7 @@ export default function ContactSection() {
                         value={form[field]}
                         onChange={e => setForm(f => ({ ...f, [field]: e.target.value }))}
                         placeholder={field === 'name' ? 'Your Name' : 'you@company.com'}
-                        className="w-full px-4 py-3 rounded-[6px] bg-white/[0.03] border border-white/[0.08] text-white text-sm outline-none transition-colors duration-150 focus:border-[#D4A853] focus:bg-transparent"
+                        className="w-full px-4 py-3 rounded-[6px] bg-white/3 border border-white/8 text-white text-sm outline-none transition-colors duration-150 focus:border-[#D4A853] focus:bg-transparent"
                       />
                     </div>
                   ))}
@@ -101,7 +101,7 @@ export default function ContactSection() {
                         value={form[field]}
                         onChange={e => setForm(f => ({ ...f, [field]: e.target.value }))}
                         placeholder={placeholder}
-                        className="w-full px-4 py-3 rounded-[6px] bg-white/[0.03] border border-white/[0.08] text-white text-sm outline-none transition-colors duration-150 focus:border-[#D4A853] focus:bg-transparent"
+                        className="w-full px-4 py-3 rounded-[6px] bg-white/3 border border-white/8 text-white text-sm outline-none transition-colors duration-150 focus:border-[#D4A853] focus:bg-transparent"
                       />
                     </div>
                   ))}
@@ -118,11 +118,11 @@ export default function ContactSection() {
                     value={form.message}
                     onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                     placeholder="What's the leadership gap you're trying to close? What's at stake?"
-                    className="w-full px-4 py-3 rounded-[6px] bg-white/[0.03] border border-white/[0.08] text-white text-sm outline-none transition-colors duration-150 focus:border-[#D4A853] focus:bg-transparent resize-y"
+                    className="w-full px-4 py-3 rounded-[6px] bg-white/3 border border-white/8 text-white text-sm outline-none transition-colors duration-150 focus:border-[#D4A853] focus:bg-transparent resize-y"
                   />
                 </div>
 
-                <button type="submit" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#D4A853] border border-[#D4A853] rounded-[6px] text-[#080808] font-['Inter',sans-serif] text-sm font-semibold transition-all duration-200 hover:bg-[#E5C180] hover:border-[#E5C180] hover:-translate-y-px w-full justify-center text-[15px] py-3.5 mt-2">
+                <button type="submit" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#D4A853] border border-[#D4A853] rounded-[6px] text-[#080808] font-['Inter',sans-serif] text-sm font-semibold transition-all duration-200 hover:bg-[#E5C180] hover:border-[#E5C180] hover:-translate-y-px w-full justify-center text-[15px] mt-2">
                   Submit Application →
                 </button>
 

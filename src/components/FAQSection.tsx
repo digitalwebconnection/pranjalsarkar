@@ -55,7 +55,7 @@ export default function FAQSection() {
                 className={`rounded-lg bg-[#0C0C0C]/80 border transition-all duration-300 mb-4 overflow-hidden ${
                   isOpen
                     ? 'border-[#D4A853]/35 border-l-4 border-l-[#D4A853] bg-[#121212]/90 shadow-[0_10px_30px_-15px_rgba(212,168,83,0.15)]'
-                    : 'border-white/[0.06] border-l-4 border-l-transparent hover:border-[#D4A853]/20 hover:bg-[#121212]/50'
+                    : 'border-white/6 border-l-4 border-l-transparent hover:border-[#D4A853]/20 hover:bg-[#121212]/50'
                 }`}
               >
                 <button
@@ -82,7 +82,7 @@ export default function FAQSection() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25, ease: [0.25, 1, 0.5, 1] }}
                     >
-                      <div className="px-6 pb-6 text-white/70 text-xs md:text-sm leading-relaxed border-t border-white/[0.02] pt-4">
+                      <div className="px-6 pb-6 text-white/70 text-xs md:text-sm leading-relaxed border-t border-white/2 pt-4">
                         {f.a}
                       </div>
                     </motion.div>

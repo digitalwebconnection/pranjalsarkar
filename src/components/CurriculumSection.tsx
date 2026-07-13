@@ -100,7 +100,7 @@ export default function CurriculumSection() {
     <section id="curriculum" className="relative py-12 md:py-16 overflow-hidden border-b border-white/8 bg-[#000001]">
       {/* Decorative Blur Backgrounds */}
       <div className="absolute top-1/3 right-0 w-80 h-80 bg-[#D4A853]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/3 left-0 w-96 h-96 bg-white/[0.01] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/3 left-0 w-96 h-96 bg-white/1 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
@@ -129,7 +129,7 @@ export default function CurriculumSection() {
             ].map((s, i) => (
               <div
                 key={i}
-                className="py-4 px-5 rounded-[6px] bg-[#121212] border border-white/[0.08] flex flex-col justify-center"
+                className="py-4 px-5 rounded-[6px] bg-[#121212] border border-white/8 flex flex-col justify-center"
               >
                 <span className="text-white/50 text-[10px] uppercase font-bold tracking-widest mb-1">{s.label}</span>
                 <span className="font-['Outfit',sans-serif] text-[#D4A853] text-[16px] md:text-[18px] font-black">{s.value}</span>
@@ -154,7 +154,7 @@ export default function CurriculumSection() {
                 className={`snap-center px-4 py-3 rounded-[6px] border text-[11px] font-bold uppercase tracking-wider whitespace-nowrap shrink-0 transition-all cursor-pointer ${
                   activeTab === i
                     ? 'bg-[#D4A853] text-neutral-950 border-[#D4A853]'
-                    : 'bg-[#121212] text-white/60 border-white/[0.08]'
+                    : 'bg-[#121212] text-white/60 border-white/8'
                 }`}
               >
                 {m.week}
@@ -163,7 +163,7 @@ export default function CurriculumSection() {
           </div>
 
           {/* Left Column: Vertical Timeline selector (Desktop only) */}
-          <div className="hidden lg:flex lg:col-span-5 flex-col gap-3 relative before:absolute before:left-[27px] before:top-8 before:bottom-8 before:w-[1px] before:bg-white/[0.08]">
+          <div className="hidden lg:flex lg:col-span-5 flex-col gap-3 relative before:absolute before:left-[27px] before:top-8 before:bottom-8 before:w-px before:bg-white/8">
             {modules.map((m, i) => {
               const isActive = activeTab === i;
               return (
@@ -173,7 +173,7 @@ export default function CurriculumSection() {
                   className={`flex gap-5 items-center p-5 rounded-lg border text-left cursor-pointer transition-all duration-300 group z-10 ${
                     isActive
                       ? 'bg-[#121212] border-[#D4A853]/40 shadow-[0_15px_30px_-10px_rgba(212,168,83,0.1)]'
-                      : 'bg-transparent border-transparent hover:bg-white/[0.02]'
+                      : 'bg-transparent border-transparent hover:bg-white/2'
                   }`}
                 >
                   {/* Timeline circle indicator */}
@@ -200,13 +200,13 @@ export default function CurriculumSection() {
           </div>
 
           {/* Right Column: Detailed Curriculum Card Panel */}
-          <div className="lg:col-span-7 rounded-xl bg-[#121212] border border-white/[0.08] p-8 md:p-10 flex flex-col justify-between shadow-2xl relative min-h-[480px]">
+          <div className="lg:col-span-7 rounded-xl bg-[#121212] border border-white/8 p-8 md:p-10 flex flex-col justify-between shadow-2xl relative min-h-[480px]">
             {/* Background Light Ray */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#D4A853]/5 to-transparent blur-xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-bl from-[#D4A853]/5 to-transparent blur-xl pointer-events-none" />
 
             <div>
               {/* Header Info */}
-              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.08] pb-6 mb-6">
+              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/8 pb-6 mb-6">
                 <div>
                   <span className="text-[#D4A853] text-[10px] font-bold tracking-[0.2em] uppercase block mb-1 font-mono">
                     {modules[activeTab].week}
@@ -215,7 +215,7 @@ export default function CurriculumSection() {
                     {modules[activeTab].title}
                   </h3>
                 </div>
-                <span className="px-3 py-1 bg-white/[0.03] border border-white/[0.08] rounded text-white/50 text-[10px] font-bold uppercase tracking-wider font-mono">
+                <span className="px-3 py-1 bg-white/3 border border-white/8 rounded text-white/50 text-[10px] font-bold uppercase tracking-wider font-mono">
                   Module {activeTab + 1}
                 </span>
               </div>
@@ -237,7 +237,7 @@ export default function CurriculumSection() {
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     {modules[activeTab].topics.map((t, idx) => (
-                      <div key={idx} className="flex gap-3 items-start p-2.5 rounded bg-white/[0.01] border border-white/[0.03]">
+                      <div key={idx} className="flex gap-3 items-start p-2.5 rounded bg-white/1 border border-white/3">
                         <span className="text-[#D4A853] shrink-0 mt-0.5 font-bold text-xs">→</span>
                         <span className="text-white/70 text-xs md:text-sm leading-normal">{t}</span>
                       </div>
@@ -248,8 +248,8 @@ export default function CurriculumSection() {
             </div>
 
             {/* Practical Simulation & Deliverable Details Footer */}
-            <div className="border-t border-white/[0.08] pt-6 mt-8 space-y-4">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded bg-[#D4A853]/[0.02] border border-[#D4A853]/25">
+            <div className="border-t border-white/8 pt-6 mt-8 space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded bg-[#D4A853]/2 border border-[#D4A853]/25">
                 <div>
                   <span className="block text-[9px] font-bold text-[#D4A853] uppercase tracking-wider font-mono mb-1">
                     WEEKLY PRACTICAL WORK

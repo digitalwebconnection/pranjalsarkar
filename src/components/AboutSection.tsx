@@ -78,9 +78,9 @@ export default function AboutSection() {
               {/* Inner accent frames */}
               <div className="absolute inset-0 border border-white/5 rounded-2xl pointer-events-none z-10 m-1" />
               
-              <div className="relative aspect-[5/5] w-full rounded-xl overflow-hidden bg-neutral-900">
+              <div className="relative aspect-5/5 w-full rounded-xl overflow-hidden bg-neutral-900">
                 {/* Visual shadow mask overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent z-10" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent z-10" />
                 
                 <img 
                   src={psHeadshot} 
@@ -95,11 +95,11 @@ export default function AboutSection() {
                 </div>
 
                 {/* Corner light rays */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#D4A853]/15 to-transparent blur-xl pointer-events-none" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-bl from-[#D4A853]/15 to-transparent blur-xl pointer-events-none" />
               </div>
 
               {/* Glowing back-shadow shadow effect */}
-              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-b from-transparent to-[#D4A853]/5 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 pointer-events-none -z-10" />
+              <div className="absolute -inset-1 rounded-2xl bg-linear-to-b from-transparent to-[#D4A853]/5 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 pointer-events-none -z-10" />
             </div>
           </motion.div>
           {/* Left Column: Metrics & Narrative */}
@@ -119,7 +119,7 @@ export default function AboutSection() {
               {/* Quick Metrics Row */}
             <motion.div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8" variants={itemVariants}>
               {stats.map((s, idx) => (
-                <div key={idx} className="border-l-2 border-[#D4A853] pl-4 py-1.5 bg-white/[0.01] rounded-r-md">
+                <div key={idx} className="border-l-2 border-[#D4A853] pl-4 py-1.5 bg-white/1 rounded-r-md">
                   <div className="text-xl md:text-2xl font-serif font-extrabold text-[#D4A853] tracking-tight">
                     {s.value}
                   </div>

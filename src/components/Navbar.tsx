@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import Logo from '../assets/logo.webp';
 
 const navLinks = [
+    { label: 'About',      href: '#about' },
   { label: 'Problem',    href: '#mirror' },
   { label: 'Philosophy', href: '#philosophy' },
   { label: 'Program',    href: '#program' },
   { label: 'Curriculum', href: '#curriculum' },
-  { label: 'About',      href: '#about' },
   { label: 'FAQ',        href: '#faq' },
 ];
 
@@ -82,8 +82,8 @@ export default function Navbar() {
                     className={[
                       'px-3.5 py-1.5 rounded-[4px] text-[13px] font-semibold no-underline transition-all duration-150 whitespace-nowrap',
                       isActive
-                        ? 'text-[#D4A853] bg-white/[0.05]'
-                        : 'text-white hover:text-white hover:bg-white/[0.03]',
+                        ? 'text-[#D4A853] bg-white/5'
+                        : 'text-white hover:text-white hover:bg-white/3',
                     ].join(' ')}
                   >
                     {l.label}
@@ -106,8 +106,8 @@ export default function Navbar() {
                 className={[
                   'md:hidden flex flex-col items-center justify-center gap-[5px] w-[38px] h-[38px] rounded-[6px] border cursor-pointer transition-all duration-150',
                   menuOpen
-                    ? 'bg-white/[0.05] border-white/[0.15]'
-                    : 'bg-transparent border-white/[0.08] hover:bg-white/[0.03]',
+                    ? 'bg-white/5 border-white/15'
+                    : 'bg-transparent border-white/8 hover:bg-white/3',
                 ].join(' ')}
               >
                 <span
@@ -125,7 +125,7 @@ export default function Navbar() {
                 <span
                   className={[
                     'block w-4.5 h-[1.5px] rounded-sm transition-all duration-150',
-                    menuOpen ? 'bg-[#D4A853] -rotate-45 translate-x-[4px] -translate-y-[5px]' : 'bg-white',
+                    menuOpen ? 'bg-[#D4A853] -rotate-45 translate-x-[4px] translate-y-[-5px]' : 'bg-white',
                   ].join(' ')}
                 />
               </button>
@@ -150,8 +150,8 @@ export default function Navbar() {
                     className={[
                       'flex items-center justify-between px-4 py-3 rounded-[6px] text-[14px] no-underline transition-all duration-150',
                       isActive
-                        ? 'text-[#D4A853] font-bold bg-white/[0.05] border border-white/[0.08]'
-                        : 'text-[#9CA3AF] font-semibold border border-transparent hover:text-white hover:bg-white/[0.03]',
+                        ? 'text-[#D4A853] font-bold bg-white/5 border border-white/8'
+                        : 'text-[#9CA3AF] font-semibold border border-transparent hover:text-white hover:bg-white/3',
                     ].join(' ')}
                   >
                     <span>{l.label}</span>

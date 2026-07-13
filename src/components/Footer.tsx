@@ -7,7 +7,7 @@ import logo from '../assets/logo.webp'
 
 export default function Footer() {
   return (
-    <footer className="bg-[#080808] border-t border-white/[0.08] py-16">
+    <footer className="bg-[#080808] border-t border-white/8 py-16">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         
         {/* Top Section */}
@@ -28,7 +28,7 @@ export default function Footer() {
                 <a
                   key={s}
                   href="#contact"
-                  className="w-9 h-9 rounded-[4px] bg-white/[0.02] border border-white/[0.08] flex items-center justify-center text-[#9CA3AF] text-[11px] font-bold no-underline tracking-wide hover:text-[#D4A853] hover:border-[#D4A853] transition-all duration-150 uppercase"
+                  className="w-9 h-9 rounded-[4px] bg-white/2 border border-white/8 flex items-center justify-center text-[#9CA3AF] text-[11px] font-bold no-underline tracking-wide hover:text-[#D4A853] hover:border-[#D4A853] transition-all duration-150 uppercase"
                 >
                   {s}
                 </a>
@@ -59,7 +59,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/[0.08] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-white/8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <span className="text-[#9CA3AF] text-[12px] text-center md:text-left">
             © 2025 Pranjal Sarkar. AI Product Leadership Studio. All rights reserved.
           </span>

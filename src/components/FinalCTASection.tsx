@@ -15,7 +15,7 @@ export default function FinalCTASection() {
       />
       
       {/* Gradient Mask Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/70 z-0 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/30 to-black/70 z-0 pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-6 md:px-8 relative z-10 text-center w-full">
         
@@ -23,7 +23,7 @@ export default function FinalCTASection() {
           
           {/* Label Badge */}
           <div className="flex justify-center mb-4">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] text-[9px] font-bold tracking-[0.15em] uppercase text-[#D4A853] bg-[#D4A853]/[0.08] border border-[#D4A853]/20">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] text-[9px] font-bold tracking-[0.15em] uppercase text-[#D4A853] bg-[#D4A853]/8 border border-[#D4A853]/20">
               <span className="w-1.5 h-1.5 rounded-full bg-[#D4A853] animate-pulse shrink-0" />
               Limited Seats — Cohort 2
             </span>
@@ -49,14 +49,14 @@ export default function FinalCTASection() {
             </a>
             <a
               href="#judgment"
-              className="px-6 py-2.5 rounded-[6px] text-white text-[13px] md:text-[14px] font-semibold tracking-wide no-underline transition-all duration-200 border border-white/[0.15] bg-white/[0.03] hover:bg-white/[0.08] hover:-translate-y-0.5"
+              className="px-6 py-2.5 rounded-[6px] text-white text-[13px] md:text-[14px] font-semibold tracking-wide no-underline transition-all duration-200 border border-white/15 bg-white/3 hover:bg-white/8 hover:-translate-y-0.5"
             >
               Curriculum
             </a>
           </div>
 
           {/* Social Proof Mini Checklist */}
-          <div className="flex flex-wrap gap-4 md:gap-6 justify-center border-t border-white/[0.08] pt-4 w-full">
+          <div className="flex flex-wrap gap-4 md:gap-6 justify-center border-t border-white/8 pt-4 w-full">
             {[
               { text: 'Application takes 15m' },
               { text: 'Decision in 5 days' },
