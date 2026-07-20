@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { RefreshCcw, X } from 'lucide-react';
-import './InteractiveBook.css';
+import '../../styles/InteractiveBook.css';
 
 function cn(...classes: any[]) {
   return classes.filter(Boolean).join(' ');
@@ -16,6 +16,7 @@ export interface BookPage {
 
 export interface InteractiveBookProps {
   coverImage: string;
+  authorImage?: string;
   bookTitle?: string;
   bookAuthor?: string;
   pages: BookPage[];
@@ -28,6 +29,7 @@ export interface InteractiveBookProps {
 
 export default function InteractiveBook({
   coverImage,
+  authorImage,
   bookTitle = "Book Title",
   bookAuthor = "Author Name",
   pages,
@@ -41,8 +43,26 @@ export default function InteractiveBook({
   const [currentPageIndex, setCurrentPageIndex] = useState(-1);
   const [isHovering, setIsHovering] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [scale, setScale] = useState(1);
 
   const widthNum = typeof width === 'number' ? width : 300;
+
+  useEffect(() => {
+    const handleResize = () => {
+      const parentWidth = window.innerWidth;
+      const requiredWidth = isOpen ? widthNum * 2 + 60 : widthNum + 60;
+      if (parentWidth < requiredWidth) {
+        setScale(parentWidth / requiredWidth);
+      } else {
+        setScale(1);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isOpen, widthNum]);
+
   const BOOK_OPEN_DURATION = 1.2;
   const EASING: [number, number, number, number] = [0.25, 0, 0, 1];
 
@@ -114,7 +134,7 @@ export default function InteractiveBook({
       className={cn("relative flex items-center justify-center", className)}
       style={{
         width: '100%',
-        height: typeof height === 'number' ? height + 40 : 'auto',
+        height: typeof height === 'number' ? (height + 40) * scale : 'auto',
         perspective: '2000px',
       }}
       onMouseEnter={() => {
@@ -126,13 +146,23 @@ export default function InteractiveBook({
         setIsPaused(false);
       }}
     >
-      <motion.div
-        className="relative preserve-3d"
-        style={{ width, height }}
-        initial={{ x: 0 }}
-        animate={{ x: isOpen ? widthNum / 2 : 0 }}
-        transition={{ duration: BOOK_OPEN_DURATION, ease: EASING }}
+      <div
+        style={{
+          transform: `scale(${scale})`,
+          transformOrigin: 'center center',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          willChange: 'transform',
+        }}
       >
+        <motion.div
+          className="relative preserve-3d"
+          style={{ width, height }}
+          initial={{ x: 0 }}
+          animate={{ x: isOpen ? widthNum / 2 : 0 }}
+          transition={{ duration: BOOK_OPEN_DURATION, ease: EASING }}
+        >
         {/* Front Cover */}
         <motion.div
           className="absolute inset-0 w-full h-full origin-left"
@@ -176,19 +206,31 @@ export default function InteractiveBook({
 
           {/* Back Face (Inner Cover) */}
           <div
-            className="absolute inset-0 w-full h-full backface-hidden rounded-l-md rounded-r-sm bg-[#121212] border border-white/10 border-r-0 rotate-y-180 flex flex-col p-8 shadow-xl cursor-pointer"
+            className="absolute inset-0 w-full h-full backface-hidden rounded-l-md rounded-r-sm bg-neutral-900 border border-white/10 border-r-0 rotate-y-180 overflow-hidden cursor-pointer shadow-xl"
             style={{ transform: 'rotateY(180deg) translateZ(0.5px)' }}
             onClick={(e) => {
               e.stopPropagation();
               prevPage();
             }}
           >
-            <div className="flex-1 flex flex-col justify-center items-center text-center opacity-95">
-              <span className="text-[10px] font-bold tracking-[0.2em] text-[#D4A853] uppercase mb-4">PHILOSOPHY</span>
-              <h2 className="text-xl font-serif font-bold text-white mb-2 tracking-tight">{bookTitle}</h2>
-              <div className="w-8 h-[1.5px] bg-[#D4A853]/40 mb-4" />
-              <p className="text-[10px] text-white/50 uppercase tracking-widest font-mono">Interactive Edition</p>
-            </div>
+            {authorImage ? (
+              <div className="relative w-full h-full">
+                <img src={authorImage} alt={bookAuthor} className="w-full h-full object-cover opacity-90" />
+                <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5 text-left z-10">
+                  <span className="text-[8px] font-bold tracking-[0.2em] text-[#0080C7] uppercase mb-1 block">THE AUTHOR</span>
+                  <h2 className="text-sm font-serif font-bold text-white leading-tight">{bookAuthor}</h2>
+                  <p className="text-[8px] text-white/40 uppercase tracking-widest font-mono mt-0.5">Product Leadership Studio</p>
+                </div>
+              </div>
+            ) : (
+              <div className="flex-1 flex flex-col justify-center items-center text-center opacity-95 p-8">
+                <span className="text-[10px] font-bold tracking-[0.2em] text-[#0080C7] uppercase mb-4">PHILOSOPHY</span>
+                <h2 className="text-xl font-serif font-bold text-white mb-2 tracking-tight">{bookTitle}</h2>
+                <div className="w-8 h-[1.5px] bg-[#0080C7]/40 mb-4" />
+                <p className="text-[10px] text-white/50 uppercase tracking-widest font-mono">Interactive Edition</p>
+              </div>
+            )}
           </div>
         </motion.div>
 
@@ -227,7 +269,7 @@ export default function InteractiveBook({
                     </div>
                     <div className="flex-1 flex flex-col justify-center max-w-none text-neutral-800 select-none">
                       {page.title && (
-                        <div className="text-[10px] font-bold text-[#D4A853] tracking-widest uppercase mb-1 text-center font-mono">
+                        <div className="text-[10px] font-bold text-[#0080C7] tracking-widest uppercase mb-1 text-center font-mono">
                           {page.title}
                         </div>
                       )}
@@ -239,32 +281,32 @@ export default function InteractiveBook({
 
                 {/* Back Face (Left Side Page) */}
                 <div
-                  className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-[#fdfbf7] border-r border-neutral-200 overflow-hidden p-6 flex flex-col cursor-pointer hover:bg-[#fbf9f4] transition-colors"
+                  className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-[#fdfbf7] border-r border-neutral-200 overflow-hidden flex flex-col cursor-pointer"
                   style={{ transform: 'rotateY(180deg) translateZ(0.5px)' }}
                   onClick={(e) => {
                     e.stopPropagation();
                     prevPage();
                   }}
                 >
-                  <div className="absolute right-0 top-0 bottom-0 w-6 bg-linear-to-l from-black/4 to-transparent pointer-events-none mix-blend-multiply" />
+                  <div className="absolute right-0 top-0 bottom-0 w-6 bg-linear-to-l from-black/4 to-transparent pointer-events-none mix-blend-multiply z-20" />
 
-                  <div className="flex-1 flex flex-col justify-between overflow-hidden">
-                    <div className="text-[10px] text-neutral-400 text-left font-sans font-semibold tracking-wider">
-                      {page.pageNumber * 2}
-                    </div>
-                    <div className="flex-1 flex flex-col justify-center text-neutral-800 select-none h-full">
-                      {page.backContent ? (
-                        <div className="flex-1 flex flex-col justify-center">
-                          {page.backContent}
+                  <div className="flex-1 flex flex-col justify-between overflow-hidden h-full w-full">
+                    {page.backContent ? (
+                      <div className="flex-1 w-full h-full relative">
+                        {page.backContent}
+                      </div>
+                    ) : (
+                      <div className="p-6 flex flex-col justify-between h-full w-full">
+                        <div className="text-[10px] text-neutral-400 text-left font-sans font-semibold tracking-wider">
+                          {page.pageNumber * 2}
                         </div>
-                      ) : (
                         <div className="w-full h-full flex items-center justify-center opacity-[0.03]">
                           <span className="font-serif text-8xl italic font-bold text-black">
                             {page.pageNumber * 2}
                           </span>
                         </div>
-                      )}
-                    </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -280,13 +322,13 @@ export default function InteractiveBook({
             }}
           >
             <div className="absolute inset-0 p-8 flex flex-col items-center justify-center text-center">
-              <span className="w-8 h-8 rounded-full bg-[#D4A853]/10 border border-[#D4A853]/30 flex items-center justify-center mb-4 text-[#D4A853] text-xs">
+              <span className="w-8 h-8 rounded-full bg-[#0080C7]/10 border border-[#0080C7]/30 flex items-center justify-center mb-4 text-[#0080C7] text-xs">
                 ✓
               </span>
               <p className="font-serif text-white italic text-sm">Fin.</p>
               <button
                 onClick={restartBook}
-                className="mt-6 flex items-center gap-2 px-5 py-2 rounded-full bg-[#D4A853] hover:bg-[#c39744] transition-all text-xs font-bold text-neutral-900 cursor-pointer shadow-lg pointer-events-auto"
+                className="mt-6 flex items-center gap-2 px-5 py-2 rounded-full bg-[#0080C7] hover:bg-[#009CEE] hover:shadow-[0_0_15px_rgba(0,128,199,0.5)] transition-all text-xs font-bold text-neutral-900 cursor-pointer shadow-lg pointer-events-auto hover:-translate-y-px"
               >
                 <RefreshCcw size={12} /> Read Again
               </button>
@@ -294,6 +336,7 @@ export default function InteractiveBook({
           </div>
         </div>
       </motion.div>
+      </div>
 
       {/* Close Button overlay */}
       <AnimatePresence>
@@ -303,7 +346,7 @@ export default function InteractiveBook({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             onClick={handleCloseBook}
-            className="absolute top-0 right-4 p-2 rounded-full bg-[#121212] border border-white/10 hover:border-[#D4A853]/30 text-white/60 hover:text-white z-1000 transition-all hover:scale-105 shadow-md"
+            className="absolute top-0 right-4 p-2 rounded-full bg-[#121212] border border-white/10 hover:border-[#0080C7]/30 text-white/60 hover:text-white z-1000 transition-all hover:scale-105 shadow-md"
           >
             <X size={16} />
           </motion.button>
@@ -316,7 +359,7 @@ export default function InteractiveBook({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="absolute bottom-0 text-[10px] font-mono tracking-widest text-[#D4A853] uppercase cursor-pointer z-50 hover:text-white transition-colors"
+          className="absolute bottom-0 text-[10px] font-mono tracking-widest text-[#0080C7] uppercase cursor-pointer z-50 hover:text-white transition-colors"
           onClick={handleOpenBook}
         >
           Click to Open Book

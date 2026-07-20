@@ -27,19 +27,19 @@ export default function FAQSection() {
   return (
     <section id="faq" className="relative py-12 md:py-16 overflow-hidden border-b border-white/8 bg-[#000001]">
       {/* Decorative Blur Background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#D4A853]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#0080C7]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
         {/* Centered Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#D4A853]/8 border border-[#D4A853]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#D4A853] mb-6">
+          <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#0080C7]/8 border border-[#0080C7]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#0080C7] mb-6">
             FAQ
           </span>
-          <h2 className="font-['Outfit',sans-serif] font-extrabold text-4xl md:text-5xl leading-[1.15] tracking-tight text-white mb-6">
-            Questions <span className="text-[#D4A853]">Answered</span>
+          <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-6">
+            Questions <span className="text-[#0080C7]">Answered</span>
           </h2>
-          <p className="text-base md:text-lg text-white/90 leading-relaxed mb-8 max-w-3xl mx-auto">
+          <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-8 max-w-3xl mx-auto">
             Still have something we didn't cover? Check our common questions or reach out to us directly.
           </p>
   
@@ -54,21 +54,24 @@ export default function FAQSection() {
                 key={i}
                 className={`rounded-lg bg-[#0C0C0C]/80 border transition-all duration-300 mb-4 overflow-hidden ${
                   isOpen
-                    ? 'border-[#D4A853]/35 border-l-4 border-l-[#D4A853] bg-[#121212]/90 shadow-[0_10px_30px_-15px_rgba(212,168,83,0.15)]'
-                    : 'border-white/6 border-l-4 border-l-transparent hover:border-[#D4A853]/20 hover:bg-[#121212]/50'
+                    ? 'border-[#0080C7]/35 border-l-4 border-l-[#0080C7] bg-[#121212]/90 shadow-[0_0_24px_rgba(0,128,199,0.2)]'
+                    : 'border-white/6 border-l-4 border-l-transparent hover:border-[#0080C7]/25 hover:bg-[#121212]/50 hover:shadow-[0_0_15px_rgba(0,128,199,0.08)]'
                 }`}
               >
                 <button
+                  id={`faq-btn-${i}`}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${i}`}
                   className="w-full text-left px-6 py-5 flex justify-between items-center cursor-pointer bg-transparent border-none outline-none focus:outline-none"
                   onClick={() => setOpen(isOpen ? null : i)}
                 >
-                  <span className={`font-['Outfit',sans-serif] text-base font-extrabold transition-colors duration-150 pr-4 ${
-                    isOpen ? 'text-[#D4A853]' : 'text-white'
+                  <span className={`font-serif text-base md:text-lg font-bold transition-colors duration-150 pr-4 ${
+                    isOpen ? 'text-[#0080C7]' : 'text-white'
                   }`}>
                     {f.q}
                   </span>
                   <span className={`text-xl font-bold shrink-0 transition-all duration-300 block ${
-                    isOpen ? 'text-[#D4A853] rotate-45' : 'text-white/40'
+                    isOpen ? 'text-[#0080C7] rotate-45' : 'text-white/40'
                   }`}>
                     +
                   </span>
@@ -77,12 +80,15 @@ export default function FAQSection() {
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
+                      id={`faq-answer-${i}`}
+                      role="region"
+                      aria-labelledby={`faq-btn-${i}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25, ease: [0.25, 1, 0.5, 1] }}
                     >
-                      <div className="px-6 pb-6 text-white/70 text-xs md:text-sm leading-relaxed border-t border-white/2 pt-4">
+                      <div className="px-6 pb-6 text-gray-300 text-sm md:text-base leading-8 border-t border-white/2 pt-4">
                         {f.a}
                       </div>
                     </motion.div>

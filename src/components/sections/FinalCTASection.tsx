@@ -1,4 +1,4 @@
-import bgImage from '../assets/pranjalsarkar/1.webp';
+import bgImage from '../../assets/pranjalsarkar/1.webp';
 
 export default function FinalCTASection() {
   return (
@@ -10,7 +10,7 @@ export default function FinalCTASection() {
       
       {/* Viewport-fixed Background Image clipped to parent */}
       <div 
-        className="fixed inset-0 w-full h-full bg-fill bg-center bg-no-repeat opacity-45 pointer-events-none z-0"
+        className="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-45 pointer-events-none z-0"
         style={{ backgroundImage: `url(${bgImage})` }}
       />
       
@@ -23,19 +23,19 @@ export default function FinalCTASection() {
           
           {/* Label Badge */}
           <div className="flex justify-center mb-4">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] text-[9px] font-bold tracking-[0.15em] uppercase text-[#D4A853] bg-[#D4A853]/8 border border-[#D4A853]/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#D4A853] animate-pulse shrink-0" />
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] text-[9px] font-bold tracking-[0.15em] uppercase text-[#0080C7] bg-[#0080C7]/8 border border-[#0080C7]/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0080C7] animate-pulse shrink-0" />
               Limited Seats — Cohort 2
             </span>
           </div>
 
           {/* Title */}
-          <h2 className="font-['Outfit',sans-serif] text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-white leading-tight mb-3 tracking-tight">
-            The director role <span className="text-[#D4A853]">won't wait forever.</span>
+          <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-3">
+            The director role <span className="text-[#0080C7]">won't wait forever.</span>
           </h2>
 
           {/* Sub */}
-          <p className="text-white/85 text-xs md:text-sm leading-relaxed max-w-lg mx-auto mb-6 font-medium">
+          <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-8 max-w-3xl mx-auto mb-6">
             Twenty seats. One cohort. A 12-week crucible that builds the kind of product leader companies fight to promote.
           </p>
 
@@ -43,13 +43,13 @@ export default function FinalCTASection() {
           <div className="flex flex-row gap-3.5 justify-center items-center mb-6 w-full sm:w-auto">
             <a
               href="#contact"
-              className="px-6 py-2.5 rounded-[6px] text-neutral-950 text-[13px] md:text-[14px] font-bold tracking-wide no-underline transition-all duration-200 bg-[#D4A853] hover:bg-[#E5C180] hover:-translate-y-0.5 hover:shadow-[0_8px_15px_-8px_rgba(212,168,83,0.4)]"
+              className="px-6 py-2.5 rounded-[6px] text-neutral-950 text-[13px] md:text-[14px] font-bold tracking-wide no-underline transition-all duration-200 bg-[#0080C7] hover:bg-[#009CEE] hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(0,128,199,0.65)]"
             >
               Apply for Cohort 2 →
             </a>
             <a
               href="#judgment"
-              className="px-6 py-2.5 rounded-[6px] text-white text-[13px] md:text-[14px] font-semibold tracking-wide no-underline transition-all duration-200 border border-white/15 bg-white/3 hover:bg-white/8 hover:-translate-y-0.5"
+              className="px-6 py-2.5 rounded-[6px] text-white text-[13px] md:text-[14px] font-semibold tracking-wide no-underline transition-all duration-200 border border-white/15 bg-white/3 hover:bg-white/8 hover:-translate-y-0.5 hover:border-white/30"
             >
               Curriculum
             </a>
@@ -63,7 +63,7 @@ export default function FinalCTASection() {
               { text: 'Cohort 1: 100% promoted' },
             ].map((item, i) => (
               <div key={i} className="flex gap-2 items-center">
-                <span className="w-4 h-4 rounded-full bg-[#D4A853]/10 border border-[#D4A853]/25 flex items-center justify-center text-[8px] text-[#D4A853] font-bold shrink-0">
+                <span className="w-4 h-4 rounded-full bg-[#0080C7]/10 border border-[#0080C7]/25 flex items-center justify-center text-[8px] text-[#0080C7] font-bold shrink-0">
                   ✓
                 </span>
                 <span className="text-white/60 text-[11px] md:text-xs font-semibold">{item.text}</span>

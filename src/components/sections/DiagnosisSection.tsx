@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 // Custom Vector Icons representing structural issues
 const CalibrationIcon = () => (
-  <div className="w-10 h-10 rounded-[6px] bg-[#D4A853]/10 border border-[#D4A853]/20 flex items-center justify-center text-[#D4A853] shrink-0">
+  <div className="w-10 h-10 rounded-[6px] bg-[#0080C7]/10 border border-[#0080C7]/20 flex items-center justify-center text-[#0080C7] shrink-0">
     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
       <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
       <circle cx="7.5" cy="16.5" r="1.5" stroke="currentColor" />
@@ -12,7 +12,7 @@ const CalibrationIcon = () => (
 );
 
 const JudgmentIcon = () => (
-  <div className="w-10 h-10 rounded-[6px] bg-[#D4A853]/10 border border-[#D4A853]/20 flex items-center justify-center text-[#D4A853] shrink-0">
+  <div className="w-10 h-10 rounded-[6px] bg-[#0080C7]/10 border border-[#0080C7]/20 flex items-center justify-center text-[#0080C7] shrink-0">
     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
       <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
     </svg>
@@ -20,7 +20,7 @@ const JudgmentIcon = () => (
 );
 
 const AiIcon = () => (
-  <div className="w-10 h-10 rounded-[6px] bg-[#D4A853]/10 border border-[#D4A853]/20 flex items-center justify-center text-[#D4A853] shrink-0">
+  <div className="w-10 h-10 rounded-[6px] bg-[#0080C7]/10 border border-[#0080C7]/20 flex items-center justify-center text-[#0080C7] shrink-0">
     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
       <rect x="4" y="4" width="16" height="16" rx="3" />
       <path strokeLinecap="round" strokeLinejoin="round" d="M9 9h6v6H9z" />
@@ -30,7 +30,7 @@ const AiIcon = () => (
 );
 
 const FailureIcon = () => (
-  <div className="w-10 h-10 rounded-[6px] bg-[#D4A853]/10 border border-[#D4A853]/20 flex items-center justify-center text-[#D4A853] shrink-0">
+  <div className="w-10 h-10 rounded-[6px] bg-[#0080C7]/10 border border-[#0080C7]/20 flex items-center justify-center text-[#0080C7] shrink-0">
     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
       <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
     </svg>
@@ -58,7 +58,7 @@ const StatRing = ({ value, label, isActive }: { value: number; label: string; is
           cy="32"
           r={r}
           className={`fill-none transition-all duration-700 ease-out ${
-            isActive ? 'stroke-[#D4A853]' : 'stroke-white/80'
+            isActive ? 'stroke-[#0080C7]' : 'stroke-white/80'
           }`}
           strokeWidth={stroke}
           strokeDasharray={circ}
@@ -67,7 +67,7 @@ const StatRing = ({ value, label, isActive }: { value: number; label: string; is
         />
       </svg>
       <span className={`absolute text-[12px] font-['Outfit',sans-serif] font-bold ${
-        isActive ? 'text-[#D4A853]' : 'text-white/90'
+        isActive ? 'text-[#0080C7]' : 'text-white/90'
       }`}>
         {label}
       </span>
@@ -142,7 +142,7 @@ export default function DiagnosisSection() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isAutoplay, activeIndex]);
+  }, [isAutoplay]);
 
   return (
     <section id="diagnosis" className="relative py-8 md:py-10 overflow-hidden border-b border-white/8 ">
@@ -164,14 +164,14 @@ export default function DiagnosisSection() {
         
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center mb-6 md:mb-10">
-          <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#D4A853]/8 border border-[#D4A853]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#D4A853] mb-6">
+          <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#0080C7]/8 border border-[#0080C7]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#0080C7] mb-6">
             The Diagnosis
           </span>
-          <h2 className="font-['Outfit',sans-serif] font-extrabold text-4xl md:text-[3.5rem] leading-[1.15] tracking-tight text-white mb-6">
+          <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-6">
             Why this keeps happening <br />
-            <span className="text-[#D4A853]">and the data behind it.</span>
+            <span className="text-[#0080C7]">and the data behind it.</span>
           </h2>
-          <p className="text-base md:text-lg text-white/90 leading-relaxed max-w-4xl mx-auto">
+          <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-8 max-w-4xl mx-auto">
             This isn't a motivation problem. It's a structural one. Here is the actual diagnostic data and the root causes keeping product talent capped.
           </p>
         </div>
@@ -196,20 +196,20 @@ export default function DiagnosisSection() {
                   onClick={() => setActiveIndex(idx)}
                   className={`relative flex items-center gap-5 p-5 rounded-xl text-left border transition-all duration-300 group cursor-pointer ${
                     isActive
-                      ? 'bg-[#121212] border-[#D4A853]/80 shadow-[0_4px_24px_rgba(212,168,83,0.04)]'
-                      : 'bg-transparent border-white/5 hover:bg-white/[0.02] hover:border-white/10'
+                      ? 'bg-[#121212] border-[#0080C7]/80 shadow-[0_0_24px_rgba(0,128,199,0.25)] hover:shadow-[0_0_24px_rgba(0,128,199,0.35)]'
+                      : 'bg-transparent border-white/5 hover:bg-white/[0.02] hover:border-white/10 hover:shadow-[0_0_15px_rgba(0,128,199,0.1)]'
                   }`}
                 >
                   {/* Indicator arrow pointing to the detailed report */}
                   {isActive && (
-                    <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-8 border-l-[#D4A853]/80 z-20" />
+                    <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-8 border-l-[#0080C7]/80 z-20" />
                   )}
 
                   <StatRing value={item.statValue} label={item.statNum} isActive={isActive} />
 
                   <div className="flex-1 min-w-0">
                     <span className={`text-[10px] font-bold uppercase tracking-wider mb-1 block ${
-                      isActive ? 'text-[#D4A853]' : 'text-white/90'
+                      isActive ? 'text-[#0080C7]' : 'text-white/90'
                     }`}>
                       {item.statLabel}
                     </span>
@@ -226,12 +226,12 @@ export default function DiagnosisSection() {
 
           {/* Right Column: Dynamic Analysis Report Card */}
           <div className="col-span-7 flex">
-            <div className="w-full rounded-xl bg-[#121212] border border-white/50 p-4 md:p-6 flex flex-col justify-between relative overflow-hidden">
+            <div className="w-full rounded-xl bg-[#121212] border border-white/50 p-4 md:p-6 flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:border-[#0080C7]/30 hover:shadow-[0_0_30px_rgba(0,128,199,0.15)]">
               {/* Dynamic visual progress line loader */}
               {isAutoplay && (
                 <div 
                   key={activeIndex} 
-                  className="absolute top-0 left-0 h-[2px] bg-[#D4A853] animate-progress-timer" 
+                  className="absolute top-0 left-0 h-[2px] bg-[#0080C7] animate-progress-timer" 
                 />
               )}
 
@@ -241,7 +241,7 @@ export default function DiagnosisSection() {
               <div>
                 {/* Metric Header */}
                 <div className="flex items-center justify-between gap-4 mb-6">
-                  <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#D4A853] bg-[#D4A853]/10 border border-[#D4A853]/20 px-3 py-1 rounded-[4px]">
+                  <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#0080C7] bg-[#0080C7]/10 border border-[#0080C7]/20 px-3 py-1 rounded-[4px]">
                     ANALYSIS REPORT
                   </span>
                   <div className="flex items-center gap-1.5 text-xs text-white/80 font-mono">
@@ -264,7 +264,7 @@ export default function DiagnosisSection() {
                     <h4 className="text-[11px] font-bold text-white/40 uppercase tracking-wider mb-1">
                       The Root Cause
                     </h4>
-                    <h5 className="text-base font-bold text-[#D4A853] mb-2 font-['Outfit',sans-serif]">
+                    <h5 className="text-base font-bold text-[#0080C7] mb-2 font-['Outfit',sans-serif]">
                       {diagnosisData[activeIndex].reasonTitle}
                     </h5>
                     <p className="text-sm text-white/70 leading-relaxed">
@@ -312,14 +312,14 @@ export default function DiagnosisSection() {
         {/* Mobile & Tablet Layout (Fully expanded cards for ease of reading) */}
         <div className="lg:hidden flex flex-col gap-6">
           {diagnosisData.map((item) => (
-            <div key={item.id} className="rounded-[16px] bg-[#121212] border border-white/8 p-6 md:p-8 flex flex-col relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#D4A853]/30 to-transparent" />
+            <div key={item.id} className="rounded-[16px] bg-[#121212] border border-white/8 p-6 md:p-8 flex flex-col relative overflow-hidden transition-all duration-300 hover:border-[#0080C7]/30 hover:shadow-[0_0_30px_rgba(0,128,199,0.15)]">
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7]/30 to-transparent" />
               
               {/* Stat Circle & Label Row */}
               <div className="flex items-center gap-4 mb-5">
                 <StatRing value={item.statValue} label={item.statNum} isActive={true} />
                 <div>
-                  <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#D4A853]">
+                  <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#0080C7]">
                     {item.statLabel}
                   </span>
                   <h3 className="font-['Outfit',sans-serif] text-sm md:text-base font-bold text-white leading-snug mt-0.5">
@@ -337,7 +337,7 @@ export default function DiagnosisSection() {
                   <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-wider mb-1">
                     The Root Cause
                   </h4>
-                  <h5 className="text-sm font-bold text-[#D4A853] mb-1.5 font-['Outfit',sans-serif]">
+                  <h5 className="text-sm font-bold text-[#0080C7] mb-1.5 font-['Outfit',sans-serif]">
                     {item.reasonTitle}
                   </h5>
                   <p className="text-xs text-white/70 leading-relaxed">

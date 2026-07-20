@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import psHeadshot from '../assets/pranjalsarkar/5.webp';
+import psHeadshot from '../../assets/pranjalsarkar/5.webp';
 
 const stats = [
   { value: '10+ Yrs', label: 'Leadership' },
@@ -56,12 +56,12 @@ export default function AboutSection() {
         
         {/* Header Block */}
         <motion.div className="flex flex-col text-center justify-center mb-10" variants={itemVariants}>
-          <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#D4A853]/8 border border-[#D4A853]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#D4A853] mb-6 self-center">
+          <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#0080C7]/8 border border-[#0080C7]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#0080C7] mb-6 self-center">
             About Pranjal Sarkar
           </span>
-          <h2 className="font-serif font-extrabold text-3xl md:text-5xl leading-[1.2] tracking-tight text-white max-w-4xl mx-auto">
+          <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white max-w-4xl mx-auto">
             I do not sell skills. <br />
-            <span className="text-[#D4A853] italic font-serif">I build the mindset.</span>
+            <span className="text-[#0080C7] font-serif">I build the mindset.</span>
           </h2>
         </motion.div>
 
@@ -74,7 +74,7 @@ export default function AboutSection() {
             variants={itemVariants}
             {...floatAnimation}
           >
-            <div className="relative group  overflow-hidden   transition-all duration-500 hover:border-[#D4A853]/40 shadow-2xl">
+            <div className="relative group  overflow-hidden   transition-all duration-500 hover:border-[#0080C7]/40 shadow-2xl">
               {/* Inner accent frames */}
               <div className="absolute inset-0 border border-white/5 rounded-2xl pointer-events-none z-10 m-1" />
               
@@ -85,21 +85,21 @@ export default function AboutSection() {
                 <img 
                   src={psHeadshot} 
                   alt="Pranjal Sarkar" 
-                  className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-103" 
+                  className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105" 
                 />
 
                 {/* Live Mentor Indicator Pill */}
-                <div className="absolute top-4 left-4 z-20 px-3 py-1 bg-black/60 backdrop-blur-md border border-[#D4A853]/30 rounded-full flex items-center gap-1.5">
+                <div className="absolute top-4 left-4 z-20 px-3 py-1 bg-black/60 backdrop-blur-md border border-[#0080C7]/30 rounded-full flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
                   <span className="text-[9px] font-bold uppercase tracking-wider text-white font-mono">ACTIVE MENTOR</span>
                 </div>
 
                 {/* Corner light rays */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-bl from-[#D4A853]/15 to-transparent blur-xl pointer-events-none" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-bl from-[#0080C7]/15 to-transparent blur-xl pointer-events-none" />
               </div>
 
               {/* Glowing back-shadow shadow effect */}
-              <div className="absolute -inset-1 rounded-2xl bg-linear-to-b from-transparent to-[#D4A853]/5 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 pointer-events-none -z-10" />
+              <div className="absolute -inset-1 rounded-2xl bg-linear-to-b from-transparent to-[#0080C7]/5 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 pointer-events-none -z-10" />
             </div>
           </motion.div>
           {/* Left Column: Metrics & Narrative */}
@@ -108,19 +108,19 @@ export default function AboutSection() {
         
             
             {/* Biography Narratives */}
-            <motion.p className="text-white/90 text-base md:text-lg leading-relaxed mb-6 font-sans" variants={itemVariants}>
-              I have founded three startups and worked across organisations of different scales, including Tata & IBM, with mission-critical responsibilities across all of them. <strong className="text-[#D4A853] font-semibold">This has given me exposure to both sides: building from nothing and scaling within complexity.</strong>
+            <motion.p className="text-gray-300 text-sm md:text-base lg:text-lg leading-8 max-w-3xl mb-6 font-sans" variants={itemVariants}>
+              I have founded three startups and worked across organisations of different scales, including Tata & IBM, with mission-critical responsibilities across all of them. <strong className="text-[#0080C7] font-semibold font-sans">This has given me exposure to both sides: building from nothing and scaling within complexity.</strong>
             </motion.p>
             
-            <motion.p className="text-white/80 text-sm md:text-base leading-relaxed mb-8" variants={itemVariants}>
+            <motion.p className="text-gray-300 text-sm md:text-base lg:text-lg leading-8 max-w-3xl mb-8" variants={itemVariants}>
               The people who have spent time working with me have not just improved at their job. <strong className="text-white font-semibold">They have moved forward in ways that actually changed their trajectory</strong>, whether that meant stepping into bigger roles, finding clarity in their direction, or solving problems they had been stuck with for years. The shift usually shows up in how they think and the decisions they start making.
             </motion.p>
 
               {/* Quick Metrics Row */}
             <motion.div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8" variants={itemVariants}>
               {stats.map((s, idx) => (
-                <div key={idx} className="border-l-2 border-[#D4A853] pl-4 py-1.5 bg-white/1 rounded-r-md">
-                  <div className="text-xl md:text-2xl font-serif font-extrabold text-[#D4A853] tracking-tight">
+                <div key={idx} className="border-l-2 border-[#0080C7] pl-4 py-1.5 bg-white/1 rounded-r-md">
+                  <div className="text-xl md:text-2xl font-serif font-extrabold text-[#0080C7] tracking-tight">
                     {s.value}
                   </div>
                   <div className="text-[10px] text-white/50 uppercase tracking-widest mt-1 font-semibold">

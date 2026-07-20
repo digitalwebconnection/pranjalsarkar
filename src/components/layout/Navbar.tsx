@@ -1,14 +1,32 @@
 import { useState, useEffect } from 'react';
-import Logo from '../assets/logo.webp';
+import Logo from '../../assets/SignatureSticker.png';
 
 const navLinks = [
-    { label: 'About',      href: '#about' },
-  { label: 'Problem',    href: '#mirror' },
+  { label: 'About', href: '#about' },
+  { label: 'Problem', href: '#mirror' },
   { label: 'Philosophy', href: '#philosophy' },
-  { label: 'Program',    href: '#program' },
+  { label: 'Program', href: '#program' },
   { label: 'Curriculum', href: '#curriculum' },
-  { label: 'FAQ',        href: '#faq' },
+  { label: 'FAQ', href: '#faq' },
 ];
+
+const sectionToNavLinkMap: Record<string, string> = {
+  hero: '',
+  mirror: 'mirror',
+  diagnosis: 'mirror',
+  philosophy: 'philosophy',
+  about: 'about',
+  preview: 'about',
+  testimonials: 'philosophy',
+  logos: 'program',
+  program: 'program',
+  judgment: 'program',
+  takeaways: 'program',
+  curriculum: 'curriculum',
+  faq: 'faq',
+  'final-cta': 'faq',
+  contact: '',
+};
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -24,19 +42,24 @@ export default function Navbar() {
 
   /* ── Active section highlighting ── */
   useEffect(() => {
-    const ids = navLinks.map(l => l.href.replace('#', ''));
-    const observers: IntersectionObserver[] = [];
+    const ids = Object.keys(sectionToNavLinkMap);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(sectionToNavLinkMap[entry.target.id]);
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: '-72px 0px -20% 0px' }
+    );
+
     ids.forEach(id => {
       const el = document.getElementById(id);
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveId(id); },
-        { threshold: 0.35 }
-      );
-      obs.observe(el);
-      observers.push(obs);
+      if (el) observer.observe(el);
     });
-    return () => observers.forEach(o => o.disconnect());
+
+    return () => observer.disconnect();
   }, []);
 
   /* ── Close menu on scroll ── */
@@ -64,37 +87,37 @@ export default function Navbar() {
 
             {/* ── Logo ── */}
             <a href="#hero" className="flex items-center gap-3 no-underline shrink-0">
-              <img src={Logo} alt="Logo" className="w-20 h-10" />
+              <img src={Logo} alt="Logo" className="w-60 h-30" />
             </a>
 
-     
+
 
             {/* ── Right: CTA + Hamburger ── */}
             <div className="flex items-center gap-3 shrink-0">
-       {/* ── Desktop nav links ── */}
-            <div className="hidden md:flex items-center gap-1">
-              {navLinks.map(l => {
-                const isActive = activeId === l.href.replace('#', '');
-                return (
-                  <a
-                    key={l.label}
-                    href={l.href}
-                    className={[
-                      'px-3.5 py-1.5 rounded-[4px] text-[13px] font-semibold no-underline transition-all duration-150 whitespace-nowrap',
-                      isActive
-                        ? 'text-[#D4A853] bg-white/5'
-                        : 'text-white hover:text-white hover:bg-white/3',
-                    ].join(' ')}
-                  >
-                    {l.label}
-                  </a>
-                );
-              })}
-            </div>
+              {/* ── Desktop nav links ── */}
+              <div className="hidden md:flex items-center gap-1">
+                {navLinks.map(l => {
+                  const isActive = activeId === l.href.replace('#', '');
+                  return (
+                    <a
+                      key={l.label}
+                      href={l.href}
+                      className={[
+                        'px-3.5 py-1.5 rounded-[4px] text-[13px] font-semibold no-underline transition-all duration-150 whitespace-nowrap',
+                        isActive
+                          ? 'text-[#0080C7] bg-white/5'
+                          : 'text-white hover:text-white hover:bg-white/3',
+                      ].join(' ')}
+                    >
+                      {l.label}
+                    </a>
+                  );
+                })}
+              </div>
               {/* Desktop CTA */}
               <a
                 href="#contact"
-                className="hidden md:inline-flex items-center gap-1.5 px-6 py-[9px] rounded-[6px] text-[#080808] text-[13px] font-bold tracking-wide no-underline transition-all duration-150 bg-[#D4A853] hover:bg-[#E5C180]"
+                className="hidden md:inline-flex items-center gap-1.5 px-6 py-[9px] rounded-[6px] text-[#080808] text-[13px] font-bold tracking-wide no-underline transition-all duration-200 bg-[#0080C7] hover:bg-[#009CEE] hover:shadow-[0_0_15px_rgba(0,128,199,0.5)] hover:-translate-y-px"
               >
                 Apply Now <span className="text-[13px]">→</span>
               </a>
@@ -103,6 +126,7 @@ export default function Navbar() {
               <button
                 onClick={() => setMenuOpen(o => !o)}
                 aria-label="Toggle menu"
+                aria-expanded={menuOpen}
                 className={[
                   'md:hidden flex flex-col items-center justify-center gap-[5px] w-[38px] h-[38px] rounded-[6px] border cursor-pointer transition-all duration-150',
                   menuOpen
@@ -113,19 +137,19 @@ export default function Navbar() {
                 <span
                   className={[
                     'block w-4.5 h-[1.5px] rounded-sm transition-all duration-150',
-                    menuOpen ? 'bg-[#D4A853] rotate-45 translate-x-[4px] translate-y-[5px]' : 'bg-white',
+                    menuOpen ? 'bg-[#0080C7] rotate-45 translate-x-[4px] translate-y-[5px]' : 'bg-white',
                   ].join(' ')}
                 />
                 <span
                   className={[
                     'block w-4.5 h-[1.5px] rounded-sm transition-opacity duration-150',
-                    menuOpen ? 'opacity-0 bg-[#D4A853]' : 'opacity-100 bg-white',
+                    menuOpen ? 'opacity-0 bg-[#0080C7]' : 'opacity-100 bg-white',
                   ].join(' ')}
                 />
                 <span
                   className={[
                     'block w-4.5 h-[1.5px] rounded-sm transition-all duration-150',
-                    menuOpen ? 'bg-[#D4A853] -rotate-45 translate-x-[4px] translate-y-[-5px]' : 'bg-white',
+                    menuOpen ? 'bg-[#0080C7] -rotate-45 translate-x-[4px] translate-y-[-5px]' : 'bg-white',
                   ].join(' ')}
                 />
               </button>
@@ -150,7 +174,7 @@ export default function Navbar() {
                     className={[
                       'flex items-center justify-between px-4 py-3 rounded-[6px] text-[14px] no-underline transition-all duration-150',
                       isActive
-                        ? 'text-[#D4A853] font-bold bg-white/5 border border-white/8'
+                        ? 'text-[#0080C7] font-bold bg-white/5 border border-white/8'
                         : 'text-[#9CA3AF] font-semibold border border-transparent hover:text-white hover:bg-white/3',
                     ].join(' ')}
                   >
@@ -163,7 +187,7 @@ export default function Navbar() {
               <a
                 href="#contact"
                 onClick={() => setMenuOpen(false)}
-                className="mt-2 flex items-center justify-center gap-2 py-3 rounded-[6px] text-[#080808] text-[14px] font-bold no-underline tracking-wide bg-[#D4A853] hover:bg-[#E5C180]"
+                className="mt-2 flex items-center justify-center gap-2 py-3 rounded-[6px] text-[#080808] text-[14px] font-bold no-underline tracking-wide bg-[#0080C7] hover:bg-[#009CEE] hover:shadow-[0_0_15px_rgba(0,128,199,0.5)]"
               >
                 Apply for Cohort 2 →
               </a>

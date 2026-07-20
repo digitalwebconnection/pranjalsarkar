@@ -62,13 +62,13 @@ export default function JudgementSection() {
         
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center justify-center mb-10">
-          <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#D4A853]/8 border border-[#D4A853]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#D4A853] mb-6">The Method</span>
-          <h2 className="font-['Outfit',sans-serif] font-extrabold text-4xl md:text-[3.5rem] leading-[1.15] tracking-tight text-white mb-6">
+          <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#0080C7]/8 border border-[#0080C7]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#0080C7] mb-6">The Method</span>
+          <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-6">
             How Leadership-Level<br />
-            <span className="text-[#D4A853]">Judgment Gets Built</span>
+            <span className="text-[#0080C7]">Judgment Gets Built</span>
           </h2>
 
-          <p className="text-lg text-white/90 leading-relaxed max-w-5xl mx-auto">
+          <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-8 max-w-3xl mx-auto">
             Judgment isn't taught through videos. It's built through reps, feedback, and calibrated pressure. Here's our 4-phase methodology.
           </p>
         </div>
@@ -86,23 +86,23 @@ export default function JudgementSection() {
         >
           {stages.map((s, i) => (
             <ScrollStackItem key={i}>
-              <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 lg:gap-12 p-8 md:p-12 rounded-xl bg-[#121212] border border-white/8 border-l-4 border-l-[#D4A853] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] min-h-[460px] flex-col justify-between">
+              <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 lg:gap-12 p-8 md:p-12 rounded-xl bg-[#121212] border border-white/8 border-l-4 border-l-[#0080C7] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] min-h-[460px] flex-col justify-between">
                 
                 {/* Left Column */}
                 <div className="flex flex-col justify-between h-full min-h-[160px] lg:min-h-0">
                   <div>
-                    <span className="text-[#D4A853] text-[10px] font-bold tracking-[0.2em] uppercase block mb-2 font-mono">
+                    <span className="text-[#0080C7] text-[10px] font-bold tracking-[0.2em] uppercase block mb-2 font-mono">
                       {s.phase}
                     </span>
-                    <h3 className="font-['Outfit',sans-serif] text-2xl lg:text-3xl font-extrabold text-white mb-4 leading-tight">
+                    <h3 className="font-serif text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight tracking-tight">
                       {s.title}
                     </h3>
-                    <p className="text-[#D4A853] text-[11px] font-semibold uppercase tracking-wider mb-6">
+                    <p className="text-[#0080C7] text-[11px] font-semibold uppercase tracking-wider mb-6">
                       Focus: {s.focus}
                     </p>
                   </div>
                   <div>
-                    <span className="inline-block text-[11px] font-bold tracking-wider text-[#D4A853] bg-[#D4A853]/8 border border-[#D4A853]/20 px-3.5 py-1.5 rounded-[4px] font-mono">
+                    <span className="inline-block text-[11px] font-bold tracking-wider text-[#0080C7] bg-[#0080C7]/8 border border-[#0080C7]/20 px-3.5 py-1.5 rounded-[4px] font-mono">
                       {s.weeks}
                     </span>
                   </div>
@@ -111,21 +111,21 @@ export default function JudgementSection() {
                 {/* Right Column */}
                 <div className="flex flex-col justify-between gap-6">
                   <div>
-                    <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6 font-medium">
+                    <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-6">
                       {s.desc}
                     </p>
                     
                     {/* Divider */}
                     <div className="h-px bg-white/8 w-full my-5" />
-
+ 
                     {/* Core Deliverables */}
                     <h4 className="text-white text-[11px] font-bold uppercase tracking-wider mb-3.5">
                       Core Outcomes & Deliverables:
                     </h4>
                     <ul className="space-y-3">
                       {s.deliverables.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-white/70 text-xs md:text-sm leading-relaxed">
-                          <span className="text-[#D4A853] shrink-0 mt-0.5 font-bold">✓</span>
+                        <li key={idx} className="flex items-start gap-3 text-gray-300 text-base md:text-lg leading-relaxed">
+                          <span className="text-[#0080C7] shrink-0 mt-1 font-bold text-sm">✓</span>
                           <span>{item}</span>
                         </li>
                       ))}
@@ -139,7 +139,7 @@ export default function JudgementSection() {
                       {s.actions.map((a, j) => (
                         <span
                           key={j}
-                          className="px-3.5 py-1.5 rounded-[4px] bg-white/3 border border-white/8 text-white text-[11px] font-semibold tracking-wide hover:border-[#D4A853]/30 transition-colors"
+                          className="px-3.5 py-1.5 rounded-[4px] bg-white/3 border border-white/8 text-white text-[11px] font-semibold tracking-wide hover:border-[#0080C7]/30 transition-colors"
                         >
                           {a}
                         </span>

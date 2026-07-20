@@ -16,21 +16,20 @@ export default function ContactSection() {
 
           {/* Left Column */}
           <div>
-            <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#D4A853]/8 border border-[#D4A853]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#D4A853] mb-6">Contact & Apply</span>
-            <h2 className="font-['Outfit',sans-serif] font-extrabold text-4xl md:text-[3.5rem] leading-[1.15] tracking-tight text-white mb-6">
+            <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#0080C7]/8 border border-[#0080C7]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#0080C7] mb-6">Contact & Apply</span>
+            <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-6">
               Ready to make<br />
-              <span className="text-[#D4A853]">your move?</span>
+              <span className="text-[#0080C7]">your move?</span>
             </h2>
-            <div className="w-12 h-0.5 bg-[#D4A853] my-6 md:my-8" />
-            <p className="text-lg text-white  leading-relaxed max-w-[720px] mb-8">
+            <div className="w-12 h-0.5 bg-[#0080C7] my-6 md:my-8" />
+            <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-8 max-w-3xl mb-8">
               Fill out the application form. It takes 15 minutes. We review every application personally and respond within 5 business days.
             </p>
 
             {/* Contact info list (Reforge style) */}
             <div className="flex flex-col gap-4">
               {[
-                { label: 'Email', value: 'hello@pranjalsarkar.com', icon: '✉️' },
-                { label: 'number ', value: '+91 99794 29183', icon: '🔗' },
+                { label: 'Phone Number', value: '+91 99794 29183', icon: '🔗' },
                 { label: 'Response time', value: 'Within 5 business days', icon: '⏱️' },
               ].map((c, i) => (
                 <div key={i} className="flex gap-4 items-center">
@@ -47,7 +46,7 @@ export default function ContactSection() {
           </div>
 
           {/* Right Column — Form */}
-          <div className="p-6 md:p-8 rounded-lg bg-[#121212] border border-white/8">
+          <div className="p-6 md:p-8 rounded-lg bg-[#121212] border border-white/8 transition-all duration-300 hover:border-[#0080C7]/30 hover:shadow-[0_0_30px_rgba(0,128,199,0.1)]">
             {submitted ? (
               <div className="text-center py-10">
                 <div className="text-5xl mb-5">🎉</div>
@@ -82,7 +81,7 @@ export default function ContactSection() {
                         value={form[field]}
                         onChange={e => setForm(f => ({ ...f, [field]: e.target.value }))}
                         placeholder={field === 'name' ? 'Your Name' : 'you@company.com'}
-                        className="w-full px-4 py-3 rounded-[6px] bg-white/3 border border-white/8 text-white text-sm outline-none transition-colors duration-150 focus:border-[#D4A853] focus:bg-transparent"
+                        className="w-full px-4 py-3 rounded-[6px] bg-white/3 border border-white/8 text-white text-sm outline-none transition-colors duration-150 focus:border-[#0080C7] focus:bg-transparent"
                       />
                     </div>
                   ))}
@@ -101,7 +100,7 @@ export default function ContactSection() {
                         value={form[field]}
                         onChange={e => setForm(f => ({ ...f, [field]: e.target.value }))}
                         placeholder={placeholder}
-                        className="w-full px-4 py-3 rounded-[6px] bg-white/3 border border-white/8 text-white text-sm outline-none transition-colors duration-150 focus:border-[#D4A853] focus:bg-transparent"
+                        className="w-full px-4 py-3 rounded-[6px] bg-white/3 border border-white/8 text-white text-sm outline-none transition-colors duration-150 focus:border-[#0080C7] focus:bg-transparent"
                       />
                     </div>
                   ))}
@@ -118,11 +117,11 @@ export default function ContactSection() {
                     value={form.message}
                     onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                     placeholder="What's the leadership gap you're trying to close? What's at stake?"
-                    className="w-full px-4 py-3 rounded-[6px] bg-white/3 border border-white/8 text-white text-sm outline-none transition-colors duration-150 focus:border-[#D4A853] focus:bg-transparent resize-y"
+                    className="w-full px-4 py-3 rounded-[6px] bg-white/3 border border-white/8 text-white text-sm outline-none transition-colors duration-150 focus:border-[#0080C7] focus:bg-transparent resize-y"
                   />
                 </div>
 
-                <button type="submit" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#D4A853] border border-[#D4A853] rounded-[6px] text-[#080808] font-['Inter',sans-serif] text-sm font-semibold transition-all duration-200 hover:bg-[#E5C180] hover:border-[#E5C180] hover:-translate-y-px w-full justify-center text-[15px] mt-2">
+                <button type="submit" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#0080C7] border border-[#0080C7] rounded-[6px] text-[#080808] font-['Inter',sans-serif] text-sm font-semibold transition-all duration-200 hover:bg-[#009CEE] hover:border-[#009CEE] hover:-translate-y-px hover:shadow-[0_0_24px_rgba(0,128,199,0.65)] w-full justify-center text-[15px] mt-2">
                   Submit Application →
                 </button>
 

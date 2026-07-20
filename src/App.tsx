@@ -1,21 +1,22 @@
-import './index.css';
-import Navbar from './components/Navbar';
-import SmoothScroll from './components/SmoothScroll';
-import HeroSection from './components/HeroSection';
-import MirrorSection from './components/MirrorSection';
-import DiagnosisSection from './components/DiagnosisSection';
-import PhilosophySection from './components/PhilosophySection';
-import AboutSection from './components/AboutSection';
-import TestimonialsSection from './components/TestimonialsSection';
-import LogosSection from './components/LogosSection';
-import ProgramIntroSection from './components/ProgramIntroSection';
-import JudgementSection from './components/JudgementSection';
-import TakeawaysSection from './components/TakeawaysSection';
-import CurriculumSection from './components/CurriculumSection';
-import FAQSection from './components/FAQSection';
-import FinalCTASection from './components/FinalCTASection';
-import ContactSection from './components/ContactSection';
-import Footer from './components/Footer';
+import './styles/index.css';
+import Navbar from './components/layout/Navbar';
+import SmoothScroll from './components/ui/SmoothScroll';
+import HeroSection from './components/sections/HeroSection';
+import MirrorSection from './components/sections/MirrorSection';
+import DiagnosisSection from './components/sections/DiagnosisSection';
+import PhilosophySection from './components/sections/PhilosophySection';
+import AboutSection from './components/sections/AboutSection';
+import VideoSection from './components/sections/VideoSection';
+import TestimonialsSection from './components/sections/TestimonialsSection';
+import LogosSection from './components/sections/LogosSection';
+import ProgramIntroSection from './components/sections/ProgramIntroSection';
+import JudgementSection from './components/sections/JudgementSection';
+import TakeawaysSection from './components/sections/TakeawaysSection';
+import CurriculumSection from './components/sections/CurriculumSection';
+import FAQSection from './components/sections/FAQSection';
+import FinalCTASection from './components/sections/FinalCTASection';
+import ContactSection from './components/sections/ContactSection';
+import Footer from './components/layout/Footer';
 
 export default function App() {
   return (
@@ -41,6 +42,9 @@ export default function App() {
 
       {/* 7. Testimonials — #6 */}
       <TestimonialsSection />
+
+      {/* New Video Preview Section */}
+      <VideoSection />
 
       {/* 8. Logos Strip — #7 */}
       <LogosSection />
