@@ -8,38 +8,42 @@ interface VideoData {
   url: string;
   badge: string;
 }
+import v1 from "../../assets/video/1.mp4"
+import v2 from "../../assets/video/2.mp4"
+import v3 from "../../assets/video/3.mp4"
+import v4 from "../../assets/video/4.mp4"
 
 const previewVideos: VideoData[] = [
   {
     id: 1,
     title: 'Live Classroom',
     desc: 'Live debate on high-stakes trade-offs under ambiguity.',
-    url: 'https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-his-computer-34287-large.mp4',
+    url: v1,
     badge: 'CLASSROOM'
   },
   {
     id: 2,
     title: 'AI Co-Pilot',
     desc: 'LLM roadmap validation and strategy mockups.',
-    url: 'https://assets.mixkit.co/videos/preview/mixkit-man-working-on-a-laptop-in-a-busy-coffee-shop-40121-large.mp4',
+    url: v2,
     badge: 'AI WORKFLOW'
   },
   {
     id: 3,
     title: 'Exec Pitch',
     desc: 'Senior leaders calibrating style for C-suite alignment.',
-    url: 'https://assets.mixkit.co/videos/preview/mixkit-woman-working-on-a-laptop-at-home-40118-large.mp4',
+    url: v3,
     badge: 'C-SUITE PITCH'
   },
   {
     id: 4,
     title: 'Peer Review',
     desc: 'Feedback circles critiquing PM decision histories.',
-    url: 'https://assets.mixkit.co/videos/preview/mixkit-business-woman-working-on-a-laptop-in-a-bright-office-40115-large.mp4',
+    url: v4,
     badge: 'PEER REVIEW'
   }
 ];
-
+ 
 function VideoCard({ video }: { video: VideoData }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -141,7 +145,7 @@ function VideoCard({ video }: { video: VideoData }) {
         ref={containerRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={() => isPlaying && setShowControls(false)}
-        className="relative aspect-[10/16] w-full rounded-lg overflow-hidden bg-black/80 border border-white/5"
+        className="relative aspect-10/16 w-full rounded-lg overflow-hidden bg-black/80 border border-white/5"
       >
         <video
           ref={videoRef}
@@ -173,7 +177,7 @@ function VideoCard({ video }: { video: VideoData }) {
 
         {/* Reel Controls Overlay */}
         <div 
-          className={`absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/95 via-black/50 to-transparent z-20 transition-all duration-200 flex flex-col gap-1.5 ${
+          className={`absolute bottom-0 left-0 right-0 p-3 bg-linear-to-t from-black/95 via-black/50 to-transparent z-20 transition-all duration-200 flex flex-col gap-1.5 ${
             showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >

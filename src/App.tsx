@@ -17,6 +17,7 @@ import FAQSection from './components/sections/FAQSection';
 import FinalCTASection from './components/sections/FinalCTASection';
 import ContactSection from './components/sections/ContactSection';
 import Footer from './components/layout/Footer';
+import EventsGallerySection from './components/sections/EventsGallerySection';
 
 export default function App() {
   return (
@@ -60,6 +61,10 @@ export default function App() {
 
       {/* 12. Curriculum — #11 */}
       <CurriculumSection />
+
+      {/* Events & Speaking Gallery Section */}
+      <EventsGallerySection />
+
 
       {/* 13. FAQ — #12 */}
       <FAQSection />

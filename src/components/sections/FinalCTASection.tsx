@@ -2,25 +2,25 @@ import bgImage from '../../assets/pranjalsarkar/1.webp';
 
 export default function FinalCTASection() {
   return (
-    <section 
-      id="final-cta" 
+    <section
+      id="final-cta"
       className="relative h-[400px] md:h-[420px] flex items-center justify-center overflow-hidden border-b border-white/8 bg-[#000001] group"
       style={{ clipPath: 'inset(0)' }}
     >
-      
+
       {/* Viewport-fixed Background Image clipped to parent */}
-      <div 
+      <div
         className="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-45 pointer-events-none z-0"
         style={{ backgroundImage: `url(${bgImage})` }}
       />
-      
+
       {/* Gradient Mask Overlay */}
       <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/30 to-black/70 z-0 pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-6 md:px-8 relative z-10 text-center w-full">
-        
+
         <div className="flex flex-col items-center justify-center">
-          
+
           {/* Label Badge */}
           <div className="flex justify-center mb-4">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] text-[9px] font-bold tracking-[0.15em] uppercase text-[#0080C7] bg-[#0080C7]/8 border border-[#0080C7]/20">

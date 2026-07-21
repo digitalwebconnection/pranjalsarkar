@@ -45,15 +45,15 @@ const floatAnimation = {
 export default function AboutSection() {
   return (
     <section id="about" className="relative py-8 md:py-14 overflow-hidden border-b border-white/20">
-  
-      <motion.div 
+
+      <motion.div
         className="max-w-7xl mx-auto px-6 md:px-6 relative z-10"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
       >
-        
+
         {/* Header Block */}
         <motion.div className="flex flex-col text-center justify-center mb-10" variants={itemVariants}>
           <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#0080C7]/8 border border-[#0080C7]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#0080C7] mb-6 self-center">
@@ -67,9 +67,9 @@ export default function AboutSection() {
 
         {/* Two Column Dashboard Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          
+
           {/* Right Column: Premium Image Card with Floating Animation */}
-          <motion.div 
+          <motion.div
             className="lg:col-span-5 w-full max-w-md mx-auto lg:mx-0 lg:sticky lg:top-14"
             variants={itemVariants}
             {...floatAnimation}
@@ -77,15 +77,15 @@ export default function AboutSection() {
             <div className="relative group  overflow-hidden   transition-all duration-500 hover:border-[#0080C7]/40 shadow-2xl">
               {/* Inner accent frames */}
               <div className="absolute inset-0 border border-white/5 rounded-2xl pointer-events-none z-10 m-1" />
-              
+
               <div className="relative aspect-5/5 w-full rounded-xl overflow-hidden bg-neutral-900">
                 {/* Visual shadow mask overlay */}
                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent z-10" />
-                
-                <img 
-                  src={psHeadshot} 
-                  alt="Pranjal Sarkar" 
-                  className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105" 
+
+                <img
+                  src={psHeadshot}
+                  alt="Pranjal Sarkar"
+                  className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105"
                 />
 
                 {/* Live Mentor Indicator Pill */}
@@ -104,19 +104,19 @@ export default function AboutSection() {
           </motion.div>
           {/* Left Column: Metrics & Narrative */}
           <div className="lg:col-span-7 flex flex-col justify-start">
-            
-        
-            
+
+
+
             {/* Biography Narratives */}
             <motion.p className="text-gray-300 text-sm md:text-base lg:text-lg leading-8 max-w-3xl mb-6 font-sans" variants={itemVariants}>
               I have founded three startups and worked across organisations of different scales, including Tata & IBM, with mission-critical responsibilities across all of them. <strong className="text-[#0080C7] font-semibold font-sans">This has given me exposure to both sides: building from nothing and scaling within complexity.</strong>
             </motion.p>
-            
+
             <motion.p className="text-gray-300 text-sm md:text-base lg:text-lg leading-8 max-w-3xl mb-8" variants={itemVariants}>
               The people who have spent time working with me have not just improved at their job. <strong className="text-white font-semibold">They have moved forward in ways that actually changed their trajectory</strong>, whether that meant stepping into bigger roles, finding clarity in their direction, or solving problems they had been stuck with for years. The shift usually shows up in how they think and the decisions they start making.
             </motion.p>
 
-              {/* Quick Metrics Row */}
+            {/* Quick Metrics Row */}
             <motion.div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8" variants={itemVariants}>
               {stats.map((s, idx) => (
                 <div key={idx} className="border-l-2 border-[#0080C7] pl-4 py-1.5 bg-white/1 rounded-r-md">

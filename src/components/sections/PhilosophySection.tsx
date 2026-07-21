@@ -8,9 +8,9 @@ import img6 from '../../assets/pranjalsarkar/6.webp';
 
 const LeftPageImage = ({ imgSrc }: { imgSrc: string }) => (
   <div className="relative w-full h-full bg-neutral-900 overflow-hidden flex flex-col justify-end">
-    <img 
-      src={imgSrc} 
-      alt="Pranjal Sarkar" 
+    <img
+      src={imgSrc}
+      alt="Pranjal Sarkar"
       className="absolute inset-0 w-full h-full object-cover opacity-90"
       loading="lazy"
     />
@@ -30,7 +30,7 @@ const bookPages: BookPage[] = [
     content: (
       <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
         <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">01</div>
-      
+
         <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">Judgment Over Frameworks</h4>
         <p className="text-neutral-600 text-[10.5px] leading-relaxed">
           Frameworks are a starting point, not an answer. We train you to think from first principles so you can navigate problems no playbook anticipated. Deciding when to break the rules is what separates strategic leaders from ordinary executors. Learn to isolate core assumptions, evaluate trade-offs under high uncertainty, and design custom solutions that align with business realities.
@@ -44,7 +44,7 @@ const bookPages: BookPage[] = [
     content: (
       <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
         <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">02</div>
-      
+
         <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">AI as Amplifier</h4>
         <p className="text-neutral-600 text-[10.5px] leading-relaxed">
           AI handles 80% of execution. Your edge is the 20% that requires taste, context, and vision. We train exactly that 20%. While others use AI tools to generate generic templates, you will learn to use models as strategic sparring partners to stress-test your strategy, identify hidden vulnerabilities, and refine product briefs with high clarity.
@@ -58,7 +58,7 @@ const bookPages: BookPage[] = [
     content: (
       <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
         <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">03</div>
-        
+
         <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">Live Practice</h4>
         <p className="text-neutral-600 text-[10.5px] leading-relaxed">
           Every session puts you in director-level scenarios with real stakes, real disagreement, and real ambiguity. You don't just learn — you perform. Participate in active simulation rooms where you must present and defend your choices under pressure, resolving conflict and building consensus among cross-functional partners in real-time.
@@ -72,7 +72,7 @@ const bookPages: BookPage[] = [
     content: (
       <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
         <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">04</div>
-     
+
         <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">Peer Calibration</h4>
         <p className="text-neutral-600 text-[10.5px] leading-relaxed">
           Your cohort peers are senior PMs and EMs from top companies. No beginners. No hand-holding. Real debate, real growth. Calibrate your standards against the best in the industry, and build a trusted circle of leaders who critique your decision history, call out weak points, and push you to refine your communication strategy.
@@ -89,8 +89,8 @@ const bookPages: BookPage[] = [
         <p className="text-neutral-600 text-[10.5px] leading-relaxed mb-4">
           Develop the rarefied judgment to make decision calls under extreme ambiguity and earn trust as an executive product leader. Step out of the details and into enterprise ownership by mastering capital allocation, product portfolio design, and high-influence organizational navigation.
         </p>
-        <a 
-          href="#program" 
+        <a
+          href="#program"
           className="px-5 py-1.5 bg-[#0080C7] rounded-full text-[10px] font-bold text-neutral-900 hover:bg-[#009CEE] hover:shadow-[0_0_15px_rgba(0,128,199,0.5)] transition-all"
         >
           Explore Program
@@ -108,18 +108,18 @@ export default function PhilosophySection() {
 
       <div className="max-w-7xl mx-auto px-6 md:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+
           {/* Left Column: Typography, Manifesto & CTA */}
           <div className="lg:col-span-6 flex flex-col justify-start">
             <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#0080C7]/8 border border-[#0080C7]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#0080C7] mb-6 self-start">
               Philosophy
             </span>
-            
+
             <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-4">
               Build Product Judgment <br />
               <span className="text-[#0080C7] font-serif">Under AI</span>
             </h2>
-            
+
             {/* Manifesto Quote Block */}
             <div className="relative border-l-2 border-[#0080C7] pl-6 my-4">
               <p className="text-lg md:text-xl font-serif italic text-white/95 leading-relaxed">
@@ -132,16 +132,16 @@ export default function PhilosophySection() {
             </p>
 
             {/* See How It Works CTA Button */}
-            <a 
-              href="#program" 
+            <a
+              href="#program"
               className="group inline-flex items-center gap-2.5 px-10 py-3.5 bg-[#0080C7] border border-[#0080C7] rounded-full text-[#080808] font-bold text-sm transition-all duration-300 hover:bg-[#009CEE] hover:border-[#009CEE] hover:shadow-[0_0_24px_rgba(0,128,199,0.5)] hover:-translate-y-0.5 cursor-pointer self-start"
             >
               See How It Works
-              <svg 
-                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor" 
+              <svg
+                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
                 strokeWidth="2.5"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />

@@ -1,6 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
-import { Play, Calendar, Users, Briefcase, Award, Cpu, FileSpreadsheet } from 'lucide-react';
+import { useRef, useEffect } from 'react';
+import { Calendar, Users, Briefcase, Award, Cpu, FileSpreadsheet } from 'lucide-react';
 import gsap from 'gsap';
+import video from "../../assets/video/youtube.mp4"
 
 interface TiltCardProps {
   children: React.ReactNode;
@@ -98,19 +99,6 @@ function TiltCard({ children, className = '' }: TiltCardProps) {
 }
 
 export default function TakeawaysSection() {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  const togglePlay = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    if (isPlaying) {
-      videoRef.current?.pause();
-      setIsPlaying(false);
-    } else {
-      videoRef.current?.play();
-      setIsPlaying(true);
-    }
-  };
 
   return (
     <section id="takeaways" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8">
@@ -119,7 +107,7 @@ export default function TakeawaysSection() {
       <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-white/2 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
-        
+
         {/* Header */}
         <div className="text-center mb-16">
           <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#0080C7]/8 border border-[#0080C7]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#0080C7] mb-6 mx-auto">
@@ -136,11 +124,11 @@ export default function TakeawaysSection() {
 
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          
+
           {/* Card 1: Product Judgment Framework (Signature) - Spans 7 cols */}
           <TiltCard className="lg:col-span-7 rounded-xl bg-[#0C0C0C]/80 border border-[#0080C7]/30 p-8 flex flex-col justify-between hover:border-[#0080C7]/60 transition-all duration-300 shadow-[0_20px_50px_-20px_rgba(0,128,199,0.15)] hover:shadow-[0_0_30px_rgba(0,128,199,0.2)] group relative overflow-hidden">
             <div className="absolute top-0 right-0 w-48 h-48 bg-linear-to-bl from-[#0080C7]/10 to-transparent blur-2xl pointer-events-none" />
-            
+
             <div>
               <div className="flex items-center justify-between mb-6">
                 <span className="p-3 bg-[#0080C7]/10 border border-[#0080C7]/25 rounded-lg text-[#0080C7]">
@@ -150,7 +138,7 @@ export default function TakeawaysSection() {
                   SIGNATURE FRAMEWORK
                 </span>
               </div>
-              
+
               <h3 className="font-serif text-xl md:text-2xl font-bold text-white mb-3 tracking-tight leading-tight">
                 Product Judgment Framework
               </h3>
@@ -209,14 +197,8 @@ export default function TakeawaysSection() {
             </div>
           </TiltCard>
 
-          {/* Card 3: 6 Director Sim Recordings - Spans 4 cols */}
           <TiltCard className="lg:col-span-4 rounded-xl bg-[#0C0C0C]/80 border border-white/8 p-7 flex flex-col justify-between hover:border-[#0080C7]/30 transition-all duration-300 shadow-2xl hover:shadow-[0_0_30px_rgba(0,128,199,0.15)] group">
             <div>
-              <div className="mb-5">
-                <span className="inline-flex p-3 bg-white/3 border border-white/8 rounded-lg text-white/80 group-hover:text-[#0080C7] group-hover:border-[#0080C7]/25 transition-all">
-                  <Play size={20} />
-                </span>
-              </div>
               <h3 className="font-serif text-lg font-bold text-white mb-2.5 tracking-tight leading-tight">
                 6 Director Sim Recordings
               </h3>
@@ -225,34 +207,14 @@ export default function TakeawaysSection() {
               </p>
             </div>
 
-            {/* Video Player UI Widget */}
             <div className="relative aspect-video w-full rounded-lg overflow-hidden bg-neutral-900 border border-white/5 flex items-center justify-center mt-auto">
-              {isPlaying ? (
-                <video
-                  ref={videoRef}
-                  src="https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-his-computer-34287-large.mp4"
-                  className="w-full h-full object-cover"
-                  controls
-                  playsInline
-                  autoPlay
-                  onEnded={() => setIsPlaying(false)}
-                />
-              ) : (
-                <>
-                  <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/40 to-transparent z-10" />
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,128,199,0.15),transparent_70%)]" />
-                  <span 
-                    onClick={togglePlay}
-                    className="w-10 h-10 rounded-full bg-[#0080C7] hover:bg-[#009CEE] transition-all flex items-center justify-center text-neutral-900 cursor-pointer shadow-lg hover:shadow-[0_0_15px_rgba(0,128,199,0.5)] z-20 translate-y-2 group-hover:translate-y-0 duration-300"
-                  >
-                    <Play size={16} fill="currentColor" className="ml-0.5" />
-                  </span>
-                  <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between text-[9px] font-mono text-white/50 z-20">
-                    <span>SIM_REPLAY_03.MP4</span>
-                    <span>01:14:22</span>
-                  </div>
-                </>
-              )}
+              <video
+                src={video}
+                className="w-full h-full object-cover"
+                controls
+                playsInline
+                preload="metadata"
+              />
             </div>
           </TiltCard>
 

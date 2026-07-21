@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BookOpen, Target, CheckCircle } from 'lucide-react';
+import { BookOpen, Target } from 'lucide-react';
 
 const modules = [
   {
@@ -200,7 +200,7 @@ export default function CurriculumSection() {
           </div>
 
           {/* Right Column: Detailed Curriculum Card Panel */}
-          <div className="lg:col-span-7 rounded-xl bg-[#121212] border border-white/8 p-8 md:p-10 flex flex-col justify-between shadow-2xl relative min-h-[480px] transition-all duration-300 hover:border-[#0080C7]/30 hover:shadow-[0_0_30px_rgba(0,128,199,0.15)]">
+          <div className="lg:col-span-7 rounded-xl bg-[#121212] border border-white/8 p-6 md:p-8 flex flex-col justify-between shadow-2xl relative min-h-[480px] transition-all duration-300 hover:border-[#0080C7]/30 hover:shadow-[0_0_30px_rgba(0,128,199,0.15)]">
             {/* Background Light Ray */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-bl from-[#0080C7]/5 to-transparent blur-xl pointer-events-none" />
 
@@ -248,7 +248,7 @@ export default function CurriculumSection() {
             </div>
 
             {/* Practical Simulation & Deliverable Details Footer */}
-            <div className="border-t border-white/8 pt-6 mt-8 space-y-4">
+            <div className="border-t border-white/8 pt-6 mt-6 space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded bg-[#0080C7]/2 border border-[#0080C7]/25">
                 <div>
                   <span className="block text-[9px] font-bold text-[#0080C7] uppercase tracking-wider font-mono mb-1">
@@ -260,12 +260,6 @@ export default function CurriculumSection() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 text-xs text-white/50">
-                <CheckCircle size={14} className="text-[#0080C7] shrink-0" />
-                <span>
-                  <strong className="text-white/85 font-semibold">Key Deliverable:</strong> {modules[activeTab].deliverable}
-                </span>
-              </div>
             </div>
 
           </div>
