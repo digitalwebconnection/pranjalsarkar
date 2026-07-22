@@ -163,179 +163,179 @@ export default function InteractiveBook({
           animate={{ x: isOpen ? widthNum / 2 : 0 }}
           transition={{ duration: BOOK_OPEN_DURATION, ease: EASING }}
         >
-        {/* Front Cover */}
-        <motion.div
-          className="absolute inset-0 w-full h-full origin-left"
-          initial={{ rotateY: 0, zIndex: 100 }}
-          animate={{
-            rotateY: isOpen ? -180 : (isHovering ? -15 : 0),
-            zIndex: isOpen ? 0 : 100
-          }}
-          transition={{
-            rotateY: { duration: BOOK_OPEN_DURATION, ease: EASING },
-            zIndex: { delay: isOpen ? BOOK_OPEN_DURATION * 0.6 : BOOK_OPEN_DURATION * 0.4 }
-          }}
-          style={{ transformStyle: 'preserve-3d' }}
-          onClick={!isOpen ? handleOpenBook : undefined}
-        >
-          {/* Front Face */}
-          <div
-            className="absolute inset-0 w-full h-full backface-hidden rounded-r-md rounded-l-sm shadow-2xl cursor-pointer overflow-hidden group bg-[#161616] border border-white/10"
-            style={{ transform: 'translateZ(0.5px)' }}
+          {/* Front Cover */}
+          <motion.div
+            className="absolute inset-0 w-full h-full origin-left"
+            initial={{ rotateY: 0, zIndex: 100 }}
+            animate={{
+              rotateY: isOpen ? -180 : (isHovering ? -15 : 0),
+              zIndex: isOpen ? 0 : 100
+            }}
+            transition={{
+              rotateY: { duration: BOOK_OPEN_DURATION, ease: EASING },
+              zIndex: { delay: isOpen ? BOOK_OPEN_DURATION * 0.6 : BOOK_OPEN_DURATION * 0.4 }
+            }}
+            style={{ transformStyle: 'preserve-3d' }}
+            onClick={!isOpen ? handleOpenBook : undefined}
           >
-            {/* Cover Image Background */}
+            {/* Front Face */}
             <div
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-              style={{ backgroundImage: `url(${coverImage})` }}
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
+              className="absolute inset-0 w-full h-full backface-hidden rounded-r-md rounded-l-sm shadow-2xl cursor-pointer overflow-hidden group bg-[#161616] border border-white/10"
+              style={{ transform: 'translateZ(0.5px)' }}
+            >
+              {/* Cover Image Background */}
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: `url(${coverImage})` }}
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
 
-            <div className="absolute bottom-6 left-5 right-5 text-white text-left z-10">
-              <h1 className="text-lg font-serif font-extrabold tracking-wide mb-2 leading-tight drop-shadow-md">
-                {bookTitle}
-              </h1>
-              <p className="text-[9px] font-sans tracking-widest opacity-80 uppercase border-t border-white/20 pt-2 inline-block font-semibold">
-                {bookAuthor}
-              </p>
+              <div className="absolute bottom-6 left-5 right-5 text-white text-left z-10">
+                <h1 className="text-lg font-serif font-extrabold tracking-wide mb-2 leading-tight drop-shadow-md">
+                  {bookTitle}
+                </h1>
+                <p className="text-[9px] font-sans tracking-widest opacity-80 uppercase border-t border-white/20 pt-2 inline-block font-semibold">
+                  {bookAuthor}
+                </p>
+              </div>
+
+              {/* Spine Highlight */}
+              <div className="absolute left-0 top-0 bottom-0 w-3 bg-linear-to-r from-white/10 to-transparent opacity-30" />
+              <div className="absolute left-2 top-0 bottom-0 w-px bg-black/40" />
             </div>
 
-            {/* Spine Highlight */}
-            <div className="absolute left-0 top-0 bottom-0 w-3 bg-linear-to-r from-white/10 to-transparent opacity-30" />
-            <div className="absolute left-[8px] top-0 bottom-0 w-px bg-black/40" />
-          </div>
-
-          {/* Back Face (Inner Cover) */}
-          <div
-            className="absolute inset-0 w-full h-full backface-hidden rounded-l-md rounded-r-sm bg-neutral-900 border border-white/10 border-r-0 rotate-y-180 overflow-hidden cursor-pointer shadow-xl"
-            style={{ transform: 'rotateY(180deg) translateZ(0.5px)' }}
-            onClick={(e) => {
-              e.stopPropagation();
-              prevPage();
-            }}
-          >
-            {authorImage ? (
-              <div className="relative w-full h-full">
-                <img src={authorImage} alt={bookAuthor} className="w-full h-full object-cover opacity-90" />
-                <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5 text-left z-10">
-                  <span className="text-[8px] font-bold tracking-[0.2em] text-[#0080C7] uppercase mb-1 block">THE AUTHOR</span>
-                  <h2 className="text-sm font-serif font-bold text-white leading-tight">{bookAuthor}</h2>
-                  <p className="text-[8px] text-white/40 uppercase tracking-widest font-mono mt-0.5">Product Leadership Studio</p>
+            {/* Back Face (Inner Cover) */}
+            <div
+              className="absolute inset-0 w-full h-full backface-hidden rounded-l-md rounded-r-sm bg-neutral-900 border border-white/10 border-r-0 rotate-y-180 overflow-hidden cursor-pointer shadow-xl"
+              style={{ transform: 'rotateY(180deg) translateZ(0.5px)' }}
+              onClick={(e) => {
+                e.stopPropagation();
+                prevPage();
+              }}
+            >
+              {authorImage ? (
+                <div className="relative w-full h-full">
+                  <img src={authorImage} alt={bookAuthor} className="w-full h-full object-cover opacity-90" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent" />
+                  <div className="absolute bottom-5 left-5 right-5 text-left z-10">
+                    <span className="text-[8px] font-bold tracking-[0.2em] text-[#0080C7] uppercase mb-1 block">THE AUTHOR</span>
+                    <h2 className="text-sm font-serif font-bold text-white leading-tight">{bookAuthor}</h2>
+                    <p className="text-[8px] text-white/40 uppercase tracking-widest font-mono mt-0.5">Product Leadership Studio</p>
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <div className="flex-1 flex flex-col justify-center items-center text-center opacity-95 p-8">
-                <span className="text-[10px] font-bold tracking-[0.2em] text-[#0080C7] uppercase mb-4">PHILOSOPHY</span>
-                <h2 className="text-xl font-serif font-bold text-white mb-2 tracking-tight">{bookTitle}</h2>
-                <div className="w-8 h-[1.5px] bg-[#0080C7]/40 mb-4" />
-                <p className="text-[10px] text-white/50 uppercase tracking-widest font-mono">Interactive Edition</p>
-              </div>
-            )}
-          </div>
-        </motion.div>
+              ) : (
+                <div className="flex-1 flex flex-col justify-center items-center text-center opacity-95 p-8">
+                  <span className="text-[10px] font-bold tracking-[0.2em] text-[#0080C7] uppercase mb-4">PHILOSOPHY</span>
+                  <h2 className="text-xl font-serif font-bold text-white mb-2 tracking-tight">{bookTitle}</h2>
+                  <div className="w-8 h-[1.5px] bg-[#0080C7]/40 mb-4" />
+                  <p className="text-[10px] text-white/50 uppercase tracking-widest font-mono">Interactive Edition</p>
+                </div>
+              )}
+            </div>
+          </motion.div>
 
-        {/* Pages Stack */}
-        <div className="absolute inset-0 w-full h-full z-0" style={{ transformStyle: 'preserve-3d' }}>
-          {pages.map((page, index) => {
-            const isFlipped = index <= currentPageIndex;
+          {/* Pages Stack */}
+          <div className="absolute inset-0 w-full h-full z-0" style={{ transformStyle: 'preserve-3d' }}>
+            {pages.map((page, index) => {
+              const isFlipped = index <= currentPageIndex;
 
-            return (
-              <motion.div
-                key={index}
-                className="absolute inset-0 w-full h-full origin-left bg-[#fdfbf7] rounded-r-md rounded-l-sm shadow-md border border-neutral-200/50"
-                style={{ transformStyle: 'preserve-3d' }}
-                initial={{ rotateY: 0, zIndex: pages.length - index }}
-                animate={{
-                  rotateY: isFlipped ? -180 : 0,
-                  zIndex: isFlipped ? index + 1 : pages.length - index
-                }}
-                transition={{
-                  duration: 0.8,
-                  ease: [0.25, 0.8, 0.25, 1]
-                }}
-              >
-                {/* Front Face (Right Side Page) */}
-                <div
-                  className="absolute inset-0 w-full h-full backface-hidden p-6 flex flex-col bg-[#fdfbf7] cursor-pointer hover:bg-[#fbf9f4] transition-colors"
-                  style={{ transform: 'translateZ(0.5px)' }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    nextPage();
+              return (
+                <motion.div
+                  key={index}
+                  className="absolute inset-0 w-full h-full origin-left bg-[#fdfbf7] rounded-r-md rounded-l-sm shadow-md border border-neutral-200/50"
+                  style={{ transformStyle: 'preserve-3d' }}
+                  initial={{ rotateY: 0, zIndex: pages.length - index }}
+                  animate={{
+                    rotateY: isFlipped ? -180 : 0,
+                    zIndex: isFlipped ? index + 1 : pages.length - index
+                  }}
+                  transition={{
+                    duration: 0.8,
+                    ease: [0.25, 0.8, 0.25, 1]
                   }}
                 >
-                  <div className="flex-1 flex flex-col justify-between">
-                    <div className="text-[10px] text-neutral-400 text-right font-sans font-semibold tracking-wider">
-                      {page.pageNumber * 2 - 1}
+                  {/* Front Face (Right Side Page) */}
+                  <div
+                    className="absolute inset-0 w-full h-full backface-hidden p-6 flex flex-col bg-[#fdfbf7] cursor-pointer hover:bg-[#fbf9f4] transition-colors"
+                    style={{ transform: 'translateZ(0.5px)' }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      nextPage();
+                    }}
+                  >
+                    <div className="flex-1 flex flex-col justify-between">
+                      <div className="text-[10px] text-neutral-400 text-right font-sans font-semibold tracking-wider">
+                        {page.pageNumber * 2 - 1}
+                      </div>
+                      <div className="flex-1 flex flex-col justify-center max-w-none text-neutral-800 select-none">
+                        {page.title && (
+                          <div className="text-[10px] font-bold text-[#0080C7] tracking-widest uppercase mb-1 text-center font-mono">
+                            {page.title}
+                          </div>
+                        )}
+                        {page.content}
+                      </div>
                     </div>
-                    <div className="flex-1 flex flex-col justify-center max-w-none text-neutral-800 select-none">
-                      {page.title && (
-                        <div className="text-[10px] font-bold text-[#0080C7] tracking-widest uppercase mb-1 text-center font-mono">
-                          {page.title}
+                    <div className="absolute left-0 top-0 bottom-0 w-6 bg-linear-to-r from-black/4 to-transparent pointer-events-none mix-blend-multiply" />
+                  </div>
+
+                  {/* Back Face (Left Side Page) */}
+                  <div
+                    className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-[#fdfbf7] border-r border-neutral-200 overflow-hidden flex flex-col cursor-pointer"
+                    style={{ transform: 'rotateY(180deg) translateZ(0.5px)' }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      prevPage();
+                    }}
+                  >
+                    <div className="absolute right-0 top-0 bottom-0 w-6 bg-linear-to-l from-black/4 to-transparent pointer-events-none mix-blend-multiply z-20" />
+
+                    <div className="flex-1 flex flex-col justify-between overflow-hidden h-full w-full">
+                      {page.backContent ? (
+                        <div className="flex-1 w-full h-full relative">
+                          {page.backContent}
+                        </div>
+                      ) : (
+                        <div className="p-6 flex flex-col justify-between h-full w-full">
+                          <div className="text-[10px] text-neutral-400 text-left font-sans font-semibold tracking-wider">
+                            {page.pageNumber * 2}
+                          </div>
+                          <div className="w-full h-full flex items-center justify-center opacity-[0.03]">
+                            <span className="font-serif text-8xl italic font-bold text-black">
+                              {page.pageNumber * 2}
+                            </span>
+                          </div>
                         </div>
                       )}
-                      {page.content}
                     </div>
                   </div>
-                  <div className="absolute left-0 top-0 bottom-0 w-6 bg-linear-to-r from-black/4 to-transparent pointer-events-none mix-blend-multiply" />
-                </div>
+                </motion.div>
+              );
+            })}
 
-                {/* Back Face (Left Side Page) */}
-                <div
-                  className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-[#fdfbf7] border-r border-neutral-200 overflow-hidden flex flex-col cursor-pointer"
-                  style={{ transform: 'rotateY(180deg) translateZ(0.5px)' }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    prevPage();
-                  }}
+            {/* Back Cover (Static) */}
+            <div
+              className="absolute inset-0 w-full h-full bg-[#161616] rounded-r-md rounded-l-sm shadow-xl border border-white/10 pointer-events-none"
+              style={{
+                transform: currentPageIndex >= pages.length - 1 ? 'translateZ(0px)' : 'translateZ(-1px)',
+                zIndex: currentPageIndex >= pages.length - 1 ? pages.length + 10 : -1
+              }}
+            >
+              <div className="absolute inset-0 p-8 flex flex-col items-center justify-center text-center">
+                <span className="w-8 h-8 rounded-full bg-[#0080C7]/10 border border-[#0080C7]/30 flex items-center justify-center mb-4 text-[#0080C7] text-xs">
+                  ✓
+                </span>
+                <p className="font-serif text-white italic text-sm">Fin.</p>
+                <button
+                  onClick={restartBook}
+                  className="mt-6 flex items-center gap-2 px-5 py-2 rounded-full bg-[#0080C7] hover:bg-[#009CEE] hover:shadow-[0_0_15px_rgba(0,128,199,0.5)] transition-all text-xs font-bold text-neutral-900 cursor-pointer shadow-lg pointer-events-auto hover:-translate-y-px"
                 >
-                  <div className="absolute right-0 top-0 bottom-0 w-6 bg-linear-to-l from-black/4 to-transparent pointer-events-none mix-blend-multiply z-20" />
-
-                  <div className="flex-1 flex flex-col justify-between overflow-hidden h-full w-full">
-                    {page.backContent ? (
-                      <div className="flex-1 w-full h-full relative">
-                        {page.backContent}
-                      </div>
-                    ) : (
-                      <div className="p-6 flex flex-col justify-between h-full w-full">
-                        <div className="text-[10px] text-neutral-400 text-left font-sans font-semibold tracking-wider">
-                          {page.pageNumber * 2}
-                        </div>
-                        <div className="w-full h-full flex items-center justify-center opacity-[0.03]">
-                          <span className="font-serif text-8xl italic font-bold text-black">
-                            {page.pageNumber * 2}
-                          </span>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-
-          {/* Back Cover (Static) */}
-          <div
-            className="absolute inset-0 w-full h-full bg-[#161616] rounded-r-md rounded-l-sm shadow-xl border border-white/10 pointer-events-none"
-            style={{ 
-              transform: currentPageIndex >= pages.length - 1 ? 'translateZ(0px)' : 'translateZ(-1px)', 
-              zIndex: currentPageIndex >= pages.length - 1 ? pages.length + 10 : -1 
-            }}
-          >
-            <div className="absolute inset-0 p-8 flex flex-col items-center justify-center text-center">
-              <span className="w-8 h-8 rounded-full bg-[#0080C7]/10 border border-[#0080C7]/30 flex items-center justify-center mb-4 text-[#0080C7] text-xs">
-                ✓
-              </span>
-              <p className="font-serif text-white italic text-sm">Fin.</p>
-              <button
-                onClick={restartBook}
-                className="mt-6 flex items-center gap-2 px-5 py-2 rounded-full bg-[#0080C7] hover:bg-[#009CEE] hover:shadow-[0_0_15px_rgba(0,128,199,0.5)] transition-all text-xs font-bold text-neutral-900 cursor-pointer shadow-lg pointer-events-auto hover:-translate-y-px"
-              >
-                <RefreshCcw size={12} /> Read Again
-              </button>
+                  <RefreshCcw size={12} /> Read Again
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
       </div>
 
       {/* Close Button overlay */}

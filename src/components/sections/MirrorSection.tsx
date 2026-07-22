@@ -49,7 +49,7 @@ export default function MirrorSection() {
           {painPoints.map((p, i) => (
             <div key={i} className="group relative bg-[#121212] border border-white/8 transition-all duration-300 ease-out hover:bg-[#141414] hover:border-[#0080C7]/40 hover:-translate-y-0.5 p-6 rounded-lg">
               {/* Glow gradient leaking from under the card */}
-              <div className="absolute -inset-px bg-gradient-to-b from-transparent to-[#0080C7]/30 rounded-lg blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+              <div className="absolute -inset-px bg-linear-to-b from-transparent to-[#0080C7]/30 rounded-lg blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
               {/* Radial spotlight inside the card */}
               <div className="absolute inset-0 rounded-lg bg-[radial-gradient(circle_at_50%_0%,rgba(0,128,199,0.1),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
              

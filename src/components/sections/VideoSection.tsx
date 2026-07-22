@@ -214,7 +214,7 @@ function VideoCard({ video }: { video: VideoData }) {
               <Maximize size={11} />
             </button>
           </div>
-          <div className="text-[8px] font-mono text-white/50 text-right mt-[-4px]">
+          <div className="text-[8px] font-mono text-white/50 text-right -mt-1">
             {formatTime(currentTime)} / {formatTime(duration)}
           </div>
         </div>
