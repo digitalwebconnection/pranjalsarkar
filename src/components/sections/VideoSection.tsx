@@ -139,7 +139,10 @@ function VideoCard({ video }: { video: VideoData }) {
   };
 
   return (
-    <div className="flex flex-col rounded-xl bg-[#121212] border border-white/8 p-1 transition-all duration-300 hover:border-[#0080C7]/40 hover:shadow-[0_0_30px_rgba(0,128,199,0.15)] group h-full">
+    <div className="flex flex-col rounded-xl bg-[#0a0c10] border border-[#0080C7]/40 p-1.5 transition-all duration-300 hover:border-[#0080C7]/70 shadow-[0_0_25px_rgba(0,128,199,0.2)] hover:shadow-[0_0_50px_rgba(0,128,199,0.4)] group h-full relative overflow-hidden">
+      {/* Intense inner radial glow for the card */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,128,199,0.25),transparent_70%)] pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity" />
+      
       {/* Video Frame in Reel Size (9:16) */}
       <div 
         ref={containerRef}
@@ -164,8 +167,8 @@ function VideoCard({ video }: { video: VideoData }) {
             onClick={() => togglePlay()}
             className="absolute inset-0 flex items-center justify-center bg-black/45 cursor-pointer z-10"
           >
-            <button className="w-12 h-12 rounded-full bg-[#0080C7] text-neutral-950 flex items-center justify-center shadow-lg hover:bg-[#009CEE] hover:scale-105 transition-all duration-200">
-              <Play size={16} fill="currentColor" className="ml-0.5" />
+            <button className="w-12 h-12 rounded-full bg-[#0080C7] text-neutral-950 flex items-center justify-center shadow-[0_0_20px_rgba(0,128,199,0.6)] hover:shadow-[0_0_30px_rgba(0,128,199,1)] hover:bg-[#009CEE] hover:scale-110 transition-all duration-300">
+              <Play size={16} fill="currentColor" className="ml-0.5 drop-shadow-md" />
             </button>
           </div>
         )}
@@ -226,21 +229,27 @@ function VideoCard({ video }: { video: VideoData }) {
 
 export default function VideoSection() {
   return (
-    <section id="preview" className="relative py-12 md:py-16 overflow-hidden border-b border-white/8 bg-[#000001]">
+    <section id="preview" className="relative py-12 md:py-20 overflow-hidden border-b border-white/8 bg-[#000001]">
       {/* Background Decorative Atmospheric Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#0080C7]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-0 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_top_left,rgba(0,128,199,0.15)_0%,transparent_60%)] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[70%] h-[70%] z-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(0,128,199,0.1)_0%,transparent_60%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
         {/* Header Block */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#0080C7]/8 border border-[#0080C7]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#0080C7] mb-6">
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#0080C7]/10 border border-[#0080C7]/30 rounded-md text-[10px] font-bold tracking-wider uppercase text-[#0080C7] mb-6 shadow-[0_0_15px_rgba(0,128,199,0.1)]">
             Studio Previews
           </span>
-          <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-6">
-            Go inside the <span className="text-[#0080C7]">Leadership Studio.</span>
+          <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white mb-8">
+            Go inside the <br className="md:hidden" />
+            <span className="relative inline-block text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.6)]">
+              Leadership Studio.
+              {/* Horizontal flare line (no white dot) */}
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
+            </span>
           </h2>
-          <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-8 max-w-3xl mx-auto">
+          <p className="text-gray-300 text-sm md:text-[15px] lg:text-[17px] leading-8 max-w-2xl mx-auto font-sans">
             Take a behind-the-scenes look at how we conduct weekly live simulations, practice AI workflow methodologies, pitch to the C-suite, and review peer logic.
           </p>
         </div>

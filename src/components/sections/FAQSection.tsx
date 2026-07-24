@@ -18,31 +18,57 @@ const faqs = [
     q: 'What is the time commitment per week?',
     a: '4–6 hours per week. This includes 90 minutes of live session, 60–90 minutes of peer calibration, and 2–3 hours of scenario prep. If you are not willing to prioritize this, the program will not work for you.',
   },
-
 ];
 
 export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="relative py-12 md:py-16 overflow-hidden border-b border-white/8 bg-[#000001]">
-      {/* Decorative Blur Background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#0080C7]/5 rounded-full blur-3xl pointer-events-none" />
+    <section id="faq" className="relative py-20 md:py-32 overflow-hidden border-b border-white/8 bg-[#000001]">
+      
+      {/* Concentric arcs background effect */}
+      <div className="absolute top-0 left-0 w-full h-[800px] overflow-hidden pointer-events-none flex justify-center z-0">
+        
+        {/* Core background glow */}
+        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[radial-gradient(ellipse_at_top,rgba(0,128,199,0.18)_0%,transparent_70%)] blur-[40px]" />
+        
+        {/* Outer Arc */}
+        <div 
+          className="absolute top-[-400px] left-1/2 -translate-x-1/2 w-[1600px] h-[1600px] rounded-full border-[1.5px] border-[#0080C7]/15" 
+          style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 30%, transparent 45%)', maskImage: 'linear-gradient(to bottom, black 30%, transparent 45%)' }} 
+        />
+        
+        {/* Main Arc */}
+        <div 
+          className="absolute top-[-300px] left-1/2 -translate-x-1/2 w-[1300px] h-[1300px] rounded-full border-[2px] border-[#0080C7]/30 shadow-[0_0_50px_rgba(0,128,199,0.15)]" 
+          style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 25%, transparent 40%)', maskImage: 'linear-gradient(to bottom, black 25%, transparent 40%)' }} 
+        />
+        
+        {/* Inner Arc */}
+        <div 
+          className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] rounded-full border-[1.5px] border-[#0080C7]/40 shadow-[inset_0_50px_50px_-50px_rgba(0,128,199,0.25)]" 
+          style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 20%, transparent 35%)', maskImage: 'linear-gradient(to bottom, black 20%, transparent 35%)' }} 
+        />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
+      </div>
+
+      <div className="max-w-4xl mx-auto px-6 md:px-8 relative z-10">
         
         {/* Centered Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#0080C7]/8 border border-[#0080C7]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#0080C7] mb-6">
-            FAQ
-          </span>
-          <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-6">
-            Questions <span className="text-[#0080C7]">Answered</span>
-          </h2>
-          <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-8 max-w-3xl mx-auto">
-            Still have something we didn't cover? Check our common questions or reach out to us directly.
+        <div className="text-center mb-16">
+          <div className="relative mb-6">
+            <h2 className="font-serif font-bold text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight text-white mb-2">
+              Questions <br />
+              <span className="text-[#2094f3] drop-shadow-[0_0_20px_rgba(0,128,199,0.8)]">Answered</span>
+            </h2>
+            {/* Horizontal flare line (centered) */}
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-48 md:w-80 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_15px_rgba(0,128,199,0.9)] opacity-80" />
+          </div>
+
+          <p className="text-[#a1a1aa] text-sm md:text-base leading-relaxed max-w-xl mx-auto">
+            Still have something we didn't cover?<br />
+            Check our common questions or reach out to us directly.
           </p>
-  
         </div>
 
         {/* Centered Accordion Cards */}
@@ -52,29 +78,41 @@ export default function FAQSection() {
             return (
               <div
                 key={i}
-                className={`rounded-lg bg-[#0C0C0C]/80 border transition-all duration-300 mb-4 overflow-hidden ${
+                className={`group relative rounded-xl bg-[#03060C] border transition-all duration-300 mb-4 overflow-hidden ${
                   isOpen
-                    ? 'border-[#0080C7]/35 border-l-4 border-l-[#0080C7] bg-[#121212]/90 shadow-[0_0_24px_rgba(0,128,199,0.2)]'
-                    : 'border-white/6 border-l-4 border-l-transparent hover:border-[#0080C7]/25 hover:bg-[#121212]/50 hover:shadow-[0_0_15px_rgba(0,128,199,0.08)]'
+                    ? 'border-[#0080C7]/40 shadow-[0_0_30px_rgba(0,128,199,0.15)] bg-[#050A14]'
+                    : 'border-[#0080C7]/15 hover:border-[#0080C7]/30 hover:shadow-[0_0_20px_rgba(0,128,199,0.1)] hover:bg-[#050A14]'
                 }`}
               >
+                {/* Inner top highlight for glassmorphism feel */}
+                <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#0080C7]/40 to-transparent opacity-70" />
+                
+                {/* Inner radial glow when active */}
+                {isOpen && (
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,128,199,0.08)_0%,transparent_60%)] pointer-events-none" />
+                )}
+
                 <button
                   id={`faq-btn-${i}`}
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${i}`}
-                  className="w-full text-left px-6 py-5 flex justify-between items-center cursor-pointer bg-transparent border-none outline-none focus:outline-none"
+                  className="w-full text-left px-5 py-4 md:px-6 md:py-5 flex justify-between items-center cursor-pointer bg-transparent border-none outline-none focus:outline-none gap-4 relative z-10"
                   onClick={() => setOpen(isOpen ? null : i)}
                 >
-                  <span className={`font-serif text-base md:text-lg font-bold transition-colors duration-150 pr-4 ${
-                    isOpen ? 'text-[#0080C7]' : 'text-white'
+                  <div className="flex items-center gap-4 md:gap-5 flex-1">
+                    <div className="w-8 h-8 md:w-9 md:h-9 rounded-full border border-[#0080C7]/40 flex items-center justify-center text-[#33a8ff] font-medium text-sm md:text-base shrink-0 shadow-[inset_0_0_10px_rgba(0,128,199,0.1)] bg-[#001020]">
+                      ?
+                    </div>
+                    <span className="font-bold text-[15px] md:text-[17px] text-[#f8fafc] pr-2 leading-tight">
+                      {f.q}
+                    </span>
+                  </div>
+                  
+                  <div className={`w-8 h-8 md:w-9 md:h-9 rounded-full border border-[#0080C7]/40 flex items-center justify-center text-[#33a8ff] text-xl shrink-0 transition-all duration-300 shadow-[inset_0_0_10px_rgba(0,128,199,0.1)] bg-[#001020] group-hover:bg-[#001830] ${
+                    isOpen ? 'rotate-45 bg-[#001830]' : ''
                   }`}>
-                    {f.q}
-                  </span>
-                  <span className={`text-xl font-bold shrink-0 transition-all duration-300 block ${
-                    isOpen ? 'text-[#0080C7] rotate-45' : 'text-white/40'
-                  }`}>
-                    +
-                  </span>
+                    <span className="mb-[2px] ml-[1px]">+</span>
+                  </div>
                 </button>
 
                 <AnimatePresence initial={false}>
@@ -87,8 +125,9 @@ export default function FAQSection() {
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25, ease: [0.25, 1, 0.5, 1] }}
+                      className="relative z-10"
                     >
-                      <div className="px-6 pb-6 text-gray-300 text-sm md:text-base leading-8 border-t border-white/2 pt-4">
+                      <div className="px-5 md:px-6 pb-5 md:pb-6 text-[#94a3b8] text-[14px] md:text-[15px] leading-relaxed pl-[4.25rem] md:pl-[4.75rem]">
                         {f.a}
                       </div>
                     </motion.div>
@@ -97,10 +136,10 @@ export default function FAQSection() {
               </div>
             );
           })}
-
         </div>
 
       </div>
     </section>
   );
 }
+

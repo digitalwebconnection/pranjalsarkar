@@ -4,38 +4,48 @@ export default function FinalCTASection() {
   return (
     <section
       id="final-cta"
-      className="relative h-[400px] md:h-[420px] flex items-center justify-center overflow-hidden border-b border-white/8 bg-[#000001] group"
+      className="relative h-[400px] md:h-[420px] flex items-center justify-center overflow-hidden border-b border-white/8 bg-[#010308] group"
       style={{ clipPath: 'inset(0)' }}
     >
 
       {/* Viewport-fixed Background Image clipped to parent */}
       <div
-        className="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-45 pointer-events-none z-0"
+        className="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none z-0"
         style={{ backgroundImage: `url(${bgImage})` }}
       />
 
-      {/* Gradient Mask Overlay */}
-      <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/30 to-black/70 z-0 pointer-events-none" />
+      {/* Gradient Mask Overlay matching new dark blue aesthetic */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#010308]/90 via-[#010308]/50 to-[#010308]/90 z-0 pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-6 md:px-8 relative z-10 text-center w-full">
+      {/* Core background glow */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center">
+        <div className="w-[800px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.15)_0%,transparent_60%)] blur-[40px]" />
+      </div>
+
+      <div className="max-w-4xl mx-auto px-6 md:px-8 relative z-10 text-center w-full mt-4">
 
         <div className="flex flex-col items-center justify-center">
 
           {/* Label Badge */}
-          <div className="flex justify-center mb-4">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] text-[9px] font-bold tracking-[0.15em] uppercase text-[#0080C7] bg-[#0080C7]/8 border border-[#0080C7]/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0080C7] animate-pulse shrink-0" />
+          <div className="flex justify-center mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase text-[#33a8ff] bg-[#0080C7]/5 border border-[#0080C7]/30 shadow-[0_0_15px_rgba(0,128,199,0.1)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#33a8ff] animate-pulse shrink-0 shadow-[0_0_8px_rgba(51,168,255,0.8)]" />
               Limited Seats — Cohort 2
             </span>
           </div>
 
-          {/* Title */}
-          <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-3">
-            The director role <span className="text-[#0080C7]">won't wait forever.</span>
-          </h2>
+          <div className="relative mb-6">
+            {/* Title */}
+            <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white mb-2">
+              The director role <br className="sm:hidden" />
+              <span className="text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.4)]">won't wait forever.</span>
+            </h2>
+            {/* Horizontal flare line (centered) */}
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-48 md:w-80 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_15px_rgba(0,128,199,0.9)] opacity-80" />
+          </div>
 
           {/* Sub */}
-          <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-8 max-w-3xl mx-auto mb-6">
+          <p className="text-[#a1a1aa] text-sm md:text-base lg:text-lg leading-8 max-w-3xl mx-auto mb-8 font-light">
             Twenty seats. One cohort. A 12-week crucible that builds the kind of product leader companies fight to promote.
           </p>
 

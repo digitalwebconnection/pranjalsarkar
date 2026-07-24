@@ -1,5 +1,5 @@
 import ScrollStack, { ScrollStackItem } from './ScrollStack';
-
+import { Target, Calendar, CheckCircle } from 'lucide-react';
 const stages = [
   {
     phase: 'Phase 1',
@@ -57,18 +57,26 @@ const stages = [
 
 export default function JudgementSection() {
   return (
-    <section id="judgment" className="relative py-8 md:py-10 overflow-hidden border-b border-white/8 ">
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
+    <section id="judgment" className="relative py-12 md:py-20 overflow-hidden border-b border-white/8 bg-[#000001]">
+      {/* Background Decorative Gradients */}
+      <div className="absolute top-0 right-0 w-[50%] h-[50%] z-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,128,199,0.15)_0%,transparent_60%)] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,128,199,0.1)_0%,transparent_60%)] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
         {/* Header */}
-        <div className="max-w-4xl mx-auto text-center justify-center mb-10">
-          <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#0080C7]/8 border border-[#0080C7]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#0080C7] mb-6">The Method</span>
-          <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-6">
+        <div className="max-w-4xl mx-auto text-center justify-center mb-14">
+          <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#0080C7]/8 border border-[#0080C7]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#0080C7] mb-6 shadow-[0_0_15px_rgba(0,128,199,0.1)]">The Method</span>
+          <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white mb-8">
             How Leadership-Level<br />
-            <span className="text-[#0080C7]">Judgment Gets Built</span>
+            <span className="relative inline-block text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.6)]">
+              Judgment Gets Built
+              {/* Horizontal flare line */}
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-48 md:w-80 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
+            </span>
           </h2>
 
-          <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-8 max-w-3xl mx-auto">
+          <p className="text-gray-300 text-sm md:text-[15px] lg:text-[17px] leading-8 max-w-3xl mx-auto font-sans">
             Judgment isn't taught through videos. It's built through reps, feedback, and calibrated pressure. Here's our 4-phase methodology.
           </p>
         </div>
@@ -86,46 +94,55 @@ export default function JudgementSection() {
         >
           {stages.map((s, i) => (
             <ScrollStackItem key={i}>
-              <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 lg:gap-12 p-8 md:p-12 rounded-xl bg-[#121212] border border-white/8 border-l-4 border-l-[#0080C7] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] min-h-[460px] flex-col justify-between">
+              <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 lg:gap-12 p-8 md:p-12 rounded-xl bg-[#0a0c10] border border-[#0080C7]/20 border-l-[3px] border-l-[#0080C7] shadow-[0_0_25px_rgba(0,128,199,0.15)] hover:shadow-[0_0_40px_rgba(0,128,199,0.3)] hover:border-[#0080C7]/40 min-h-[460px] flex-col justify-between transition-all duration-500 relative overflow-hidden group">
                 
+                {/* Inner radial glow */}
+                <div className="absolute top-0 right-0 w-[80%] h-[80%] bg-[radial-gradient(ellipse_at_top_right,rgba(0,128,199,0.15),transparent_70%)] pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Left edge intense flare glow */}
+                <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-gradient-to-b from-[#0080C7] to-transparent opacity-80 shadow-[0_0_20px_rgba(0,128,199,1)]" />
+
                 {/* Left Column */}
-                <div className="flex flex-col justify-between h-full min-h-[160px] lg:min-h-0">
+                <div className="flex flex-col justify-between h-full min-h-[160px] lg:min-h-0 relative z-10">
                   <div>
-                    <span className="text-[#0080C7] text-[10px] font-bold tracking-[0.2em] uppercase block mb-2 font-mono">
+                    <span className="text-[#0080C7] text-[10px] font-bold tracking-[0.2em] uppercase block mb-3 font-mono drop-shadow-[0_0_5px_rgba(0,128,199,0.5)]">
                       {s.phase}
                     </span>
-                    <h3 className="font-serif text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight tracking-tight">
+                    <h3 className="font-serif text-3xl lg:text-4xl font-bold text-white mb-5 leading-tight tracking-tight drop-shadow-md">
                       {s.title}
                     </h3>
-                    <p className="text-[#0080C7] text-[11px] font-semibold uppercase tracking-wider mb-6">
-                      Focus: {s.focus}
-                    </p>
+                    <div className="flex items-start gap-2 mb-6">
+                      <Target size={14} className="text-[#0080C7] mt-0.5 shrink-0 drop-shadow-[0_0_5px_rgba(0,128,199,0.6)]" />
+                      <p className="text-[#0080C7] text-[12px] font-semibold uppercase tracking-wide leading-snug drop-shadow-[0_0_5px_rgba(0,128,199,0.3)]">
+                        Focus: <span className="text-white/90 font-sans tracking-normal capitalize">{s.focus}</span>
+                      </p>
+                    </div>
                   </div>
                   <div>
-                    <span className="inline-block text-[11px] font-bold tracking-wider text-[#0080C7] bg-[#0080C7]/8 border border-[#0080C7]/20 px-3.5 py-1.5 rounded-[4px] font-mono">
+                    <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-wider text-[#0080C7] bg-[#0080C7]/5 border border-[#0080C7]/30 px-3.5 py-2 rounded-[4px] font-mono shadow-[0_0_10px_rgba(0,128,199,0.1)]">
+                      <Calendar size={13} className="opacity-80" />
                       {s.weeks}
                     </span>
                   </div>
                 </div>
 
                 {/* Right Column */}
-                <div className="flex flex-col justify-between gap-6">
+                <div className="flex flex-col justify-between gap-6 relative z-10">
                   <div>
-                    <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-6">
+                    <p className="text-gray-300 text-[15px] md:text-[17px] leading-relaxed mb-6 font-sans">
                       {s.desc}
                     </p>
                     
                     {/* Divider */}
-                    <div className="h-px bg-white/8 w-full my-5" />
+                    <div className="h-px bg-white/10 w-full my-6" />
  
                     {/* Core Deliverables */}
-                    <h4 className="text-white text-[11px] font-bold uppercase tracking-wider mb-3.5">
+                    <h4 className="text-[#0080C7] text-[11px] font-bold uppercase tracking-widest mb-4 font-mono drop-shadow-[0_0_5px_rgba(0,128,199,0.3)]">
                       Core Outcomes & Deliverables:
                     </h4>
-                    <ul className="space-y-3">
+                    <ul className="space-y-4">
                       {s.deliverables.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-gray-300 text-base md:text-lg leading-relaxed">
-                          <span className="text-[#0080C7] shrink-0 mt-1 font-bold text-sm">✓</span>
+                        <li key={idx} className="flex items-start gap-3 text-gray-300 text-[15px] md:text-[16px] leading-relaxed font-sans">
+                          <CheckCircle size={18} className="text-[#0080C7] shrink-0 mt-0.5 drop-shadow-[0_0_5px_rgba(0,128,199,0.5)]" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -133,13 +150,13 @@ export default function JudgementSection() {
                   </div>
 
                   {/* Hands-on Assets tags at the bottom */}
-                  <div className="pt-2">
-                    <span className="block text-[10px] font-bold uppercase tracking-widest text-white/40 mb-2">Hands-on Assets:</span>
+                  <div className="pt-4">
+                    <span className="block text-[10px] font-bold uppercase tracking-widest text-[#0080C7] mb-3 font-mono drop-shadow-[0_0_5px_rgba(0,128,199,0.3)]">Hands-on Assets:</span>
                     <div className="flex flex-wrap gap-2.5">
                       {s.actions.map((a, j) => (
                         <span
                           key={j}
-                          className="px-3.5 py-1.5 rounded-[4px] bg-white/3 border border-white/8 text-white text-[11px] font-semibold tracking-wide hover:border-[#0080C7]/30 transition-colors"
+                          className="px-3.5 py-1.5 rounded-[4px] bg-transparent border border-[#0080C7]/30 text-white/90 text-[11px] font-semibold tracking-wide hover:bg-[#0080C7]/10 hover:border-[#0080C7]/50 transition-all shadow-[0_0_10px_rgba(0,128,199,0.05)]"
                         >
                           {a}
                         </span>

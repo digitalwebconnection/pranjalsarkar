@@ -222,32 +222,35 @@ export default function EventsGallerySection() {
   }, [lightboxIndex, handlePrev, handleNext]);
 
   return (
-    <section id="events" className="relative py-8 md:py-14 overflow-hidden border-b border-white/20 bg-black/40">
+    <section id="events" className="relative py-20 md:py-32 overflow-hidden border-b border-white/8 bg-[#010308]">
 
-      {/* Background Grid Accent */}
-      <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
+      {/* Background glow */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
+        <div className="absolute top-[-100px] left-[50%] -translate-x-1/2 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.15)_0%,transparent_60%)] blur-[50px]" />
+      </div>
 
-      {/* Decorative Light Rays */}
-      <div className="absolute top-1/4 left-0 w-96 h-96 bg-[#0080C7]/5 blur-3xl rounded-full pointer-events-none" />
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-[#0080C7]/5 blur-3xl rounded-full pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-6 md:px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
 
         {/* Header Block & Navigation Controls */}
-        <div className="flex flex-col md:flex-row md:items-end  justify-center text-center items-center gap-6 mb-12">
-          <div className="flex flex-col text-center ">
-            <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#0080C7]/8 border border-[#0080C7]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#0080C7] mb-6 self-center">
+        <div className="flex flex-col md:flex-row md:items-end justify-center text-center items-center gap-6 mb-16">
+          <div className="flex flex-col items-center text-center">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#0080C7]/30 bg-[#0080C7]/5 mb-6 shadow-[0_0_15px_rgba(0,128,199,0.1)] text-[10px] font-bold tracking-widest uppercase text-[#33a8ff]">
               Pranjal In Events
             </span>
-            <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white max-w-2xl">
-              Speaking & Mentoring <br /> <span className="text-[#0080C7] font-serif">In Action</span>
-            </h2>
-            <p className="text-gray-100 text-sm md:text-base mt-3 max-w-xl font-light leading-relaxed">
+            
+            <div className="relative mb-6">
+              <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white mb-2 max-w-2xl">
+                Speaking & Mentoring <br /> 
+                <span className="text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.4)]">In Action</span>
+              </h2>
+              {/* Horizontal flare line (centered) */}
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_15px_rgba(0,128,199,0.9)] opacity-80" />
+            </div>
+
+            <p className="text-[#a1a1aa] text-sm md:text-base lg:text-lg max-w-2xl font-light leading-relaxed">
               Interactive workshops, executive strategy masterclasses, and keynote panels in action.
             </p>
           </div>
-
-
         </div>
 
 

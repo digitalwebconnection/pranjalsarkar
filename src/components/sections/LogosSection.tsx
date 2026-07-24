@@ -49,15 +49,26 @@ export default function LogosSection() {
   const all = [...companies, ...companies];
 
   return (
-    <section id="logos" className="relative py-10 overflow-hidden  ">
-      <div className="max-w-3xl mx-auto px-6 md:px-8 relative z-10 mb-18">
+    <section id="logos" className="relative py-14 overflow-hidden bg-[#000001] border-b border-white/8">
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-64 bg-[#0080C7] blur-[150px] opacity-10 pointer-events-none z-0" />
+
+      <div className="max-w-3xl mx-auto px-6 md:px-8 relative z-10 mb-16">
         <h2 className="text-center font-serif text-white text-3xl md:text-5xl font-bold leading-tight tracking-tight">
-          Pranjal has worked closely <br /> <span className="text-[#0080C7]">with product leaders at:</span> 
+          Pranjal has worked closely <br /> 
+          <span className="relative inline-block text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.6)] mt-2">
+            with product leaders at:
+            {/* Horizontal flare line (no white dot) */}
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
+          </span> 
         </h2>
       </div>
 
       {/* Marquee wrapper */}
-      <div className="relative overflow-hidden w-full">
+      <div className="relative overflow-hidden w-full py-4 z-10">
+        {/* Edge fade masks */}
+        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-[#000001] to-transparent z-20 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-[#000001] to-transparent z-20 pointer-events-none" />
 
         <div className="logo-marquee flex animate-marquee items-center">
           {all.map((c, i) => (

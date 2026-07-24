@@ -102,39 +102,44 @@ const bookPages: BookPage[] = [
 
 export default function PhilosophySection() {
   return (
-    <section id="philosophy" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[450px] h-[450px] rounded-full bg-[#0080C7]/2 blur-[150px] pointer-events-none" />
+    <section id="philosophy" className="relative py-12 md:py-20 overflow-hidden border-b border-white/8 bg-[#000001]">
+      {/* Intense Background Radial Glows */}
+      <div className="absolute top-0 right-0 w-[80%] h-[80%] z-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,128,199,0.15)_0%,transparent_60%)] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,128,199,0.1)_0%,transparent_60%)] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
           {/* Left Column: Typography, Manifesto & CTA */}
           <div className="lg:col-span-6 flex flex-col justify-start">
-            <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#0080C7]/8 border border-[#0080C7]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#0080C7] mb-6 self-start">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#0080C7]/10 border border-[#0080C7]/30 rounded-md text-[10px] font-bold tracking-wider uppercase text-[#0080C7] mb-6 shadow-[0_0_15px_rgba(0,128,199,0.1)] self-start">
               Philosophy
             </span>
 
-            <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-4">
+            <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white mb-6">
               Build Product Judgment <br />
-              <span className="text-[#0080C7] font-serif">Under AI</span>
+              <span className="relative inline-block text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.6)]">
+                Under AI
+                {/* Horizontal flare line */}
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-72 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
+              </span>
             </h2>
 
             {/* Manifesto Quote Block */}
-            <div className="relative border-l-2 border-[#0080C7] pl-6 my-4">
-              <p className="text-lg md:text-xl font-serif italic text-white/95 leading-relaxed">
+            <div className="relative border-l-2 border-[#0080C7] pl-6 my-6 shadow-[-4px_0_15px_-4px_rgba(0,128,199,0.6)]">
+              <p className="text-xl md:text-2xl font-serif italic text-white/95 leading-relaxed drop-shadow-sm">
                 "We believe the era of tool-fluency as a competitive advantage is over. The era of judgment has just begun."
               </p>
             </div>
 
-            <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-8 max-w-xl mb-8">
+            <p className="text-gray-300 text-sm md:text-[15px] lg:text-[17px] leading-8 max-w-xl mb-10 font-sans">
               Our curriculum isn't built around what's trending. It's built around what's permanent: the ability to know what matters, say no to the rest, and earn the room's trust under uncertainty.
             </p>
 
             {/* See How It Works CTA Button */}
             <a
               href="#program"
-              className="group inline-flex items-center gap-2.5 px-10 py-3.5 bg-[#0080C7] border border-[#0080C7] rounded-full text-[#080808] font-bold text-sm transition-all duration-300 hover:bg-[#009CEE] hover:border-[#009CEE] hover:shadow-[0_0_24px_rgba(0,128,199,0.5)] hover:-translate-y-0.5 cursor-pointer self-start"
+              className="group inline-flex items-center gap-2.5 px-10 py-4 bg-[#0080C7] border border-[#0080C7] rounded-full text-[#080808] font-bold text-sm transition-all duration-300 hover:bg-[#009CEE] hover:border-[#009CEE] shadow-[0_0_20px_rgba(0,128,199,0.4)] hover:shadow-[0_0_30px_rgba(0,128,199,0.7)] hover:-translate-y-0.5 cursor-pointer self-start"
             >
               See How It Works
               <svg
@@ -150,19 +155,26 @@ export default function PhilosophySection() {
           </div>
 
           {/* Right Column: Recreated Interactive Book */}
-          <div className="lg:col-span-6 w-full flex justify-center items-center">
-            <InteractiveBook
-              coverImage={coverImg}
-              authorImage={img5}
-
-              bookTitle="Product Judgment Under AI"
-              bookAuthor="Pranjal Sarkar"
-              pages={bookPages}
-              width={310}
-              height={400}
-              autoplay={true}
-              autoplayDelay={2500}
-            />
+          <div className="lg:col-span-6 w-full flex justify-center items-center relative mt-10 lg:mt-0">
+            {/* Massive ambient backlight behind the book */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[450px] bg-[#0080C7] blur-[100px] opacity-30 pointer-events-none -z-10 transition-opacity duration-1000" />
+            
+            <div className="relative group">
+              {/* Extra hover glow */}
+              <div className="absolute inset-0 bg-[#0080C7] blur-[60px] opacity-0 group-hover:opacity-40 pointer-events-none -z-10 transition-opacity duration-700" />
+              
+              <InteractiveBook
+                coverImage={coverImg}
+                authorImage={img5}
+                bookTitle="Product Judgment Under AI"
+                bookAuthor="Pranjal Sarkar"
+                pages={bookPages}
+                width={310}
+                height={400}
+                autoplay={true}
+                autoplayDelay={2500}
+              />
+            </div>
           </div>
 
         </div>

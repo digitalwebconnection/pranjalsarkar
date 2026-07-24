@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 
 // Custom Vector Icons representing structural issues
 const CalibrationIcon = () => (
-  <div className="w-10 h-10 rounded-[6px] bg-[#0080C7]/10 border border-[#0080C7]/20 flex items-center justify-center text-[#0080C7] shrink-0">
-    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+  <div className="w-11 h-11 rounded-lg bg-[#0080C7]/10 border border-[#0080C7]/40 shadow-[0_0_15px_rgba(0,128,199,0.2)] flex items-center justify-center text-[#0080C7] shrink-0">
+    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
       <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
       <circle cx="7.5" cy="16.5" r="1.5" stroke="currentColor" />
       <circle cx="16.5" cy="7.5" r="1.5" stroke="currentColor" />
@@ -12,16 +12,16 @@ const CalibrationIcon = () => (
 );
 
 const JudgmentIcon = () => (
-  <div className="w-10 h-10 rounded-[6px] bg-[#0080C7]/10 border border-[#0080C7]/20 flex items-center justify-center text-[#0080C7] shrink-0">
-    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+  <div className="w-11 h-11 rounded-lg bg-[#0080C7]/10 border border-[#0080C7]/40 shadow-[0_0_15px_rgba(0,128,199,0.2)] flex items-center justify-center text-[#0080C7] shrink-0">
+    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
       <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
     </svg>
   </div>
 );
 
 const AiIcon = () => (
-  <div className="w-10 h-10 rounded-[6px] bg-[#0080C7]/10 border border-[#0080C7]/20 flex items-center justify-center text-[#0080C7] shrink-0">
-    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+  <div className="w-11 h-11 rounded-lg bg-[#0080C7]/10 border border-[#0080C7]/40 shadow-[0_0_15px_rgba(0,128,199,0.2)] flex items-center justify-center text-[#0080C7] shrink-0">
+    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
       <rect x="4" y="4" width="16" height="16" rx="3" />
       <path strokeLinecap="round" strokeLinejoin="round" d="M9 9h6v6H9z" />
       <path strokeLinecap="round" d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3" />
@@ -30,8 +30,8 @@ const AiIcon = () => (
 );
 
 const FailureIcon = () => (
-  <div className="w-10 h-10 rounded-[6px] bg-[#0080C7]/10 border border-[#0080C7]/20 flex items-center justify-center text-[#0080C7] shrink-0">
-    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+  <div className="w-11 h-11 rounded-lg bg-[#0080C7]/10 border border-[#0080C7]/40 shadow-[0_0_15px_rgba(0,128,199,0.2)] flex items-center justify-center text-[#0080C7] shrink-0">
+    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
       <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
     </svg>
   </div>
@@ -57,18 +57,16 @@ const StatRing = ({ value, label, isActive }: { value: number; label: string; is
           cx="32"
           cy="32"
           r={r}
-          className={`fill-none transition-all duration-700 ease-out ${
-            isActive ? 'stroke-[#0080C7]' : 'stroke-white/80'
-          }`}
+          className={`fill-none transition-all duration-700 ease-out ${isActive ? 'stroke-[#0080C7]' : 'stroke-white/80'
+            }`}
           strokeWidth={stroke}
           strokeDasharray={circ}
           strokeDashoffset={offset}
           strokeLinecap="round"
         />
       </svg>
-      <span className={`absolute text-[12px] font-['Outfit',sans-serif] font-bold ${
-        isActive ? 'text-[#0080C7]' : 'text-white/90'
-      }`}>
+      <span className={`absolute text-[12px] font-['Outfit',sans-serif] font-bold ${isActive ? 'text-[#0080C7]' : 'text-white/90'
+        }`}>
         {label}
       </span>
     </div>
@@ -145,9 +143,14 @@ export default function DiagnosisSection() {
   }, [isAutoplay]);
 
   return (
-    <section id="diagnosis" className="relative py-8 md:py-10 overflow-hidden border-b border-white/8 ">
+    <section id="diagnosis" className="relative py-12 md:py-20 overflow-hidden border-b border-white/8 ">
+      {/* Background Radial Glows */}
+      <div className="absolute top-1/4 -left-1/4 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.12)_0%,transparent_60%)] pointer-events-none" />
+      <div className="absolute top-1/4 -right-1/4 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.12)_0%,transparent_60%)] pointer-events-none" />
+
       {/* Dynamic Progress Bar Animation Keyframe */}
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes progress-timer {
           from { width: 0%; }
           to { width: 100%; }
@@ -157,27 +160,28 @@ export default function DiagnosisSection() {
         }
       `}} />
 
-      
-   
-
       <div className="max-w-7xl mx-auto px-6 md:px-6 relative z-10">
-        
+
         {/* Header */}
-        <div className="max-w-4xl mx-auto text-center mb-6 md:mb-10">
-          <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#0080C7]/8 border border-[#0080C7]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#0080C7] mb-6">
-            The Diagnosis
+        <div className="max-w-4xl mx-auto text-center mb-10 md:mb-14">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#0080C7]/10 border border-[#0080C7]/30 rounded-md text-[10px] font-bold tracking-wider uppercase text-[#0080C7] mb-6 shadow-[0_0_15px_rgba(0,128,199,0.1)]">
+            THE DATA
           </span>
           <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-6">
             Why this keeps happening <br />
-            <span className="text-[#0080C7]">and the data behind it.</span>
+            <span className="relative inline-block text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.6)]">
+              and the data behind it.
+              {/* Horizontal flare line */}
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
+            </span>
           </h2>
-          <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-8 max-w-4xl mx-auto">
+          <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-4xl mx-auto mt-4">
             This isn't a motivation problem. It's a structural one. Here is the actual diagnostic data and the root causes keeping product talent capped.
           </p>
         </div>
 
         {/* Desktop Interactive Panel Layout */}
-        <div 
+        <div
           className="hidden lg:grid grid-cols-12 gap-8 items-stretch"
           onMouseEnter={() => setIsAutoplay(false)}
           onMouseLeave={() => setIsAutoplay(true)}
@@ -187,35 +191,32 @@ export default function DiagnosisSection() {
             <div className="text-xs font-bold text-white/90 uppercase tracking-wider mb-2 pl-2">
               Select Data Point
             </div>
-            
+
             {diagnosisData.map((item, idx) => {
               const isActive = activeIndex === idx;
               return (
                 <button
                   key={item.id}
                   onClick={() => setActiveIndex(idx)}
-                  className={`relative flex items-center gap-5 p-5 rounded-xl text-left border transition-all duration-300 group cursor-pointer ${
-                    isActive
-                      ? 'bg-[#121212] border-[#0080C7]/80 shadow-[0_0_24px_rgba(0,128,199,0.25)] hover:shadow-[0_0_24px_rgba(0,128,199,0.35)]'
-                      : 'bg-transparent border-white/5 hover:bg-white/[0.02] hover:border-white/10 hover:shadow-[0_0_15px_rgba(0,128,199,0.1)]'
-                  }`}
+                  className={`relative flex items-center gap-5 p-5 rounded-xl text-left border transition-all duration-300 group cursor-pointer ${isActive
+                      ? 'bg-[#0a0c10] border-[#0080C7] shadow-[0_0_20px_rgba(0,128,199,0.3)]'
+                      : 'bg-[#0a0c10]/50 border-[#0080C7]/10 hover:border-[#0080C7]/30 hover:bg-[#0a0c10] hover:shadow-[0_0_15px_rgba(0,128,199,0.15)]'
+                    }`}
                 >
                   {/* Indicator arrow pointing to the detailed report */}
                   {isActive && (
-                    <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-8 border-l-[#0080C7]/80 z-20" />
+                    <svg className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#0080C7] drop-shadow-[0_0_8px_rgba(0,128,199,0.8)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
                   )}
 
                   <StatRing value={item.statValue} label={item.statNum} isActive={isActive} />
 
                   <div className="flex-1 min-w-0">
-                    <span className={`text-[10px] font-bold uppercase tracking-wider mb-1 block ${
-                      isActive ? 'text-[#0080C7]' : 'text-white/90'
-                    }`}>
+                    <span className={`text-[10px] font-bold uppercase tracking-wider mb-1 block ${isActive ? 'text-[#0080C7]' : 'text-white/90'
+                      }`}>
                       {item.statLabel}
                     </span>
-                    <p className={`text-[14px] font-semibold leading-snug line-clamp-2 ${
-                      isActive ? 'text-white' : 'text-white/90 group-hover:text-white/80'
-                    }`}>
+                    <p className={`text-[14px] font-semibold leading-snug line-clamp-2 ${isActive ? 'text-white' : 'text-white/90 group-hover:text-white/80'
+                      }`}>
                       {item.statDetail.replace(item.statNum + ' ', '')}
                     </p>
                   </div>
@@ -226,33 +227,40 @@ export default function DiagnosisSection() {
 
           {/* Right Column: Dynamic Analysis Report Card */}
           <div className="col-span-7 flex">
-            <div className="w-full rounded-xl bg-[#121212] border border-white/50 p-4 md:p-6 flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:border-[#0080C7]/30 hover:shadow-[0_0_30px_rgba(0,128,199,0.15)]">
+            <div className="w-full rounded-2xl bg-[#0a0c10] border border-[#0080C7]/20 p-6 md:p-10 flex flex-col justify-between relative overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(0,128,199,0.08)] hover:shadow-[0_0_30px_rgba(0,128,199,0.15)]">
+              
+              {/* Permanent Top Edge Glow and Inner Gradient */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
+              <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-[#0080C7]/[0.08] to-transparent pointer-events-none" />
+
               {/* Dynamic visual progress line loader */}
               {isAutoplay && (
-                <div 
-                  key={activeIndex} 
-                  className="absolute top-0 left-0 h-[2px] bg-[#0080C7] animate-progress-timer" 
+                <div
+                  key={activeIndex}
+                  className="absolute top-0 left-0 h-[2px] bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)] animate-progress-timer"
                 />
               )}
 
-              {/* Subtle background header line */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-white/5" />
-              
               <div>
                 {/* Metric Header */}
-                <div className="flex items-center justify-between gap-4 mb-6">
-                  <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#0080C7] bg-[#0080C7]/10 border border-[#0080C7]/20 px-3 py-1 rounded-[4px]">
+                <div className="flex items-center justify-between gap-4 mb-8">
+                  <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#0080C7] bg-[#0080C7]/10 border border-[#0080C7]/20 px-3 py-1 rounded-[4px] shadow-[0_0_10px_rgba(0,128,199,0.1)]">
                     ANALYSIS REPORT
                   </span>
-                  <div className="flex items-center gap-1.5 text-xs text-white/80 font-mono">
-                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                  <div className="flex items-center gap-2 text-xs text-white/80 font-mono tracking-widest uppercase">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)] animate-pulse" />
                     LIVE DIAGNOSTIC
                   </div>
                 </div>
 
                 {/* Stat Headline */}
-                <h3 className="font-serif text-xl md:text-2xl font-extrabold text-white leading-snug mb-4">
-                  {diagnosisData[activeIndex].statDetail}
+                <h3 className="font-serif text-xl md:text-[32px] font-bold text-white leading-[1.3] mb-6">
+                  {diagnosisData[activeIndex].statDetail.split('MORE').map((part, i, arr) => 
+                    <span key={i}>
+                      {part}
+                      {i < arr.length - 1 && <span className="text-[#0080C7] drop-shadow-[0_0_10px_rgba(0,128,199,0.5)]">MORE</span>}
+                    </span>
+                  )}
                 </h3>
 
                 <div className="w-full h-px bg-white/50 mb-8" />
@@ -314,7 +322,7 @@ export default function DiagnosisSection() {
           {diagnosisData.map((item) => (
             <div key={item.id} className="rounded-[16px] bg-[#121212] border border-white/8 p-6 md:p-8 flex flex-col relative overflow-hidden transition-all duration-300 hover:border-[#0080C7]/30 hover:shadow-[0_0_30px_rgba(0,128,199,0.15)]">
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7]/30 to-transparent" />
-              
+
               {/* Stat Circle & Label Row */}
               <div className="flex items-center gap-4 mb-5">
                 <StatRing value={item.statValue} label={item.statNum} isActive={true} />

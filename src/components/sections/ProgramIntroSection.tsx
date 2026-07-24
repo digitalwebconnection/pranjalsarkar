@@ -80,35 +80,37 @@ const itemVariants = {
 
 export default function ProgramIntroSection() {
   return (
-    <section id="program" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 ">
-      {/* Background atmospheric glows */}
-      <div className="absolute top-1/4 left-1/10 w-[380px] h-[380px] rounded-full bg-[#0080C7]/[0.015] blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/10 w-[420px] h-[420px] rounded-full bg-[#0080C7]/[0.015] blur-[150px] pointer-events-none" />
+    <section id="program" className="relative py-12 md:py-20 overflow-hidden border-b border-white/8 bg-[#000001]">
+      {/* Background ambient lighting */}
+      <div className="absolute top-0 left-0 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_top_left,rgba(0,128,199,0.15)_0%,transparent_60%)] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[70%] h-[70%] z-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(0,128,199,0.1)_0%,transparent_60%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
 
         {/* Section Header */}
         <motion.div 
-          className="text-center mb-10 max-w-6xl mx-auto"
+          className="text-center mb-14 max-w-4xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#0080C7]/8 border border-[#0080C7]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#0080C7] mb-6 mx-auto">
-            Program Introduction
-          </span>
-          <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-6">
-            AI Product  <br /><span className='text-[#0080C7]'>Leadership Studio</span> 
+          <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white mb-8">
+            AI Product  <br />
+            <span className="relative inline-block text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.6)]">
+              Leadership Studio
+              {/* Horizontal flare line */}
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
+            </span> 
           </h2>
-          <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-8 max-w-3xl mx-auto">
-            A highly selective, live cohort for senior PMs, EMs, and growth leads transitioning to Director and Head of Product roles. This isn't a course. It's a crucible.
+          <p className="text-gray-300 text-sm md:text-[15px] lg:text-[17px] leading-8 font-sans">
+            A highly selective, live cohort for senior PMs, EMs, and growth leads transitioning to Director and Head of Product roles. This isn't a course. It's a <span className="text-[#0080C7] font-bold drop-shadow-[0_0_5px_rgba(0,128,199,0.5)]">crucible</span>.
           </p>
         </motion.div>
 
         {/* Details Grid (Premium clean grid layout) */}
         <motion.div 
-          className="grid grid-cols-2 lg:grid-cols-6 gap-4 mb-6"
+          className="grid grid-cols-2 lg:grid-cols-6 gap-4 md:gap-6 mb-16"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -120,15 +122,18 @@ export default function ProgramIntroSection() {
               <motion.div 
                 key={i} 
                 variants={itemVariants}
-                whileHover={{ y: -4, backgroundColor: 'rgba(255,255,255,0.03)', borderColor: 'rgba(0,128,199,0.4)', boxShadow: '0 0 20px rgba(0,128,199,0.15)' }}
-                className="p-5 bg-white/10 border border-white/20 rounded-lg flex flex-col gap-3 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.2)]"
+                className="p-5 bg-[#0a0c10] border border-[#0080C7]/40 rounded-xl flex flex-col gap-4 transition-all duration-300 shadow-[0_0_20px_rgba(0,128,199,0.15)] hover:shadow-[0_0_40px_rgba(0,128,199,0.4)] hover:border-[#0080C7]/70 group relative overflow-hidden"
               >
-                <div className="w-8 h-8 rounded-lg bg-[#0080C7]/90 flex items-center justify-center text-white">
-                  <IconComponent size={16} />
+                {/* Subtle inner top flare */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7]/70 to-transparent shadow-[0_0_10px_rgba(0,128,199,0.8)] opacity-40 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,128,199,0.2),transparent_70%)] pointer-events-none opacity-40 group-hover:opacity-100 transition-opacity" />
+
+                <div className="w-10 h-10 rounded-lg bg-[#0080C7]/10 border border-[#0080C7]/50 flex items-center justify-center text-[#0080C7] shadow-[0_0_15px_rgba(0,128,199,0.3)] group-hover:shadow-[0_0_25px_rgba(0,128,199,0.6)] transition-shadow">
+                  <IconComponent size={18} className="drop-shadow-[0_0_8px_rgba(0,128,199,0.8)]" />
                 </div>
                 <div>
-                  <span className="block text-white/90 text-[9px] font-bold uppercase tracking-wider mb-1">{d.label}</span>
-                  <span className="font-sans text-white text-xs md:text-sm font-semibold tracking-tight leading-tight">{d.value}</span>
+                  <span className="block text-white/50 text-[10px] font-bold uppercase tracking-widest mb-1.5">{d.label}</span>
+                  <span className="font-serif text-white text-sm md:text-base font-bold tracking-tight leading-tight group-hover:text-[#0080C7] transition-colors">{d.value}</span>
                 </div>
               </motion.div>
             );
@@ -138,12 +143,14 @@ export default function ProgramIntroSection() {
         {/* What You Get Grid */}
         <div className="">
           <motion.h3 
-            className="font-serif text-2xl font-bold text-white mb-10 text-center"
+            className="relative inline-block font-serif text-3xl font-bold text-white mb-12 text-center w-full"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
             What You Get Inside the Studio
+            {/* Horizontal flare line under headline */}
+            <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 w-48 md:w-64 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
           </motion.h3>
 
           <motion.div 
@@ -159,26 +166,22 @@ export default function ProgramIntroSection() {
                 <motion.div 
                   key={i} 
                   variants={itemVariants}
-                  whileHover={{ 
-                    y: -6, 
-                    backgroundColor: 'rgba(255,255,255,0.03)', 
-                    borderColor: 'rgba(0,128,199,0.5)',
-                    boxShadow: '0 10px 30px -10px rgba(0,128,199,0.25)'
-                  }}
-                  className="bg-white/[0.01] border border-white/[0.06] p-6 rounded-xl flex gap-4 transition-all duration-300 relative group overflow-hidden"
+                  className="bg-[#0a0c10] border border-[#0080C7]/20 p-6 md:p-8 rounded-xl flex gap-5 transition-all duration-300 relative group overflow-hidden shadow-[0_0_15px_rgba(0,128,199,0.05)] hover:shadow-[0_0_30px_rgba(0,128,199,0.2)] hover:border-[#0080C7]/50"
                 >
                   {/* Decorative glowing gradient border on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-[#0080C7]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.1),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   
-                  {/* Vertical left gold line */}
-                  <div className="w-1 rounded-full shrink-0 bg-gradient-to-b from-[#0080C7] to-[#0080C7]/20" />
+                  {/* Vertical left glowing line */}
+                  <div className="w-1.5 rounded-full shrink-0 bg-gradient-to-b from-[#0080C7] to-[#0080C7]/20 shadow-[0_0_15px_rgba(0,128,199,0.8)]" />
                   
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2.5 mb-2">
-                      <span className="text-[#0080C7]"><IconComp size={16} /></span>
-                      <h4 className="font-sans text-white font-extrabold text-[14px] md:text-base tracking-tight">{w.heading}</h4>
+                  <div className="flex-1 relative z-10">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-8 h-8 rounded-full bg-[#0080C7]/10 border border-[#0080C7]/30 flex items-center justify-center text-[#0080C7] shrink-0 shadow-[0_0_10px_rgba(0,128,199,0.2)] group-hover:shadow-[0_0_15px_rgba(0,128,199,0.5)]">
+                        <IconComp size={14} className="drop-shadow-[0_0_5px_rgba(0,128,199,0.5)]" />
+                      </div>
+                      <h4 className="font-serif text-white font-bold text-lg md:text-xl tracking-tight drop-shadow-md">{w.heading}</h4>
                     </div>
-                    <p className="text-white/60 text-xs md:text-[13px] leading-relaxed font-sans">{w.desc}</p>
+                    <p className="text-gray-400 text-xs md:text-[14px] leading-relaxed font-sans">{w.desc}</p>
                   </div>
                 </motion.div>
               );

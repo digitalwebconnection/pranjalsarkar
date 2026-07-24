@@ -50,100 +50,47 @@ const testimonials = [
   },
 ];
 
-const BUBBLE_COLOR = '#0080C7';
-
 const loopedTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
 function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
-  const bubbleColor = BUBBLE_COLOR;
-
   return (
-    <div className="shrink-0  group" style={{ width: '340px' }}>
-      {/* ── Outer card (light background with watermark) ── */}
-      <div className="relative rounded-xl overflow-hidden shadow-lg flex flex-col px-5 py-10"
-      >
-
-        {/* FEEDBACK watermark */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 flex items-center justify-center font-extrabold uppercase pointer-events-none select-none overflow-hidden"
-          style={{
-            fontSize: '5.5rem',
-            letterSpacing: '0.06em',
-            color: 'rgba(0,0,0,0.05)',
-            whiteSpace: 'nowrap',
-          }}
-        >
-          FEEDBACK
+    <div className="shrink-0 group px-4 pt-12 flex" style={{ width: '380px' }}>
+      <div className="relative rounded-2xl bg-[#0a0c10] border border-[#0080C7]/20 shadow-[0_0_20px_rgba(0,128,199,0.08)] transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,128,199,0.15)] hover:border-[#0080C7]/40 flex flex-col p-8 pt-14 h-full min-h-[300px] w-full">
+        
+        {/* Avatar sticking out of the top */}
+        <div className="absolute -top-12 left-1/2 -translate-x-1/2 rounded-full p-1 bg-[#0a0c10] z-20">
+          <div className="w-20 h-20 rounded-full overflow-hidden border border-[#0080C7]/50 relative z-30 bg-[#0a0c10] shadow-[0_0_25px_rgba(0,128,199,0.6)]">
+            <img src={t.image} alt={t.name} className="w-full h-full object-cover" loading="lazy" />
+          </div>
+          {/* Intense backlight glow for the avatar */}
+          <div className="absolute inset-0 rounded-full bg-[#0080C7] blur-[15px] opacity-40 -z-10" />
         </div>
 
-
-        {/* Avatar — centered, overlapping the bubble below */}
-        <div className="relative z-20 flex justify-center" style={{ marginBottom: '-38px' }}>
-          <div
-            className="rounded-full overflow-hidden bg-white"
-            style={{
-              width: '82px',
-              height: '82px',
-              border: `4px solid ${bubbleColor}`,
-              boxShadow: `0 0 0 4px rgba(255,255,255,0.9), 0 4px 16px rgba(0,0,0,0.2)`,
-            }}
-          >
-            <img
-              src={t.image}
-              alt={t.name}
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
+        {/* Content Header */}
+        <div className="text-center mb-6">
+          <h4 className="font-bold text-white uppercase tracking-widest text-[13px] mb-1.5">
+            {t.name}
+          </h4>
+          <p className="text-[#0080C7] text-[10px] font-bold uppercase tracking-wider mb-4 drop-shadow-[0_0_5px_rgba(0,128,199,0.4)]">
+            {t.role}
+          </p>
+          <div className="flex justify-center gap-1.5 text-[#0080C7] text-[14px]">
+            {Array.from({ length: t.stars }).map((_, i) => (
+              <span key={i} className="drop-shadow-[0_0_5px_rgba(0,128,199,0.5)]">★</span>
+            ))}
           </div>
         </div>
 
-        {/* Speech bubble */}
-        <div className="relative z-10 h-76  rounded-xl overflow-visible" style={{ backgroundColor: bubbleColor }}>
-          {/* Upward-pointing tail (triangle) at top-center */}
-          <div
-            className="absolute left-1/2 -translate-x-1/2"
-            style={{
-              top: '-14px',
-              width: 0,
-              height: 0,
-              borderLeft: '16px solid transparent',
-              borderRight: '16px solid transparent',
-              borderBottom: `16px solid ${bubbleColor}`,
-            }}
-          />
-          {/* ── Name + Stars (below bubble, inside card) ── */}
-          <div className="relative z-10 text-center pt-13 pb-1 mt-auto">
-            <h4
-              className="font-bold text-white uppercase tracking-widest"
-              style={{ fontSize: '12px', letterSpacing: '0.15em' }}
-            >
-              {t.name}
-            </h4>
-            <p className="text-white/90 text-[10px] uppercase tracking-wider mt-0.5 line-clamp-1">
-              {t.role}
-            </p>
-            <div className="flex justify-center gap-0.5 mt-2">
-              {Array.from({ length: t.stars }).map((_, i) => (
-                <span key={i} style={{ color: '#ffffff', fontSize: '14px' }}>★</span>
-              ))}
-            </div>
-          </div>
-          {/* Bubble content */}
-          <div className="px-5  pb-5">
-            {/* Opening quote */}
-            <span className="text-white/50 font-serif text-2xl leading-none select-none">❝</span>
-
-            {/* Quote text */}
-            <p className="text-white text-[12.5px] leading-relaxed mt-1 mb-3"
-              style={{ display: '-webkit-box', WebkitLineClamp: 5, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+        {/* Quote */}
+        <div className="relative flex-1 flex flex-col justify-between">
+          <div>
+            <span className="block text-[#0080C7] font-serif text-3xl leading-none select-none mb-1 drop-shadow-[0_0_5px_rgba(0,128,199,0.4)]">❝</span>
+            <p className="text-gray-400 text-[13px] leading-relaxed px-2" style={{ display: '-webkit-box', WebkitLineClamp: 7, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
               {t.quote}
             </p>
-
-            {/* Closing quote aligned right */}
-            <div className="text-right">
-              <span className="text-white/50 font-serif text-2xl leading-none select-none">❞</span>
-            </div>
+          </div>
+          <div className="text-right mt-3">
+            <span className="inline-block text-[#0080C7] font-serif text-3xl leading-none select-none drop-shadow-[0_0_5px_rgba(0,128,199,0.4)]">❞</span>
           </div>
         </div>
 
@@ -165,7 +112,7 @@ export default function TestimonialsSection() {
         }
         .testimonials-track {
           display: flex;
-          align-items: flex-start;
+          align-items: stretch;
           width: max-content;
           animation: testimonials-scroll 15s linear infinite;
         }
@@ -175,18 +122,22 @@ export default function TestimonialsSection() {
       ` }} />
 
       {/* Ambient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#0080C7]/3 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 -left-1/4 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.12)_0%,transparent_60%)] pointer-events-none" />
 
       {/* Section Header */}
-      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10  text-center">
-        <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#0080C7]/8 border border-[#0080C7]/20 rounded text-[11px] font-semibold tracking-wider uppercase text-[#0080C7] mb-6">
-          Testimonials
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 text-center mb-14">
+        <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#0080C7]/10 border border-[#0080C7]/30 rounded-md text-[10px] font-bold tracking-wider uppercase text-[#0080C7] mb-6 shadow-[0_0_15px_rgba(0,128,199,0.1)]">
+          TESTIMONIALS
         </span>
-        <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-4">
+        <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-6">
           The results speak <br />
-          <span className="text-[#0080C7]">louder than the pitch.</span>
+          <span className="relative inline-block text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.6)]">
+            louder than the pitch.
+            {/* Horizontal flare line */}
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-32 md:w-64 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
+          </span>
         </h2>
-        <p className="text-gray-100 text-sm md:text-base lg:text-lg leading-8 max-w-3xl mx-auto">
+        <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-3xl mx-auto mt-4">
           From Senior PM to Director. From stuck to leading.
         </p>
       </div>
