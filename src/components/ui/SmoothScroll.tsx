@@ -7,12 +7,13 @@ export default function SmoothScroll() {
   useEffect(() => {
     // 1. Initialize Lenis
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.8,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth exponential out
       smoothWheel: true,
       wheelMultiplier: 1,
       lerp: 0.1,
       touchMultiplier: 1.5,
+      autoRaf: true, // Use built-in requestAnimationFrame loop
     });
 
     lenisRef.current = lenis;
@@ -20,32 +21,27 @@ export default function SmoothScroll() {
     // Expose lenis instance globally for ease of access / debugging
     (window as any).lenis = lenis;
 
-    // 2. Request Animation Frame Loop
-    let rafId: number;
-    function raf(time: number) {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    }
-    rafId = requestAnimationFrame(raf);
-
     // 3. Intercept Anchor Link Clicks for smooth scrolling with offset
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const anchor = target.closest('a');
       
       if (anchor && anchor.hash && anchor.origin === window.location.origin) {
-        const targetElement = document.querySelector(anchor.hash) as HTMLElement | null;
-        if (targetElement) {
-          e.preventDefault();
-          
-          // Adjust offset to account for the fixed navbar height (72px)
-          const offset = -72;
-          
-          lenis.scrollTo(targetElement, {
-            offset,
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          });
+        // Only prevent default if it's an internal # anchor
+        if (anchor.hash !== '') {
+          const targetElement = document.querySelector(anchor.hash) as HTMLElement | null;
+          if (targetElement) {
+            e.preventDefault();
+            
+            // Adjust offset to account for the fixed navbar height (72px)
+            const offset = -72;
+            
+            lenis.scrollTo(targetElement, {
+              offset,
+              duration: 0.8, // Faster, snappier scrolling
+              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            });
+          }
         }
       }
     };
@@ -54,7 +50,6 @@ export default function SmoothScroll() {
 
     // 4. Cleanup on unmount
     return () => {
-      cancelAnimationFrame(rafId);
       lenis.destroy();
       document.removeEventListener('click', handleAnchorClick);
       delete (window as any).lenis;
