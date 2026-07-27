@@ -104,24 +104,24 @@ export default function PhilosophySection() {
   return (
     <section id="philosophy" className="relative py-12 md:py-20 overflow-hidden border-b border-white/8 bg-[#000001]">
       {/* Intense Background Radial Glows */}
-      <div className="absolute top-0 right-0 w-[80%] h-[80%] z-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,128,199,0.15)_0%,transparent_60%)] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,128,199,0.1)_0%,transparent_60%)] pointer-events-none" />
+      <div className="absolute top-[-5%] right-[-10%] w-[60%] h-[80%] z-0 bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.45)_0%,transparent_70%)] blur-[90px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,128,199,0.15)_0%,transparent_60%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
           {/* Left Column: Typography, Manifesto & CTA */}
           <div className="lg:col-span-6 flex flex-col justify-start">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#0080C7]/10 border border-[#0080C7]/30 rounded-md text-[10px] font-bold tracking-wider uppercase text-[#0080C7] mb-6 shadow-[0_0_15px_rgba(0,128,199,0.1)] self-start">
+            <span className="inline-flex items-center gap-2 px-5 py-2 bg-[#0080C7]/10 border border-[#0080C7]/30 rounded-md text-[12px] font-bold tracking-wider uppercase text-[#0080C7] mb-6 shadow-[0_0_15px_rgba(0,128,199,0.1)] self-start">
               Philosophy
             </span>
 
             <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white mb-6">
               Build Product Judgment <br />
-              <span className="relative inline-block text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.6)]">
+              <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
                 Under AI
                 {/* Horizontal flare line */}
-                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-72 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-72 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
               </span>
             </h2>
 
@@ -139,7 +139,7 @@ export default function PhilosophySection() {
             {/* See How It Works CTA Button */}
             <a
               href="#program"
-              className="group inline-flex items-center gap-2.5 px-10 py-4 bg-[#0080C7] border border-[#0080C7] rounded-full text-[#080808] font-bold text-sm transition-all duration-300 hover:bg-[#009CEE] hover:border-[#009CEE] shadow-[0_0_20px_rgba(0,128,199,0.4)] hover:shadow-[0_0_30px_rgba(0,128,199,0.7)] hover:-translate-y-0.5 cursor-pointer self-start"
+              className="group inline-flex justify-center items-center gap-2.5 px-10 py-4 bg-linear-to-r from-[#0080C7] to-[rgba(24,37,226,0.9)] rounded-full text-white font-bold text-sm transition-all duration-300 hover:from-[#00a8ff] hover:to-[rgba(24,37,226,1)] shadow-[0_0_20px_rgba(24,37,226,0.4)] hover:shadow-[0_0_30px_rgba(24,37,226,0.6)] hover:-translate-y-0.5 cursor-pointer self-start"
             >
               See How It Works
               <svg
@@ -157,7 +157,7 @@ export default function PhilosophySection() {
           {/* Right Column: Recreated Interactive Book */}
           <div className="lg:col-span-6 w-full flex justify-center items-center relative mt-10 lg:mt-0">
             {/* Massive ambient backlight behind the book */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[450px] bg-[#0080C7] blur-[100px] opacity-30 pointer-events-none -z-10 transition-opacity duration-1000" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-87.5 h-112.5 bg-[#0080C7] blur-[100px] opacity-30 pointer-events-none -z-10 transition-opacity duration-1000" />
             
             <div className="relative group">
               {/* Extra hover glow */}

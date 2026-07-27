@@ -55,26 +55,35 @@ const loopedTestimonials = [...testimonials, ...testimonials, ...testimonials];
 function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
   return (
     <div className="shrink-0 group px-4 pt-12 flex" style={{ width: '380px' }}>
-      <div className="relative rounded-2xl bg-[#0a0c10] border border-[#0080C7]/20 shadow-[0_0_20px_rgba(0,128,199,0.08)] transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,128,199,0.15)] hover:border-[#0080C7]/40 flex flex-col p-8 pt-14 h-full min-h-[300px] w-full">
-        
-        {/* Avatar sticking out of the top */}
-        <div className="absolute -top-12 left-1/2 -translate-x-1/2 rounded-full p-1 bg-[#0a0c10] z-20">
-          <div className="w-20 h-20 rounded-full overflow-hidden border border-[#0080C7]/50 relative z-30 bg-[#0a0c10] shadow-[0_0_25px_rgba(0,128,199,0.6)]">
+      <div className="relative rounded-2xl bg-[#050b14] border-b border-x border-white/10 shadow-[0_5px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-white/20 flex flex-col px-6 pb-6 pt-14 h-full min-h-62.5 w-full mt-4">
+
+        {/* Gradient Top Border and Inner Glow with clipping */}
+        <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none z-0">
+          <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-linear-to-r from-transparent via-[#00a8ff] to-transparent shadow-[0_0_15px_rgba(0,168,255,0.5)]" />
+          <div className="absolute top-0 left-0 right-0 h-37.5 bg-[radial-gradient(ellipse_at_top,rgba(0,168,255,0.2),transparent_70%)]" />
+        </div>
+        {/* Avatar sticking out of the top with neon blur ring */}
+        <div className="absolute -top-12 left-1/2 -translate-x-1/2 rounded-full p-1 bg-[#050b14] z-20">
+
+          {/* Neon blur ring layers */}
+          <div className="absolute inset-0 rounded-full border-[3px] border-[#00a8ff] blur-[6px] z-10" />
+          <div className="absolute inset-0 rounded-full border-2 border-[#00a8ff] blur-[2px] z-10" />
+
+          <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[#00a8ff] relative z-30 bg-[#050b14]">
             <img src={t.image} alt={t.name} className="w-full h-full object-cover" loading="lazy" />
           </div>
-          {/* Intense backlight glow for the avatar */}
-          <div className="absolute inset-0 rounded-full bg-[#0080C7] blur-[15px] opacity-40 -z-10" />
+
         </div>
 
         {/* Content Header */}
         <div className="text-center mb-6">
-          <h4 className="font-bold text-white uppercase tracking-widest text-[13px] mb-1.5">
+          <h4 className="font-bold text-white uppercase tracking-widest text-[13px] mb-1.5 mt-2">
             {t.name}
           </h4>
           <p className="text-[#0080C7] text-[10px] font-bold uppercase tracking-wider mb-4 drop-shadow-[0_0_5px_rgba(0,128,199,0.4)]">
             {t.role}
           </p>
-          <div className="flex justify-center gap-1.5 text-[#0080C7] text-[14px]">
+          <div className="flex justify-center gap-1.5 text-[#0080C7] text-[20px]">
             {Array.from({ length: t.stars }).map((_, i) => (
               <span key={i} className="drop-shadow-[0_0_5px_rgba(0,128,199,0.5)]">★</span>
             ))}
@@ -84,13 +93,13 @@ function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
         {/* Quote */}
         <div className="relative flex-1 flex flex-col justify-between">
           <div>
-            <span className="block text-[#0080C7] font-serif text-3xl leading-none select-none mb-1 drop-shadow-[0_0_5px_rgba(0,128,199,0.4)]">❝</span>
+            <span className="block text-[#0080C7] font-serif text-5xl leading-none select-none mb-1 drop-shadow-[0_0_5px_rgba(0,128,199,0.4)]">❝</span>
             <p className="text-gray-400 text-[13px] leading-relaxed px-2" style={{ display: '-webkit-box', WebkitLineClamp: 7, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
               {t.quote}
             </p>
           </div>
           <div className="text-right mt-3">
-            <span className="inline-block text-[#0080C7] font-serif text-3xl leading-none select-none drop-shadow-[0_0_5px_rgba(0,128,199,0.4)]">❞</span>
+            <span className="inline-block text-[#0080C7] font-serif text-5xl leading-none select-none drop-shadow-[0_0_5px_rgba(0,128,199,0.4)]">❞</span>
           </div>
         </div>
 
@@ -121,8 +130,8 @@ export default function TestimonialsSection() {
         }
       ` }} />
 
-      {/* Ambient glow */}
-      <div className="absolute top-1/4 -left-1/4 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.12)_0%,transparent_60%)] pointer-events-none" />
+      {/* Ambient left side glow */}
+      <div className="absolute top-1/4 -left-32 w-125 h-125 rounded-full z-0 bg-[#0044cc] blur-[130px] opacity-40 pointer-events-none" />
 
       {/* Section Header */}
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 text-center mb-14">
@@ -131,10 +140,10 @@ export default function TestimonialsSection() {
         </span>
         <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-6">
           The results speak <br />
-          <span className="relative inline-block text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.6)]">
+          <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
             louder than the pitch.
             {/* Horizontal flare line */}
-            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-32 md:w-64 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-32 md:w-64 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
           </span>
         </h2>
         <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-3xl mx-auto mt-4">
@@ -143,11 +152,13 @@ export default function TestimonialsSection() {
       </div>
 
       {/* Scrolling marquee */}
-      <div className="relative w-full overflow-hidden py-4 z-10">
-
-        {/* Edge fade masks */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-36 bg-linear-to-r from-[#000001] to-transparent z-20 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-36 bg-linear-to-l from-[#000001] to-transparent z-20 pointer-events-none" />
+      <div
+        className="relative w-full overflow-hidden py-4 z-10"
+        style={{
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+          maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
+        }}
+      >
 
         {/* Track */}
         <div className="testimonials-track cursor-grab active:cursor-grabbing">

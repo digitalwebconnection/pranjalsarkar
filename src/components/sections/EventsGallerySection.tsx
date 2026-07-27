@@ -2,21 +2,21 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Maximize2, X, ChevronLeft, ChevronRight, Calendar, MapPin } from 'lucide-react';
 
-import event1 from '../../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-01.jpg';
-import event2 from '../../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-02.jpg';
-import event3 from '../../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-03.jpg';
-import event4 from '../../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-04.jpg';
-import event5 from '../../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-05.jpg';
-import event6 from '../../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-06.jpg';
-import event7 from '../../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-07.jpg';
-import event8 from '../../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-08.jpg';
-import event9 from '../../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-09.jpg';
-import event10 from '../../assets/Pranjal in Events/20251120_143802.jpg.jpeg';
-import event11 from '../../assets/Pranjal in Events/20251120_144429.jpg.jpeg';
-import event12 from '../../assets/Pranjal in Events/20251120_144745.jpg.jpeg';
-import event13 from '../../assets/Pranjal in Events/20251120_144814.jpg.jpeg';
-import event14 from '../../assets/Pranjal in Events/20251120_152313.jpg.jpeg';
-import event15 from '../../assets/Pranjal in Events/20251120_155544.jpg.jpeg';
+import event1 from '../../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-01.webp';
+import event2 from '../../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-02.webp';
+import event3 from '../../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-03.webp';
+import event4 from '../../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-04.webp';
+import event5 from '../../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-05.webp';
+import event6 from '../../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-06.webp';
+import event7 from '../../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-07.webp';
+import event8 from '../../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-08.webp';
+import event9 from '../../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-09.webp';
+import event10 from '../../assets/Pranjal in Events/20251120_143802.webp';
+import event11 from '../../assets/Pranjal in Events/20251120_144429.webp';
+import event12 from '../../assets/Pranjal in Events/20251120_144745.webp';
+import event13 from '../../assets/Pranjal in Events/20251120_144814.webp';
+import event14 from '../../assets/Pranjal in Events/20251120_152313.webp';
+import event15 from '../../assets/Pranjal in Events/20251120_155544.webp';
 
 interface EventImage {
   src: string;
@@ -222,11 +222,11 @@ export default function EventsGallerySection() {
   }, [lightboxIndex, handlePrev, handleNext]);
 
   return (
-    <section id="events" className="relative py-20 md:py-32 overflow-hidden border-b border-white/8 bg-[#010308]">
+    <section id="events" className="relative py-20 md:py-8 overflow-hidden  bg-[#010308]">
 
       {/* Background glow */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-[-100px] left-[50%] -translate-x-1/2 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.15)_0%,transparent_60%)] blur-[50px]" />
+        <div className="absolute -top-25 left-[50%] -translate-x-1/2 w-200 h-200 bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.15)_0%,transparent_60%)] blur-[50px]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
@@ -237,17 +237,17 @@ export default function EventsGallerySection() {
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#0080C7]/30 bg-[#0080C7]/5 mb-6 shadow-[0_0_15px_rgba(0,128,199,0.1)] text-[10px] font-bold tracking-widest uppercase text-[#33a8ff]">
               Pranjal In Events
             </span>
-            
+
             <div className="relative mb-6">
               <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white mb-2 max-w-2xl">
-                Speaking & Mentoring <br /> 
-                <span className="text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.4)]">In Action</span>
+                Speaking & Mentoring <br />
+                <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">In Action</span>
               </h2>
               {/* Horizontal flare line (centered) */}
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_15px_rgba(0,128,199,0.9)] opacity-80" />
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_15px_rgba(0,128,199,0.9)] opacity-80" />
             </div>
 
-            <p className="text-[#a1a1aa] text-sm md:text-base lg:text-lg max-w-2xl font-light leading-relaxed">
+            <p className="text-[#d4d4e2] text-sm md:text-base lg:text-lg max-w-2xl font-light leading-relaxed">
               Interactive workshops, executive strategy masterclasses, and keynote panels in action.
             </p>
           </div>
@@ -404,8 +404,8 @@ export default function EventsGallerySection() {
                     key={thumb.src}
                     onClick={() => setLightboxIndex(idx)}
                     className={`w-14 h-14 rounded-lg overflow-hidden shrink-0 border transition-all duration-300 cursor-pointer snap-center ${lightboxIndex === idx
-                        ? 'border-[#0080C7] scale-110 shadow-[0_0_15px_rgba(0,128,199,0.5)] brightness-110 z-10'
-                        : 'border-white/20 opacity-40 hover:opacity-85 hover:scale-105'
+                      ? 'border-[#0080C7] scale-110 shadow-[0_0_15px_rgba(0,128,199,0.5)] brightness-110 z-10'
+                      : 'border-white/20 opacity-40 hover:opacity-85 hover:scale-105'
                       }`}
                   >
                     <img src={thumb.src} alt={thumb.title} className="w-full h-full object-cover" />

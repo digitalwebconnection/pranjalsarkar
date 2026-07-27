@@ -4,7 +4,7 @@ export default function FinalCTASection() {
   return (
     <section
       id="final-cta"
-      className="relative h-[400px] md:h-[420px] flex items-center justify-center overflow-hidden border-b border-white/8 bg-[#010308] group"
+      className="relative h-100 md:h-auto flex items-center justify-center overflow-hidden  bg-[#010308] group"
       style={{ clipPath: 'inset(0)' }}
     >
 
@@ -15,19 +15,19 @@ export default function FinalCTASection() {
       />
 
       {/* Gradient Mask Overlay matching new dark blue aesthetic */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#010308]/90 via-[#010308]/50 to-[#010308]/90 z-0 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-b from-[#010308]/50 via-[#010308]/30 to-[#010308]/20 z-0 pointer-events-none" />
 
       {/* Core background glow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center">
-        <div className="w-[800px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.15)_0%,transparent_60%)] blur-[40px]" />
+        <div className="w-200 h-100 bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.15)_0%,transparent_60%)] blur-2xl" />
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 md:px-8 relative z-10 text-center w-full mt-4">
+      <div className="max-w-7xl mx-auto px-6 md:px-6 py-10 relative z-10 text-center w-full ">
 
         <div className="flex flex-col items-center justify-center">
 
           {/* Label Badge */}
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center mb-4">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase text-[#33a8ff] bg-[#0080C7]/5 border border-[#0080C7]/30 shadow-[0_0_15px_rgba(0,128,199,0.1)]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#33a8ff] animate-pulse shrink-0 shadow-[0_0_8px_rgba(51,168,255,0.8)]" />
               Limited Seats — Cohort 2
@@ -38,14 +38,14 @@ export default function FinalCTASection() {
             {/* Title */}
             <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white mb-2">
               The director role <br className="sm:hidden" />
-              <span className="text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.4)]">won't wait forever.</span>
+              <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">won't wait forever.</span>
             </h2>
             {/* Horizontal flare line (centered) */}
-            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-48 md:w-80 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_15px_rgba(0,128,199,0.9)] opacity-80" />
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[rgba(24,37,226,1)] to-transparent shadow-[0_0_15px_rgba(24,37,226,0.9)] opacity-80" />
           </div>
 
           {/* Sub */}
-          <p className="text-[#a1a1aa] text-sm md:text-base lg:text-lg leading-8 max-w-3xl mx-auto mb-8 font-light">
+          <p className="text-[#fbfbff] text-sm md:text-base lg:text-lg leading-8 max-w-4xl mx-auto mb-8 font-light">
             Twenty seats. One cohort. A 12-week crucible that builds the kind of product leader companies fight to promote.
           </p>
 
@@ -53,13 +53,13 @@ export default function FinalCTASection() {
           <div className="flex flex-row gap-3.5 justify-center items-center mb-6 w-full sm:w-auto">
             <a
               href="#contact"
-              className="px-6 py-2.5 rounded-[6px] text-neutral-950 text-[13px] md:text-[14px] font-bold tracking-wide no-underline transition-all duration-200 bg-[#0080C7] hover:bg-[#009CEE] hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(0,128,199,0.65)]"
+              className="px-6 py-2.5 rounded-md text-neutral-950 text-[13px] md:text-[14px] font-bold tracking-wide no-underline transition-all duration-200 bg-[#0080C7] hover:bg-[#009CEE] hover:-translate-y-0.5 shadow-[0_0_24px_rgba(0,128,199,0.65)]"
             >
               Apply for Cohort 2 →
             </a>
             <a
               href="#judgment"
-              className="px-6 py-2.5 rounded-[6px] text-white text-[13px] md:text-[14px] font-semibold tracking-wide no-underline transition-all duration-200 border border-white/15 bg-white/3 hover:bg-white/8 hover:-translate-y-0.5 hover:border-white/30"
+              className="px-6 py-2.5 rounded-md text-white text-[13px] md:text-[14px] font-semibold tracking-wide no-underline transition-all duration-200 border border-white/15 bg-white/3 hover:bg-white/8 hover:-translate-y-0.5 hover:border-white/30"
             >
               Curriculum
             </a>

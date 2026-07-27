@@ -1,5 +1,5 @@
 import logoAmazon from '../../assets/logos/BL-AMAZON.webp';
-import logoBoA from '../../assets/logos/Bank of America.jpg';
+import logoBoA from '../../assets/logos/Bank of America.webp';
 import logoEpam from '../../assets/logos/BL-EPAM.webp';
 import logoEricson from '../../assets/logos/BL-Ericson.webp';
 import logoFedEx from '../../assets/logos/BL-FedEx.webp';
@@ -12,7 +12,7 @@ import logoPaloalto from '../../assets/logos/BL-PaloAlto.webp';
 import logoSynchrony from '../../assets/logos/BL-Synchrony.webp';
 import logoTcs from '../../assets/logos/BL-TCS.webp';
 import logoTdbank from '../../assets/logos/BL-TDBank.webp';
-import logoValuelabs from '../../assets/logos/ValueLabs.jpg';
+import logoValuelabs from '../../assets/logos/ValueLabs.webp';
 
 const companies = [
   { name: 'Amazon', logo: logoAmazon },
@@ -56,10 +56,10 @@ export default function LogosSection() {
       <div className="max-w-3xl mx-auto px-6 md:px-8 relative z-10 mb-16">
         <h2 className="text-center font-serif text-white text-3xl md:text-5xl font-bold leading-tight tracking-tight">
           Pranjal has worked closely <br /> 
-          <span className="relative inline-block text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.6)] mt-2">
+          <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)] mt-2">
             with product leaders at:
             {/* Horizontal flare line (no white dot) */}
-            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
           </span> 
         </h2>
       </div>
@@ -67,8 +67,8 @@ export default function LogosSection() {
       {/* Marquee wrapper */}
       <div className="relative overflow-hidden w-full py-4 z-10">
         {/* Edge fade masks */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-[#000001] to-transparent z-20 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-[#000001] to-transparent z-20 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-linear-to-r from-[#000001] to-transparent z-20 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-linear-to-l from-[#000001] to-transparent z-20 pointer-events-none" />
 
         <div className="logo-marquee flex animate-marquee items-center">
           {all.map((c, i) => (

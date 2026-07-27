@@ -97,10 +97,10 @@ export default function ProgramIntroSection() {
         >
           <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white mb-8">
             AI Product  <br />
-            <span className="relative inline-block text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.6)]">
+            <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
               Leadership Studio
               {/* Horizontal flare line */}
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
             </span> 
           </h2>
           <p className="text-gray-300 text-sm md:text-[15px] lg:text-[17px] leading-8 font-sans">
@@ -118,22 +118,37 @@ export default function ProgramIntroSection() {
         >
           {details.map((d, i) => {
             const IconComponent = d.icon;
+            const isFirst = i === 0;
             return (
               <motion.div 
                 key={i} 
                 variants={itemVariants}
-                className="p-5 bg-[#0a0c10] border border-[#0080C7]/40 rounded-xl flex flex-col gap-4 transition-all duration-300 shadow-[0_0_20px_rgba(0,128,199,0.15)] hover:shadow-[0_0_40px_rgba(0,128,199,0.4)] hover:border-[#0080C7]/70 group relative overflow-hidden"
+                className={`p-5 rounded-xl flex flex-col gap-4 transition-all duration-300 group relative overflow-visible ${
+                  isFirst 
+                    ? 'shadow-[-30px_-30px_60px_-15px_rgba(0,68,204,0.8)] hover:shadow-[-40px_-40px_80px_-20px_rgba(0,68,204,1)]'
+                    : 'bg-[#0a0c10] border border-white/20 hover:border-white/40 overflow-hidden'
+                }`}
+                style={isFirst ? {
+                  borderTop: '1.5px solid transparent',
+                  borderLeft: '1.5px solid transparent',
+                  background: 'linear-gradient(#0a0c10, #0a0c10) padding-box, linear-gradient(to bottom right, #0044cc, transparent 70%) border-box'
+                } : undefined}
               >
-                {/* Subtle inner top flare */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7]/70 to-transparent shadow-[0_0_10px_rgba(0,128,199,0.8)] opacity-40 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,128,199,0.2),transparent_70%)] pointer-events-none opacity-40 group-hover:opacity-100 transition-opacity" />
+                {/* Subtle inner top flare - only on first highlighted box */}
+                {isFirst && (
+                  <>
+                    <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#0080C7]/70 to-transparent shadow-[0_0_10px_rgba(0,128,199,0.8)] opacity-40 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,128,199,0.2),transparent_70%)] pointer-events-none opacity-40 group-hover:opacity-100 transition-opacity" />
+                  </>
+                )}
 
-                <div className="w-10 h-10 rounded-lg bg-[#0080C7]/10 border border-[#0080C7]/50 flex items-center justify-center text-[#0080C7] shadow-[0_0_15px_rgba(0,128,199,0.3)] group-hover:shadow-[0_0_25px_rgba(0,128,199,0.6)] transition-shadow">
-                  <IconComponent size={18} className="drop-shadow-[0_0_8px_rgba(0,128,199,0.8)]" />
+                <div className="w-10 h-10 rounded-lg bg-[#0044cc]/10 border border-[#0044cc]/50 flex items-center justify-center text-[#0044cc] shadow-[0_0_15px_rgba(0,68,204,0.3)] group-hover:shadow-[0_0_25px_rgba(0,68,204,0.6)] transition-shadow">
+                  <IconComponent size={18} className="drop-shadow-[0_0_8px_rgba(0,68,204,0.8)]" />
                 </div>
-                <div>
+                <div className="flex flex-col flex-1">
                   <span className="block text-white/50 text-[10px] font-bold uppercase tracking-widest mb-1.5">{d.label}</span>
-                  <span className="font-serif text-white text-sm md:text-base font-bold tracking-tight leading-tight group-hover:text-[#0080C7] transition-colors">{d.value}</span>
+                  <span className="font-serif text-white text-sm md:text-base font-bold tracking-tight leading-tight group-hover:text-[#0044cc] transition-colors mb-4">{d.value}</span>
+                  <div className="mt-auto w-12 h-0.5 bg-linear-to-r from-[#0044cc] to-transparent shadow-[0_0_8px_rgba(0,68,204,0.9)] opacity-80" />
                 </div>
               </motion.div>
             );
@@ -150,7 +165,7 @@ export default function ProgramIntroSection() {
           >
             What You Get Inside the Studio
             {/* Horizontal flare line under headline */}
-            <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 w-48 md:w-64 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
+            <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 w-48 md:w-64 h-0.5 bg-linear-to-r from-transparent via-[#0044cc] to-transparent shadow-[0_0_20px_rgba(0,68,204,0.9)] opacity-90" />
           </motion.h3>
 
           <motion.div 
@@ -166,18 +181,18 @@ export default function ProgramIntroSection() {
                 <motion.div 
                   key={i} 
                   variants={itemVariants}
-                  className="bg-[#0a0c10] border border-[#0080C7]/20 p-6 md:p-8 rounded-xl flex gap-5 transition-all duration-300 relative group overflow-hidden shadow-[0_0_15px_rgba(0,128,199,0.05)] hover:shadow-[0_0_30px_rgba(0,128,199,0.2)] hover:border-[#0080C7]/50"
+                  className="bg-[#0a0c10] border border-[#0044cc]/20 p-4 md:p-6 rounded-xl flex gap-5 transition-all duration-300 relative group overflow-hidden shadow-[0_0_15px_rgba(0,68,204,0.05)] hover:shadow-[0_0_30px_rgba(0,68,204,0.2)] hover:border-[#0044cc]/50"
                 >
                   {/* Decorative glowing gradient border on hover */}
-                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.1),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,68,204,0.1),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   
                   {/* Vertical left glowing line */}
-                  <div className="w-1.5 rounded-full shrink-0 bg-gradient-to-b from-[#0080C7] to-[#0080C7]/20 shadow-[0_0_15px_rgba(0,128,199,0.8)]" />
+                  <div className="w-0.5 rounded-full shrink-0 bg-linear-to-b from-[#0044cc] to-[#0044cc]/20 shadow-[0_0_15px_rgba(0,68,204,0.8)]" />
                   
                   <div className="flex-1 relative z-10">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-full bg-[#0080C7]/10 border border-[#0080C7]/30 flex items-center justify-center text-[#0080C7] shrink-0 shadow-[0_0_10px_rgba(0,128,199,0.2)] group-hover:shadow-[0_0_15px_rgba(0,128,199,0.5)]">
-                        <IconComp size={14} className="drop-shadow-[0_0_5px_rgba(0,128,199,0.5)]" />
+                      <div className="w-8 h-8 rounded-full bg-[#0044cc]/10 border border-[#0044cc]/30 flex items-center justify-center text-[#0044cc] shrink-0 shadow-[0_0_10px_rgba(0,68,204,0.2)] group-hover:shadow-[0_0_15px_rgba(0,68,204,0.5)]">
+                        <IconComp size={14} className="drop-shadow-[0_0_5px_rgba(0,68,204,0.5)]" />
                       </div>
                       <h4 className="font-serif text-white font-bold text-lg md:text-xl tracking-tight drop-shadow-md">{w.heading}</h4>
                     </div>

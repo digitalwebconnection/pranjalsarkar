@@ -43,8 +43,14 @@ const previewVideos: VideoData[] = [
     badge: 'PEER REVIEW'
   }
 ];
- 
-function VideoCard({ video }: { video: VideoData }) {
+
+interface VideoCardProps {
+  video: VideoData;
+  activeVideoId: number | null;
+  setActiveVideoId: React.Dispatch<React.SetStateAction<number | null>>;
+}
+
+function VideoCard({ video, activeVideoId, setActiveVideoId }: VideoCardProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -53,6 +59,15 @@ function VideoCard({ video }: { video: VideoData }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const controlsTimeoutRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (activeVideoId !== video.id) {
+      if (videoRef.current && !videoRef.current.paused) {
+        videoRef.current.pause();
+      }
+      setIsPlaying(false);
+    }
+  }, [activeVideoId, video.id]);
 
   useEffect(() => {
     return () => {
@@ -65,12 +80,22 @@ function VideoCard({ video }: { video: VideoData }) {
   const togglePlay = (e?: React.MouseEvent) => {
     e?.stopPropagation();
     if (!videoRef.current) return;
-    if (isPlaying) {
+    if (activeVideoId === video.id && isPlaying) {
       videoRef.current.pause();
+      setIsPlaying(false);
+      setActiveVideoId(null);
     } else {
       videoRef.current.play();
+      setIsPlaying(true);
+      setActiveVideoId(video.id);
     }
-    setIsPlaying(!isPlaying);
+  };
+
+  const handleEnded = () => {
+    setIsPlaying(false);
+    if (activeVideoId === video.id) {
+      setActiveVideoId(null);
+    }
   };
 
   const handleTimeUpdate = () => {
@@ -117,6 +142,7 @@ function VideoCard({ video }: { video: VideoData }) {
     videoRef.current.currentTime = 0;
     videoRef.current.play();
     setIsPlaying(true);
+    setActiveVideoId(video.id);
   };
 
   const handleMouseMove = () => {
@@ -142,9 +168,9 @@ function VideoCard({ video }: { video: VideoData }) {
     <div className="flex flex-col rounded-xl bg-[#0a0c10] border border-[#0080C7]/40 p-1.5 transition-all duration-300 hover:border-[#0080C7]/70 shadow-[0_0_25px_rgba(0,128,199,0.2)] hover:shadow-[0_0_50px_rgba(0,128,199,0.4)] group h-full relative overflow-hidden">
       {/* Intense inner radial glow for the card */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,128,199,0.25),transparent_70%)] pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity" />
-      
+
       {/* Video Frame in Reel Size (9:16) */}
-      <div 
+      <div
         ref={containerRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={() => isPlaying && setShowControls(false)}
@@ -155,7 +181,7 @@ function VideoCard({ video }: { video: VideoData }) {
           src={video.url}
           onTimeUpdate={handleTimeUpdate}
           onLoadedMetadata={handleLoadedMetadata}
-          onEnded={() => setIsPlaying(false)}
+          onEnded={handleEnded}
           onClick={() => togglePlay()}
           className="w-full h-full object-cover cursor-pointer"
           playsInline
@@ -163,7 +189,7 @@ function VideoCard({ video }: { video: VideoData }) {
 
         {/* Big Center Play Icon - Scaled for Reel container */}
         {!isPlaying && (
-          <div 
+          <div
             onClick={() => togglePlay()}
             className="absolute inset-0 flex items-center justify-center bg-black/45 cursor-pointer z-10"
           >
@@ -179,10 +205,9 @@ function VideoCard({ video }: { video: VideoData }) {
         </div>
 
         {/* Reel Controls Overlay */}
-        <div 
-          className={`absolute bottom-0 left-0 right-0 p-3 bg-linear-to-t from-black/95 via-black/50 to-transparent z-20 transition-all duration-200 flex flex-col gap-1.5 ${
-            showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'
-          }`}
+        <div
+          className={`absolute bottom-0 left-0 right-0 p-3 bg-linear-to-t from-black/95 via-black/50 to-transparent z-20 transition-all duration-200 flex flex-col gap-1.5 ${showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'
+            }`}
         >
           {/* Timeline slider */}
           <div className="flex items-center gap-2 w-full">
@@ -228,14 +253,16 @@ function VideoCard({ video }: { video: VideoData }) {
 }
 
 export default function VideoSection() {
+  const [activeVideoId, setActiveVideoId] = useState<number | null>(null);
+
   return (
     <section id="preview" className="relative py-12 md:py-20 overflow-hidden border-b border-white/8 bg-[#000001]">
       {/* Background Decorative Atmospheric Glow */}
-      <div className="absolute top-0 left-0 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_top_left,rgba(0,128,199,0.15)_0%,transparent_60%)] pointer-events-none" />
+      <div className="absolute -top-40 -left-40 w-150 h-150 rounded-full z-0 bg-[#0044cc] blur-[150px] opacity-30 pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[70%] h-[70%] z-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(0,128,199,0.1)_0%,transparent_60%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
-        
+
         {/* Header Block */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#0080C7]/10 border border-[#0080C7]/30 rounded-md text-[10px] font-bold tracking-wider uppercase text-[#0080C7] mb-6 shadow-[0_0_15px_rgba(0,128,199,0.1)]">
@@ -243,10 +270,10 @@ export default function VideoSection() {
           </span>
           <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white mb-8">
             Go inside the <br className="md:hidden" />
-            <span className="relative inline-block text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.6)]">
+            <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
               Leadership Studio.
               {/* Horizontal flare line (no white dot) */}
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
             </span>
           </h2>
           <p className="text-gray-300 text-sm md:text-[15px] lg:text-[17px] leading-8 max-w-2xl mx-auto font-sans">
@@ -257,11 +284,16 @@ export default function VideoSection() {
         {/* 4-Video Reel-Style Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {previewVideos.map((video) => (
-            <VideoCard key={video.id} video={video} />
+            <VideoCard
+              key={video.id}
+              video={video}
+              activeVideoId={activeVideoId}
+              setActiveVideoId={setActiveVideoId}
+            />
           ))}
         </div>
 
       </div>
     </section>
   );
-}
+}

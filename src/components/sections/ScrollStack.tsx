@@ -50,6 +50,9 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   const isUpdatingRef = useRef(false);
   const cleanupRef = useRef<(() => void) | null>(null);
 
+  const cachedOffsetsRef = useRef<Map<HTMLElement, number>>(new Map());
+  const tickingRef = useRef(false);
+
   const calculateProgress = useCallback((scrollTop: number, start: number, end: number) => {
     if (scrollTop < start) return 0;
     if (scrollTop > end) return 1;
@@ -66,7 +69,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   const getScrollData = useCallback(() => {
     if (useWindowScroll) {
       return {
-        scrollTop: window.scrollY,
+        scrollTop: window.scrollY || window.pageYOffset || document.documentElement.scrollTop,
         containerHeight: window.innerHeight,
         scrollContainer: document.documentElement
       };
@@ -80,30 +83,30 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     }
   }, [useWindowScroll]);
 
-  // Static document-relative offset traversal to prevent translation feedback loop
-  const getElementOffset = useCallback(
-    (element: HTMLElement) => {
-      let top = 0;
-      let el: HTMLElement | null = element;
-      
-      if (useWindowScroll) {
-        while (el) {
-          top += el.offsetTop;
-          el = el.offsetParent as HTMLElement | null;
-        }
-        return top;
-      } else {
-        // In local scroll, we only care about the offset relative to our scrollerRef
-        const scroller = scrollerRef.current;
-        while (el && el !== scroller) {
-          top += el.offsetTop;
-          el = el.offsetParent as HTMLElement | null;
-        }
-        return top;
-      }
-    },
-    [useWindowScroll]
-  );
+  // Cached document-relative offset traversal to eliminate layout thrashing during scroll
+  const getElementOffset = useCallback((element: HTMLElement) => {
+    if (cachedOffsetsRef.current.has(element)) {
+      return cachedOffsetsRef.current.get(element)!;
+    }
+    let top = 0;
+    let el: HTMLElement | null = element;
+    while (el) {
+      top += el.offsetTop;
+      el = el.offsetParent as HTMLElement | null;
+    }
+    cachedOffsetsRef.current.set(element, top);
+    return top;
+  }, []);
+
+  const recalculateOffsets = useCallback(() => {
+    cachedOffsetsRef.current.clear();
+    cardsRef.current.forEach((card) => {
+      if (card) getElementOffset(card);
+    });
+    const scroller = scrollerRef.current;
+    const endEl = scroller ? (scroller.querySelector('.scroll-stack-end') as HTMLElement) : null;
+    if (endEl) getElementOffset(endEl);
+  }, [getElementOffset]);
 
   const updateCardTransforms = useCallback(() => {
     if (!cardsRef.current.length || isUpdatingRef.current) return;
@@ -114,9 +117,10 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     const stackPositionPx = parsePercentage(stackPosition, containerHeight);
     const scaleEndPositionPx = parsePercentage(scaleEndPosition, containerHeight);
 
-    const endElement = useWindowScroll
-      ? (document.querySelector('.scroll-stack-end') as HTMLElement)
-      : (scrollerRef.current?.querySelector('.scroll-stack-end') as HTMLElement);
+    const scroller = scrollerRef.current;
+    const endElement = scroller
+      ? (scroller.querySelector('.scroll-stack-end') as HTMLElement)
+      : (document.querySelector('.scroll-stack-end') as HTMLElement);
 
     const endElementTop = endElement ? getElementOffset(endElement) : 0;
 
@@ -172,17 +176,19 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       const lastTransform = lastTransformsRef.current.get(i);
       const hasChanged =
         !lastTransform ||
-        Math.abs(lastTransform.translateY - newTransform.translateY) > 0.1 ||
-        Math.abs(lastTransform.scale - newTransform.scale) > 0.001 ||
-        Math.abs(lastTransform.rotation - newTransform.rotation) > 0.1 ||
-        Math.abs(lastTransform.blur - newTransform.blur) > 0.1;
+        Math.abs(lastTransform.translateY - newTransform.translateY) > 0.05 ||
+        Math.abs(lastTransform.scale - newTransform.scale) > 0.0005 ||
+        Math.abs(lastTransform.rotation - newTransform.rotation) > 0.05 ||
+        Math.abs(lastTransform.blur - newTransform.blur) > 0.05;
 
       if (hasChanged) {
         const transform = `translate3d(0, ${newTransform.translateY}px, 0) scale(${newTransform.scale}) rotate(${newTransform.rotation}deg)`;
         const filter = newTransform.blur > 0 ? `blur(${newTransform.blur}px)` : '';
 
         card.style.transform = transform;
-        card.style.filter = filter;
+        if (card.style.filter !== filter) {
+          card.style.filter = filter;
+        }
 
         lastTransformsRef.current.set(i, newTransform);
       }
@@ -207,7 +213,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     baseScale,
     rotationAmount,
     blurAmount,
-    useWindowScroll,
     onStackComplete,
     calculateProgress,
     parsePercentage,
@@ -216,18 +221,28 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   ]);
 
   const handleScroll = useCallback(() => {
-    updateCardTransforms();
+    if (!tickingRef.current) {
+      tickingRef.current = true;
+      requestAnimationFrame(() => {
+        updateCardTransforms();
+        tickingRef.current = false;
+      });
+    }
   }, [updateCardTransforms]);
 
   const setupLenis = useCallback(() => {
+    const onResize = () => {
+      recalculateOffsets();
+      handleScroll();
+    };
+
     if (useWindowScroll) {
-      // In window scroll mode, bind directly to native window scroll to prevent hijacking
       window.addEventListener('scroll', handleScroll, { passive: true });
-      window.addEventListener('resize', handleScroll, { passive: true });
+      window.addEventListener('resize', onResize, { passive: true });
       
       cleanupRef.current = () => {
         window.removeEventListener('scroll', handleScroll);
-        window.removeEventListener('resize', handleScroll);
+        window.removeEventListener('resize', onResize);
       };
       return null;
     } else {
@@ -249,6 +264,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       });
 
       lenis.on('scroll', handleScroll);
+      window.addEventListener('resize', onResize, { passive: true });
 
       const raf = (time: number) => {
         lenis.raf(time);
@@ -259,6 +275,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       lenisRef.current = lenis;
       
       cleanupRef.current = () => {
+        window.removeEventListener('resize', onResize);
         if (animationFrameRef.current) {
           cancelAnimationFrame(animationFrameRef.current);
         }
@@ -268,7 +285,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       };
       return lenis;
     }
-  }, [handleScroll, useWindowScroll]);
+  }, [handleScroll, useWindowScroll, recalculateOffsets]);
 
   useLayoutEffect(() => {
     const scroller = scrollerRef.current;

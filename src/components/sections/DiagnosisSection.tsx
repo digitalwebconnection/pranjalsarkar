@@ -37,7 +37,7 @@ const FailureIcon = () => (
   </div>
 );
 
-const StatRing = ({ value, label, isActive }: { value: number; label: string; isActive: boolean }) => {
+const StatRing = ({ value, label }: { value: number; label?: string; isActive?: boolean }) => {
   const r = 22;
   const stroke = 3;
   const circ = 2 * Math.PI * r;
@@ -50,23 +50,21 @@ const StatRing = ({ value, label, isActive }: { value: number; label: string; is
           cx="32"
           cy="32"
           r={r}
-          className="stroke-white/[0.04] fill-none"
+          className="stroke-white/4 fill-none"
           strokeWidth={stroke}
         />
         <circle
           cx="32"
           cy="32"
           r={r}
-          className={`fill-none transition-all duration-700 ease-out ${isActive ? 'stroke-[#0080C7]' : 'stroke-white/80'
-            }`}
+          className="fill-none transition-all duration-700 ease-out stroke-[#2563EB]"
           strokeWidth={stroke}
           strokeDasharray={circ}
           strokeDashoffset={offset}
           strokeLinecap="round"
         />
       </svg>
-      <span className={`absolute text-[12px] font-['Outfit',sans-serif] font-bold ${isActive ? 'text-[#0080C7]' : 'text-white/90'
-        }`}>
+      <span className="absolute text-[12px] font-['Outfit',sans-serif] font-bold text-[#2563EB]">
         {label}
       </span>
     </div>
@@ -144,9 +142,14 @@ export default function DiagnosisSection() {
 
   return (
     <section id="diagnosis" className="relative py-12 md:py-20 overflow-hidden border-b border-white/8 ">
-      {/* Background Radial Glows */}
-      <div className="absolute top-1/4 -left-1/4 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.12)_0%,transparent_60%)] pointer-events-none" />
-      <div className="absolute top-1/4 -right-1/4 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.12)_0%,transparent_60%)] pointer-events-none" />
+      {/* Background Dots Pattern & Glows */}
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(rgba(255,255,255,0.35)_1.5px,transparent_1.5px)] bg-size-[24px_24px] mask-[radial-gradient(ellipse_80%_100%_at_center,transparent_40%,black_100%)] opacity-100 pointer-events-none" />
+      
+      {/* Intense Top-Right Blue Glow */}
+      <div className="absolute top-[-5%] right-[-10%] w-[55%] h-[75%] z-0 bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.45)_0%,transparent_70%)] blur-[90px] pointer-events-none" />
+      
+      {/* Subtle Left Blue Glow */}
+      <div className="absolute top-[15%] left-[-15%] w-[45%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.25)_0%,transparent_60%)] blur-[80px] pointer-events-none" />
 
       {/* Dynamic Progress Bar Animation Keyframe */}
       <style dangerouslySetInnerHTML={{
@@ -169,10 +172,10 @@ export default function DiagnosisSection() {
           </span>
           <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-6">
             Why this keeps happening <br />
-            <span className="relative inline-block text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.6)]">
+            <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
               and the data behind it.
               {/* Horizontal flare line */}
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
             </span>
           </h2>
           <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-4xl mx-auto mt-4">
@@ -188,7 +191,7 @@ export default function DiagnosisSection() {
         >
           {/* Left Column: Interactive Selector Cards */}
           <div className="col-span-5 flex flex-col gap-4">
-            <div className="text-xs font-bold text-white/90 uppercase tracking-wider mb-2 pl-2">
+            <div className="text-xs font-bold text-[#2563EB] uppercase tracking-wider mb-2 pl-2">
               Select Data Point
             </div>
 
@@ -199,8 +202,8 @@ export default function DiagnosisSection() {
                   key={item.id}
                   onClick={() => setActiveIndex(idx)}
                   className={`relative flex items-center gap-5 p-5 rounded-xl text-left border transition-all duration-300 group cursor-pointer ${isActive
-                      ? 'bg-[#0a0c10] border-[#0080C7] shadow-[0_0_20px_rgba(0,128,199,0.3)]'
-                      : 'bg-[#0a0c10]/50 border-[#0080C7]/10 hover:border-[#0080C7]/30 hover:bg-[#0a0c10] hover:shadow-[0_0_15px_rgba(0,128,199,0.15)]'
+                    ? 'bg-[#0a0c10] border-[#0080C7] shadow-[0_0_20px_rgba(0,128,199,0.3)]'
+                    : 'bg-[#0a0c10]/50 border-[#0080C7]/10 hover:border-[#0080C7]/30 hover:bg-[#0a0c10] hover:shadow-[0_0_15px_rgba(0,128,199,0.15)]'
                     }`}
                 >
                   {/* Indicator arrow pointing to the detailed report */}
@@ -211,8 +214,7 @@ export default function DiagnosisSection() {
                   <StatRing value={item.statValue} label={item.statNum} isActive={isActive} />
 
                   <div className="flex-1 min-w-0">
-                    <span className={`text-[10px] font-bold uppercase tracking-wider mb-1 block ${isActive ? 'text-[#0080C7]' : 'text-white/90'
-                      }`}>
+                    <span className="text-[10px] font-bold uppercase tracking-wider mb-1 block text-[#2563EB]">
                       {item.statLabel}
                     </span>
                     <p className={`text-[14px] font-semibold leading-snug line-clamp-2 ${isActive ? 'text-white' : 'text-white/90 group-hover:text-white/80'
@@ -228,23 +230,23 @@ export default function DiagnosisSection() {
           {/* Right Column: Dynamic Analysis Report Card */}
           <div className="col-span-7 flex">
             <div className="w-full rounded-2xl bg-[#0a0c10] border border-[#0080C7]/20 p-6 md:p-10 flex flex-col justify-between relative overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(0,128,199,0.08)] hover:shadow-[0_0_30px_rgba(0,128,199,0.15)]">
-              
+
               {/* Permanent Top Edge Glow and Inner Gradient */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
-              <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-[#0080C7]/[0.08] to-transparent pointer-events-none" />
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
+              <div className="absolute top-0 left-0 right-0 h-48 bg-linear-to-b from-[#0080C7]/8 to-transparent pointer-events-none" />
 
               {/* Dynamic visual progress line loader */}
               {isAutoplay && (
                 <div
                   key={activeIndex}
-                  className="absolute top-0 left-0 h-[2px] bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)] animate-progress-timer"
+                  className="absolute top-0 left-0 h-0.5 bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)] animate-progress-timer"
                 />
               )}
 
               <div>
                 {/* Metric Header */}
                 <div className="flex items-center justify-between gap-4 mb-8">
-                  <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#0080C7] bg-[#0080C7]/10 border border-[#0080C7]/20 px-3 py-1 rounded-[4px] shadow-[0_0_10px_rgba(0,128,199,0.1)]">
+                  <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#0080C7] bg-[#0080C7]/10 border border-[#0080C7]/20 px-3 py-1 rounded-sm shadow-[0_0_10px_rgba(0,128,199,0.1)]">
                     ANALYSIS REPORT
                   </span>
                   <div className="flex items-center gap-2 text-xs text-white/80 font-mono tracking-widest uppercase">
@@ -255,12 +257,21 @@ export default function DiagnosisSection() {
 
                 {/* Stat Headline */}
                 <h3 className="font-serif text-xl md:text-[32px] font-bold text-white leading-[1.3] mb-6">
-                  {diagnosisData[activeIndex].statDetail.split('MORE').map((part, i, arr) => 
+                  {diagnosisData[activeIndex].statDetail.split('MORE').map((part, i, arr) => (
                     <span key={i}>
-                      {part}
-                      {i < arr.length - 1 && <span className="text-[#0080C7] drop-shadow-[0_0_10px_rgba(0,128,199,0.5)]">MORE</span>}
+                      {part.split(diagnosisData[activeIndex].statNum).map((subPart, j, subArr) => (
+                        <span key={j}>
+                          {subPart}
+                          {j < subArr.length - 1 && (
+                            <span className="text-[#2563EB]">{diagnosisData[activeIndex].statNum}</span>
+                          )}
+                        </span>
+                      ))}
+                      {i < arr.length - 1 && (
+                        <span className="text-[#2563EB] drop-shadow-[0_0_10px_rgba(37,99,235,0.5)]">MORE</span>
+                      )}
                     </span>
-                  )}
+                  ))}
                 </h3>
 
                 <div className="w-full h-px bg-white/50 mb-8" />
@@ -320,14 +331,14 @@ export default function DiagnosisSection() {
         {/* Mobile & Tablet Layout (Fully expanded cards for ease of reading) */}
         <div className="lg:hidden flex flex-col gap-6">
           {diagnosisData.map((item) => (
-            <div key={item.id} className="rounded-[16px] bg-[#121212] border border-white/8 p-6 md:p-8 flex flex-col relative overflow-hidden transition-all duration-300 hover:border-[#0080C7]/30 hover:shadow-[0_0_30px_rgba(0,128,199,0.15)]">
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7]/30 to-transparent" />
+            <div key={item.id} className="rounded-2xl bg-[#121212] border border-white/8 p-6 md:p-8 flex flex-col relative overflow-hidden transition-all duration-300 hover:border-[#0080C7]/30 hover:shadow-[0_0_30px_rgba(0,128,199,0.15)]">
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#0080C7]/30 to-transparent" />
 
               {/* Stat Circle & Label Row */}
               <div className="flex items-center gap-4 mb-5">
                 <StatRing value={item.statValue} label={item.statNum} isActive={true} />
                 <div>
-                  <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#0080C7]">
+                  <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#2563EB]">
                     {item.statLabel}
                   </span>
                   <h3 className="font-['Outfit',sans-serif] text-sm md:text-base font-bold text-white leading-snug mt-0.5">

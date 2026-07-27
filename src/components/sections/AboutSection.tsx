@@ -1,10 +1,33 @@
 import { motion } from 'motion/react';
-import psHeadshot from '../../assets/pranjalsarkar/5.webp';
-import { Mountain, TrendingUp, Users, Globe } from 'lucide-react';
+import psHeadshot from '../../assets/pranjalsarkar/19.webp';
+import { Users, Globe } from 'lucide-react';
+
+const MountainFlagIcon = ({ size = 24, strokeWidth = 1.5, className = "" }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" className={className}>
+    {/* Mountain */}
+    <path d="m7 7 4 8 5-5 5 11H3L7 7z" />
+    <path d="M5 11.5l2 1.5 2-1.5" />
+    {/* Flag */}
+    <path d="M7 7V2h5v4H7" />
+  </svg>
+);
+
+const BarChartArrowIcon = ({ size = 24, strokeWidth = 1.5, className = "" }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" className={className}>
+    {/* Bars */}
+    <path d="M2 21h20" />
+    <rect x="4" y="14" width="3" height="7" />
+    <rect x="9" y="10" width="3" height="11" />
+    <rect x="14" y="6" width="3" height="15" />
+    {/* Arrow */}
+    <path d="M2 13L19 3" />
+    <path d="M14 3h6v6" />
+  </svg>
+);
 
 const stats = [
-  { value: '10+ Yrs', label: 'Leadership', icon: Mountain },
-  { value: '$50M+', label: 'ARR Scaled', icon: TrendingUp },
+  { value: '10+ Yrs', label: 'Leadership', icon: MountainFlagIcon },
+  { value: '$50M+', label: 'ARR Scaled', icon: BarChartArrowIcon },
   { value: '200+', label: 'PMs Mentored', icon: Users },
   { value: 'Global', label: 'Speaker', icon: Globe },
 ];
@@ -65,10 +88,10 @@ export default function AboutSection() {
           </span>
           <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white max-w-4xl mx-auto">
             I do not sell skills. <br />
-            <span className="relative inline-block text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.6)]">
+            <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
               I build the mindset.
               {/* Horizontal flare line */}
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-32 md:w-64 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-32 md:w-64 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
             </span>
           </h2>
         </motion.div>
@@ -82,13 +105,10 @@ export default function AboutSection() {
             variants={itemVariants}
             {...floatAnimation}
           >
-            {/* Massive ambient backlight behind the card */}
-            <div className="absolute inset-0 bg-[#0080C7] blur-[80px] opacity-20 pointer-events-none -z-10 transition-opacity duration-500 group-hover:opacity-40" />
-            
-            <div className="relative rounded-2xl overflow-hidden border border-[#0080C7]/40 shadow-[0_0_40px_rgba(0,128,199,0.3)] transition-all duration-500 hover:shadow-[0_0_60px_rgba(0,128,199,0.5)] hover:border-[#0080C7]/70 group">
-              <div className="relative aspect-[4/5] w-full bg-[#0a0c10]">
+            <div className="relative rounded-2xl overflow-hidden border border-red/80 transition-all duration-500 hover:border-white/80 group">
+              <div className="relative aspect-4/5 w-full bg-[#0a0c10]">
                 {/* Visual shadow mask overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent z-10 pointer-events-none" />
 
                 <img
                   src={psHeadshot}
@@ -119,19 +139,18 @@ export default function AboutSection() {
             {/* Quick Metrics Row */}
             <motion.div className="grid grid-cols-2 sm:grid-cols-4 gap-4" variants={itemVariants}>
               {stats.map((s, idx) => (
-                <div key={idx} className="bg-[#0a0c10] border border-[#0080C7]/40 rounded-xl p-5 flex flex-col items-center text-center relative overflow-hidden group shadow-[0_0_25px_rgba(0,128,199,0.2)] hover:shadow-[0_0_40px_rgba(0,128,199,0.4)] hover:border-[#0080C7]/60 transition-all duration-300">
-                  {/* Top inner glow & intense radial background */}
-                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,128,199,0.2),transparent_70%)] pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity" />
-                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#0080C7]/50 to-transparent shadow-[0_0_15px_rgba(0,128,199,1)]" />
+                <div key={idx} className="bg-[#0a0c10] border border-white/5 rounded-lg p-5 flex flex-col items-start text-left relative overflow-hidden group shadow-[0_15px_30px_-10px_rgba(0,128,199,0.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-10px_rgba(0,128,199,0.4)]">
+                  {/* Left edge vertical gradient line */}
+                  <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-linear-to-b from-[#00a8ff] via-[#0080C7] to-transparent" />
                   
-                  <div className="relative mb-4 text-[#0080C7] opacity-90 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_12px_rgba(0,128,199,0.8)]">
-                    <s.icon size={26} strokeWidth={1.5} />
+                  <div className="relative mb-4 text-[#0080C7] transition-transform duration-300 group-hover:scale-110">
+                    <s.icon size={30} strokeWidth={1.5} />
                   </div>
                   
-                  <div className="relative text-lg md:text-xl font-serif font-bold text-[#0080C7] drop-shadow-[0_0_12px_rgba(0,128,199,0.9)] mb-1.5">
+                  <div className="relative text-xl md:text-2xl font-serif font-bold text-[#0080C7] mb-1.5">
                     {s.value}
                   </div>
-                  <div className="relative text-[10px] text-white/60 uppercase tracking-widest font-semibold drop-shadow-md">
+                  <div className="relative text-[10px] text-white/50 uppercase tracking-[0.2em] font-semibold">
                     {s.label}
                   </div>
                 </div>
