@@ -14,44 +14,44 @@ import {
 } from 'lucide-react';
 
 const details = [
-  { icon: Calendar, label: 'Format', value: 'Live cohort — 12 weeks' },
-  { icon: Users, label: 'Cohort Size', value: 'Max 20 participants' },
-  { icon: Clock, label: 'Time Commitment', value: '4–6 hrs/week' },
-  { icon: Globe, label: 'Mode', value: 'Online, India & SEA' },
-  { icon: Target, label: 'Ideal For', value: 'Senior PM, EM, Growth Lead' },
-  { icon: TrendingUp, label: 'Outcome', value: 'Director/Head of Product' },
+  { icon: Calendar, label: 'Format', value: 'Live Cohort • 6 Weeks' },
+  { icon: Users, label: 'Cohort Size', value: 'Maximum 20 Leaders' },
+  { icon: Clock, label: 'Commitment', value: '4–6 Hours / Week' },
+  { icon: Globe, label: 'Mode', value: 'Online • India & Global' },
+  { icon: Target, label: 'Designed For', value: 'Senior PMs • EMs • Growth Leads' },
+  { icon: TrendingUp, label: 'Outcome', value: 'Director / Head of Product' },
 ];
 
 const whatYouGet = [
   { 
     icon: Sparkles, 
-    heading: 'Live Weekly Sessions', 
-    desc: '90-minute sessions with Pranjal — not pre-recorded content. Real dialogue. Real pressure.' 
+    heading: 'Executive Learning', 
+    desc: 'Master the thinking, frameworks, and decision models behind Product Leadership.' 
   },
   { 
     icon: Compass, 
-    heading: 'Director Sim Scenarios', 
-    desc: 'Weekly "Director in the Room" simulations that put you in ambiguous, high-stakes product decisions.' 
+    heading: 'Decision Simulations', 
+    desc: 'Practice high-stakes product decisions in realistic executive scenarios.' 
   },
   { 
     icon: Users, 
-    heading: 'Peer Calibration Circles', 
-    desc: 'Small-group sessions with 4–5 peers for feedback, challenge, and cross-company perspective.' 
+    heading: 'Leadership Collaboration', 
+    desc: 'Debate ideas, challenge assumptions, and learn with experienced Product Managers.' 
   },
   { 
     icon: Award, 
-    heading: '1:1 Coaching Call', 
-    desc: 'A dedicated 45-minute session to map your specific promotion narrative and blockers.' 
+    heading: 'AI Executive Coaching', 
+    desc: 'Strengthen your judgment through conversations with AI executive advisors.' 
   },
   { 
     icon: CheckCircle, 
-    heading: 'AI Judgment Toolkit', 
-    desc: 'Frameworks and mental models for deciding with AI as a collaborator — not a crutch.' 
+    heading: 'AI Leadership Toolkit', 
+    desc: 'Build practical AI workflows that improve strategic thinking and decision-making.' 
   },
   { 
     icon: Shield, 
-    heading: 'Lifetime Alumni Network', 
-    desc: "Access to a growing network of product leaders across India's top tech companies." 
+    heading: 'Real Leadership Challenge', 
+    desc: 'Solve a real business problem and present your recommendations to experienced leaders.' 
   },
 ];
 
@@ -104,8 +104,7 @@ export default function ProgramIntroSection() {
             </span> 
           </h2>
           <p className="text-gray-300 text-sm md:text-[15px] lg:text-[17px] leading-8 font-sans">
-            A highly selective, live cohort for senior PMs, EMs, and growth leads transitioning to Director and Head of Product roles. This isn't a course. It's a <span className="text-[#0080C7] font-bold drop-shadow-[0_0_5px_rgba(0,128,199,0.5)]">crucible</span>.
-          </p>
+        An immersive leadership experience for experienced Product Managers ready to become Product Directors. Learn by making decisions—not by watching lectures.    </p>
         </motion.div>
 
         {/* Details Grid (Premium clean grid layout) */}
@@ -118,30 +117,12 @@ export default function ProgramIntroSection() {
         >
           {details.map((d, i) => {
             const IconComponent = d.icon;
-            const isFirst = i === 0;
             return (
               <motion.div 
                 key={i} 
                 variants={itemVariants}
-                className={`p-5 rounded-xl flex flex-col gap-4 transition-all duration-300 group relative overflow-visible ${
-                  isFirst 
-                    ? 'shadow-[-30px_-30px_60px_-15px_rgba(0,68,204,0.8)] hover:shadow-[-40px_-40px_80px_-20px_rgba(0,68,204,1)]'
-                    : 'bg-[#0a0c10] border border-white/20 hover:border-white/40 overflow-hidden'
-                }`}
-                style={isFirst ? {
-                  borderTop: '1.5px solid transparent',
-                  borderLeft: '1.5px solid transparent',
-                  background: 'linear-gradient(#0a0c10, #0a0c10) padding-box, linear-gradient(to bottom right, #0044cc, transparent 70%) border-box'
-                } : undefined}
+                className="p-5 rounded-xl flex flex-col gap-4 transition-all duration-300 group relative bg-[#0a0c10] border border-white/20 hover:border-white/40 overflow-hidden"
               >
-                {/* Subtle inner top flare - only on first highlighted box */}
-                {isFirst && (
-                  <>
-                    <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#0080C7]/70 to-transparent shadow-[0_0_10px_rgba(0,128,199,0.8)] opacity-40 group-hover:opacity-100 transition-opacity" />
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,128,199,0.2),transparent_70%)] pointer-events-none opacity-40 group-hover:opacity-100 transition-opacity" />
-                  </>
-                )}
-
                 <div className="w-10 h-10 rounded-lg bg-[#0044cc]/10 border border-[#0044cc]/50 flex items-center justify-center text-[#0044cc] shadow-[0_0_15px_rgba(0,68,204,0.3)] group-hover:shadow-[0_0_25px_rgba(0,68,204,0.6)] transition-shadow">
                   <IconComponent size={18} className="drop-shadow-[0_0_8px_rgba(0,68,204,0.8)]" />
                 </div>
@@ -163,7 +144,7 @@ export default function ProgramIntroSection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            What You Get Inside the Studio
+            What You'll Experience
             {/* Horizontal flare line under headline */}
             <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 w-48 md:w-64 h-0.5 bg-linear-to-r from-transparent via-[#0044cc] to-transparent shadow-[0_0_20px_rgba(0,68,204,0.9)] opacity-90" />
           </motion.h3>

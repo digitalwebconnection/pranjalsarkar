@@ -5,24 +5,59 @@ import { Plus, Minus } from 'lucide-react';
 const faqs = [
   {
     q: 'Who is this program for?',
-    a: 'Senior PMs, Engineering Managers transitioning to product, and Growth Leads who are 1–3 years away from a Director or Head of Product title. You should have at least 4 years of product experience and currently be working in a mid-to-large tech company.',
+    a: 'Experienced Product Managers with 3+ years of experience who want to transition into Director or Head of Product roles.',
   },
   {
-    q: 'Is this pre-recorded or live?',
-    a: 'Every session is live. There are no pre-recorded videos to watch on your own. This is a high-touch, live cohort built around dialogue, simulation, and real-time feedback. That\'s what makes it work.',
+    q: 'Why is admission interview-only?',
+    a: 'Every applicant goes through a Leadership Fit Interview to ensure the Studio is the right fit for both the participant and the cohort.',
   },
   {
-    q: 'How is this different from Reforge, Lenny\'s, or online PM courses?',
-    a: 'Most programs teach frameworks and concepts. We practice judgment. You\'ll face real ambiguous scenarios, make real calls, and get real feedback from Pranjal and your peers. The emphasis is always on "what would you actually do?" not "what does the framework say?"',
+    q: 'Is this live or pre-recorded?',
+    a: 'Every session is conducted live online over five weekends. Session recordings are also shared after each class.',
   },
   {
-    q: 'What is the time commitment per week?',
-    a: '4–6 hours per week. This includes 90 minutes of live session, 60–90 minutes of peer calibration, and 2–3 hours of scenario prep. If you are not willing to prioritize this, the program will not work for you.',
+    q: 'What is the weekly commitment?',
+    a: 'Around 8 live hours every weekend, plus 3–5 hours of weekly assignments, simulations, and practice.',
+  },
+  {
+    q: 'Is the Product Leadership Exposure guaranteed?',
+    a: 'Yes. Every participant receives a real Product Leadership challenge from one of our partner companies.',
+  },
+  {
+    q: 'What happens if I am not selected?',
+    a: 'It simply means we believe this is not the right time. You are welcome to apply again after gaining more experience.',
+  },
+  {
+    q: 'What if I miss a live session?',
+    a: 'All sessions are recorded and shared, but attending live is strongly recommended for discussions and simulations.',
+  },
+  {
+    q: 'Can my company sponsor my participation?',
+    a: 'Yes. Many organizations sponsor executive learning. We can provide invoices and supporting documents if required.',
+  },
+  {
+    q: 'Can I join from outside India?',
+    a: 'Absolutely. The Studio is fully online, and Product Managers from anywhere in the world are welcome to apply.',
+  },
+  {
+    q: 'Is this a placement or interview preparation program?',
+    a: 'No. The Studio focuses on building Product Leadership capabilities, not placement or interview preparation.',
+  },
+  {
+    q: 'What is the refund policy?',
+    a: 'Cancel up to 10 days before the program begins for a 100% refund. After that, the fee is non-refundable.',
+  },
+  {
+    q: 'Will I receive a certificate?',
+    a: 'Yes. Participants who successfully complete both the Executive Studio and the Product Leadership Exposure receive a completion certificate.',
   },
 ];
 
 export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(null);
+  const [showAll, setShowAll] = useState(false);
+
+  const displayedFaqs = showAll ? faqs : faqs.slice(0, 4);
 
   return (
     <section id="faq" className="relative py-8 md:py-14 overflow-hidden bg-[#000000] text-white border-b border-white/5">
@@ -125,14 +160,13 @@ export default function FAQSection() {
           </div>
 
           <p className="text-[#94a3b8] text-base sm:text-lg leading-relaxed max-w-xl mx-auto mt-4">
-            Still have something we didn't cover?<br />
-            Check our common questions or reach out to us directly.
+            Still have questions? <br /> Here are the answers to the ones we hear most often.
           </p>
         </div>
 
         {/* Centered Accordion Cards (100% Wireframe Copy) */}
         <div className="max-w-5xl mx-auto flex flex-col gap-4">
-          {faqs.map((f, i) => {
+          {displayedFaqs.map((f, i) => {
             const isOpen = open === i;
             return (
               <div
@@ -194,6 +228,18 @@ export default function FAQSection() {
             );
           })}
         </div>
+
+        {faqs.length > 4 && (
+          <div className="flex justify-center mt-12 relative z-10">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="group relative flex items-center justify-center gap-2 px-8 py-3 rounded-xl bg-[#001026] border border-[#0070f3]/40 text-[#00a8ff] font-bold text-sm tracking-wide shadow-[inset_0_0_10px_rgba(0,136,255,0.25)] hover:shadow-[0_0_20px_rgba(0,168,255,0.4)] hover:border-[#00a8ff]/60 hover:text-white transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+            >
+              <span>{showAll ? 'View Less' : 'View More FAQs'}</span>
+              <div className="absolute inset-0 rounded-xl bg-linear-to-r from-transparent via-[#00a8ff]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+            </button>
+          </div>
+        )}
 
       </div>
     </section>

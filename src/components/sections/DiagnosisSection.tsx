@@ -74,55 +74,67 @@ const StatRing = ({ value, label }: { value: number; label?: string; isActive?: 
 const diagnosisData = [
   {
     id: 0,
-    statNum: '78%',
-    statValue: 78,
-    statLabel: 'Career Stagnation',
-    statDetail: '78% of senior PMs report feeling stuck for 2+ years before a leadership move.',
-    reasonTitle: 'Your calibration environment is broken.',
-    reasonBody: 'Most companies reward shipping velocity, not decision quality. So your feedback loop trains you to move fast, not think right.',
-    icon: <CalibrationIcon />,
-    impactBadge: 'Stagnant Loop',
-    impactDesc: 'You become highly efficient at delivery, but are passed over for strategic roles because your strategic muscles never develop.',
-    solution: 'We rebuild your decision-making framework from the ground up, forcing you to calibrate against senior leadership expectations.',
+    statNum: '98%',
+    statValue: 98,
+    statLabel: 'AI Adoption',
+    statDetail: '98% of Product Managers already use AI in their daily work.',
+    reasonTitle: 'AI is now the standard.',
+    reasonBody:
+      'Using AI is no longer a competitive advantage. Every PM has access to the same tools.',
+    icon: <AiIcon />,
+    impactBadge: 'The Reality',
+    impactDesc:
+      'AI improves execution, but it does not replace strategic thinking or leadership.',
+    solution:
+      'Learn to use AI for high-quality decisions instead of just faster execution.',
   },
   {
     id: 1,
-    statNum: '61%',
-    statValue: 61,
-    statLabel: 'Promotion Key',
-    statDetail: '61% of PM promotions to Director cite "judgment" as the deciding factor, not delivery.',
-    reasonTitle: 'Nobody teaches judgment explicitly.',
-    reasonBody: 'Every PM course covers frameworks. None cover the messy, ambiguous moment of deciding what actually matters — and defending it.',
+    statNum: '39%',
+    statValue: 39,
+    statLabel: 'AI Training',
+    statDetail: 'Only 39% of PMs have received role-specific AI training.',
+    reasonTitle: 'Knowledge is the gap.',
+    reasonBody:
+      'Most PMs use AI daily but have never learned how to apply it strategically.',
     icon: <JudgmentIcon />,
-    impactBadge: 'Invisible Bar',
-    impactDesc: 'You keep refining your PM execution playbooks, but fail to realize that leadership is looking for calibrated risk-taking and conviction.',
-    solution: 'Live, high-stakes simulations where you make real business calls under fire and defend them to experienced product leaders.',
+    impactBadge: 'Skill Gap',
+    impactDesc:
+      'Without structured AI thinking, experience alone is no longer enough.',
+    solution:
+      'Develop practical AI leadership skills through real business simulations.',
   },
   {
     id: 2,
-    statNum: '3×',
-    statValue: 100,
-    statLabel: 'Speed Multiplier',
-    statDetail: 'PMs who practice structured decision-making get promoted 3× faster.',
-    reasonTitle: 'You\'ve never had a safe space to fail.',
-    reasonBody: 'Director-level thinking requires reps at high-stakes decisions. Most PMs never get those reps until they\'re already supposed to have the answer.',
+    statNum: '87%',
+    statValue: 87,
+    statLabel: 'Leadership Hiring',
+    statDetail: 'Senior Product Leadership hiring has grown by 87% in India.',
+    reasonTitle: 'Demand is accelerating.',
+    reasonBody:
+      'Companies are hiring leaders who can connect business strategy with AI execution.',
     icon: <FailureIcon />,
-    impactBadge: 'Failure Aversion',
-    impactDesc: 'In your daily role, failing a high-stakes decision has real career consequences. This leads to risk aversion and playing it safe.',
-    solution: 'A calibrated, low-risk sandbox environment where you can fail safely and run through 10 years of decision-making reps in 12 weeks.',
+    impactBadge: 'Market Shift',
+    impactDesc:
+      'Organizations are rewarding leadership capability over execution alone.',
+    solution:
+      'Practice executive decision-making before you step into leadership roles.',
   },
   {
     id: 3,
-    statNum: '91%',
-    statValue: 91,
-    statLabel: 'AI Mandate',
-    statDetail: '91% of product leaders say AI has made strategic judgment MORE critical, not less.',
-    reasonTitle: 'AI amplifies execution, not wisdom.',
-    reasonBody: 'Tools handle research, synthesis, and writing. What\'s scarce is the human who decides what to build, why, and when to stop.',
-    icon: <AiIcon />,
-    impactBadge: 'Commoditized Execution',
-    impactDesc: 'As AI automates the mechanical parts of product management, PMs who only know how to execute become commoditized.',
-    solution: 'Develop high-leverage "judgment-first" workflows that leverage AI for heavy lifting while elevating your strategic output.',
+    statNum: '30–50%',
+    statValue: 100,
+    statLabel: 'Salary Premium',
+    statDetail: 'AI Product Leaders earn 30–50% more than traditional Product Managers.',
+    reasonTitle: 'Leadership creates value.',
+    reasonBody:
+      'The biggest salary gap today comes from strategic judgment, not years of experience.',
+    icon: <CalibrationIcon />,
+    impactBadge: 'Career Advantage',
+    impactDesc:
+      'Companies pay more for leaders who make confident business decisions under uncertainty.',
+    solution:
+      'Build executive judgment through real-world leadership challenges and boardroom simulations.',
   },
 ];
 
@@ -166,21 +178,20 @@ export default function DiagnosisSection() {
       <div className="max-w-7xl mx-auto px-6 md:px-6 relative z-10">
 
         {/* Header */}
-        <div className="max-w-4xl mx-auto text-center mb-10 md:mb-14">
+        <div className="max-w-5xl mx-auto text-center mb-10 md:mb-14">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#0080C7]/10 border border-[#0080C7]/30 rounded-md text-[10px] font-bold tracking-wider uppercase text-[#0080C7] mb-6 shadow-[0_0_15px_rgba(0,128,199,0.1)]">
             THE DATA
           </span>
           <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-6">
-            Why this keeps happening <br />
+            Why Product Leadership <br />
             <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
-              and the data behind it.
+              Needs a New Playbook..
               {/* Horizontal flare line */}
               <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
             </span>
           </h2>
-          <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-4xl mx-auto mt-4">
-            This isn't a motivation problem. It's a structural one. Here is the actual diagnostic data and the root causes keeping product talent capped.
-          </p>
+          <p className="text-gray-100 text-sm md:text-base leading-relaxed max-w-5xl mx-auto mt-4">
+        AI didn't replace Product Managers. It changed what companies value most—strategic thinking, executive judgment, and business leadership.   </p>
         </div>
 
         {/* Desktop Interactive Panel Layout */}

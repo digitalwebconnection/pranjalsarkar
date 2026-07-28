@@ -2,9 +2,12 @@ import InteractiveBook, { type BookPage } from '../ui/InteractiveBook';
 import coverImg from '../../assets/pranjalsarkar/3.webp';
 import img1 from '../../assets/pranjalsarkar/image1.webp';
 import img2 from '../../assets/pranjalsarkar/2.webp';
+import img3 from '../../assets/pranjalsarkar/3.webp';
 import img4 from '../../assets/pranjalsarkar/4.webp';
 import img5 from '../../assets/pranjalsarkar/5.webp';
 import img6 from '../../assets/pranjalsarkar/6.webp';
+import img7 from '../../assets/pranjalsarkar/07.webp';
+import img8 from '../../assets/pranjalsarkar/08.webp';
 
 const LeftPageImage = ({ imgSrc }: { imgSrc: string }) => (
   <div className="relative w-full h-full bg-neutral-900 overflow-hidden flex flex-col justify-end">
@@ -31,13 +34,17 @@ const bookPages: BookPage[] = [
       <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
         <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">01</div>
 
-        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">Judgment Over Frameworks</h4>
+        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">
+          Conviction Under Pressure
+        </h4>
+
         <p className="text-neutral-600 text-[10.5px] leading-relaxed">
-          Frameworks are a starting point, not an answer. We train you to think from first principles so you can navigate problems no playbook anticipated. Deciding when to break the rules is what separates strategic leaders from ordinary executors. Learn to isolate core assumptions, evaluate trade-offs under high uncertainty, and design custom solutions that align with business realities.
+         Today you have opinions in meetings but struggle to back them up when someone challenges you. After this program you will know the difference between an opinion and a conviction. And you will know exactly how to defend the conviction.
         </p>
       </div>
-    )
+    ),
   },
+
   {
     pageNumber: 2,
     backContent: <LeftPageImage imgSrc={img2} />,
@@ -45,61 +52,132 @@ const bookPages: BookPage[] = [
       <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
         <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">02</div>
 
-        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">AI as Amplifier</h4>
+        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">
+          Thinking Before The Room Does
+        </h4>
+
         <p className="text-neutral-600 text-[10.5px] leading-relaxed">
-          AI handles 80% of execution. Your edge is the 20% that requires taste, context, and vision. We train exactly that 20%. While others use AI tools to generate generic templates, you will learn to use models as strategic sparring partners to stress-test your strategy, identify hidden vulnerabilities, and refine product briefs with high clarity.
+          Today you prepare for a leadership review hoping nobody asks a hard question. After this program you will have already stress-tested your own thinking before you walk into the room.
         </p>
       </div>
-    )
+    ),
   },
+
   {
     pageNumber: 3,
-    backContent: <LeftPageImage imgSrc={img4} />,
+    backContent: <LeftPageImage imgSrc={img3} />,
     content: (
       <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
         <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">03</div>
 
-        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">Live Practice</h4>
+        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">
+          Reading The Full Picture
+        </h4>
+
         <p className="text-neutral-600 text-[10.5px] leading-relaxed">
-          Every session puts you in director-level scenarios with real stakes, real disagreement, and real ambiguity. You don't just learn — you perform. Participate in active simulation rooms where you must present and defend your choices under pressure, resolving conflict and building consensus among cross-functional partners in real-time.
+        Today you make product decisions based on what customers are saying right now. After this program you will read three things at the same time. What the customer needs. What the market is doing. What your organization can actually act on. And you will make the call at the intersection of all three.
         </p>
       </div>
-    )
+    ),
   },
+
   {
     pageNumber: 4,
-    backContent: <LeftPageImage imgSrc={img5} />,
+    backContent: <LeftPageImage imgSrc={img4} />,
     content: (
       <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
         <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">04</div>
 
-        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">Peer Calibration</h4>
+        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">
+          Decide Above AI
+        </h4>
+
         <p className="text-neutral-600 text-[10.5px] leading-relaxed">
-          Your cohort peers are senior PMs and EMs from top companies. No beginners. No hand-holding. Real debate, real growth. Calibrate your standards against the best in the industry, and build a trusted circle of leaders who critique your decision history, call out weak points, and push you to refine your communication strategy.
+          Today you use AI and mostly trust what it gives you. After this program you will know exactly where AI output is wrong, what it missed, and what decision only you can make above it.
         </p>
       </div>
-    )
+    ),
   },
+
   {
     pageNumber: 5,
+    backContent: <LeftPageImage imgSrc={img5} />,
+    content: (
+      <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
+        <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">05</div>
+
+        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">
+          Fluent In The Boardroom
+        </h4>
+
+        <p className="text-neutral-600 text-[10.5px] leading-relaxed">
+          Today when a business leader questions your product decision in financial terms you struggle to answer. After this program you will connect every product decision to revenue, margin, and business outcome in language that gets your recommendations approved
+        </p>
+      </div>
+    ),
+  },
+
+  {
+    pageNumber: 6,
     backContent: <LeftPageImage imgSrc={img6} />,
     content: (
       <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
-        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">Ready to Scale?</h4>
-        <p className="text-neutral-600 text-[10.5px] leading-relaxed mb-4">
-          Develop the rarefied judgment to make decision calls under extreme ambiguity and earn trust as an executive product leader. Step out of the details and into enterprise ownership by mastering capital allocation, product portfolio design, and high-influence organizational navigation.
+        <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">06</div>
+
+        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">
+          Owning The Full Leadership Table
+        </h4>
+
+        <p className="text-neutral-600 text-[10.5px] leading-relaxed">
+          Today you are seen as a strong executor in your product area. After this program you will be seen as someone who thinks and operates across the full product leadership surface.
         </p>
+      </div>
+    ),
+  },
+
+  {
+    pageNumber: 7,
+    backContent: <LeftPageImage imgSrc={img7} />,
+    content: (
+      <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
+        <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">07</div>
+
+        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">
+         Your Honest Leadership Mirror
+        </h4>
+
+        <p className="text-neutral-600 text-[10.5px] leading-relaxed">
+        Today you do not know specifically where your judgment is strong and where it is weak. After this program you will have a detailed assessment that tells you exactly where you stand and exactly what to work on next.
+        </p>
+      </div>
+    ),
+  },
+
+  {
+    pageNumber: 8,
+    backContent: <LeftPageImage imgSrc={img8} />,
+    content: (
+      <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
+        <h4 className="font-serif text-lg font-bold text-neutral-800 mb-3">
+          Ready to Think Like a Product Leader?
+        </h4>
+
+        <p className="text-neutral-600 text-[11px] leading-relaxed mb-5">
+          These capabilities aren't built through lectures or frameworks. They
+          come from repeated executive decisions, boardroom discussions, AI
+          simulations, feedback, and real business challenges.
+        </p>
+
         <a
           href="#program"
-          className="px-5 py-1.5 bg-[#0080C7] rounded-full text-[10px] font-bold text-neutral-900 hover:bg-[#009CEE] hover:shadow-[0_0_15px_rgba(0,128,199,0.5)] transition-all"
+          className="px-5 py-2 bg-[#0080C7] rounded-full text-xs font-bold text-white hover:bg-[#009CEE] transition-all"
         >
-          Explore Program
+          Explore The Studio
         </a>
       </div>
-    )
-  }
+    ),
+  },
 ];
-
 export default function PhilosophySection() {
   return (
     <section id="philosophy" className="relative py-12 md:py-20 overflow-hidden border-b border-white/8 bg-[#000001]">
@@ -127,7 +205,7 @@ export default function PhilosophySection() {
 
             {/* Manifesto Quote Block */}
             <div className="relative border-l-2 border-[#0080C7] pl-6 my-6 shadow-[-4px_0_15px_-4px_rgba(0,128,199,0.6)]">
-              <p className="text-xl md:text-2xl font-serif italic text-white/95 leading-relaxed drop-shadow-sm">
+              <p className="text-lg md:text-xl font-serif  text-white/95 leading-relaxed drop-shadow-sm">
                 "We believe the era of tool-fluency as a competitive advantage is over. The era of judgment has just begun."
               </p>
             </div>

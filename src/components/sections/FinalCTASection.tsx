@@ -1,4 +1,4 @@
-import bgImage from '../../assets/pranjalsarkar/1.webp';
+import bgImage from '../../assets/Pranjal in Events/1.webp';
 
 export default function FinalCTASection() {
   return (
@@ -10,12 +10,12 @@ export default function FinalCTASection() {
 
       {/* Viewport-fixed Background Image clipped to parent */}
       <div
-        className="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none z-0"
+        className="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat   opacity-70 pointer-events-none z-0"
         style={{ backgroundImage: `url(${bgImage})` }}
       />
 
       {/* Gradient Mask Overlay matching new dark blue aesthetic */}
-      <div className="absolute inset-0 bg-linear-to-b from-[#010308]/50 via-[#010308]/30 to-[#010308]/20 z-0 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-b from-[#010308]/70 via-[#010308]/60 to-[#010308]/50 z-0 pointer-events-none" />
 
       {/* Core background glow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center">

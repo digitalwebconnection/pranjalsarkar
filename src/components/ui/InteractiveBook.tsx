@@ -346,7 +346,7 @@ export default function InteractiveBook({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             onClick={handleCloseBook}
-            className="absolute top-0 right-4 p-2 rounded-full bg-[#121212] border border-white/10 hover:border-[#0080C7]/30 text-white/60 hover:text-white z-1000 transition-all hover:scale-105 shadow-md"
+            className="absolute top-0 left-1/2 -translate-x-1/2 p-2 rounded-full bg-[#121212] border border-white/10 hover:border-[#0080C7]/30 text-white/60 hover:text-white z-[1000] transition-all hover:scale-105 shadow-md"
           >
             <X size={16} />
           </motion.button>

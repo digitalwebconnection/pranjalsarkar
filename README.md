@@ -30,3 +30,10 @@ If you are developing a production application, we recommend enabling type-aware
 ```
 
 See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+
+## Changelog
+### Today's Changes
+- **VideoSection.tsx**: Added `activeVideoId` state management so only one video plays at a time. Other playing videos automatically pause when a new one is selected.
+- **Image Assets**: Fixed missing import errors across the codebase. Updated `.jpg` and `.png` asset paths to `.webp` in `Navbar.tsx`, `Footer.tsx`, `LogosSection.tsx`, `EventsGallerySection.tsx`, `HeroSection.tsx`, and `AboutSection.tsx`.
+- **vite.config.ts**: Added `checks: { pluginTimings: false }` to `rollupOptions` to suppress `[PLUGIN_TIMINGS]` warnings for `vite:asset`.
+- **SmoothScroll.tsx**: Optimized `Lenis` smooth scrolling for standard hash navigation on the navbar. Reduced duration to `0.8s` and enabled `autoRaf: true` to prevent sluggish scrolling interactions.

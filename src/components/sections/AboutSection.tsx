@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import psHeadshot from '../../assets/pranjalsarkar/19.webp';
-import { Users, Globe } from 'lucide-react';
+import { Users, Globe, RocketIcon } from 'lucide-react';
 
 const MountainFlagIcon = ({ size = 24, strokeWidth = 1.5, className = "" }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -12,24 +12,28 @@ const MountainFlagIcon = ({ size = 24, strokeWidth = 1.5, className = "" }) => (
   </svg>
 );
 
-const BarChartArrowIcon = ({ size = 24, strokeWidth = 1.5, className = "" }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" className={className}>
-    {/* Bars */}
-    <path d="M2 21h20" />
-    <rect x="4" y="14" width="3" height="7" />
-    <rect x="9" y="10" width="3" height="11" />
-    <rect x="14" y="6" width="3" height="15" />
-    {/* Arrow */}
-    <path d="M2 13L19 3" />
-    <path d="M14 3h6v6" />
-  </svg>
-);
 
 const stats = [
-  { value: '10+ Yrs', label: 'Leadership', icon: MountainFlagIcon },
-  { value: '$50M+', label: 'ARR Scaled', icon: BarChartArrowIcon },
-  { value: '200+', label: 'PMs Mentored', icon: Users },
-  { value: 'Global', label: 'Speaker', icon: Globe },
+  {
+    value: '20+ Yrs',
+    label: 'Product Leadership',
+    icon: MountainFlagIcon,
+  },
+  {
+    value: '3',
+    label: 'Startups Founded',
+    icon: RocketIcon,
+  },
+  {
+    value: '200+',
+    label: 'PMs Mentored',
+    icon: Users,
+  },
+  {
+    value: '10+',
+    label: 'Countries',
+    icon: Globe,
+  },
 ];
 
 const containerVariants = {
@@ -87,9 +91,9 @@ export default function AboutSection() {
             About Pranjal Sarkar
           </span>
           <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white max-w-4xl mx-auto">
-            I do not sell skills. <br />
+           I don't teach Product Management. <br />
             <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
-              I build the mindset.
+              I build Product Leaders.
               {/* Horizontal flare line */}
               <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-32 md:w-64 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
             </span>
@@ -128,13 +132,19 @@ export default function AboutSection() {
           <div className="lg:col-span-7 flex flex-col justify-start pt-4 lg:pl-6">
 
             {/* Biography Narratives */}
-            <motion.p className="text-gray-300 text-sm md:text-[15px] lg:text-[17px] leading-8 max-w-3xl mb-8 font-sans" variants={itemVariants}>
-              I have founded three startups and worked across organisations of different scales, including Tata & IBM, with mission-critical responsibilities across all of them. <strong className="text-[#0080C7] font-semibold font-sans drop-shadow-[0_0_8px_rgba(0,128,199,0.4)]">This has given me exposure to both sides: building from nothing and scaling within complexity.</strong>
-            </motion.p>
+           <motion.p
+  className="text-gray-300 text-sm md:text-[15px] lg:text-[17px] leading-8 max-w-3xl mb-8 font-sans"
+  variants={itemVariants}
+>
+  Over the last <strong className="text-white font-semibold">20+ years</strong>, I've built startups from scratch, scaled products at <strong className="text-white font-semibold">Tata</strong>, and now lead product strategy at <strong className="text-white font-semibold">IBM</strong>. <strong className="text-[#0080C7] font-semibold font-sans drop-shadow-[0_0_8px_rgba(0,128,199,0.4)]">That journey taught me how product leaders think, decide, and create business impact.</strong>
+</motion.p>
 
-            <motion.p className="text-gray-300 text-sm md:text-[15px] lg:text-[17px] leading-8 max-w-3xl mb-12" variants={itemVariants}>
-              The people who have spent time working with me have not just improved at their job. <strong className="text-white font-semibold">They have moved forward in ways that actually changed their trajectory</strong>, whether that meant stepping into bigger roles, finding clarity in their direction, or solving problems they had been stuck with for years. The shift usually shows up in how they think and the decisions they start making.
-            </motion.p>
+<motion.p
+  className="text-gray-300 text-sm md:text-[15px] lg:text-[17px] leading-8 max-w-3xl mb-12"
+  variants={itemVariants}
+>
+  AI Product Leadership Studio was created to bridge the gap between <strong className="text-white font-semibold">executing products</strong> and <strong className="text-white font-semibold">leading product organizations.</strong> Everything you learn here comes from real products, real teams, and real executive decisions—not just theory.
+</motion.p>
 
             {/* Quick Metrics Row */}
             <motion.div className="grid grid-cols-2 sm:grid-cols-4 gap-4" variants={itemVariants}>

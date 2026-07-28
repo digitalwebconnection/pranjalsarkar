@@ -3,10 +3,10 @@ import { Users, TrendingUp, Building2 } from 'lucide-react';
 import pranjalsarkar from "../../assets/pranjalsarkar/18.webp"
  
 const stats = [
-  { num: '200+', label: 'Senior PMs Trained', icon: Users },
-  { num: '94%', label: 'Promotion Rate', icon: TrendingUp },
-  { num: '18', label: 'Companies', icon: Building2 },
-  { num: '3.2×', label: 'Avg. Salary Jump', icon: TrendingUp },
+  { num: '10', label: 'Executive Simulations', icon: Users },
+  { num: '20', label: 'Executive Decisions', icon: TrendingUp },
+  { num: '5', label: 'AI Executive Advisors', icon: Building2 },
+  { num: '10', label: 'Boardroom Reviews', icon: TrendingUp },
 ];
  
 export default function HeroSection() {
@@ -41,19 +41,18 @@ export default function HeroSection() {
  
               {/* Headline */}
               <h1 className="font-serif font-bold leading-tight tracking-tight text-white mb-2 text-4xl md:text-5xl lg:text-6xl whitespace-nowrap">
-                Stop Managing Product.
+                Become a Product Director
               </h1>
  
               <h2 className="font-serif font-bold leading-tight tracking-tight text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] text-4xl md:text-5xl lg:text-6xl drop-shadow-[0_0_15px_rgba(24,37,226,0.6)] whitespace-nowrap mt-1 mb-3 lg:mb-4">
-                Start Leading It.
+                in the AI Era.
               </h2>
               {/* Horizontal flare line */}
               <div className="w-24 md:w-32 lg:w-40 h-[2.5px] bg-linear-to-r from-[#00a8ff] via-[#2563EB] to-transparent mb-8 rounded-full shadow-[0_0_12px_rgba(0,168,255,0.8)]" />
  
               {/* Sub text */}
               <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-relaxed max-w-xl lg:max-w-2xl mb-8 lg:mb-10">
-                A live, high-accountability cohort for senior PMs, EMs, and growth leads ready to earn the Director or Head of Product title — in the age of AI.
-              </p>
+            A hands-on leadership program where experienced Product Managers solve real business challenges, present to executives, and build Product Director-level thinking.   </p>
  
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-start mb-8 lg:mb-0">

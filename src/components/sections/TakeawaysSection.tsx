@@ -129,9 +129,9 @@ export default function TakeawaysSection() {
         <div className="text-center mb-10">
           <div className="relative mb-6 inline-block">
             <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white mb-2 text-center">
-              Program Takeaways -<br />
+              Where Learning<br />
               <span className="text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
-                not just a certificate.
+                Becomes Leadership..
               </span>
             </h2>
 
@@ -146,16 +146,15 @@ export default function TakeawaysSection() {
           </div>
 
           <p className="text-[#e5e5ec] text-sm md:text-base lg:text-lg leading-relaxed max-w-4xl mx-auto text-center font-normal mt-2">
-            Everything you earn, build, and keep from your 12 weeks in the Studio. Designed to serve as your personal product leadership toolkit for years to come.
-          </p>
+        After five weeks of executive learning, you'll spend 30 days solving a real Product Leadership challenge for a real company and present your strategy to business leaders. </p>
         </div>
 
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
           {/* Card 1: Product Judgment Framework (Signature) - Spans 7 cols */}
-          <div className="lg:col-span-7 relative rounded-2xl p-px bg-linear-to-br from-[#0075ff]/90 via-[#0075ff]/0 to-transparent shadow-[-10px_-10px_30px_rgba(0,117,255,0.3)] transition-all duration-300">
-            <div className="relative h-full w-full bg-[#060a14] rounded-[15px] p-8 flex flex-col justify-between overflow-hidden z-10">
+          <div className="lg:col-span-7 relative rounded-xl p-px bg-linear-to-br from-[#0075ff]/90 via-[#0075ff]/0 to-transparent shadow-[-10px_-10px_30px_rgba(0,117,255,0.3)] transition-all duration-300">
+            <div className="relative h-full w-full bg-[#060a14] rounded-xl p-8 flex flex-col justify-between overflow-hidden z-10">
               <div className="absolute top-0 right-0 w-64 h-64 bg-[radial-gradient(circle_at_top_right,rgba(0,117,255,0.35),transparent_70%)] pointer-events-none opacity-100" />
               {/* Top edge highlight stroke */}
               <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-linear-to-r from-transparent via-[#00a2ff]/70 to-transparent opacity-80" />
@@ -171,10 +170,10 @@ export default function TakeawaysSection() {
                 </div>
 
                 <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight leading-tight">
-                  Product Judgment Framework
+                 Real Business Challenge
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed max-w-lg mb-8">
-                  A proprietary decision-making blueprint designed to navigate high ambiguity, calibrate trade-offs, and deliver product choices at the C-suite and board levels.
+           Work on a live strategic problem provided by a participating product company.
                 </p>
               </div>
 
@@ -186,7 +185,7 @@ export default function TakeawaysSection() {
                     <div className="text-[#0075ff]/60 mb-2">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 12 12 17 22 12"></polyline><polyline points="2 17 12 22 22 17"></polyline></svg>
                     </div>
-                    <span className="text-xs font-semibold text-white">Ambiguous Data</span>
+                    <span className="text-xs font-semibold text-white">Understand the business problem</span>
                   </div>
                   <div className="text-[#00a8ff] font-bold rotate-90 sm:rotate-0 drop-shadow-[0_0_8px_rgba(0,168,255,0.6)]">→</div>
                   <div className="flex flex-col items-center p-4 rounded-lg bg-[#0075ff]/10 border border-[#0075ff]/60 w-full text-center shadow-[0_0_20px_rgba(0,168,255,0.3)]">
@@ -194,7 +193,7 @@ export default function TakeawaysSection() {
                     <div className="text-[#0075ff] mb-2 drop-shadow-[0_0_8px_rgba(0,168,255,0.8)]">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v18"></path><rect width="4" height="4" x="10" y="3" rx="2"></rect><path d="M22 9h-4l-3 3-3-3H2"></path><path d="M5 9v12"></path><path d="M19 9v12"></path><path d="M2 21h6"></path><path d="M16 21h6"></path></svg>
                     </div>
-                    <span className="text-xs font-semibold text-white">Risk & Trade-off Stack</span>
+                    <span className="text-xs font-semibold text-white">Analyze market & customer context</span>
                   </div>
                   <div className="text-[#00a8ff] font-bold rotate-90 sm:rotate-0 drop-shadow-[0_0_8px_rgba(0,168,255,0.6)]">→</div>
                   <div className="flex flex-col items-center p-4 rounded-lg bg-[#060a14] border border-white/10 w-full text-center shadow-md">
@@ -202,7 +201,7 @@ export default function TakeawaysSection() {
                     <div className="text-[#0075ff]/60 mb-2">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
                     </div>
-                    <span className="text-xs font-semibold text-white">Board-Ready Call</span>
+                    <span className="text-xs font-semibold text-white">Define the leadership objective</span>
                   </div>
                 </div>
               </div>
@@ -210,8 +209,8 @@ export default function TakeawaysSection() {
           </div>
 
           {/* Card 2: AI Leadership Toolkit - Spans 5 cols */}
-          <TiltCard className="lg:col-span-5 relative rounded-2xl p-px bg-linear-to-br from-[#0075ff]/90 via-[#0075ff]/0 to-transparent shadow-[-10px_-10px_30px_rgba(0,117,255,0.3)] transition-all duration-300">
-            <div className="relative h-full w-full bg-[#060a14] rounded-[15px] p-8 flex flex-col justify-between overflow-hidden z-10">
+          <TiltCard className="lg:col-span-5 relative rounded-xl p-px bg-linear-to-br from-[#0075ff]/90 via-[#0075ff]/0 to-transparent shadow-[-10px_-10px_30px_rgba(0,117,255,0.3)] transition-all duration-300">
+            <div className="relative h-full w-full bg-[#060a14] rounded-xl p-8 flex flex-col justify-between overflow-hidden z-10">
               <div className="absolute top-0 left-0 w-64 h-64 bg-[radial-gradient(circle_at_top_left,rgba(0,117,255,0.35),transparent_70%)] pointer-events-none opacity-100" />
               {/* Top highlight */}
               <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-linear-to-r from-transparent via-[#00a2ff]/60 to-transparent opacity-80" />
@@ -223,10 +222,10 @@ export default function TakeawaysSection() {
                   </span>
                 </div>
                 <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight leading-tight">
-                  AI Leadership Toolkit
+                 Build Your Leadership Strategy
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed mb-6">
-                  12 advanced mental models for leading product strategy in the age of AI. Learn to position your roadmap, extend AI capabilities, leverage AI for accelerated validation, and shift human focus from execution to pure judgment.
+                  Develop a recommendation using executive thinking, business trade-offs, and AI-powered analysis.
                 </p>
               </div>
 
@@ -235,28 +234,32 @@ export default function TakeawaysSection() {
                 <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-[#03060a] border border-[#0075ff]/20 shadow-inner">
                   <span className="w-2 h-2 rounded-full bg-[#00a8ff] shadow-[0_0_8px_rgba(0,168,255,0.8)]" />
                   <span className="text-xs text-[#00a8ff] font-mono font-bold tracking-wide">model 01 :</span>
-                  <span className="text-xs text-white/90 font-mono tracking-wide">the cognitive layering strategy</span>
+                  <span className="text-xs text-white/90 font-mono tracking-wide">Executive Decision Frameworks</span>
                 </div>
                 <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-[#03060a] border border-[#0075ff]/20 shadow-inner">
                   <span className="w-2 h-2 rounded-full bg-[#00a8ff] shadow-[0_0_8px_rgba(0,168,255,0.8)]" />
                   <span className="text-xs text-[#00a8ff] font-mono font-bold tracking-wide">model 02 :</span>
-                  <span className="text-xs text-white/90 font-mono tracking-wide">reworking for strategic intent</span>
+                  <span className="text-xs text-white/90 font-mono tracking-wide">AI Leadership Toolkit</span>
+                </div>
+                  <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-[#03060a] border border-[#0075ff]/20 shadow-inner">
+                  <span className="w-2 h-2 rounded-full bg-[#00a8ff] shadow-[0_0_8px_rgba(0,168,255,0.8)]" />
+                  <span className="text-xs text-[#00a8ff] font-mono font-bold tracking-wide">model 03 :</span>
+                  <span className="text-xs text-white/90 font-mono tracking-wide">Strategic Business Thinking</span>
                 </div>
               </div>
             </div>
           </TiltCard>
 
           {/* Card 3: 6 Director Sim Recordings - Spans 4 cols */}
-          <TiltCard className="lg:col-span-4 relative rounded-2xl p-px bg-linear-to-br from-[#0075ff]/90 via-[#0075ff]/0 to-transparent shadow-[-10px_-10px_30px_rgba(0,117,255,0.3)] transition-all duration-300">
-            <div className="relative h-full w-full bg-[#060a14] rounded-[15px] p-7 flex flex-col justify-between overflow-hidden z-10">
+          <TiltCard className="lg:col-span-4 relative rounded-xl p-px bg-linear-to-br from-[#0075ff]/90 via-[#0075ff]/0 to-transparent shadow-[-10px_-10px_30px_rgba(0,117,255,0.3)] transition-all duration-300">
+            <div className="relative h-full w-full bg-[#060a14] rounded-xl p-7 flex flex-col justify-between overflow-hidden z-10">
               <div className="absolute top-0 left-0 w-64 h-64 bg-[radial-gradient(circle_at_top_left,rgba(0,117,255,0.25),transparent_70%)] pointer-events-none opacity-100" />
               <div className="relative z-10">
                 <h3 className="font-serif text-lg font-bold text-white mb-2.5 tracking-tight leading-tight">
-                  6 Director Sim Recordings
+                  Apply Studio Frameworks
                 </h3>
                 <p className="text-gray-300 text-xs leading-relaxed mb-6">
-                  Full video logs of our 6 high-intensity "Director in the Room" simulations. Study the strategic debate, decision trees, and feedback roundups forever.
-                </p>
+              Use the models, AI workflows, and leadership principles you've built throughout the Studio.  </p>
               </div>
 
               <div className="relative aspect-video w-full rounded-lg overflow-hidden bg-neutral-900 border border-[#0075ff]/30 flex items-center justify-center mt-auto shadow-md">
@@ -272,8 +275,8 @@ export default function TakeawaysSection() {
           </TiltCard>
 
           {/* Card 4: 90-Day Director Plan Template - Spans 4 cols */}
-          <TiltCard className="lg:col-span-4 relative rounded-2xl p-px bg-linear-to-br from-[#0075ff]/90 via-[#0075ff]/0 to-transparent shadow-[-10px_-10px_30px_rgba(0,117,255,0.3)] transition-all duration-300">
-            <div className="relative h-full w-full bg-[#060a14] rounded-[15px] p-7 flex flex-col justify-between overflow-hidden z-10">
+          <TiltCard className="lg:col-span-4 relative rounded-xl p-px bg-linear-to-br from-[#0075ff]/90 via-[#0075ff]/0 to-transparent shadow-[-10px_-10px_30px_rgba(0,117,255,0.3)] transition-all duration-300">
+            <div className="relative h-full w-full bg-[#060a14] rounded-xl p-7 flex flex-col justify-between overflow-hidden z-10">
               <div className="absolute top-0 left-0 w-64 h-64 bg-[radial-gradient(circle_at_top_left,rgba(0,117,255,0.25),transparent_70%)] pointer-events-none opacity-100" />
               <div className="relative z-10">
                 <div className="mb-5">
@@ -282,10 +285,10 @@ export default function TakeawaysSection() {
                   </span>
                 </div>
                 <h3 className="font-serif text-lg font-bold text-white mb-2.5 tracking-tight leading-tight">
-                  90-Day Director Plan Template
+                 Present to the Leadership Panel
                 </h3>
                 <p className="text-gray-300 text-xs leading-relaxed mb-6">
-                  A plug-and-play strategic template to hit the ground running. Map context, establish organizational influence, build alignment, and score early wins.
+                 Present your strategy, explain your reasoning, and answer questions from experienced business leaders.
                 </p>
               </div>
 
@@ -306,8 +309,8 @@ export default function TakeawaysSection() {
           </TiltCard>
 
           {/* Card 5: Promotion Narrative Playbook - Spans 4 cols */}
-          <TiltCard className="lg:col-span-4 relative rounded-2xl p-px bg-linear-to-br from-[#0075ff]/90 via-[#0075ff]/0 to-transparent shadow-[-10px_-10px_30px_rgba(0,117,255,0.3)] transition-all duration-300">
-            <div className="relative h-full w-full bg-[#060a14] rounded-[15px] p-7 flex flex-col justify-between overflow-hidden z-10">
+          <TiltCard className="lg:col-span-4 relative rounded-xl p-px bg-linear-to-br from-[#0075ff]/90 via-[#0075ff]/0 to-transparent shadow-[-10px_-10px_30px_rgba(0,117,255,0.3)] transition-all duration-300">
+            <div className="relative h-full w-full bg-[#060a14] rounded-xl p-7 flex flex-col justify-between overflow-hidden z-10">
               <div className="absolute top-0 left-0 w-64 h-64 bg-[radial-gradient(circle_at_top_left,rgba(0,117,255,0.25),transparent_70%)] pointer-events-none opacity-100" />
               <div className="relative z-10">
                 <div className="mb-5">
@@ -316,10 +319,10 @@ export default function TakeawaysSection() {
                   </span>
                 </div>
                 <h3 className="font-serif text-lg font-bold text-white mb-2.5 tracking-tight leading-tight">
-                  Promotion Narrative Playbook
+                 Defend Your Decisions
                 </h3>
                 <p className="text-gray-300 text-xs leading-relaxed mb-6">
-                  A step-by-step roadmap to present your leadership readiness to executive sponsors, structure skip-level syncs, and command authority.
+                Support every recommendation with business logic, customer insight, and strategic judgment.
                 </p>
               </div>
 
@@ -338,8 +341,8 @@ export default function TakeawaysSection() {
           </TiltCard>
 
           {/* Card 6: Post-Program Office Hours - Spans 5 cols */}
-          <TiltCard className="lg:col-span-5 relative rounded-2xl p-px bg-linear-to-br from-[#0075ff]/90 via-[#0075ff]/0 to-transparent shadow-[-10px_-10px_30px_rgba(0,117,255,0.3)] transition-all duration-300">
-            <div className="relative h-full w-full bg-[#060a14] rounded-[15px] p-8 flex flex-col justify-between overflow-hidden z-10">
+          <TiltCard className="lg:col-span-5 relative rounded-xl p-px bg-linear-to-br from-[#0075ff]/90 via-[#0075ff]/0 to-transparent shadow-[-10px_-10px_30px_rgba(0,117,255,0.3)] transition-all duration-300">
+            <div className="relative h-full w-full bg-[#060a14] rounded-xl p-8 flex flex-col justify-between overflow-hidden z-10">
               <div className="absolute top-0 left-0 w-64 h-64 bg-[radial-gradient(circle_at_top_left,rgba(0,117,255,0.35),transparent_70%)] pointer-events-none opacity-100" />
               <div className="relative z-10">
                 <div className="mb-6">
@@ -348,10 +351,10 @@ export default function TakeawaysSection() {
                   </span>
                 </div>
                 <h3 className="font-serif text-xl font-bold text-white mb-3 tracking-tight leading-tight">
-                  Post-Program Office Hours
+                Product Leadership Award
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed mb-6">
-                  Growth doesn't stop at week 12. You receive monthly group check-ins and coaching office hours with Pranjal for 3 months post-graduation to support you in applying your frameworks live on the job.
+                 Top-performing participants receive recognition for exceptional strategic thinking and executive communication.
                 </p>
               </div>
 
@@ -373,7 +376,7 @@ export default function TakeawaysSection() {
 
           {/* Card 7: Leadership Portfolio & Alumni (Signature) - Spans 7 cols */}
           <TiltCard className="lg:col-span-7 relative rounded-2xl p-px bg-linear-to-br from-[#0075ff]/90 via-[#0075ff]/0 to-transparent shadow-[-10px_-10px_30px_rgba(0,117,255,0.3)] transition-all duration-300">
-            <div className="relative h-full w-full bg-[#060a14] rounded-[15px] p-8 flex flex-col justify-between overflow-hidden z-10">
+            <div className="relative h-full w-full bg-[#060a14] rounded-xl p-8 flex flex-col justify-between overflow-hidden z-10">
               <div className="absolute top-0 right-0 w-48 h-48 bg-linear-to-bl from-[#00a8ff]/15 to-transparent blur-2xl pointer-events-none" />
 
               <div>

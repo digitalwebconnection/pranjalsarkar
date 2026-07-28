@@ -1,52 +1,136 @@
-import img1 from '../../assets/pranjalsarkar/1.webp';
-import img2 from '../../assets/pranjalsarkar/2.webp';
-import img3 from '../../assets/pranjalsarkar/3.webp';
-import img4 from '../../assets/pranjalsarkar/4.webp';
-import img5 from '../../assets/pranjalsarkar/5.webp';
-import img6 from '../../assets/pranjalsarkar/6.webp';
+import krishnaImg from "../../assets/testimonal/krishna.jfif";
+import neelimaImg from "../../assets/testimonal/neelima.jfif";
+import jaganImg from "../../assets/testimonal/jagan.jfif";
+import vikasImg from "../../assets/testimonal/vikas.jfif";
+import ashutoshImg from "../../assets/testimonal/ashutosh.jfif";
+import pritamImg from "../../assets/testimonal/virenshah.svg";
+import christyImg from "../../assets/testimonal/christy.jfif";
+import vineelaImg from "../../assets/testimonal/vineela.jfif";
+import sumaImg from "../../assets/testimonal/virenshah.svg";
+import kritikaImg from "../../assets/testimonal/virenshah.svg";
+import virenImg from "../../assets/testimonal/virenshah.svg";
+import johnImg from "../../assets/testimonal/johnjoseph.jfif";
 
 const testimonials = [
   {
-    name: 'ADITYA R.',
-    role: 'Director of Product, Series B Fintech',
-    quote: "Pranjal doesn't teach you what to think. He teaches you how to think when the stakes are real. I got promoted 6 months after the cohort ended. The most ROI I've ever gotten from any learning investment.",
+    name: "Krishna Kamal Katarla",
+    role: "Product Manager",
+    location: "Bengaluru, Karnataka, India",
+    linkedin: "https://www.linkedin.com/in/krishna-kamal-katarla-850b8849/",
+    image: krishnaImg,
     stars: 5,
-    image: img1,
+    quote:
+      "An incredibly enriching experience. Every module was thoughtfully designed and helped me understand what product leadership actually demands.",
   },
   {
-    name: 'SNEHA K.',
-    role: 'Head of Product, D2C Startup',
-    quote: "I'd been stuck at Senior PM for 3 years. Two months into this program I had language for what I was missing. By month 4 I had the title. This is the program I wish existed years ago.",
+    name: "Neelima Vandanapu",
+    role: "Product Leader",
+    location: "Pennsylvania, USA",
+    linkedin: "https://www.linkedin.com/in/neelima-voleti/",
+    image: neelimaImg,
     stars: 5,
-    image: img2,
+    quote:
+      "Pranjal's no-compromise approach helped me truly understand the concepts and apply them in my day-to-day work. That's what makes his mentorship different.",
   },
   {
-    name: 'RAHUL M.',
-    role: 'Group PM, Tech Unicorn',
-    quote: "Coming from engineering, I always felt like I was faking the strategy part. This cohort gave me actual tools for judgment — not just vocabulary. The peer calibration sessions alone were worth the investment.",
+    name: "Jagan Vijayakumar",
+    role: "Product Professional",
+    location: "Chennai, Tamil Nadu, India",
+    linkedin: "https://www.linkedin.com/in/jagan-vijayakumar/",
+    image: jaganImg,
     stars: 5,
-    image: img4,
+    quote:
+      "The learn-by-doing approach completely changed how I think. Every assignment helped me apply concepts instead of just understanding them.",
   },
   {
-    name: 'PRIYA T.',
-    role: 'Director, Fintech Startup',
-    quote: "The AI-era angle is real. Pranjal prepares you for what comes after everyone has access to ChatGPT — the judgment gap. That's where the real opportunity is, and this program maps it out.",
+    name: "Vikas Yadav",
+    role: "Product Manager",
+    location: "Delhi, India",
+    linkedin: "https://www.linkedin.com/in/vikas-yadav-srccgbo/",
+    image: vikasImg,
     stars: 5,
-    image: img6,
+    quote:
+      "Pranjal helped me become more confident in my decisions. His guidance made learning feel natural and genuinely improved my work.",
   },
   {
-    name: 'VIKRAM S.',
-    role: 'Head of Growth, Series D',
-    quote: "I've done Reforge. I've done Lenny's. This is the only program that made me uncomfortable in the right ways — and I grew the most because of it.",
+    name: "Ashutosh Agrawal",
+    role: "Product Manager",
+    location: "Hyderabad, Telangana, India",
+    linkedin: "https://www.linkedin.com/in/ashutosh-agrawal-706131121/",
+    image: ashutoshImg,
     stars: 5,
-    image: img3,
+    quote:
+      "The case studies and assignments after every session made the learning practical. Everything was detailed and highly engaging.",
   },
   {
-    name: 'MEERA L.',
-    role: 'Director of Product, B2B SaaS',
-    quote: "Pranjal has a rare ability: he can cut through your defensive framing and show you exactly what senior leaders are actually evaluating. It changed how I present myself in every room.",
+    name: "Pritam Bramhecha",
+    role: "Product Leader",
+    location: "Greater Gothenburg, Sweden",
+    linkedin: "https://www.linkedin.com/in/pritam-bramhecha-98370b5/",
+    image: pritamImg,
     stars: 5,
-    image: img5,
+    quote:
+      "Working on real-world product challenges with professionals from different backgrounds transformed how I approach complex problems.",
+  },
+  {
+    name: "Christy Tawii",
+    role: "Product Professional",
+    location: "Cape Town, South Africa",
+    linkedin: "https://www.linkedin.com/in/christy-tawii-6256739/",
+    image: christyImg,
+    stars: 5,
+    quote:
+      "A practical program that forces you to think critically. The personal feedback and mentorship made a huge difference in my growth.",
+  },
+  {
+    name: "Vineela Thonupunuri",
+    role: "Tech Lead",
+    location: "New York, USA",
+    linkedin: "https://www.linkedin.com/in/vthonupunuri/",
+    image: vineelaImg,
+    stars: 5,
+    quote:
+      "The balance between theory and application helped me bring product thinking into my current role immediately.",
+  },
+  {
+    name: "Suma Pujari",
+    role: "Product Professional",
+    location: "Broomfield, Colorado, USA",
+    linkedin: "https://www.linkedin.com/in/suma-pujari/",
+    image: sumaImg,
+    stars: 5,
+    quote:
+      "A perfect blend of practical learning and strategy. I would happily recommend this program to every product professional.",
+  },
+  {
+    name: "Krittikaa Bhargava",
+    role: "Product Manager",
+    location: "Gurugram, Haryana, India",
+    linkedin: "https://www.linkedin.com/in/kritika-bhargava-k99/",
+    image: kritikaImg,
+    stars: 5,
+    quote:
+      "The mentorship never stopped after class. Pranjal was always available to guide, motivate, and help us overcome challenges.",
+  },
+  {
+    name: "Viren Shah",
+    role: "Product Professional",
+    location: "Ahmedabad, Gujarat, India",
+    linkedin: "https://www.linkedin.com/in/viren-shah-aa55b734/",
+    image: virenImg,
+    stars: 5,
+    quote:
+      "The experience exceeded every expectation. The global cohort and quality of discussions felt like a world-class executive program.",
+  },
+  {
+    name: "John Joseph",
+    role: "Entrepreneur",
+    location: "Lower Saxony, Germany",
+    linkedin: "https://www.linkedin.com/in/john-joseph-9699a7179/",
+    image: johnImg,
+    stars: 5,
+    quote:
+      "This cohort completely changed how I evaluate ideas and make decisions. It isn't about frameworks—it's about learning how to think.",
   },
 ];
 

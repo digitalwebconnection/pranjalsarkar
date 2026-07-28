@@ -3,86 +3,91 @@ import { BookOpen, Target, Video, Box, Layers, Users } from 'lucide-react';
 
 const modules = [
   {
-    week: 'Weeks 1–2',
-    title: 'PM Judgment Audit & Calibration',
-    focus: 'Establish your baseline competency mapping and executive perception profile.',
-    caseStudy: 'Simulation: The Executive Stakeholder Audit. Calibrating leadership narrative style.',
-    deliverable: 'Strategic Competency Matrix & Gap Remediation Roadmap',
+    week: 'Week 1',
+    title: 'Think Like a Product Director',
+    focus: 'Build executive judgment and learn how Product Directors evaluate strategic decisions.',
+    caseStudy: 'Executive Simulation: Analyze a business challenge and defend your recommendation.',
+    deliverable: 'Strategic Judgment Framework & Executive Decision Canvas',
     topics: [
-      'What "Director-level thinking" actually means in practice',
-      'The Judgment Stack: intuition, data, context, conviction',
-      'PM Archetype Assessment — knowing your default mode',
-      'Stakeholder power mapping for senior PMs',
+      'Director-level thinking',
+      'Strategic decision-making',
+      'Executive judgment',
+      'Business-first product mindset',
     ],
   },
+
   {
-    week: 'Weeks 3–4',
-    title: 'Decision Architecture',
-    focus: 'Master decision architecture under extreme uncertainty and time pressure.',
-    caseStudy: 'Simulation: The Irreversible Bet. Defending product decisions with <50% data.',
-    deliverable: 'Decision Log template and Reversible vs Irreversible playbook',
+    week: 'Week 2',
+    title: 'Own the Business',
+    focus: 'Connect every product decision to customer value, business strategy, and commercial outcomes.',
+    caseStudy: 'Business Strategy Workshop: Prioritize initiatives based on growth and profitability.',
+    deliverable: 'Business Strategy Canvas & Trade-off Framework',
     topics: [
-      'Making decisions with incomplete data at speed',
-      'Reversible vs. irreversible decisions framework',
-      'The "Right Call in the Wrong Room" scenario',
-      'AI as a decision-support tool — not a crutch',
+      'Business strategy',
+      'Commercial thinking',
+      'Customer value',
+      'Executive trade-offs',
     ],
   },
+
   {
-    week: 'Weeks 5–6',
-    title: 'Strategy & Tradeoffs',
-    focus: 'Align product strategy with business value and navigate stakeholder negotiation.',
-    caseStudy: 'Simulation: The Strategic Tradeoff. Saying "no" to a major customer request from the VP.',
-    deliverable: 'Strategic Positioning Brief & Tradeoff negotiation outline',
+    week: 'Week 3',
+    title: 'Lead AI-First Products',
+    focus: 'Learn how Product Leaders evaluate AI opportunities, manage risks, and build AI-native products.',
+    caseStudy: 'AI Leadership Lab: Build an AI product strategy for a real business problem.',
+    deliverable: 'AI Leadership Playbook & Responsible AI Framework',
     topics: [
-      'Product strategy as a set of defensible bets',
-      'Saying no at the Director level — and making it land',
-      'Roadmap negotiation with exec stakeholders',
-      'The AI Feature Trap: when to build vs. integrate',
+      'AI strategy',
+      'Responsible AI',
+      'AI product decisions',
+      'Innovation vs. risk',
     ],
   },
+
   {
-    week: 'Weeks 7–8',
-    title: 'Leading Up, Across & Down',
-    focus: 'Develop executive communication and command influence across engineering, design, and growth.',
-    caseStudy: 'Simulation: The C-Suite Roadmap Pitch. Structuring your business case for maximum impact.',
-    deliverable: 'Executive Business Case Deck & Cross-Functional RACI matrix',
+    week: 'Week 4',
+    title: 'Lead Teams & Influence',
+    focus: 'Develop leadership skills to align teams, influence stakeholders, and drive product execution.',
+    caseStudy: 'Leadership Simulation: Resolve cross-functional conflicts and gain executive alignment.',
+    deliverable: 'Leadership Communication Framework & Stakeholder Map',
     topics: [
-      'Communicating product vision to the C-suite',
-      'Managing EMs and designers at the leadership level',
-      'Cross-functional influence without authority',
-      'Building and presenting a business case for your roadmap',
+      'Stakeholder management',
+      'Cross-functional leadership',
+      'Executive influence',
+      'Team alignment',
     ],
   },
+
   {
-    week: 'Weeks 9–10',
-    title: 'Promotion Readiness & Narrative',
-    focus: 'Structure your narrative for skip-level reviews and design your transition roadmap.',
-    caseStudy: 'Simulation: The Promotion Panel. Building and presenting your promotion case.',
-    deliverable: '5-Part Promotion Narrative Document & 90-Day Transition Plan',
+    week: 'Week 5',
+    title: 'Influence Executive Decisions',
+    focus: 'Communicate with confidence, present strategic recommendations, and influence executive decisions.',
+    caseStudy: 'Boardroom Presentation: Present your product strategy to an executive review panel.',
+    deliverable: 'Executive Presentation Deck & Product Leadership Portfolio',
     topics: [
-      'The 5-part Director Promotion Narrative framework',
-      'Evidence vs. expectation — what your skip-level actually wants',
-      'Your 90-day plan for the role above you',
-      '1:1 coaching session — personalized to your context',
+      'Executive storytelling',
+      'Boardroom communication',
+      'Decision defense',
+      'Leadership presence',
     ],
   },
+
   {
-    week: 'Weeks 11–12',
-    title: 'The Leadership Thesis',
-    focus: 'Synthesize your program learnings into a defensible Product Leadership Thesis.',
-    caseStudy: 'Simulation: The Leadership Thesis Presentation. Defending your strategy to a VP of Product panel.',
-    deliverable: 'Completed Executive Portfolio & Signed Leadership Thesis',
+    week: '30-Day Exposure',
+    title: 'Real Product Leadership Challenge',
+    focus: 'Work with a real company, solve a live Product Leadership problem, and present your recommendations to business leaders.',
+    caseStudy: 'Capstone Project: Solve a real business challenge and defend your strategy before an executive panel.',
+    deliverable: 'Leadership Exposure Certificate & Executive Feedback Report',
     topics: [
-      'Building a portfolio of decisions, not deliverables',
-      'Leadership Thesis presentation to panel',
-      'Panel Q&A and director-level feedback session',
-      'Alumni onboarding and network activation',
+      'Live business challenge',
+      'Executive presentation',
+      'Leadership feedback',
+      'Product Leadership Award',
     ],
   },
 ];
 
-export default function CurriculumSection() {
+export default function dCurriculumSection() {
   const [activeTab, setActiveTab] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -126,8 +131,8 @@ export default function CurriculumSection() {
 
             <div className="relative mb-4">
               <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white mb-2">
-                12 Weeks.<br />
-                <span className="text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">Built for Directors.</span>
+                5 Weeks.<br />
+                <span className="text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">Built for Product Leaders.</span>
               </h2>
 
               {/* Horizontal Lens Flare Line */}
@@ -135,17 +140,17 @@ export default function CurriculumSection() {
             </div>
 
             <p className="text-[#c4c4d4] text-sm md:text-base lg:text-lg leading-relaxed max-w-3xl ">
-              Every week is live. Every session builds on the last. No filler. No padding. Just the reps that matter.
+            A live, executive-style learning experience followed by a 30-day real Product Leadership challenge.
             </p>
           </div>
 
           {/* Key Facts List with Gradient Borders & Blue Glow */}
           <div className="grid grid-cols-2 gap-5">
             {[
-              { label: 'Live sessions', value: '24 hrs', icon: Video },
-              { label: 'Simulation scenarios', value: '6 total', icon: Box },
-              { label: 'Frameworks introduced', value: '18+', icon: Layers },
-              { label: 'Alumni from Cohort 1', value: '18 promoted', icon: Users },
+              { label: 'Live sessions', value: '40 hrs', icon: Video },
+              { label: 'Leadership Modules', value: '6 total', icon: Box },
+              { label: 'AI Simulations', value: '10+', icon: Layers },
+              { label: 'Leadership Exposure', value: '30 Days', icon: Users },
             ].map((s, i) => (
               <div
                 key={i}
