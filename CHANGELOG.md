@@ -23,5 +23,6 @@ All notable changes to this project will be documented in this file.
   - Extracted type definitions and constants to `src/admin/types.ts` and `src/admin/constants.ts`.
 
 ### Fixed
+- Added `vercel.json` to the frontend to fix 404 NOT_FOUND errors on client-side routes (like `/admin`) during Vercel deployment.
 - Fixed TypeScript errors with missing `types.ts` imports and implicit `any` usage.
 - Fixed an unresolved image import (`logo.png`) breaking the frontend build.
