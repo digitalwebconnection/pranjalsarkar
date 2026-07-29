@@ -13,11 +13,13 @@ All notable changes to this project will be documented in this file.
 - **Lead CRM Funnel Frontend**:
   - Implemented client-side routing using `react-router-dom` in `main.tsx` and `App.tsx` (to distinguish `/admin` from the landing page).
   - Connected the Contact Section form to the API endpoint and added a phone number field.
+  - Added 10-digit phone number validation to the Contact Section form with field-level restriction to digits only.
+  - Updated the Contact Section form success message to display inline instead of completely replacing the form.
   - Added `Leads CRM` tab in `AdminPage.tsx` with full CRUD and funnel tracking logic.
   - Added "Applied Date" column to the Leads CRM table for better tracking.
   - Fixed pre-existing TypeScript types and build issues inside `AdminPage.tsx`.
 - **Branding Update**:
-  - Updated the Admin Dashboard title and login visual from "Shivam" to "Product Leadership Studio".
+  - Updated the Admin Dashboard title and login visual from "pranjal" to "Product Leadership Studio".
 - **Codebase Refactoring**:
   - Refactored `AdminPage.tsx` monolithic component into modular files.
   - Created modular sub-components in `src/admin/components` (Login, Sidebar, OverviewTab, LeadsTab, LeadModal, LogoutModal).

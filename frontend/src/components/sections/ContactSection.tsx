@@ -104,6 +104,13 @@ export default function ContactSection() {
     setSubmitError('');
     setIsSubmitting(true);
 
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(form.phone)) {
+      setSubmitError('Mobile number must be a 10-digit number.');
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const response = await fetch(`${API_URL}/api/leads`, {
         method: 'POST',
@@ -194,7 +201,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <div className="text-[#8a93a0] text-[12px] font-bold tracking-widest uppercase mb-1">PHONE NUMBER</div>
-                  <div className="text-white text-base font-bold tracking-wide">+91 99794 29183</div>
+                  <div className="text-white text-base font-bold tracking-wide">+91 12345 67890</div>
                 </div>
               </div>
 
@@ -217,28 +224,22 @@ export default function ContactSection() {
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent opacity-90" />
             <div className="absolute top-0 bottom-0 right-0 w-[2px] bg-gradient-to-b from-transparent via-[#0070f3] to-transparent opacity-60" />
 
-            {submitted ? (
-              <div className="text-center py-20 relative z-10">
-                <div className="w-20 h-20 mx-auto rounded-full bg-[#0070f3]/20 border border-[#0070f3] flex items-center justify-center text-4xl mb-6 shadow-[0_0_30px_rgba(0,112,243,0.4)]">
-                  🎉
-                </div>
-                <h3 className="font-serif text-3xl font-bold text-white mb-4">
-                  Application Received!
+            <form onSubmit={handleSubmit} className="relative z-10 flex flex-col gap-5">
+              <div className="mb-2">
+                <h3 className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                  Apply for <span className="text-[#0075ff]">Cohort 2</span>
                 </h3>
-                <p className="text-[#ffffff] text-base leading-relaxed max-w-sm mx-auto">
-                  Pranjal will review your application personally and get back to you within 5 business days.
+                <p className="text-[#ffffff] text-sm sm:text-base mt-2">
+                  All fields are required. Admissions are selective.
                 </p>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="relative z-10 flex flex-col gap-5">
-                <div className="mb-2">
-                  <h3 className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
-                    Apply for <span className="text-[#0075ff]">Cohort 2</span>
-                  </h3>
-                  <p className="text-[#ffffff] text-sm sm:text-base mt-2">
-                    All fields are required. Admissions are selective.
-                  </p>
+
+              {submitted && (
+                <div className="flex items-center gap-2 p-3 rounded-xl bg-green-500/10 border border-green-500/30 text-green-300 text-sm font-semibold mb-2">
+                  <span>🎉</span>
+                  <span>Application received! We'll respond within 5 business days.</span>
                 </div>
+              )}
 
                 {/* Name + Email */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -286,16 +287,25 @@ export default function ContactSection() {
                     <label className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
                       PHONE NUMBER
                     </label>
-                    <div className="flex items-center gap-3 px-4 py-3.5 rounded-xl border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
+                    <div className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border ${form.phone.length > 0 && form.phone.length < 10 ? 'border-red-500/50 focus-within:border-red-500/50 focus-within:shadow-[0_0_15px_rgba(239,68,68,0.25)]' : 'border-[#172740] focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]'} bg-[#070e1b] transition-all`}>
                       <Phone className="w-5 h-5 text-[#0070f3] shrink-0" />
                       <input
                         type="tel"
+                        required
                         value={form.phone}
-                        onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
-                        placeholder="+91 99794 29183"
+                        onChange={e => {
+                          const value = e.target.value.replace(/\D/g, '');
+                          if (value.length <= 10) {
+                            setForm(f => ({ ...f, phone: value }));
+                          }
+                        }}
+                        placeholder="9979429183"
                         className="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-[#99a1ac]"
                       />
                     </div>
+                    {form.phone.length > 0 && form.phone.length < 10 && (
+                      <span className="text-red-400 text-xs mt-1.5 ml-1 font-medium">Must be exactly 10 digits</span>
+                    )}
                   </div>
 
                   {/* Role */}
@@ -388,7 +398,6 @@ export default function ContactSection() {
                   </p>
                 </div>
               </form>
-            )}
           </div>
 
         </div>

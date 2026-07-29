@@ -24,7 +24,7 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   const inputEmail = (email || '').toLowerCase();
 
-  const adminEmail = (process.env.ADMIN_EMAIL || 'admin@shivam.com').toLowerCase();
+  const adminEmail = (process.env.ADMIN_EMAIL || 'admin@pranjal.com').toLowerCase();
   const adminPassword = process.env.ADMIN_PASSWORD || 'Admin@123';
 
   if (inputEmail === adminEmail && password === adminPassword) {

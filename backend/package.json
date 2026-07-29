@@ -1,7 +1,7 @@
 {
-  "name": "shivam-backend",
+  "name": "pranjal-backend",
   "version": "1.0.0",
-  "description": "Backend for Shivam Electronic World",
+  "description": "Backend for pranjal Electronic World",
   "main": "server.js",
   "type": "module",
   "scripts": {

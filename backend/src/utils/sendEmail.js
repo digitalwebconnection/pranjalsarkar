@@ -159,7 +159,7 @@ export const sendMenteeConfirmation = async (lead) => {
   try {
     const transporter = createTransporter(user, pass);
     const notifyOwner = process.env.INTERNAL_NOTIFICATION_EMAIL;
-    
+
     const info = await transporter.sendMail({
       from: `"Pranjal Sarkar — AI Product Leadership Studio" <${cleanUser}>`,
       to: lead.email,
@@ -192,7 +192,7 @@ export const sendOtpEmail = async (toEmail, otp) => {
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 480px; margin: 0 auto; padding: 32px 24px; background: #f8fafc; border-radius: 16px;">
       <div style="background: linear-gradient(135deg, #2563eb, #4f46e5); border-radius: 12px; padding: 28px; text-align: center; margin-bottom: 24px;">
-        <h1 style="color: #ffffff; margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.5px;">Shivam Electronic World</h1>
+        <h1 style="color: #ffffff; margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.5px;">pranjal Electronic World</h1>
         <p style="color: rgba(255,255,255,0.8); margin: 6px 0 0; font-size: 13px;">Password Reset OTP</p>
       </div>
       <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 28px; text-align: center;">
@@ -208,7 +208,7 @@ export const sendOtpEmail = async (toEmail, otp) => {
   try {
     const transporter = createTransporter(user, pass);
     const info = await transporter.sendMail({
-      from: `"Shivam Electronic World" <${cleanUser}>`,
+      from: `"pranjal Electronic World" <${cleanUser}>`,
       to: toEmail,
       subject: `${otp} – Your Password Reset OTP`,
       html,
@@ -217,7 +217,7 @@ export const sendOtpEmail = async (toEmail, otp) => {
     console.log(`[OTP Email Success] Sent to ${toEmail} | MessageId: ${info.messageId}`);
   } catch (err) {
     console.error(`[OTP Email Warning] Primary Gmail transport failed (${err.message}). Trying fallback port 587...`);
-    
+
     try {
       const fallbackTransporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
@@ -232,7 +232,7 @@ export const sendOtpEmail = async (toEmail, otp) => {
       });
 
       const fallbackInfo = await fallbackTransporter.sendMail({
-        from: `"Shivam Electronic World" <${cleanUser}>`,
+        from: `"pranjal Electronic World" <${cleanUser}>`,
         to: toEmail,
         subject: `${otp} – Your Password Reset OTP`,
         html,
