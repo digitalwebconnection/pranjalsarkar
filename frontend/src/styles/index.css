@@ -51,8 +51,12 @@ body {
 }
 
 ::selection {
-  background: rgba(0, 128, 199, 0.25);
-  color: #fff;
+  background: #0077ff9c;
+  color: #000;
+}
+::-moz-selection {
+  background: #93c5fd;
+  color: #000;
 }
 
 ::-webkit-scrollbar {

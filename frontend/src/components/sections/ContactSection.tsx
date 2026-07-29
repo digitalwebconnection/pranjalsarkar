@@ -1,9 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
-import { Phone, Calendar, User, Mail, Briefcase, Building2, Pencil, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Phone, Calendar, User, Mail, Briefcase, Building2, Pencil, ShieldCheck, ArrowRight, Loader2 } from 'lucide-react';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 export default function ContactSection() {
-  const [form, setForm] = useState({ name: '', email: '', role: '', company: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', role: '', company: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -95,9 +99,42 @@ export default function ContactSection() {
     };
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitError('');
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(`${API_URL}/api/leads`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          role: form.role,
+          company: form.company,
+          message: form.message,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSubmitted(true);
+        setForm({ name: '', email: '', phone: '', role: '', company: '', message: '' });
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 3000);
+      } else {
+        setSubmitError(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      console.error('Form submission error:', err);
+      setSubmitError('Unable to connect to the server. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -242,8 +279,25 @@ export default function ContactSection() {
                   </div>
                 </div>
 
-                {/* Role + Company */}
+                {/* Phone + Role */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {/* Phone */}
+                  <div className="flex flex-col">
+                    <label className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
+                      PHONE NUMBER
+                    </label>
+                    <div className="flex items-center gap-3 px-4 py-3.5 rounded-xl border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
+                      <Phone className="w-5 h-5 text-[#0070f3] shrink-0" />
+                      <input
+                        type="tel"
+                        value={form.phone}
+                        onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
+                        placeholder="+91 99794 29183"
+                        className="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-[#99a1ac]"
+                      />
+                    </div>
+                  </div>
+
                   {/* Role */}
                   <div className="flex flex-col">
                     <label className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
@@ -261,23 +315,23 @@ export default function ContactSection() {
                       />
                     </div>
                   </div>
+                </div>
 
-                  {/* Company */}
-                  <div className="flex flex-col">
-                    <label className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
-                      COMPANY
-                    </label>
-                    <div className="flex items-center gap-3 px-4 py-3.5 rounded-xl border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
-                      <Building2 className="w-5 h-5 text-[#0070f3] shrink-0" />
-                      <input
-                        type="text"
-                        required
-                        value={form.company}
-                        onChange={e => setForm(f => ({ ...f, company: e.target.value }))}
-                        placeholder="Where you work"
-                        className="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-[#99a1ac]"
-                      />
-                    </div>
+                {/* Company */}
+                <div className="flex flex-col">
+                  <label className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
+                    COMPANY
+                  </label>
+                  <div className="flex items-center gap-3 px-4 py-3.5 rounded-xl border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
+                    <Building2 className="w-5 h-5 text-[#0070f3] shrink-0" />
+                    <input
+                      type="text"
+                      required
+                      value={form.company}
+                      onChange={e => setForm(f => ({ ...f, company: e.target.value }))}
+                      placeholder="Where you work"
+                      className="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-[#99a1ac]"
+                    />
                   </div>
                 </div>
 
@@ -299,13 +353,31 @@ export default function ContactSection() {
                   </div>
                 </div>
 
+                {/* Error Message */}
+                {submitError && (
+                  <div className="flex items-center gap-2 p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-xs font-semibold">
+                    <span>⚠️</span>
+                    <span>{submitError}</span>
+                  </div>
+                )}
+
                 {/* Submit Button (GRADIENT MATCH 100% COPY OF WIREFRAME) */}
                 <button
                   type="submit"
-                  className="w-full mt-3 py-4 px-6 rounded-2xl text-white font-bold text-lg bg-gradient-to-r from-[#0088ff] via-[#0066ff] to-[#0052eb] hover:from-[#0096ff] hover:via-[#0075ff] hover:to-[#005eff] border-t border-white/40 transition-all duration-300 shadow-[0_0_35px_rgba(0,120,255,0.7)] hover:shadow-[0_0_50px_rgba(0,140,255,0.9)] flex items-center justify-center gap-2 group cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full mt-3 py-4 px-6 rounded-2xl text-white font-bold text-lg bg-gradient-to-r from-[#0088ff] via-[#0066ff] to-[#0052eb] hover:from-[#0096ff] hover:via-[#0075ff] hover:to-[#005eff] border-t border-white/40 transition-all duration-300 shadow-[0_0_35px_rgba(0,120,255,0.7)] hover:shadow-[0_0_50px_rgba(0,140,255,0.9)] flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Submit Application
-                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    <>
+                      Submit Application
+                      <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                    </>
+                  )}
                 </button>
 
                 {/* Footer Privacy Text */}

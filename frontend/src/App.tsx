@@ -1,3 +1,4 @@
+import { Routes, Route } from 'react-router-dom';
 import './styles/index.css';
 import Navbar from './components/layout/Navbar';
 import SmoothScroll from './components/ui/SmoothScroll';
@@ -18,8 +19,10 @@ import FinalCTASection from './components/sections/FinalCTASection';
 import ContactSection from './components/sections/ContactSection';
 import Footer from './components/layout/Footer';
 import EventsGallerySection from './components/sections/EventsGallerySection';
+import { AdminPage } from './admin/AdminPage';
 
-export default function App() {
+/** The main marketing / landing page */
+function LandingPage() {
   return (
     <>
       <SmoothScroll />
@@ -78,5 +81,22 @@ export default function App() {
       {/* Footer */}
       <Footer />
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      {/* Main website */}
+      <Route path="/" element={<LandingPage />} />
+
+      {/* Admin Panel — standalone page (no navbar/footer) */}
+      <Route
+        path="/admin"
+        element={
+          <AdminPage />
+        }
+      />
+    </Routes>
   );
 }
