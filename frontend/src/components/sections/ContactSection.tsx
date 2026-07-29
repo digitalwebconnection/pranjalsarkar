@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Phone, Calendar, User, Mail, Briefcase, Building2, Pencil, ShieldCheck, ArrowRight, Loader2 } from 'lucide-react';
+import { Phone, Calendar, User, Mail, Briefcase, Building2, Pencil, ShieldCheck, ArrowRight, Loader2, CheckCircle } from 'lucide-react';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
@@ -189,7 +189,7 @@ export default function ContactSection() {
             </div>
 
             <p className="text-white text-base sm:text-lg leading-relaxed mb-10 max-w-lg">
-              Fill out the application form. It takes 1–3 minutes. We review every application personally and respond within <span className="text-white font-bold">5 business days</span>.
+              Fill out the application form. It takes 1–3 minutes. We review every application personally and respond within <span className="text-white font-bold">24 hours</span>.
             </p>
 
             {/* Contact info cards */}
@@ -236,8 +236,8 @@ export default function ContactSection() {
 
               {submitted && (
                 <div className="flex items-center gap-2 p-3 rounded-xl bg-green-500/10 border border-green-500/30 text-green-300 text-sm font-semibold mb-2">
-                  <span>🎉</span>
-                  <span>Application received! We'll respond within 5 business days.</span>
+                  <CheckCircle className="w-5 h-5 shrink-0" />
+                  <span>Application received! We'll respond within 24 hours.</span>
                 </div>
               )}
 
@@ -299,7 +299,7 @@ export default function ContactSection() {
                             setForm(f => ({ ...f, phone: value }));
                           }
                         }}
-                        placeholder="9979429183"
+                        placeholder="1234567890"
                         className="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-[#99a1ac]"
                       />
                     </div>

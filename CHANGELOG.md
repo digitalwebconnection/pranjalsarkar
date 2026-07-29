@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Added
+- **Frontend**:
+  - Replaced success emoji with a CheckCircle SVG icon in `ContactSection.tsx`.
 - **Lead CRM Funnel Backend**:
   - Created `Lead.js` Mongoose model for storing applicant data.
   - Added `leads.js` routes (`POST /`, `GET /`, `GET /stats`, `PUT /:id/status`, `PUT /:id`, `DELETE /:id`).
