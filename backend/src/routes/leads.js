@@ -132,7 +132,7 @@ router.get('/stats', protectAdmin, async (req, res) => {
  */
 router.get('/', protectAdmin, async (req, res) => {
   try {
-    const { status, search, page = 1, limit = 50, dateFilter } = req.query;
+    const { status, search, page = 1, limit = 50, dateFilter, startDate, endDate } = req.query;
 
     const filter = {};
 
@@ -151,6 +151,11 @@ router.get('/', protectAdmin, async (req, res) => {
       } else if (dateFilter === '30days') {
         const thirtyDaysAgo = new Date(now.setDate(now.getDate() - 30));
         filter.createdAt = { $gte: thirtyDaysAgo };
+      } else if (dateFilter === 'Custom' && startDate && endDate) {
+        filter.createdAt = { 
+          $gte: new Date(startDate), 
+          $lte: new Date(new Date(endDate).setHours(23, 59, 59, 999)) 
+        };
       }
     }
 

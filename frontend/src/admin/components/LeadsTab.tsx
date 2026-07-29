@@ -92,15 +92,16 @@ export const LeadsTab: React.FC<LeadsTabProps> = ({
               <tr className="bg-slate-50 border-b border-slate-200 text-[10px] font-black text-slate-400 uppercase tracking-widest">
                 <th className="p-4 w-12 text-center">#</th>
                 <th className="p-4">Candidate</th>
+                <th className="p-4">Applied Date</th>
                 <th className="p-4 text-center">Status</th>
                 <th className="p-4 text-center">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 text-sm">
               {loadingLeads ? (
-                <tr><td colSpan={4} className="p-8 text-center"><Loader2 className="w-6 h-6 animate-spin mx-auto text-blue-500" /></td></tr>
+                <tr><td colSpan={5} className="p-8 text-center"><Loader2 className="w-6 h-6 animate-spin mx-auto text-blue-500" /></td></tr>
               ) : leads.length === 0 ? (
-                <tr><td colSpan={4} className="p-8 text-center text-slate-400 font-semibold">No leads found.</td></tr>
+                <tr><td colSpan={5} className="p-8 text-center text-slate-400 font-semibold">No leads found.</td></tr>
               ) : leads.map((lead, idx) => (
                 <tr key={lead._id} className="hover:bg-slate-50/50 transition-colors">
                   <td className="p-4 text-center text-xs font-black text-slate-400">
@@ -116,6 +117,12 @@ export const LeadsTab: React.FC<LeadsTabProps> = ({
                         <div className="text-xs text-slate-500 mt-0.5">{lead.email}</div>
                         <div className="text-[10px] text-slate-400 mt-0.5 font-mono tracking-wide">{lead.phone || 'No phone provided'}</div>
                       </div>
+                    </div>
+                  </td>
+                  <td className="p-4">
+                    <div className="flex flex-col">
+                      <span className="font-bold text-slate-800">{new Date(lead.createdAt).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                      <span className="text-xs text-slate-500 mt-0.5">{new Date(lead.createdAt).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</span>
                     </div>
                   </td>
                   <td className="p-4 text-center">
