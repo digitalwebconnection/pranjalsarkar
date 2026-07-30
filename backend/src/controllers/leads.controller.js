@@ -36,7 +36,7 @@ export const createLead = async (req, res) => {
       statusHistory: [{ from: null, to: 'NEW', changedAt: new Date(), note: 'Lead submitted via website form' }],
     });
 
-    sendNewLeadNotification(lead).catch((err) => {
+    await sendNewLeadNotification(lead).catch((err) => {
       console.error('[Lead Controller] Failed to send notification email:', err.message);
     });
 
@@ -163,13 +163,13 @@ export const updateLeadStatus = async (req, res) => {
     if (status === 'CONVERTED') {
       lead.paymentStatus = 'RECEIVED';
       
-      // Send confirmation to user
-      sendMenteeConfirmation(lead)
-        .then((sent) => { if (sent) Lead.findByIdAndUpdate(lead._id, { confirmationEmailSent: true }).catch(() => {}); })
-        .catch((err) => console.error('[Lead Controller] Failed to send mentee confirmation:', err.message));
-
-      // Send notification to admin/owner
-      sendAdminConversionNotification(lead);
+      // Await both emails in parallel so serverless functions don't terminate prematurely
+      await Promise.allSettled([
+        sendMenteeConfirmation(lead).then((sent) => {
+          if (sent) return Lead.findByIdAndUpdate(lead._id, { confirmationEmailSent: true }).catch(() => {});
+        }),
+        sendAdminConversionNotification(lead)
+      ]);
     }
 
     await lead.save();
