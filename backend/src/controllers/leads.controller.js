@@ -168,7 +168,7 @@ export const updateLeadStatus = async (req, res) => {
       if (sent) {
         await Lead.findByIdAndUpdate(lead._id, { confirmationEmailSent: true }).catch(() => {});
       }
-      // Send admin notification sequentially to prevent Gmail rate-limit/connection-drop
+      // Send admin notification sequentialy to prevent Gmail rate-limit/connection-drop
       await sendAdminConversionNotification(lead);
     }
 
