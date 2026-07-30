@@ -107,7 +107,7 @@ export const sendNewLeadNotification = async (lead) => {
 };
 
 /**
- * Send internal notification email when a lead is CONVERTED.
+ * Send internal notification email when a lead is CONVERTED .
  */
 export const sendAdminConversionNotification = async (lead) => {
   const user = process.env.EMAIL_USER;
