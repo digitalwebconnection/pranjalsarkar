@@ -8,12 +8,13 @@ dotenv.config();
  * Create transport helper with multiple fallback options for cloud environments like Render
  */
 const createTransporter = (user, pass) => {
-  // Clean credentials from any accidental whitespace or surrounding quotes
   const cleanUser = user ? user.trim().replace(/^["']|["']$/g, '') : '';
   const cleanPass = pass ? pass.trim().replace(/^["']|["']$/g, '').replace(/\s+/g, '') : '';
 
   return nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, // true for 465, false for other ports
     auth: {
       user: cleanUser,
       pass: cleanPass,
@@ -21,7 +22,7 @@ const createTransporter = (user, pass) => {
     tls: {
       rejectUnauthorized: false,
     },
-    connectionTimeout: 10000, // 10s timeout
+    connectionTimeout: 10000,
   });
 };
 

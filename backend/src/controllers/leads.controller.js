@@ -163,13 +163,13 @@ export const updateLeadStatus = async (req, res) => {
     if (status === 'CONVERTED') {
       lead.paymentStatus = 'RECEIVED';
       
-      // Await both emails in parallel so serverless functions don't terminate prematurely
-      await Promise.allSettled([
-        sendMenteeConfirmation(lead).then((sent) => {
-          if (sent) return Lead.findByIdAndUpdate(lead._id, { confirmationEmailSent: true }).catch(() => {});
-        }),
-        sendAdminConversionNotification(lead)
-      ]);
+      // Send confirmation to user first
+      const sent = await sendMenteeConfirmation(lead);
+      if (sent) {
+        await Lead.findByIdAndUpdate(lead._id, { confirmationEmailSent: true }).catch(() => {});
+      }
+      // Send admin notification sequentially to prevent Gmail rate-limit/connection-drop
+      await sendAdminConversionNotification(lead);
     }
 
     await lead.save();
