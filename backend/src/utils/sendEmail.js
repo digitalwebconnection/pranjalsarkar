@@ -107,6 +107,61 @@ export const sendNewLeadNotification = async (lead) => {
 };
 
 /**
+ * Send internal notification email when a lead is CONVERTED.
+ */
+export const sendAdminConversionNotification = async (lead) => {
+  const user = process.env.EMAIL_USER;
+  const pass = process.env.EMAIL_PASS;
+  const notifyTo = process.env.INTERNAL_NOTIFICATION_EMAIL || 'support@productleadership.studio';
+
+  if (!user || !pass) return;
+
+  const cleanUser = user.trim().replace(/^["']|["']$/g, '');
+
+  const html = `
+    <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 560px; margin: 0 auto; padding: 32px 24px; background: #f8fafc; border-radius: 16px;">
+      <div style="background: linear-gradient(135deg, #10b981, #059669); border-radius: 12px; padding: 28px; text-align: center; margin-bottom: 24px;">
+        <h1 style="color: #ffffff; margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.5px;">✅ Lead Converted!</h1>
+      </div>
+      <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 28px;">
+        <p style="color: #1e293b; font-size: 15px; font-weight: 600; margin: 0 0 20px;">A lead has just been successfully converted:</p>
+        <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+          <tr style="border-bottom: 1px solid #f1f5f9;">
+            <td style="padding: 10px 0; color: #64748b; font-weight: 600; width: 120px;">Name</td>
+            <td style="padding: 10px 0; color: #1e293b; font-weight: 700;">${lead.name}</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #f1f5f9;">
+            <td style="padding: 10px 0; color: #64748b; font-weight: 600;">Email</td>
+            <td style="padding: 10px 0; color: #1e293b;">${lead.email}</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #f1f5f9;">
+            <td style="padding: 10px 0; color: #64748b; font-weight: 600;">Phone</td>
+            <td style="padding: 10px 0; color: #1e293b;">${lead.phone || 'Not provided'}</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #f1f5f9;">
+            <td style="padding: 10px 0; color: #64748b; font-weight: 600;">Company</td>
+            <td style="padding: 10px 0; color: #1e293b;">${lead.company || 'Not provided'}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  `;
+
+  try {
+    const transporter = createTransporter(user, pass);
+    await transporter.sendMail({
+      from: `"Product Leadership Studio" <${cleanUser}>`,
+      to: notifyTo,
+      subject: `✅ Lead Converted: ${lead.name}`,
+      html,
+    });
+    console.log(`[Lead Conversion Admin Email Success] Sent to ${notifyTo}`);
+  } catch (err) {
+    console.error(`[Lead Conversion Admin Email Error] Failed to send:`, err.message);
+  }
+};
+
+/**
  * Send confirmation/onboarding email to mentee when lead is marked as CONVERTED.
  * Sends from office@pranjalsarkar.com (or falls back to existing Gmail).
  */
@@ -158,16 +213,14 @@ export const sendMenteeConfirmation = async (lead) => {
 
   try {
     const transporter = createTransporter(user, pass);
-    const notifyOwner = process.env.INTERNAL_NOTIFICATION_EMAIL;
 
     const info = await transporter.sendMail({
       from: `"Pranjal Sarkar — AI Product Leadership Studio" <${cleanUser}>`,
       to: lead.email,
-      bcc: notifyOwner ? notifyOwner : undefined,
       subject: `🎉 Welcome to AI Product Leadership Studio, ${lead.name}!`,
       html,
     });
-    console.log(`[Mentee Confirmation Email Success] Sent to ${lead.email} (BCC: ${notifyOwner}) | MessageId: ${info.messageId}`);
+    console.log(`[Mentee Confirmation Email Success] Sent to ${lead.email} | MessageId: ${info.messageId}`);
     return true;
   } catch (err) {
     console.error(`[Mentee Confirmation Email Error] Failed to send:`, err.message);
