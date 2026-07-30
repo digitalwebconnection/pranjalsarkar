@@ -35,7 +35,7 @@ const createTransporter = (user, pass) => {
 export const sendNewLeadNotification = async (lead) => {
   const user = process.env.EMAIL_USER;
   const pass = process.env.EMAIL_PASS;
-  const notifyTo = process.env.INTERNAL_NOTIFICATION_EMAIL || 'support@productleadership.studio';
+  const notifyTo = process.env.INTERNAL_NOTIFICATION_EMAIL;
 
   if (!user || !pass) {
     console.warn('[Lead Email Warning] EMAIL_USER or EMAIL_PASS is missing. Skipping notification.');
@@ -112,7 +112,7 @@ export const sendNewLeadNotification = async (lead) => {
 export const sendAdminConversionNotification = async (lead) => {
   const user = process.env.EMAIL_USER;
   const pass = process.env.EMAIL_PASS;
-  const notifyTo = process.env.INTERNAL_NOTIFICATION_EMAIL || 'support@productleadership.studio';
+  const notifyTo = process.env.INTERNAL_NOTIFICATION_EMAIL;
 
   if (!user || !pass) return;
 
