@@ -1,3 +1,5 @@
+export type ClassValue = string | number | boolean | undefined | null;
+
 export interface Product {
   id: string;
   _id?: string;

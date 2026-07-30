@@ -1,1 +1,0 @@
-For anything UI-related, give a reference instead of describing it in words: a screenshot of a similar layout, or a link to a site whose style you like. "Make it look modern" is vague; a reference image removes the guesswork and gets you closer to what you actually pictured on the first try.
