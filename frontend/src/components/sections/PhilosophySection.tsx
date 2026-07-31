@@ -89,7 +89,7 @@ const bookPages: BookPage[] = [
         <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">04</div>
 
         <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">
-          Decide Above AI
+          Deciding Above AI
         </h4>
 
         <p className="text-neutral-600 text-[10.5px] leading-relaxed">
@@ -111,7 +111,7 @@ const bookPages: BookPage[] = [
         </h4>
 
         <p className="text-neutral-600 text-[10.5px] leading-relaxed">
-          Today when a business leader questions your product decision in financial terms you struggle to answer. After this program you will connect every product decision to revenue, margin, and business outcome in language that gets your recommendations approved
+          Today when a business leader questions your product decision in financial terms you struggle to answer. After this program you will connect every product decision to revenue, margin, and business outcome in language that gets your recommendations approved.
         </p>
       </div>
     ),
@@ -159,13 +159,11 @@ const bookPages: BookPage[] = [
     content: (
       <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
         <h4 className="font-serif text-lg font-bold text-neutral-800 mb-3">
-          Ready to Think Like a Product Leader?
+          Your Next Step
         </h4>
 
         <p className="text-neutral-600 text-[11px] leading-relaxed mb-5">
-          These capabilities aren't built through lectures or frameworks. They
-          come from repeated executive decisions, boardroom discussions, AI
-          simulations, feedback, and real business challenges.
+          Join the Studio and build the product judgment required to lead in an AI-first world.
         </p>
 
         <a
@@ -191,13 +189,13 @@ export default function PhilosophySection() {
           {/* Left Column: Typography, Manifesto & CTA */}
           <div className="lg:col-span-6 flex flex-col justify-start">
             <span className="inline-flex items-center gap-2 px-5 py-2 bg-[#0080C7]/10 border border-[#0080C7]/30 rounded-md text-[12px] font-bold tracking-wider uppercase text-[#0080C7] mb-6 shadow-[0_0_15px_rgba(0,128,199,0.1)] self-start">
-              Philosophy
+              TRANSFORMATION PROMISE
             </span>
 
-            <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white mb-6">
-              Build Product Judgment <br />
-              <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
-                Under AI
+            <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-5xl leading-tight tracking-tight text-white mb-6">
+              What changes after this {" "}
+              <span className="relative text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
+                 studio program?
                 {/* Horizontal flare line */}
                 <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-72 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
               </span>
@@ -206,12 +204,12 @@ export default function PhilosophySection() {
             {/* Manifesto Quote Block */}
             <div className="relative border-l-2 border-[#0080C7] pl-6 my-6 shadow-[-4px_0_15px_-4px_rgba(0,128,199,0.6)]">
               <p className="text-lg md:text-xl font-serif  text-white/95 leading-relaxed drop-shadow-sm">
-                "We believe the era of tool-fluency as a competitive advantage is over. The era of judgment has just begun."
+                "The Studio is designed to help you build judgment and not just knowledge."
               </p>
             </div>
 
             <p className="text-gray-300 text-sm md:text-[15px] lg:text-[17px] leading-8 max-w-xl mb-10 font-sans">
-              Our curriculum isn't built around what's trending. It's built around what's permanent: the ability to know what matters, say no to the rest, and earn the room's trust under uncertainty.
+              None of these capabilities are developed by watching lectures or memorizing frameworks. They emerge through repeated executive decisions, boardroom discussions, AI leadership simulations, feedback, reflection, and real business challenges.
             </p>
 
             {/* See How It Works CTA Button */}
