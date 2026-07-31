@@ -255,7 +255,7 @@ function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
 
 export default function TestimonialsSection() {
   return (
-    <section id="testimonials" className="relative py-6 md:py-12 overflow-hidden border-b border-white/8 bg-[#000001]">
+    <section id="testimonials" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 bg-[#000001]">
 
       {/* Keyframe styles */}
       <style dangerouslySetInnerHTML={{

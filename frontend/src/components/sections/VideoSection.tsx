@@ -256,7 +256,7 @@ export default function VideoSection() {
   const [activeVideoId, setActiveVideoId] = useState<number | null>(null);
 
   return (
-    <section id="preview" className="relative py-12 md:py-20 overflow-hidden border-b border-white/8 bg-[#000001]">
+    <section id="preview" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 bg-[#000001]">
       {/* Background Decorative Atmospheric Glow */}
       <div className="absolute -top-40 -left-40 w-150 h-150 rounded-full z-0 bg-[#0044cc] blur-[150px] opacity-30 pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[70%] h-[70%] z-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(0,128,199,0.1)_0%,transparent_60%)] pointer-events-none" />

@@ -222,7 +222,7 @@ export default function EventsGallerySection() {
   }, [lightboxIndex, handlePrev, handleNext]);
 
   return (
-    <section id="events" className="relative py-20 md:py-8 overflow-hidden  bg-[#010308]">
+    <section id="events" className="relative py-8 md:py-14 overflow-hidden  bg-[#010308]">
 
       {/* Background glow */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">

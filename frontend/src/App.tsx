@@ -89,11 +89,18 @@ function LandingPage() {
   );
 }
 
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import RefundPolicy from './pages/RefundPolicy';
+import TermsOfUse from './pages/TermsOfUse';
+
 export default function App() {
   return (
     <Routes>
       {/* Main website */}
       <Route path="/" element={<LandingPage />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/refund-policy" element={<RefundPolicy />} />
+      <Route path="/terms-of-use" element={<TermsOfUse />} />
 
       {/* Admin Panel — standalone page (no navbar/footer) */}
       <Route

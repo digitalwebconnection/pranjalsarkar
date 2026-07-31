@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Logo from '../../assets/SignatureSticker.webp';
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Problem', href: '#mirror' },
-  { label: 'Philosophy', href: '#philosophy' },
-  { label: 'Program', href: '#program' },
-  { label: 'Curriculum', href: '#curriculum' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'About', href: '/#about' },
+  { label: 'Problem', href: '/#mirror' },
+  { label: 'Philosophy', href: '/#philosophy' },
+  { label: 'Program', href: '/#program' },
+  { label: 'Curriculum', href: '/#curriculum' },
+  { label: 'FAQ', href: '/#faq' },
 ];
 
 const sectionToNavLinkMap: Record<string, string> = {
@@ -84,18 +85,18 @@ export default function Navbar() {
           <div className="flex justify-between h-full px-3 md:px-4">
 
             {/* ── Logo ── */}
-            <a href="#hero" className="flex items-center gap-3 no-underline shrink-0">
+            <Link to="/#hero" className="flex items-center gap-3 no-underline shrink-0">
               <img src={Logo} alt="Logo" className="w-52 h-auto object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
-            </a>
+            </Link>
 
             {/* ── Center: Desktop nav links ── */}
             <div className="flex items-center gap-6">
               {navLinks.map(l => {
-                const isActive = activeId === l.href.replace('#', '');
+                const isActive = activeId === l.href.replace('/#', '');
                 return (
-                  <a
+                  <Link
                     key={l.label}
-                    href={l.href}
+                    to={l.href}
                     className={[
                       'text-[16px] font-medium no-underline transition-colors duration-200',
                       isActive
@@ -104,18 +105,18 @@ export default function Navbar() {
                     ].join(' ')}
                   >
                     {l.label}
-                  </a>
+                  </Link>
                 );
               })}
               {/* ── Right: CTA + Hamburger ── */}
               <div className="flex justify-end shrink-0">
                 {/* Desktop CTA */}
-                <a
-                  href="#contact"
+                <Link
+                  to="/#contact"
                   className="hidden md:inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-white text-[14px] font-bold tracking-wide no-underline transition-all duration-300 bg-linear-to-r from-[#2563EB] to-[#050B14] shadow-[0_0_80px_rgba(37,99,235,0.4)] hover:-translate-y-px"
                 >
                   Apply Now <span>→</span>
-                </a>
+                </Link>
 
                 {/* Hamburger — mobile only */}
                 <button
@@ -162,11 +163,11 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-1 pb-5 pt-3 px-4">
               {navLinks.map(l => {
-                const isActive = activeId === l.href.replace('#', '');
+                const isActive = activeId === l.href.replace('/#', '');
                 return (
-                  <a
+                  <Link
                     key={l.label}
-                    href={l.href}
+                    to={l.href}
                     onClick={() => setMenuOpen(false)}
                     className={[
                       'flex items-center justify-between px-4 py-3 rounded-lg text-[14px] no-underline transition-all duration-150',
@@ -176,18 +177,18 @@ export default function Navbar() {
                     ].join(' ')}
                   >
                     <span>{l.label}</span>
-                  </a>
+                  </Link>
                 );
               })}
 
               {/* Mobile CTA */}
-              <a
-                href="#contact"
+              <Link
+                to="/#contact"
                 onClick={() => setMenuOpen(false)}
                 className="mt-4 flex items-center justify-center gap-2 py-3.5 rounded-lg text-white text-[14px] font-bold no-underline tracking-wide bg-linear-to-r from-[#2563EB] via-[#1E40AF] to-[#050B14] shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]"
               >
                 Apply Now →
-              </a>
+              </Link>
             </div>
           </div>
         </nav>

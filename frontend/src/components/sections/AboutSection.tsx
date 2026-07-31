@@ -141,8 +141,8 @@ export default function AboutSection() {
               <div key={idx} className="flex flex-col relative z-10 cursor-default pl-5 pb-4">
 
                 {/* Left and Bottom glowing gradient lines (L-shape) - STATIC */}
-                <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-linear-to-b from-transparent via-[#0080C7] to-[#0080C7] opacity-100 shadow-[0_0_12px_rgba(0,128,199,0.9)]" />
-                <div className="absolute left-0 bottom-0 w-full md:w-2/3 h-[2px] bg-linear-to-r from-[#0080C7] via-[#0080C7]/50 to-transparent opacity-100 shadow-[0_0_12px_rgba(0,128,199,0.9)]" />
+                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-linear-to-b from-transparent via-[#0080C7] to-[#0080C7] opacity-100 shadow-[0_0_12px_rgba(0,128,199,0.9)]" />
+                <div className="absolute left-0 bottom-0 w-full md:w-2/3 h-0.5 bg-linear-to-r from-[#0080C7] via-[#0080C7]/50 to-transparent opacity-100 shadow-[0_0_12px_rgba(0,128,199,0.9)]" />
 
                 <div className="text-[#0080C7] font-mono text-lg font-bold mb-1 drop-shadow-[0_0_25px_rgba(0,128,199,1)] translate-x-1">
                   0{idx + 1}.
@@ -164,7 +164,7 @@ export default function AboutSection() {
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,128,199,0.2)_0%,transparent_80%)] pointer-events-none" />
 
             {/* Glowing top line */}
-            <div className="absolute top-0 left-0 w-full h-[2px] bg-linear-to-r from-transparent via-[#00a8ff] to-transparent shadow-[0_0_15px_rgba(0,168,255,0.9)] opacity-80" />
+            <div className="absolute top-0 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-[#00a8ff] to-transparent shadow-[0_0_15px_rgba(0,168,255,0.9)] opacity-80" />
 
             <p className="text-[15px] md:text-lg lg:text-lg leading-relaxed font-serif text-gray-300 relative z-10 drop-shadow-sm">
               <span className="text-white font-bold">Eventually, one realization became impossible to ignore.</span> Most Product Managers are taught how to build products. Very few are taught how Product Directors think, make business decisions, lead organizations or influence executives. Companies expect those capabilities before promotion, but rarely teach them intentionally. <br /><br />
@@ -260,8 +260,8 @@ export default function AboutSection() {
           <div className="relative w-full rounded-xl bg-[#05070a] border border-[#0080C7]/20 overflow-hidden p-8 md:p-12 lg:p-8 shadow-[0_0_50px_rgba(0,128,199,0.15)] hover:shadow-[0_0_80px_rgba(0,128,199,0.3)] transition-shadow duration-700 group">
             
             {/* Ambient Background Glows */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#0080C7]/10 blur-[120px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/3 transition-all duration-1000 group-hover:bg-[#0080C7]/20" />
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#00a8ff]/5 blur-[100px] rounded-full pointer-events-none -translate-x-1/3 translate-y-1/3" />
+            <div className="absolute top-0 right-0 w-150 h-150 bg-[#0080C7]/10 blur-[120px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/3 transition-all duration-1000 group-hover:bg-[#0080C7]/20" />
+            <div className="absolute bottom-0 left-0 w-100 h-100 bg-[#00a8ff]/5 blur-[100px] rounded-full pointer-events-none -translate-x-1/3 translate-y-1/3" />
             
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
               
@@ -272,7 +272,7 @@ export default function AboutSection() {
                 </svg>
                 
                 <h3 className="text-md md:text-lg lg:text-xl font-serif text-white leading-snug mb-8">
-                  The Studio reflects lessons learned across <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0080C7] to-[#00a8ff] drop-shadow-[0_0_15px_rgba(0,128,199,0.4)]">two decades of building products</span>, leading teams and making product decisions in environments ranging from startups to global enterprises.
+                  The Studio reflects lessons learned across <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0080C7] to-[#00a8ff] drop-shadow-[0_0_15px_rgba(0,128,199,0.4)]">two decades of building products</span>, leading teams and making product decisions in environments ranging from startups to global enterprises.
                 </h3>
                 
                 <div className="pl-6 border-l-2 border-[#0080C7]/40 relative">
@@ -285,12 +285,12 @@ export default function AboutSection() {
               {/* Right Column: Teaching Proof Card */}
               <div className="lg:col-span-5 relative">
                 {/* Card Glow Effect */}
-                <div className="absolute inset-0 bg-[#0080C7]/20 blur-[40px] rounded-xl group-hover:bg-[#0080C7]/30 transition-all duration-700" />
+                <div className="absolute inset-0 bg-[#0080C7]/20 blur-2xl rounded-xl group-hover:bg-[#0080C7]/30 transition-all duration-700" />
                 
                 <div className="relative h-full bg-[#0a0e17]/80 backdrop-blur-xl border border-[#0080C7]/20 rounded-xl p-4 md:p-6 shadow-[0_0_40px_rgba(0,128,199,0.15)] hover:border-[#0080C7]/40 transition-colors duration-500 overflow-hidden">
                   
                   {/* Inner top glow line */}
-                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#0080C7] to-transparent opacity-50" />
+                  <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#0080C7] to-transparent opacity-50" />
                   <p className="text-gray-300 text-sm leading-relaxed mb-8">
                     Hundreds of product professionals mentored across <strong className="text-white">10 countries</strong>. Engineers, consultants, and experienced PMs now leading product at:
                   </p>
@@ -328,7 +328,7 @@ export default function AboutSection() {
             </h3>
             <p className="text-gray-400 text-base md:text-lg mb-8">A message from the founder</p>
             {/* Highlight Line */}
-            <div className="w-64 md:w-96 h-[2px] mx-auto bg-gradient-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_15px_rgba(0,128,199,0.8)]"></div>
+            <div className="w-64 md:w-96 h-0.5 mx-auto bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_15px_rgba(0,128,199,0.8)]"></div>
           </div>
 
           <div className="max-w-full mx-auto flex flex-col items-center mt-12 md:mt-20 h-150 ">

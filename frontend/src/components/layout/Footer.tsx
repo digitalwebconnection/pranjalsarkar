@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom';
 import { Mail, ShieldCheck } from 'lucide-react';
 import Logo from '../../assets/SignatureSticker.webp';
 
 const footerLinks = {
   PROGRAM: ['About the Studio', 'Curriculum', 'Program Framework', 'Application Process', 'Alumni Stories'],
   CONNECT: ['LinkedIn', 'Twitter / X', 'YouTube', 'Instagram', 'Facebook', 'Medium'],
-  RESOURCES: ['PM Judgment Deck', 'Free Workshop',  'The Judgment Members'],
+  RESOURCES: ['PM Judgment Deck', 'Free Workshop', 'The Judgment Members'],
 };
 
 const footerLinkHashes: Record<string, string> = {
@@ -74,18 +75,19 @@ export default function Footer() {
                     const href = footerLinkHashes[l] || '#contact';
                     const isExternal = href.startsWith('http');
                     return (
-                    <li key={l} className="flex items-center gap-3.5">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
-                      <a 
-                        href={href} 
-                        target={isExternal ? '_blank' : undefined}
-                        rel={isExternal ? 'noopener noreferrer' : undefined}
-                        className="text-[#D1D5DB] text-[14px] font-medium hover:text-white transition-colors duration-150"
-                      >
-                        {l}
-                      </a>
-                    </li>
-                  )})}
+                      <li key={l} className="flex items-center gap-3.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
+                        <a
+                          href={href}
+                          target={isExternal ? '_blank' : undefined}
+                          rel={isExternal ? 'noopener noreferrer' : undefined}
+                          className="text-[#D1D5DB] text-[14px] font-medium hover:text-white transition-colors duration-150"
+                        >
+                          {l}
+                        </a>
+                      </li>
+                    )
+                  })}
                 </ul>
               </div>
             ))}
@@ -103,27 +105,27 @@ export default function Footer() {
               Insights, frameworks, and product leadership lessons — straight to your inbox.
             </p>
           </div>
-          <div className="flex w-full lg:w-auto items-center gap-4 z-10">
+          <div className="relative flex items-center w-full lg:w-100 z-10">
             <input
               type="email"
               placeholder="Your email address"
-              className="bg-[#0A101F] border border-white/10 rounded-lg px-5 py-3.5 text-[14px] text-white placeholder-gray-500 w-full lg:w-[320px] focus:outline-none focus:border-[#3B82F6]/50"
+              className="bg-[#0A101F] border border-white/10 rounded-lg pl-5 pr-30 py-3.5 text-[14px] text-white placeholder-gray-500 w-full focus:outline-none focus:border-[#3B82F6]/50 transition-colors"
             />
-            <button className="px-8 py-3.5 rounded-lg text-white text-[15px] font-bold transition-all duration-300 bg-linear-to-r from-[#2563EB] to-[#1D4ED8] shadow-[0_0_20px_rgba(37,99,235,0.3)] whitespace-nowrap">
+            <button className="absolute right-1.5 top-1.5 bottom-1.5 px-6 rounded-md text-white text-[14px] font-bold transition-all duration-300 bg-linear-to-r from-[#2563EB] to-[#1D4ED8] hover:shadow-[0_0_15px_rgba(37,99,235,0.4)]">
               Subscribe
             </button>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
+        <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row items-center justify-between gap-6 relative">
+          <div className="flex items-center gap-4 z-10">
             <div className=" flex items-center justify-center shrink-0">
               <ShieldCheck className="w-8 h-8 text-[#3B82F6]" />
             </div>
             <div className="flex flex-col">
               <span className="text-[#9CA3AF] text-[14px]">
-                © 2025 Pranjal Sarkar. All rights reserved.
+                © 2026 Pranjal Sarkar. All rights reserved.
               </span>
               <span className="text-[#3B82F6] text-[14px] font-medium mt-0.5">
                 Product Leadership Studio
@@ -131,12 +133,17 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex items-center gap-4 md:gap-8 text-[#3B82F6] text-[14px] font-medium">
-            <a href="#privacy" className="hover:text-white transition-colors">Privacy Policy</a>
+          {/* Developer Credit */}
+          <div className="text-[15px] font-serif text-white font-medium text-center z-10 md:absolute md:left-1/2 md:-translate-x-1/2 md:w-max">
+            Developed by <a href="https://digitalwebconnection.com/" target="_blank" rel="noopener noreferrer" className="text-[#3B82F6] hover:text-[#002ec7] transition-colors">Digital Web Connection</a>
+          </div>
+
+          <div className="flex items-center gap-4 md:gap-8 text-[#3B82F6] text-[14px] font-medium z-10">
+            <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <span className="w-1.25 h-1.25 rounded-full bg-[#3B82F6]" />
-            <a href="#terms" className="hover:text-white transition-colors">Terms of Use</a>
+            <Link to="/terms-of-use" className="hover:text-white transition-colors">Terms of Use</Link>
             <span className="w-1.25 h-1.25 rounded-full bg-[#3B82F6]" />
-            <a href="#refund" className="hover:text-white transition-colors">Refund Policy</a>
+            <Link to="/refund-policy" className="hover:text-white transition-colors">Refund Policy</Link>
           </div>
         </div>
 

@@ -145,7 +145,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-20 md:py-20 overflow-hidden bg-[#000000] text-white border-b border-white/5">
+    <section id="contact" className="relative py-8 md:py-14 overflow-hidden bg-[#000000] text-white border-b border-white/5">
       {/* Background 3D Dotted Wave Canvas (100% wireframe match) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <canvas ref={canvasRef} className="absolute bottom-0 left-0 w-full h-full opacity-70 mix-blend-screen" />

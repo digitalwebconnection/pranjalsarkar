@@ -135,7 +135,7 @@ export default function MirrorSection() {
   }, []);
 
   return (
-    <section id="mirror" className="relative py-12 md:py-20 overflow-hidden border-b border-white/8 ">
+    <section id="mirror" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 ">
       {/* Background Radial Glow */}
       <div className="absolute top-0 left-0 w-full h-[150%] z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-15%] left-[-10%] w-[80%] md:w-[60%] h-[80%] bg-[radial-gradient(ellipse_at_top_left,rgba(37,99,235,0.5)_0%,rgba(30,64,175,0.3)_30%,transparent_70%)] blur-[80px]" />
@@ -161,12 +161,12 @@ export default function MirrorSection() {
         {/* Pain Point Carousel */}
         <div 
           ref={scrollContainerRef}
-          className="flex overflow-x-auto gap-6 pb-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          className="flex overflow-x-auto gap-6 pb-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] scrollbar-none"
         >
           {painPoints.map((p, i) => (
             <div 
               key={i} 
-              className="w-[100%] md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start group relative rounded-2xl p-px bg-linear-to-br from-[#00a8ff]/90 via-white/10 to-white/10 shadow-[0_0_20px_rgba(0,0,0,0.3)] transition-all duration-300 ease-out hover:shadow-[0_0_30px_rgba(0,128,199,0.15)] hover:via-white/20 hover:to-white/20 flex flex-col"
+              className="w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start group relative rounded-2xl p-px bg-linear-to-br from-[#00a8ff]/90 via-white/10 to-white/10 shadow-[0_0_20px_rgba(0,0,0,0.3)] transition-all duration-300 ease-out hover:shadow-[0_0_30px_rgba(0,128,199,0.15)] hover:via-white/20 hover:to-white/20 flex flex-col"
             >
               <div className="relative h-full bg-[#060a14] group-hover:bg-[#0a0f1c] rounded-[15px] p-7 md:p-8 flex flex-col overflow-hidden transition-colors duration-300">
                 {/* Radial spotlight inside the card */}

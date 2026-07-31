@@ -7,11 +7,9 @@ export default function SmoothScroll() {
   useEffect(() => {
     // 1. Initialize Lenis
     const lenis = new Lenis({
-      duration: 0.8,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth exponential out
+      lerp: 0.025, // Extremely low for maximum smoothing / floaty effect
+      wheelMultiplier: 0.8, // Slightly softer wheel translation
       smoothWheel: true,
-      wheelMultiplier: 1,
-      lerp: 0.1,
       touchMultiplier: 1.5,
       autoRaf: true, // Use built-in requestAnimationFrame loop
     });
@@ -20,6 +18,16 @@ export default function SmoothScroll() {
 
     // Expose lenis instance globally for ease of access / debugging
     (window as any).lenis = lenis;
+
+    // 2. If there's a hash in the URL on load (e.g. from cross-page navigation), scroll to it
+    if (window.location.hash) {
+      setTimeout(() => {
+        const targetElement = document.querySelector(window.location.hash) as HTMLElement | null;
+        if (targetElement) {
+          lenis.scrollTo(targetElement, { offset: -72, immediate: true });
+        }
+      }, 100);
+    }
 
     // 3. Intercept Anchor Link Clicks for smooth scrolling with offset
     const handleAnchorClick = (e: MouseEvent) => {

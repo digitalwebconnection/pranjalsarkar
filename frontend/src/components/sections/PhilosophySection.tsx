@@ -178,7 +178,7 @@ const bookPages: BookPage[] = [
 ];
 export default function PhilosophySection() {
   return (
-    <section id="philosophy" className="relative py-12 md:py-20 overflow-hidden border-b border-white/8 bg-[#000001]">
+    <section id="philosophy" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 bg-[#000001]">
       {/* Intense Background Radial Glows */}
       <div className="absolute top-[-5%] right-[-10%] w-[60%] h-[80%] z-0 bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.45)_0%,transparent_70%)] blur-[90px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,128,199,0.15)_0%,transparent_60%)] pointer-events-none" />

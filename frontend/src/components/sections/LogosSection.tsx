@@ -49,7 +49,7 @@ export default function LogosSection() {
   const all = [...companies, ...companies];
 
   return (
-    <section id="logos" className="relative py-14 overflow-hidden bg-[#000001] border-b border-white/8">
+    <section id="logos" className="relative py-8 md:py-14 overflow-hidden bg-[#000001] border-b border-white/8">
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-64 bg-[#0080C7] blur-[150px] opacity-10 pointer-events-none z-0" />
 
