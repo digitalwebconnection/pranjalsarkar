@@ -177,14 +177,14 @@ export default function ContactSection() {
 
             {/* Header with Horizontal Laser Flare Line (100% copy of flare image) */}
             <div className="relative mb-8">
-              <h2 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl leading-[1.1] tracking-tight text-white mb-2">
+              <h2 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-tight text-white mb-2">
                 Ready to make<br />
-                <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">your move?</span>
+                <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">your move?</span>
               </h2>
 
               {/* Razor-thin 2px Horizontal Laser Flare Line with Exact Glow */}
-              <div className="relative mt-5 mb-3 w-50 sm:w-70 h-[3px] pointer-events-none">
-                <div className="absolute -bottom-3 left-0 w-48 md:w-80 h-[2px] bg-gradient-to-r from-transparent via-[rgba(24,37,226,1)] to-transparent shadow-[0_0_15px_rgba(24,37,226,0.9)] opacity-80" />
+              <div className="relative mt-5 mb-3 w-50 sm:w-70 h-0.75 pointer-events-none">
+                <div className="absolute -bottom-3 left-0 w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[rgba(24,37,226,1)] to-transparent shadow-[0_0_15px_rgba(24,37,226,0.9)] opacity-80" />
               </div>
             </div>
 
@@ -221,8 +221,8 @@ export default function ContactSection() {
           {/* Right Column — Glowing Form Box (100% copy of wireframe) */}
           <div className="relative w-full rounded-3xl bg-[#040914]/90 border-2 border-[#0070f3]/70 shadow-[0_0_60px_rgba(0,112,243,0.4),inset_0_0_35px_rgba(0,112,243,0.15)] p-6 sm:p-8 md:p-10 z-10 backdrop-blur-xl">
             {/* Top and right inner gradient border light line glows */}
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent opacity-90" />
-            <div className="absolute top-0 bottom-0 right-0 w-[2px] bg-gradient-to-b from-transparent via-[#0070f3] to-transparent opacity-60" />
+            <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#38bdf8] to-transparent opacity-90" />
+            <div className="absolute top-0 bottom-0 right-0 w-0.5 bg-linear-to-b from-transparent via-[#0070f3] to-transparent opacity-60" />
 
             <form onSubmit={handleSubmit} className="relative z-10 flex flex-col gap-5">
               <div className="mb-2">
@@ -375,7 +375,7 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full mt-3 py-4 px-6 rounded-2xl text-white font-bold text-lg bg-gradient-to-r from-[#0088ff] via-[#0066ff] to-[#0052eb] hover:from-[#0096ff] hover:via-[#0075ff] hover:to-[#005eff] border-t border-white/40 transition-all duration-300 shadow-[0_0_35px_rgba(0,120,255,0.7)] hover:shadow-[0_0_50px_rgba(0,140,255,0.9)] flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="w-full mt-3 py-4 px-6 rounded-2xl text-white font-bold text-lg bg-linear-to-r from-[#0088ff] via-[#0066ff] to-[#0052eb] hover:from-[#0096ff] hover:via-[#0075ff] hover:to-[#005eff] border-t border-white/40 transition-all duration-300 shadow-[0_0_35px_rgba(0,120,255,0.7)] hover:shadow-[0_0_50px_rgba(0,140,255,0.9)] flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>

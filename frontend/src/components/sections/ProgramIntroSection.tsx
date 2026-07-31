@@ -26,32 +26,32 @@ const whatYouGet = [
   { 
     icon: Sparkles, 
     heading: 'Executive Learning', 
-    desc: 'Master the thinking, frameworks, and decision models behind Product Leadership.' 
+    desc: 'Build the mental models, frameworks and operating principles behind Product Leadership.' 
   },
   { 
     icon: Compass, 
-    heading: 'Decision Simulations', 
-    desc: 'Practice high-stakes product decisions in realistic executive scenarios.' 
+    heading: 'Executive Decision Simulations', 
+    desc: "Step into realistic business situations where you'll evaluate incomplete information, balance competing priorities and make executive-level product decisions." 
   },
   { 
     icon: Users, 
-    heading: 'Leadership Collaboration', 
-    desc: 'Debate ideas, challenge assumptions, and learn with experienced Product Managers.' 
+    heading: 'Executive Team Collaboration', 
+    desc: 'Work alongside experienced Product Managers, debate strategic options, challenge assumptions and defend your recommendations under pressure.' 
   },
   { 
     icon: Award, 
-    heading: 'AI Executive Coaching', 
-    desc: 'Strengthen your judgment through conversations with AI executive advisors.' 
+    heading: 'AI Executive Conversations', 
+    desc: 'Practice difficult leadership conversations with AI executives who challenge your reasoning, expose weak assumptions and help strengthen your judgment.' 
   },
   { 
     icon: CheckCircle, 
-    heading: 'AI Leadership Toolkit', 
-    desc: 'Build practical AI workflows that improve strategic thinking and decision-making.' 
+    heading: 'AI Leadership Agent', 
+    desc: 'Design one practical AI leadership tool every week that improves how you analyse problems, prepare recommendations and make decisions in your day-to-day work.' 
   },
   { 
     icon: Shield, 
-    heading: 'Real Leadership Challenge', 
-    desc: 'Solve a real business problem and present your recommendations to experienced leaders.' 
+    heading: 'Product Leadership Exposure', 
+    desc: "Apply everything you've learned by solving a real product leadership challenge with a real company alongside business leaders." 
   },
 ];
 
@@ -80,7 +80,7 @@ const itemVariants = {
 
 export default function ProgramIntroSection() {
   return (
-    <section id="program" className="relative py-12 md:py-20 overflow-hidden border-b border-white/8 bg-[#000001]">
+    <section id="program" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 bg-[#000001]">
       {/* Background ambient lighting */}
       <div className="absolute top-0 left-0 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_top_left,rgba(0,128,199,0.15)_0%,transparent_60%)] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[70%] h-[70%] z-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(0,128,199,0.1)_0%,transparent_60%)] pointer-events-none" />
@@ -89,7 +89,7 @@ export default function ProgramIntroSection() {
 
         {/* Section Header */}
         <motion.div 
-          className="text-center mb-14 max-w-4xl mx-auto"
+          className="text-center mb-6 max-w-6xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -103,8 +103,17 @@ export default function ProgramIntroSection() {
               <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
             </span> 
           </h2>
-          <p className="text-gray-300 text-sm md:text-[15px] lg:text-[17px] leading-8 font-sans">
-        An immersive leadership experience for experienced Product Managers ready to become Product Directors. Learn by making decisions—not by watching lectures.    </p>
+          <div className="text-gray-300 text-sm md:text-[13px] lg:text-[15px] leading-5 font-sans space-y-2">
+            <p>
+              AI Product Leadership Studio is an immersive executive learning experience designed for experienced Product Managers who want to transition into Product Leadership roles.
+            </p>
+            <p>
+              It is built around a belief that: Product Leadership cannot be learned by watching lectures. It is developed by making difficult decisions, defending them, understanding business trade-offs, leading AI initiatives, influencing executives and solving problems that resemble the job itself.
+            </p>
+            <p>
+              That is why this Studio goes beyond lectures, frameworks and traditional cohorts. Every week places you inside realistic leadership situations that closely resemble the role you are preparing for.
+            </p>
+          </div>
         </motion.div>
 
         {/* Details Grid (Premium clean grid layout) */}
@@ -121,33 +130,56 @@ export default function ProgramIntroSection() {
               <motion.div 
                 key={i} 
                 variants={itemVariants}
-                className="p-5 rounded-xl flex flex-col gap-4 transition-all duration-300 group relative bg-[#0a0c10] border border-white/20 hover:border-white/40 overflow-hidden"
+                className={`relative p-px rounded-xl transition-all duration-300 group overflow-hidden ${
+                  i === 0 
+                    ? "bg-linear-to-br from-[#0066ff] via-[#0044cc]/30 to-transparent shadow-[-35px_0_80px_-10px_rgba(0,102,255,0.9)]" 
+                    : "bg-linear-to-br from-white/10 to-transparent hover:from-[#0044cc]/70 hover:shadow-[0_0_30px_rgba(0,168,255,0.2)]"
+                }`}
               >
-                <div className="w-10 h-10 rounded-lg bg-[#0044cc]/10 border border-[#0044cc]/50 flex items-center justify-center text-[#0044cc] shadow-[0_0_15px_rgba(0,68,204,0.3)] group-hover:shadow-[0_0_25px_rgba(0,68,204,0.6)] transition-shadow">
-                  <IconComponent size={18} className="drop-shadow-[0_0_8px_rgba(0,68,204,0.8)]" />
-                </div>
-                <div className="flex flex-col flex-1">
-                  <span className="block text-white/50 text-[10px] font-bold uppercase tracking-widest mb-1.5">{d.label}</span>
-                  <span className="font-serif text-white text-sm md:text-base font-bold tracking-tight leading-tight group-hover:text-[#0044cc] transition-colors mb-4">{d.value}</span>
-                  <div className="mt-auto w-12 h-0.5 bg-linear-to-r from-[#0044cc] to-transparent shadow-[0_0_8px_rgba(0,68,204,0.9)] opacity-80" />
+                <div className="h-full w-full bg-[#03060a] rounded-[11px] p-5 flex flex-col gap-4 relative z-10 overflow-hidden">
+                  {/* Inner one-sided glow for the first card */}
+                  {i === 0 && (
+                    <div className="absolute top-0 left-0 w-48 h-full bg-[radial-gradient(ellipse_at_left,rgba(0,102,255,0.2),transparent_70%)] pointer-events-none -z-10" />
+                  )}
+                  
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-shadow relative z-10 ${
+                    i === 0 
+                      ? "bg-[#00a8ff]/20 border border-[#00a8ff]/60 text-[#00a8ff] shadow-[0_0_25px_rgba(0,168,255,0.5)] group-hover:shadow-[0_0_40px_rgba(0,168,255,0.8)]"
+                      : "bg-[#0044cc]/15 border border-[#0044cc]/50 text-[#00a8ff] shadow-[0_0_15px_rgba(0,168,255,0.2)] group-hover:shadow-[0_0_25px_rgba(0,168,255,0.5)]"
+                  }`}>
+                    <IconComponent size={18} className="drop-shadow-[0_0_8px_rgba(0,168,255,0.9)]" />
+                  </div>
+                  <div className="flex flex-col flex-1">
+                    <span className="block text-white/50 text-[10px] font-bold uppercase tracking-widest mb-1.5">{d.label}</span>
+                    <span className="font-serif text-white text-sm md:text-base font-bold tracking-tight leading-tight group-hover:text-[#00a8ff] transition-colors mb-4">{d.value}</span>
+                    <div className={`mt-auto w-12 h-0.5 opacity-80 ${
+                      i === 0 
+                        ? "bg-linear-to-r from-[#00a8ff] to-transparent shadow-[0_0_8px_rgba(0,168,255,0.9)]" 
+                        : "bg-linear-to-r from-[#0044cc] to-transparent shadow-[0_0_8px_rgba(0,68,204,0.9)]"
+                    }`} />
+                  </div>
                 </div>
               </motion.div>
             );
           })}
         </motion.div>
 
-        {/* What You Get Grid */}
-        <div className="">
-          <motion.h3 
-            className="relative inline-block font-serif text-3xl font-bold text-white mb-12 text-center w-full"
+        <div className="mt-20">
+          <motion.div 
+            className="text-center mb-6 max-w-6xl mx-auto"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            What You'll Experience
-            {/* Horizontal flare line under headline */}
-            <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 w-48 md:w-64 h-0.5 bg-linear-to-r from-transparent via-[#0044cc] to-transparent shadow-[0_0_20px_rgba(0,68,204,0.9)] opacity-90" />
-          </motion.h3>
+            <h3 className="relative inline-block font-serif text-3xl md:text-4xl font-bold text-white mb-3">
+              The Studio Experience
+              {/* Horizontal flare line under headline */}
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[#0066ff] to-transparent shadow-[0_0_20px_rgba(0,168,255,0.9)] opacity-90" />
+            </h3>
+            <p className="text-gray-100 text-sm md:text-[16px] leading-relaxed font-sans mt-4">
+              Every week places you inside situations that Product Directors face every day that enable you to develop one leadership capability that immediately changes how you think, make decisions and operate at work. By the end of five weeks, those capabilities come together to help you operate like a Product Director overall.
+            </p>
+          </motion.div>
 
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -162,27 +194,37 @@ export default function ProgramIntroSection() {
                 <motion.div 
                   key={i} 
                   variants={itemVariants}
-                  className="bg-[#0a0c10] border border-[#0044cc]/20 p-4 md:p-6 rounded-xl flex gap-5 transition-all duration-300 relative group overflow-hidden shadow-[0_0_15px_rgba(0,68,204,0.05)] hover:shadow-[0_0_30px_rgba(0,68,204,0.2)] hover:border-[#0044cc]/50"
+                  className="bg-[#060a14] border border-white/5 border-t-[#0066ff]/80 p-4 md:p-6 rounded-xl flex gap-5 transition-all duration-300 relative group overflow-hidden shadow-[0_0_90px_rgba(0,168,255,0.1)] "
                 >
-                  {/* Decorative glowing gradient border on hover */}
-                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,68,204,0.1),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  {/* Decorative glowing gradient border */}
+                  <div className="absolute top-0 right-0 w-80 h-80 bg-[radial-gradient(ellipse_at_top_right,rgba(0,168,255,0.15),transparent_70%)] opacity-100 pointer-events-none" />
                   
-                  {/* Vertical left glowing line */}
-                  <div className="w-0.5 rounded-full shrink-0 bg-linear-to-b from-[#0044cc] to-[#0044cc]/20 shadow-[0_0_15px_rgba(0,68,204,0.8)]" />
+                  {/* Intense Vertical left glowing line */}
+                  <div className="w-1 rounded-full shrink-0 bg-linear-to-b from-[#0066ff] via-[#002ec7]/80 to-[#0044cc]/10 shadow-[0_0_30px_rgba(0,168,255,1)]" />
                   
                   <div className="flex-1 relative z-10">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-full bg-[#0044cc]/10 border border-[#0044cc]/30 flex items-center justify-center text-[#0044cc] shrink-0 shadow-[0_0_10px_rgba(0,68,204,0.2)] group-hover:shadow-[0_0_15px_rgba(0,68,204,0.5)]">
-                        <IconComp size={14} className="drop-shadow-[0_0_5px_rgba(0,68,204,0.5)]" />
+                      <div className="w-8 h-8 rounded-full bg-[#00a8ff]/30 border border-[#00a8ff]/50 flex items-center justify-center text-[#00a8ff] shrink-0 shadow-[0_0_30px_rgba(0,168,255,0.8)] transition-all">
+                        <IconComp size={14} className="drop-shadow-[0_0_10px_rgba(0,168,255,1)]" />
                       </div>
-                      <h4 className="font-serif text-white font-bold text-lg md:text-xl tracking-tight drop-shadow-md">{w.heading}</h4>
+                      <h4 className="font-serif text-white font-bold text-lg md:text-xl tracking-tight drop-shadow-[0_0_8px_rgba(0,168,255,0.4)]">{w.heading}</h4>
                     </div>
-                    <p className="text-gray-400 text-xs md:text-[14px] leading-relaxed font-sans">{w.desc}</p>
+                    <p className="text-gray-200 text-sm md:text-[15px] leading-relaxed font-sans">{w.desc}</p>
                   </div>
                 </motion.div>
               );
             })}
           </motion.div>
+
+          <motion.p 
+            className="text-center text-[#00a8ff] font-serif font-bold text-lg md:text-xl drop-shadow-[0_0_15px_rgba(0,168,255,0.9)] max-w-5xl mx-auto mt-7 leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Every week combines these experiences so that learning becomes judgment, and knowledge becomes leadership capability.
+          </motion.p>
         </div>
 
       </div>

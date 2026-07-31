@@ -15,7 +15,7 @@ export default function FinalCTASection() {
       />
 
       {/* Gradient Mask Overlay matching new dark blue aesthetic */}
-      <div className="absolute inset-0 bg-linear-to-b from-[#010308]/70 via-[#010308]/60 to-[#010308]/50 z-0 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-b from-[#010308]/80 via-[#010308]/60 to-[#010308]/60 z-0 pointer-events-none" />
 
       {/* Core background glow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center">
@@ -36,7 +36,7 @@ export default function FinalCTASection() {
 
           <div className="relative mb-6">
             {/* Title */}
-            <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white mb-2">
+            <h2 className="font-serif font-bold text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight text-white mb-2">
               The director role <br className="sm:hidden" />
               <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">won't wait forever.</span>
             </h2>

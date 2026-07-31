@@ -1,3 +1,21 @@
+const Linkedin = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect width="4" height="12" x="2" y="9" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
 import krishnaImg from "../../assets/testimonal/krishna.jfif";
 import neelimaImg from "../../assets/testimonal/neelima.jfif";
 import jaganImg from "../../assets/testimonal/jagan.jfif";
@@ -19,18 +37,16 @@ const testimonials = [
     linkedin: "https://www.linkedin.com/in/krishna-kamal-katarla-850b8849/",
     image: krishnaImg,
     stars: 5,
-    quote:
-      "An incredibly enriching experience. Every module was thoughtfully designed and helped me understand what product leadership actually demands.",
+    quote: "I had the privilege of being part of the product management program and I must say it has been an immensely enriching experience. The structure was brilliantly designed to cater to diverse needs. From concepts to advanced topics, each module was meticulously crafted to provide a comprehensive understanding of the role and what it actually demands of you.",
   },
   {
     name: "Neelima Vandanapu",
     role: "Product Leader",
-    location: "Pennsylvania, USA",
+    location: "Exton, Pennsylvania, United State",
     linkedin: "https://www.linkedin.com/in/neelima-voleti/",
     image: neelimaImg,
     stars: 5,
-    quote:
-      "Pranjal's no-compromise approach helped me truly understand the concepts and apply them in my day-to-day work. That's what makes his mentorship different.",
+    quote: "Pranjal's no-compromise approach ensures that you deeply understand the concepts, not just hear them. His commitment to guiding you to implement things correctly is what sets his teaching apart. His approach not only broadened my perspective but also equipped me with practical skills that I use in my work every day.",
   },
   {
     name: "Jagan Vijayakumar",
@@ -39,8 +55,7 @@ const testimonials = [
     linkedin: "https://www.linkedin.com/in/jagan-vijayakumar/",
     image: jaganImg,
     stars: 5,
-    quote:
-      "The learn-by-doing approach completely changed how I think. Every assignment helped me apply concepts instead of just understanding them.",
+    quote: "After months of searching I was fortunate enough to find the right mentor. I have had an incredible experience dedicating around 64 hours not just to understanding the concepts but actually applying them and building with them. His approach of learn by doing truly makes the learning process effective and enriching. His mentorship can genuinely make a difference in your career path.",
   },
   {
     name: "Vikas Yadav",
@@ -49,8 +64,7 @@ const testimonials = [
     linkedin: "https://www.linkedin.com/in/vikas-yadav-srccgbo/",
     image: vikasImg,
     stars: 5,
-    quote:
-      "Pranjal helped me become more confident in my decisions. His guidance made learning feel natural and genuinely improved my work.",
+    quote: "He has taught us so much and really helped me grow. What is great about Pranjal is how he makes learning feel natural and is always there to answer our questions. When I look back I feel genuinely lucky. He has made us better at our jobs and helped us become more confident in ways I did not fully expect going in.",
   },
   {
     name: "Ashutosh Agrawal",
@@ -59,8 +73,7 @@ const testimonials = [
     linkedin: "https://www.linkedin.com/in/ashutosh-agrawal-706131121/",
     image: ashutoshImg,
     stars: 5,
-    quote:
-      "The case studies and assignments after every session made the learning practical. Everything was detailed and highly engaging.",
+    quote: "Pranjal keeps you very engaged from start to finish. He covered each and every aspect thoroughly and apart from that he continuously gives you regular case studies and regular assignments to genuinely strengthen your knowledge. The regular case studies and assignments after every session are what actually make it stick and stay with you.",
   },
   {
     name: "Pritam Bramhecha",
@@ -69,38 +82,34 @@ const testimonials = [
     linkedin: "https://www.linkedin.com/in/pritam-bramhecha-98370b5/",
     image: pritamImg,
     stars: 5,
-    quote:
-      "Working on real-world product challenges with professionals from different backgrounds transformed how I approach complex problems.",
+    quote: "I gained invaluable insights across so many areas and these key things have already transformed how I approach challenges and how I solve them. One of the key highlights was the hands-on experience working on real world scenarios and applying what I had been learning. Pranjal's guidance and feedback helped solidify the understanding at every step. I also got to work with community members from such diverse backgrounds and build something genuinely collaborative.",
   },
   {
     name: "Christy Tawii",
     role: "Product Professional",
-    location: "Cape Town, South Africa",
+    location: "Cape Town, Western Cape, South Africa",
     linkedin: "https://www.linkedin.com/in/christy-tawii-6256739/",
     image: christyImg,
     stars: 5,
-    quote:
-      "A practical program that forces you to think critically. The personal feedback and mentorship made a huge difference in my growth.",
+    quote: "It has been challenging but it has been worth it. There are many theoretical courses out there but the best thing here is that it is very practical and because of the structure you are also forced to critically think about how you approach problems. Pranjal provides very constructive and actionable feedback which makes the whole experience more effective. And I have never had a mentor who actually reaches out and genuinely wants to help. That is very rare.",
   },
   {
     name: "Vineela Thonupunuri",
     role: "Tech Lead",
-    location: "New York, USA",
+    location: "New York, New York, United States",
     linkedin: "https://www.linkedin.com/in/vthonupunuri/",
     image: vineelaImg,
     stars: 5,
-    quote:
-      "The balance between theory and application helped me bring product thinking into my current role immediately.",
+    quote: "I am a tech lead and I have always understood the lifecycle of a product from a technical perspective but never really from the product perspective, which is exactly why I took this. The program is designed in such a way that there is theory but then you also get to work on it and apply it. Because of this I have actually been able to pick up certain things and implement them in my current role.",
   },
   {
     name: "Suma Pujari",
     role: "Product Professional",
-    location: "Broomfield, Colorado, USA",
+    location: "Broomfield, Colorado, United States",
     linkedin: "https://www.linkedin.com/in/suma-pujari/",
     image: sumaImg,
     stars: 5,
-    quote:
-      "A perfect blend of practical learning and strategy. I would happily recommend this program to every product professional.",
+    quote: "His curriculum takes you all the way from one level to higher and it is a wonderful blend of theory and practical that genuinely works. It was my pleasure to learn under him and I would greatly recommend it to all product professionals. And last but not the least he is a wonderful, wonderful human being and if given a chance I would love to be part of it again.",
   },
   {
     name: "Krittikaa Bhargava",
@@ -109,8 +118,7 @@ const testimonials = [
     linkedin: "https://www.linkedin.com/in/kritika-bhargava-k99/",
     image: kritikaImg,
     stars: 5,
-    quote:
-      "The mentorship never stopped after class. Pranjal was always available to guide, motivate, and help us overcome challenges.",
+    quote: "It has been around five to six weeks, and he is really an amazing human being and a good mentor. He keeps you encouraged and motivated throughout the process. There are certain times when you feel this is very difficult and you wonder how you will accomplish your goals, and he helps you understand your individual goals and encourages you to work toward them. And not just during the sessions, whenever we were doing assignments and got stuck anywhere, we could get in touch with him anytime. He was always available.",
   },
   {
     name: "Viren Shah",
@@ -119,8 +127,7 @@ const testimonials = [
     linkedin: "https://www.linkedin.com/in/viren-shah-aa55b734/",
     image: virenImg,
     stars: 5,
-    quote:
-      "The experience exceeded every expectation. The global cohort and quality of discussions felt like a world-class executive program.",
+    quote: "My expectations were very high going into this, and I can say that all of them were clearly met and it went beyond what I expected. Everything was covered in a very easy and understandable manner. Not a single question was ever left unanswered. And an added advantage was that the people attending were very experienced, it felt like a global MBA with people from US, Canada, Africa, India all in one room.",
   },
   {
     name: "John Joseph",
@@ -129,8 +136,7 @@ const testimonials = [
     linkedin: "https://www.linkedin.com/in/john-joseph-9699a7179/",
     image: johnImg,
     stars: 5,
-    quote:
-      "This cohort completely changed how I evaluate ideas and make decisions. It isn't about frameworks—it's about learning how to think.",
+    quote: "As an entrepreneur I was constantly juggling new ideas but my biggest challenge was identifying which one had real potential. The fear of not recognising a winning idea in time, only to see someone else succeed with it, was something I struggled with regularly. Even when I spotted an idea, understanding the frameworks and stages needed to bring it to life was an entirely different challenge. This cohort completely shifted the way I think. The depth of insight I gained is profound and I find myself focusing much more on how I approach problems, ideas and execution. It is all about thinking. That is what I kept hearing and it turned out to be true.",
   },
 ];
 
@@ -161,11 +167,14 @@ function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
 
         {/* Content Header */}
         <div className="text-center mb-6">
-          <h4 className="font-bold text-white uppercase tracking-widest text-[13px] mb-1.5 mt-2">
-            {t.name}
+          <h4 className="font-bold text-white uppercase tracking-widest text-[13px] mb-1.5 mt-2 flex items-center justify-center">
+            <a href={t.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-[#00a8ff] transition-colors flex items-center gap-1.5 group/link" title={`View ${t.name} on LinkedIn`}>
+              {t.name}
+              <Linkedin size={14} className="text-[#0080C7] group-hover/link:text-[#00a8ff] transition-colors" />
+            </a>
           </h4>
-          <p className="text-[#0080C7] text-[10px] font-bold uppercase tracking-wider mb-4 drop-shadow-[0_0_5px_rgba(0,128,199,0.4)]">
-            {t.role}
+          <p className="text-[#0080C7] text-[9px] font-bold uppercase tracking-wider mb-4 drop-shadow-[0_0_5px_rgba(0,128,199,0.4)]">
+            {t.role} • {t.location}
           </p>
           <div className="flex justify-center gap-1.5 text-[#0080C7] text-[20px]">
             {Array.from({ length: t.stars }).map((_, i) => (

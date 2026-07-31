@@ -9,6 +9,7 @@ import VideoSection from '../components/sections/VideoSection';
 import TestimonialsSection from '../components/sections/TestimonialsSection';
 import LogosSection from '../components/sections/LogosSection';
 import ProgramIntroSection from '../components/sections/ProgramIntroSection';
+import WhoShouldApplySection from '../components/sections/WhoShouldApplySection';
 import JudgementSection from '../components/sections/JudgementSection';
 import TakeawaysSection from '../components/sections/TakeawaysSection';
 import CurriculumSection from '../components/sections/CurriculumSection';
@@ -35,6 +36,7 @@ export default function HomePage() {
       <VideoSection />
       <LogosSection />
       <ProgramIntroSection />
+      <WhoShouldApplySection />
       <JudgementSection />
       <TakeawaysSection />
       <CurriculumSection />

@@ -128,10 +128,11 @@ export default function TakeawaysSection() {
         {/* Header */}
         <div className="text-center mb-10">
           <div className="relative mb-6 inline-block">
-            <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white mb-2 text-center">
-              Where Learning<br />
+            <span className="text-[#00a8ff] text-[10px] font-bold tracking-[0.2em] uppercase block mb-3 font-mono">ABOUT LEADERSHIP EXPOSURE</span>
+            <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-5xl leading-tight tracking-tight text-white mb-2 text-center">
+              What Happens<br />
               <span className="text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
-                Becomes Leadership..
+                After Week 5
               </span>
             </h2>
 
@@ -145,8 +146,13 @@ export default function TakeawaysSection() {
             </div>
           </div>
 
-          <p className="text-[#e5e5ec] text-sm md:text-base lg:text-lg leading-relaxed max-w-4xl mx-auto text-center font-normal mt-2">
-        After five weeks of executive learning, you'll spend 30 days solving a real Product Leadership challenge for a real company and present your strategy to business leaders. </p>
+          <p className="text-[#e5e5ec] text-sm md:text-base lg:text-lg leading-relaxed max-w-6xl mx-auto text-center font-normal mt-2">
+            After completing 5-weeks of executive learning, you'll enter a 30-Day Product Leadership Exposure where a real product company will present you with a strategic business challenge. Your job is to think, analyse, build a strategy and defend your recommendations in front of top leadership board. This is where everything you've learned throughout the Studio is put to the test.
+          </p>
+          
+          <p className="text-[#00a8ff] font-serif font-bold text-xl md:text-2xl mt-8">
+            During Your Product Leadership Exposure, You Will
+          </p>
         </div>
 
         {/* Bento Grid Layout */}
@@ -170,10 +176,10 @@ export default function TakeawaysSection() {
                 </div>
 
                 <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight leading-tight">
-                 Real Business Challenge
+                 Receive a Strategic Business Challenge
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed max-w-lg mb-8">
-           Work on a live strategic problem provided by a participating product company.
+           A participating product company will present a real strategic problem that requires executive-level thinking.
                 </p>
               </div>
 
@@ -222,10 +228,10 @@ export default function TakeawaysSection() {
                   </span>
                 </div>
                 <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight leading-tight">
-                 Build Your Leadership Strategy
+                 Build Your Product Leadership Strategy
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed mb-6">
-                  Develop a recommendation using executive thinking, business trade-offs, and AI-powered analysis.
+                  Research the problem, analyse the business context, evaluate alternatives and develop a strategy backed by clear reasoning and business outcomes.
                 </p>
               </div>
 
@@ -256,10 +262,10 @@ export default function TakeawaysSection() {
               <div className="absolute top-0 left-0 w-64 h-64 bg-[radial-gradient(circle_at_top_left,rgba(0,117,255,0.25),transparent_70%)] pointer-events-none opacity-100" />
               <div className="relative z-10">
                 <h3 className="font-serif text-lg font-bold text-white mb-2.5 tracking-tight leading-tight">
-                  Apply Studio Frameworks
+                  Apply the Studio Frameworks
                 </h3>
                 <p className="text-gray-300 text-xs leading-relaxed mb-6">
-              Use the models, AI workflows, and leadership principles you've built throughout the Studio.  </p>
+              Use the decision frameworks, AI Leadership Agents and executive thinking developed throughout the Studio to strengthen your recommendations.  </p>
               </div>
 
               <div className="relative aspect-video w-full rounded-lg overflow-hidden bg-neutral-900 border border-[#0075ff]/30 flex items-center justify-center mt-auto shadow-md">
@@ -288,7 +294,7 @@ export default function TakeawaysSection() {
                  Present to the Leadership Panel
                 </h3>
                 <p className="text-gray-300 text-xs leading-relaxed mb-6">
-                 Present your strategy, explain your reasoning, and answer questions from experienced business leaders.
+                 Present your strategy to company leaders, explain your thinking and answer questions that challenge your assumptions, trade-offs and recommendations.
                 </p>
               </div>
 
@@ -322,7 +328,7 @@ export default function TakeawaysSection() {
                  Defend Your Decisions
                 </h3>
                 <p className="text-gray-300 text-xs leading-relaxed mb-6">
-                Support every recommendation with business logic, customer insight, and strategic judgment.
+                Just like real Product Directors, you'll be expected to defend your strategy with evidence, logic and business judgment.
                 </p>
               </div>
 
@@ -351,10 +357,10 @@ export default function TakeawaysSection() {
                   </span>
                 </div>
                 <h3 className="font-serif text-xl font-bold text-white mb-3 tracking-tight leading-tight">
-                Product Leadership Award
+                Compete for the Product Leadership Award
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed mb-6">
-                 Top-performing participants receive recognition for exceptional strategic thinking and executive communication.
+                 Outstanding submissions will be recognised with the Product Leadership Award for demonstrating exceptional strategic thinking, business judgment and executive communication.
                 </p>
               </div>
 

@@ -4,52 +4,48 @@ import { Plus, Minus } from 'lucide-react';
 
 const faqs = [
   {
-    q: 'Who is this program for?',
-    a: 'Experienced Product Managers with 3+ years of experience who want to transition into Director or Head of Product roles.',
+    q: "Why is admission interview-only?",
+    a: "We want every cohort to have experienced Product Managers who can learn from one another, challenge each other's thinking and contribute to meaningful discussions. The Leadership Fit Interview helps us ensure the Studio is the right fit for both you and the cohort.",
   },
   {
-    q: 'Why is admission interview-only?',
-    a: 'Every applicant goes through a Leadership Fit Interview to ensure the Studio is the right fit for both the participant and the cohort.',
+    q: "Is this an online or offline program?",
+    a: "The Executive Studio is conducted live online over five weekends. The Product Leadership Exposure is also designed to be completed remotely, allowing Product Managers from anywhere in the world to participate.",
   },
   {
-    q: 'Is this live or pre-recorded?',
-    a: 'Every session is conducted live online over five weekends. Session recordings are also shared after each class.',
+    q: "Is the Product Leadership Exposure guaranteed?",
+    a: "Yes. Every participant admitted to the Studio will receive a real Product Leadership challenge from one of our partner product companies as part of the program.",
   },
   {
-    q: 'What is the weekly commitment?',
-    a: 'Around 8 live hours every weekend, plus 3–5 hours of weekly assignments, simulations, and practice.',
+    q: "What happens if I don't get selected in the Leadership Fit Interview?",
+    a: "It simply means we don't believe this is the right time for you to join the Studio. You are welcome to apply again for a future cohort after gaining more experience or strengthening the areas discussed during your interview.",
   },
   {
-    q: 'Is the Product Leadership Exposure guaranteed?',
-    a: 'Yes. Every participant receives a real Product Leadership challenge from one of our partner companies.',
+    q: "What happens if I miss one or more live sessions?",
+    a: "Every live session is recorded and shared with the cohort. However, we strongly encourage you to attend live because the discussions, group activities and AI simulations are an important part of the Studio experience.",
   },
   {
-    q: 'What happens if I am not selected?',
-    a: 'It simply means we believe this is not the right time. You are welcome to apply again after gaining more experience.',
+    q: "Can my company sponsor my participation?",
+    a: "Yes. Many companies support executive learning for their Product Managers. If your employer is sponsoring your participation, we can provide the required invoice and supporting documents.",
   },
   {
-    q: 'What if I miss a live session?',
-    a: 'All sessions are recorded and shared, but attending live is strongly recommended for discussions and simulations.',
+    q: "Can I join if I live outside India?",
+    a: "Absolutely. The Studio is conducted online, and Product Managers from anywhere in the world are welcome to apply.",
   },
   {
-    q: 'Can my company sponsor my participation?',
-    a: 'Yes. Many organizations sponsor executive learning. We can provide invoices and supporting documents if required.',
+    q: "Is there any placement support?",
+    a: "This Studio is not a placement or interview preparation program. It is designed to help experienced Product Managers develop the capabilities needed to grow into Product Leadership roles.",
   },
   {
-    q: 'Can I join from outside India?',
-    a: 'Absolutely. The Studio is fully online, and Product Managers from anywhere in the world are welcome to apply.',
+    q: "Can I cancel my admission and receive a refund?",
+    a: "Yes. You can cancel your admission up to 10 days before the Studio starts and receive a 100% refund. After that, the fee is non-refundable. If you wish to join a future cohort instead, your admission can be transferred. If the program fee has increased by then, you'll only need to pay the difference.",
   },
   {
-    q: 'Is this a placement or interview preparation program?',
-    a: 'No. The Studio focuses on building Product Leadership capabilities, not placement or interview preparation.',
+    q: "What happens if I need to discontinue the Studio midway?",
+    a: "You can continue your learning with a future cohort. If the Studio fee has increased by then, you'll only need to pay the difference in the program fee.",
   },
   {
-    q: 'What is the refund policy?',
-    a: 'Cancel up to 10 days before the program begins for a 100% refund. After that, the fee is non-refundable.',
-  },
-  {
-    q: 'Will I receive a certificate?',
-    a: 'Yes. Participants who successfully complete both the Executive Studio and the Product Leadership Exposure receive a completion certificate.',
+    q: "Will I receive a certificate after completing the Studio?",
+    a: "Yes. Participants who successfully complete both the Executive Studio and the Real Product Leadership Exposure will receive a completion certificate.",
   },
 ];
 
@@ -139,9 +135,9 @@ export default function FAQSection() {
         {/* Centered Header */}
         <div className="text-center mb-10 relative z-10">
           <div className="relative inline-block mb-6">
-            <h2 className="font-serif font-bold text-5xl sm:text-6xl md:text-6xl leading-tight tracking-tight text-white mb-2">
-              Questions <br />
-              <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">Answered</span>
+            <h2 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl leading-tight tracking-tight text-white mb-2">
+              Still Have  <br />
+              <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">Questions?</span>
             </h2>
 
             {/* Horizontal Lens Flare Line (Centered under Answered matching image 100%) */}
@@ -160,7 +156,7 @@ export default function FAQSection() {
           </div>
 
           <p className="text-[#94a3b8] text-base sm:text-lg leading-relaxed max-w-xl mx-auto mt-4">
-            Still have questions? <br /> Here are the answers to the ones we hear most often.
+            Here are the answers to the ones we hear most often.
           </p>
         </div>
 

@@ -11,6 +11,7 @@ import VideoSection from './components/sections/VideoSection';
 import TestimonialsSection from './components/sections/TestimonialsSection';
 import LogosSection from './components/sections/LogosSection';
 import ProgramIntroSection from './components/sections/ProgramIntroSection';
+import WhoShouldApplySection from './components/sections/WhoShouldApplySection';
 import JudgementSection from './components/sections/JudgementSection';
 import TakeawaysSection from './components/sections/TakeawaysSection';
 import CurriculumSection from './components/sections/CurriculumSection';
@@ -56,8 +57,12 @@ function LandingPage() {
       {/* 9. Program Introduction — AI Product Leadership Studio — #8 */}
       <ProgramIntroSection />
 
+
       {/* 10. How Leadership-Level Judgment Gets Built — #9 */}
       <JudgementSection />
+      
+      {/* 9.5. Who Should Apply */}
+      <WhoShouldApplySection />
 
       {/* 11. Program Takeaways — #10 */}
       <TakeawaysSection />

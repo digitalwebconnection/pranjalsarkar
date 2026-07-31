@@ -3,86 +3,74 @@ import { BookOpen, Target, Video, Box, Layers, Users } from 'lucide-react';
 
 const modules = [
   {
-    week: 'Week 1',
-    title: 'Think Like a Product Director',
-    focus: 'Build executive judgment and learn how Product Directors evaluate strategic decisions.',
-    caseStudy: 'Executive Simulation: Analyze a business challenge and defend your recommendation.',
-    deliverable: 'Strategic Judgment Framework & Executive Decision Canvas',
+    week: 'Duration',
+    title: 'Program Duration',
+    focus: '5 Weekends Executive Studio',
+    caseStudy: 'Up To 30 Days Real Product Leadership Exposure',
+    deliverable: 'Leadership Exposure Certificate',
     topics: [
-      'Director-level thinking',
-      'Strategic decision-making',
-      'Executive judgment',
-      'Business-first product mindset',
+      '5 Weekends Executive Studio',
+      '30 Days Leadership Exposure'
     ],
   },
-
   {
-    week: 'Week 2',
-    title: 'Own the Business',
-    focus: 'Connect every product decision to customer value, business strategy, and commercial outcomes.',
-    caseStudy: 'Business Strategy Workshop: Prioritize initiatives based on growth and profitability.',
-    deliverable: 'Business Strategy Canvas & Trade-off Framework',
+    week: 'Studio',
+    title: 'Executive Studio',
+    focus: '40 Hours Live Interactive Sessions',
+    caseStudy: 'Case Studies, Group Activities and AI Simulations',
+    deliverable: 'Interactive Learning Experience',
     topics: [
-      'Business strategy',
-      'Commercial thinking',
-      'Customer value',
-      'Executive trade-offs',
+      '40 Hours Live Interactive Sessions',
+      'Case Studies',
+      'Group Activities',
+      'AI Simulations'
     ],
   },
-
   {
-    week: 'Week 3',
-    title: 'Lead AI-First Products',
-    focus: 'Learn how Product Leaders evaluate AI opportunities, manage risks, and build AI-native products.',
-    caseStudy: 'AI Leadership Lab: Build an AI product strategy for a real business problem.',
-    deliverable: 'AI Leadership Playbook & Responsible AI Framework',
+    week: 'Commitment',
+    title: 'Weekly Commitment',
+    focus: '4 Hours Saturday + 4 Hours Sunday',
+    caseStudy: '3-5 Hours of Weekly Practice',
+    deliverable: 'Weekly Practice assignments',
     topics: [
-      'AI strategy',
-      'Responsible AI',
-      'AI product decisions',
-      'Innovation vs. risk',
+      '4 Hours Saturday',
+      '4 Hours Sunday',
+      '3-5 Hours of Weekly Practice'
     ],
   },
-
   {
-    week: 'Week 4',
-    title: 'Lead Teams & Influence',
-    focus: 'Develop leadership skills to align teams, influence stakeholders, and drive product execution.',
-    caseStudy: 'Leadership Simulation: Resolve cross-functional conflicts and gain executive alignment.',
-    deliverable: 'Leadership Communication Framework & Stakeholder Map',
+    week: 'Application',
+    title: 'Application Process',
+    focus: 'Admission is interview-only.',
+    caseStudy: 'Every cohort is carefully curated through the Leadership Fit Interview.',
+    deliverable: 'Leadership Fit Interview',
     topics: [
-      'Stakeholder management',
-      'Cross-functional leadership',
-      'Executive influence',
-      'Team alignment',
+      'Admission is interview-only',
+      'Leadership Fit Interview',
+      'Carefully curated cohort'
     ],
   },
-
   {
-    week: 'Week 5',
-    title: 'Influence Executive Decisions',
-    focus: 'Communicate with confidence, present strategic recommendations, and influence executive decisions.',
-    caseStudy: 'Boardroom Presentation: Present your product strategy to an executive review panel.',
-    deliverable: 'Executive Presentation Deck & Product Leadership Portfolio',
+    week: 'Fee',
+    title: 'Program Fee',
+    focus: '₹49,500 (Founding Cohort Price)',
+    caseStudy: 'The program fee increases with every cohort as outcomes are established. Future cohort price: ₹1,50,000. Founding cohort participants get in at one-third of that.',
+    deliverable: 'Founding Cohort Pricing',
     topics: [
-      'Executive storytelling',
-      'Boardroom communication',
-      'Decision defense',
-      'Leadership presence',
+      '₹49,500 Founding Cohort Price',
+      'Future cohort price: ₹1,50,000',
+      'Founding cohort gets 1/3rd pricing'
     ],
   },
-
   {
-    week: '30-Day Exposure',
-    title: 'Real Product Leadership Challenge',
-    focus: 'Work with a real company, solve a live Product Leadership problem, and present your recommendations to business leaders.',
-    caseStudy: 'Capstone Project: Solve a real business challenge and defend your strategy before an executive panel.',
-    deliverable: 'Leadership Exposure Certificate & Executive Feedback Report',
+    week: 'Timings',
+    title: 'Class Timings',
+    focus: 'Sat + Sun 12PM – 4PM IST',
+    caseStudy: '(12PM – 4PM BST)',
+    deliverable: 'Weekend Schedule',
     topics: [
-      'Live business challenge',
-      'Executive presentation',
-      'Leadership feedback',
-      'Product Leadership Award',
+      'Sat + Sun 12PM – 4PM IST',
+      '12PM – 4PM BST'
     ],
   },
 ];
@@ -130,18 +118,16 @@ export default function dCurriculumSection() {
 
 
             <div className="relative mb-4">
-              <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white mb-2">
-                5 Weeks.<br />
-                <span className="text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">Built for Product Leaders.</span>
+              <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-5xl leading-tight tracking-tight text-white mb-2">
+                Everything You
+                <br />
+                <span className="text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">Need to Know Before You Apply</span>
               </h2>
 
               {/* Horizontal Lens Flare Line */}
 
             </div>
 
-            <p className="text-[#c4c4d4] text-sm md:text-base lg:text-lg leading-relaxed max-w-3xl ">
-            A live, executive-style learning experience followed by a 30-day real Product Leadership challenge.
-            </p>
           </div>
 
           {/* Key Facts List with Gradient Borders & Blue Glow */}
@@ -206,15 +192,15 @@ export default function dCurriculumSection() {
                 <div
                   key={i}
                   className={`group relative rounded-xl transition-all duration-300 ${isActive
-                      ? 'p-px bg-linear-to-r from-[#00a8ff]/90 via-white/10 to-white/10 shadow-[0_0_20px_rgba(0,168,255,0.2)]'
-                      : ''
+                    ? 'p-px bg-linear-to-r from-[#00a8ff]/90 via-white/10 to-white/10 shadow-[0_0_20px_rgba(0,168,255,0.2)]'
+                    : ''
                     }`}
                 >
                   <button
                     onClick={() => setActiveTab(i)}
                     className={`w-full flex gap-5 items-center p-5 rounded-xl text-left cursor-pointer transition-all duration-300 group z-10 relative overflow-hidden ${isActive
-                        ? 'bg-[#060a14] rounded-[11px]'
-                        : 'bg-transparent border border-transparent hover:bg-[#050A14]/60 hover:border-[#0080C7]/20 hover:shadow-[0_0_15px_rgba(0,128,199,0.1)]'
+                      ? 'bg-[#060a14] rounded-[11px]'
+                      : 'bg-transparent border border-transparent hover:bg-[#050A14]/60 hover:border-[#0080C7]/20 hover:shadow-[0_0_15px_rgba(0,128,199,0.1)]'
                       }`}
                   >
                     {isActive && (

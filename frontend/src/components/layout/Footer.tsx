@@ -3,14 +3,14 @@ import Logo from '../../assets/SignatureSticker.webp';
 
 const footerLinks = {
   PROGRAM: ['About the Studio', 'Curriculum', 'Program Framework', 'Application Process', 'Alumni Stories'],
-  CONNECT: ['LinkedIn', 'Twitter / X', 'Newsletter', 'Podcast', 'YouTube'],
-  RESOURCES: ['PM Judgment Deck', 'Free Workshop', 'Blog', 'Case Studies', 'The Judgment Members'],
+  CONNECT: ['LinkedIn', 'Twitter / X', 'YouTube', 'Instagram', 'Facebook', 'Medium'],
+  RESOURCES: ['PM Judgment Deck', 'Free Workshop',  'The Judgment Members'],
 };
 
 const footerLinkHashes: Record<string, string> = {
   'About the Studio': '#program',
   'Curriculum': '#curriculum',
-  'Program Framework': '#takeaways',
+  'Program Framework': '#judgment',
   'Application Process': '#contact',
   'Alumni Stories': '#testimonials',
   'PM Judgment Deck': '#philosophy',
@@ -18,6 +18,12 @@ const footerLinkHashes: Record<string, string> = {
   'Blog': '#contact',
   'Case Studies': '#testimonials',
   'The Judgment Members': '#philosophy',
+  'LinkedIn': 'https://linkedin.com/in/pranjalsarkar',
+  'Twitter / X': 'https://x.com/thepsprinciples',
+  'YouTube': 'https://youtube.com/@thepsprinciples',
+  'Facebook': 'https://facebook.com/thepsprinciples',
+  'Instagram': 'https://instagram.com/thepsprinciples',
+  'Medium': 'https://medium.com/@pranjalsarkar',
 };
 
 export default function Footer() {
@@ -42,11 +48,13 @@ export default function Footer() {
             {/* Social Icons */}
             <div className="flex gap-4">
               {[
-                { name: 'LinkedIn', icon: <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>, href: '#' },
-                { name: 'X', icon: <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>, href: '#' },
-                { name: 'YouTube', icon: <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.108C19.524 3.545 12 3.545 12 3.545s-7.525 0-9.388.51a3.003 3.003 0 00-2.11 2.108C0 8.026 0 12 0 12s0 3.974.502 5.837a3.003 3.003 0 002.11 2.108c1.863.51 9.388.51 9.388.51s7.524 0 9.388-.51a3.003 3.003 0 002.11-2.108c.502-1.863.502-5.837.502-5.837s0-3.974-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg>, href: '#' }
+                { name: 'LinkedIn', icon: <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>, href: 'https://linkedin.com/in/pranjalsarkar' },
+                { name: 'X', icon: <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>, href: 'https://x.com/thepsprinciples' },
+                { name: 'YouTube', icon: <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.108C19.524 3.545 12 3.545 12 3.545s-7.525 0-9.388.51a3.003 3.003 0 00-2.11 2.108C0 8.026 0 12 0 12s0 3.974.502 5.837a3.003 3.003 0 002.11 2.108c1.863.51 9.388.51 9.388.51s7.524 0 9.388-.51a3.003 3.003 0 002.11-2.108c.502-1.863.502-5.837.502-5.837s0-3.974-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg>, href: 'https://youtube.com/@thepsprinciples' },
+                { name: 'Instagram', icon: <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>, href: 'https://instagram.com/thepsprinciples' },
+                { name: 'Facebook', icon: <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" /></svg>, href: 'https://facebook.com/thepsprinciples' }
               ].map(s => (
-                <a key={s.name} href={s.href} className="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-[#3B82F6] hover:bg-[#3B82F6]/10 transition-all duration-200">
+                <a key={s.name} href={s.href} target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-[#3B82F6] hover:bg-[#3B82F6]/10 transition-all duration-200">
                   {s.icon}
                 </a>
               ))}
@@ -62,14 +70,22 @@ export default function Footer() {
                 </h4>
                 <div className="w-16 h-[2.5px] bg-linear-to-r from-[#3B82F6] to-transparent mb-8 rounded-full" />
                 <ul className="flex flex-col gap-5">
-                  {links.map(l => (
+                  {links.map(l => {
+                    const href = footerLinkHashes[l] || '#contact';
+                    const isExternal = href.startsWith('http');
+                    return (
                     <li key={l} className="flex items-center gap-3.5">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
-                      <a href={footerLinkHashes[l] || '#contact'} className="text-[#D1D5DB] text-[14px] font-medium hover:text-white transition-colors duration-150">
+                      <a 
+                        href={href} 
+                        target={isExternal ? '_blank' : undefined}
+                        rel={isExternal ? 'noopener noreferrer' : undefined}
+                        className="text-[#D1D5DB] text-[14px] font-medium hover:text-white transition-colors duration-150"
+                      >
                         {l}
                       </a>
                     </li>
-                  ))}
+                  )})}
                 </ul>
               </div>
             ))}

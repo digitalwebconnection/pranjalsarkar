@@ -53,11 +53,11 @@ export default function LogosSection() {
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-64 bg-[#0080C7] blur-[150px] opacity-10 pointer-events-none z-0" />
 
-      <div className="max-w-3xl mx-auto px-6 md:px-8 relative z-10 mb-16">
+      <div className="max-w-5xl mx-auto px-6 md:px-8 relative z-10 mb-16">
         <h2 className="text-center font-serif text-white text-3xl md:text-5xl font-bold leading-tight tracking-tight">
-          Pranjal has worked closely <br /> 
+         Professionals Pranjal has mentored  <br /> 
           <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)] mt-2">
-            with product leaders at:
+           are now leading product here.
             {/* Horizontal flare line (no white dot) */}
             <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
           </span> 
