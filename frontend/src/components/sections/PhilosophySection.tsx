@@ -192,7 +192,7 @@ export default function PhilosophySection() {
               TRANSFORMATION PROMISE
             </span>
 
-            <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-5xl leading-tight tracking-tight text-white mb-6">
+            <h2 className="font-serif font-bold text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight text-white mb-6">
               What changes after this {" "}
               <span className="relative text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
                  studio program?

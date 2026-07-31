@@ -94,7 +94,7 @@ export default function AboutSection() {
     { lead: "PMs would work harder", text: "than everyone around them and they would get recognized and rewarded with more work and the same title." },
   ];
   return (
-    <section id="about" className="relative py-12 md:py-20 overflow-hidden border-b border-white/8 bg-[#000001]">
+    <section id="about" className="relative py-12 md:py-14 overflow-hidden border-b border-white/8 bg-[#000001]">
 
       {/* Background Radial Glow */}
       <div className="absolute top-1/4 -left-1/4 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.12)_0%,transparent_60%)] pointer-events-none" />
@@ -128,8 +128,8 @@ export default function AboutSection() {
         <motion.div className="max-w-7xl mx-auto mb-32 px-4" variants={itemVariants}>
 
           <div className="text-center mb-16">
-            <p className="text-gray-300 text-lg md:text-xl leading-relaxed font-sans max-w-5xl mx-auto">
-              After hundreds of conversations with experienced Product Managers, one pattern kept repeating. Different companies. Different industries. Different levels of experience. <strong className="text-white font-semibold block mt-2">But almost the same story every time.</strong>
+            <p className="text-gray-300 text-lg md:text-xl leading-relaxed font-sans max-w-6xl mx-auto">
+              After hundreds of conversations with experienced Product Managers, one pattern kept repeating. Different companies. Different industries. Different levels of experience. But almost the same story every time.
             </p>
           </div>
 
@@ -322,7 +322,7 @@ export default function AboutSection() {
           }}
         >
           <div className="text-center mb-10 relative">
-            <h3 className="text-white font-serif font-bold text-2xl md:text-4xl mb-4">
+            <h3 className="text-white font-serif font-bold text-2xl md:text-5xl mb-4">
               The Exact Moment I Decided <br className="hidden md:block" />
               <span className="text-[#0080C7] drop-shadow-[0_0_15px_rgba(0,128,199,0.5)]">This Program Needed to Exist</span>
             </h3>

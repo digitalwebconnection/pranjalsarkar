@@ -95,7 +95,7 @@ export default function ProgramIntroSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white mb-8">
+          <h2 className="font-serif font-bold text-2xl md:text-4xl lg:text-5xl leading-tight tracking-tight text-white mb-8">
             AI Product  <br />
             <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
               Leadership Studio

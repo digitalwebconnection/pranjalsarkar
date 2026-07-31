@@ -108,7 +108,7 @@ export default function DiagnosisSection() {
   }, [isAutoplay]);
 
   return (
-    <section id="diagnosis" className="relative py-12 md:py-20 overflow-hidden border-b border-white/8 ">
+    <section id="diagnosis" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 ">
       {/* Background Dots Pattern & Glows */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(rgba(255,255,255,0.35)_1.5px,transparent_1.5px)] bg-size-[24px_24px] mask-[radial-gradient(ellipse_80%_100%_at_center,transparent_40%,black_100%)] opacity-100 pointer-events-none" />
       
@@ -133,11 +133,11 @@ export default function DiagnosisSection() {
       <div className="max-w-7xl mx-auto px-6 md:px-6 relative z-10">
 
         {/* Header */}
-        <div className="max-w-5xl mx-auto text-center mb-10 md:mb-14">
+        <div className="max-w-6xl mx-auto text-center mb-10 md:mb-14">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#0080C7]/10 border border-[#0080C7]/30 rounded-md text-[10px] font-bold tracking-wider uppercase text-[#0080C7] mb-6 shadow-[0_0_15px_rgba(0,128,199,0.1)]">
             MARKET SHIFT
           </span>
-          <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-6">
+          <h2 className="font-serif font-bold text-2xl md:text-5xl leading-tight tracking-tight text-white mb-6">
             The rules just changed. And the product <br />
             <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
               world is shifting faster.
@@ -145,7 +145,7 @@ export default function DiagnosisSection() {
               <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
             </span>
           </h2>
-          <p className="text-gray-100 text-sm md:text-[15px] leading-relaxed max-w-5xl mx-auto mt-4">
+          <p className="text-gray-100 text-sm md:text-[15px] leading-relaxed max-w-6xl mx-auto mt-4">
         Generative AI didn't replace Product Managers. It changed what organizations value. Activities that once differentiated experienced Product Managers like writing PRDs, creating roadmaps, documenting requirements and producing polished presentations are increasingly becoming faster, cheaper and easier with AI. As these tasks become commodities, organizations are placing greater value on leaders who can make sound business decisions, navigate ambiguity, lead AI initiatives, build organizations and influence executive teams. The gap is no longer defined by experience alone. It is defined by the ability to operate at a different level.   </p>
         </div>
 
