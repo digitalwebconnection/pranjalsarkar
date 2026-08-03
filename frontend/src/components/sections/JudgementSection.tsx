@@ -1,5 +1,5 @@
 import ScrollStack, { ScrollStackItem } from './ScrollStack';
-import { Calendar, CheckCircle } from 'lucide-react';
+import {CheckCircle } from 'lucide-react';
 const stages = [
   {
     phase: "Week 1",
