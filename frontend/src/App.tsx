@@ -26,7 +26,7 @@ import { AdminPage } from './admin/AdminPage';
 function LandingPage() {
   return (
     <>
-      <SmoothScroll />
+      {/* <SmoothScroll /> */}
       {/* 1. Navigation */}
       <Navbar />
 
@@ -47,12 +47,13 @@ function LandingPage() {
 
       {/* 7. Testimonials — #6 */}
       <TestimonialsSection />
+      
+      {/* 8. Logos Strip — #7 */}
+      <LogosSection />
 
       {/* New Video Preview Section */}
       <VideoSection />
 
-      {/* 8. Logos Strip — #7 */}
-      <LogosSection />
 
       {/* 9. Program Introduction — AI Product Leadership Studio — #8 */}
       <ProgramIntroSection />

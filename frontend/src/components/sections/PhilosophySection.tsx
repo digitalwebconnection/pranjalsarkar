@@ -1,182 +1,58 @@
-import InteractiveBook, { type BookPage } from '../ui/InteractiveBook';
-import coverImg from '../../assets/pranjalsarkar/3.webp';
-import img1 from '../../assets/pranjalsarkar/image1.webp';
-import img2 from '../../assets/pranjalsarkar/2.webp';
-import img3 from '../../assets/pranjalsarkar/3.webp';
-import img4 from '../../assets/pranjalsarkar/4.webp';
-import img5 from '../../assets/pranjalsarkar/5.webp';
-import img6 from '../../assets/pranjalsarkar/6.webp';
-import img7 from '../../assets/pranjalsarkar/07.webp';
-import img8 from '../../assets/pranjalsarkar/08.webp';
+import { useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const LeftPageImage = ({ imgSrc }: { imgSrc: string }) => (
-  <div className="relative w-full h-full bg-neutral-900 overflow-hidden flex flex-col justify-end">
-    <img
-      src={imgSrc}
-      alt="Pranjal Sarkar"
-      className="absolute inset-0 w-full h-full object-cover opacity-90"
-      loading="lazy"
-    />
-    <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/25 to-transparent" />
-    <div className="relative z-10 p-5 text-left">
-      <div className="text-[9px] font-bold text-[#0080C7] tracking-widest uppercase mb-0.5 font-mono">THE MANIFESTO</div>
-      <div className="text-xs font-serif font-extrabold text-white leading-tight">Pranjal Sarkar</div>
-      <p className="text-[8px] text-white/50 uppercase tracking-widest font-mono mt-0.5">Interactive Edition</p>
-    </div>
-  </div>
-);
-
-const bookPages: BookPage[] = [
+const cardData = [
   {
-    pageNumber: 1,
-    backContent: <LeftPageImage imgSrc={img1} />,
-    content: (
-      <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
-        <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">01</div>
-
-        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">
-          Conviction Under Pressure
-        </h4>
-
-        <p className="text-neutral-600 text-[10.5px] leading-relaxed">
-         Today you have opinions in meetings but struggle to back them up when someone challenges you. After this program you will know the difference between an opinion and a conviction. And you will know exactly how to defend the conviction.
-        </p>
-      </div>
-    ),
+    step: "01",
+    title: "Conviction Under Pressure",
+    desc: "Today you have opinions in meetings but struggle to back them up when someone challenges you. After this program you will know the difference between an opinion and a conviction. And you will know exactly how to defend the conviction."
   },
-
   {
-    pageNumber: 2,
-    backContent: <LeftPageImage imgSrc={img2} />,
-    content: (
-      <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
-        <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">02</div>
-
-        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">
-          Thinking Before The Room Does
-        </h4>
-
-        <p className="text-neutral-600 text-[10.5px] leading-relaxed">
-          Today you prepare for a leadership review hoping nobody asks a hard question. After this program you will have already stress-tested your own thinking before you walk into the room.
-        </p>
-      </div>
-    ),
+    step: "02",
+    title: "Thinking Before The Room Does",
+    desc: "Today you prepare for a leadership review hoping nobody asks a hard question. After this program you will have already stress-tested your own thinking before you walk into the room."
   },
-
   {
-    pageNumber: 3,
-    backContent: <LeftPageImage imgSrc={img3} />,
-    content: (
-      <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
-        <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">03</div>
-
-        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">
-          Reading The Full Picture
-        </h4>
-
-        <p className="text-neutral-600 text-[10.5px] leading-relaxed">
-        Today you make product decisions based on what customers are saying right now. After this program you will read three things at the same time. What the customer needs. What the market is doing. What your organization can actually act on. And you will make the call at the intersection of all three.
-        </p>
-      </div>
-    ),
+    step: "03",
+    title: "Reading The Full Picture",
+    desc: "Today you make product decisions based on what customers are saying right now. After this program you will read three things at the same time. What the customer needs. What the market is doing. What your organization can actually act on. And you will make the call at the intersection of all three."
   },
-
   {
-    pageNumber: 4,
-    backContent: <LeftPageImage imgSrc={img4} />,
-    content: (
-      <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
-        <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">04</div>
-
-        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">
-          Deciding Above AI
-        </h4>
-
-        <p className="text-neutral-600 text-[10.5px] leading-relaxed">
-          Today you use AI and mostly trust what it gives you. After this program you will know exactly where AI output is wrong, what it missed, and what decision only you can make above it.
-        </p>
-      </div>
-    ),
+    step: "04",
+    title: "Deciding Above AI",
+    desc: "Today you use AI and mostly trust what it gives you. After this program you will know exactly where AI output is wrong, what it missed, and what decision only you can make above it."
   },
-
   {
-    pageNumber: 5,
-    backContent: <LeftPageImage imgSrc={img5} />,
-    content: (
-      <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
-        <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">05</div>
-
-        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">
-          Fluent In The Boardroom
-        </h4>
-
-        <p className="text-neutral-600 text-[10.5px] leading-relaxed">
-          Today when a business leader questions your product decision in financial terms you struggle to answer. After this program you will connect every product decision to revenue, margin, and business outcome in language that gets your recommendations approved.
-        </p>
-      </div>
-    ),
+    step: "05",
+    title: "Fluent In The Boardroom",
+    desc: "Today when a business leader questions your product decision in financial terms you struggle to answer. After this program you will connect every product decision to revenue, margin, and business outcome in language that gets your recommendations approved."
   },
-
   {
-    pageNumber: 6,
-    backContent: <LeftPageImage imgSrc={img6} />,
-    content: (
-      <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
-        <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">06</div>
-
-        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">
-          Owning The Full Leadership Table
-        </h4>
-
-        <p className="text-neutral-600 text-[10.5px] leading-relaxed">
-          Today you are seen as a strong executor in your product area. After this program you will be seen as someone who thinks and operates across the full product leadership surface.
-        </p>
-      </div>
-    ),
+    step: "06",
+    title: "Owning The Full Leadership Table",
+    desc: "Today you are seen as a strong executor in your product area. After this program you will be seen as someone who thinks and operates across the full product leadership surface."
   },
-
   {
-    pageNumber: 7,
-    backContent: <LeftPageImage imgSrc={img7} />,
-    content: (
-      <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
-        <div className="text-3xl font-serif font-extrabold text-[#0080C7] mb-1">07</div>
-
-        <h4 className="font-serif text-sm font-bold text-neutral-800 mb-2">
-         Your Honest Leadership Mirror
-        </h4>
-
-        <p className="text-neutral-600 text-[10.5px] leading-relaxed">
-        Today you do not know specifically where your judgment is strong and where it is weak. After this program you will have a detailed assessment that tells you exactly where you stand and exactly what to work on next.
-        </p>
-      </div>
-    ),
+    step: "07",
+    title: "Your Honest Leadership Mirror",
+    desc: "Today you do not know specifically where your judgment is strong and where it is weak. After this program you will have a detailed assessment that tells you exactly where you stand and exactly what to work on next."
   },
-
   {
-    pageNumber: 8,
-    backContent: <LeftPageImage imgSrc={img8} />,
-    content: (
-      <div className="flex flex-col items-center text-center justify-center h-full px-4 py-4">
-        <h4 className="font-serif text-lg font-bold text-neutral-800 mb-3">
-          Your Next Step
-        </h4>
-
-        <p className="text-neutral-600 text-[11px] leading-relaxed mb-5">
-          Join the Studio and build the product judgment required to lead in an AI-first world.
-        </p>
-
-        <a
-          href="#program"
-          className="px-5 py-2 bg-[#0080C7] rounded-full text-xs font-bold text-white hover:bg-[#009CEE] transition-all"
-        >
-          Explore The Studio
-        </a>
-      </div>
-    ),
-  },
+    step: "08",
+    title: "Your Next Step",
+    desc: "Join the Studio and build the product judgment required to lead in an AI-first world.",
+    isCta: true
+  }
 ];
+
 export default function PhilosophySection() {
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const nextCard = () => setActiveIdx((prev) => (prev + 1) % cardData.length);
+  const prevCard = () => setActiveIdx((prev) => (prev === 0 ? cardData.length - 1 : prev - 1));
+
+  const activeCard = cardData[activeIdx];
+
   return (
     <section id="philosophy" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 bg-[#000001]">
       {/* Intense Background Radial Glows */}
@@ -230,26 +106,74 @@ export default function PhilosophySection() {
             </a>
           </div>
 
-          {/* Right Column: Recreated Interactive Book */}
-          <div className="lg:col-span-6 w-full flex justify-center items-center relative mt-10 lg:mt-0">
-            {/* Massive ambient backlight behind the book */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-87.5 h-112.5 bg-[#0080C7] blur-[100px] opacity-30 pointer-events-none -z-10 transition-opacity duration-1000" />
+          {/* Right Column: Manual Cards */}
+          <div className="lg:col-span-6 w-full flex flex-col justify-center items-center relative mt-10 lg:mt-0 px-4">
+            {/* Ambient backlight behind the cards */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#00a8ff] blur-[120px] opacity-15 pointer-events-none -z-10" />
             
-            <div className="relative group">
-              {/* Extra hover glow */}
-              <div className="absolute inset-0 bg-[#0080C7] blur-[60px] opacity-0 group-hover:opacity-40 pointer-events-none -z-10 transition-opacity duration-700" />
-              
-              <InteractiveBook
-                coverImage={coverImg}
-                authorImage={img5}
-                bookTitle="Product Judgment Under AI"
-                bookAuthor="Pranjal Sarkar"
-                pages={bookPages}
-                width={310}
-                height={400}
-                autoplay={true}
-                autoplayDelay={2500}
-              />
+            <div className="relative w-full max-w-[480px]">
+              {/* The Card */}
+              <div className="relative rounded-2xl p-px bg-linear-to-br from-[#00a8ff]/60 via-[#00a8ff]/10 to-transparent shadow-[-15px_-15px_30px_rgba(0,168,255,0.15)] transition-all duration-300 hover:shadow-[-20px_-20px_40px_rgba(0,168,255,0.25)]">
+                <div className="relative rounded-2xl bg-[#050b14] flex flex-col min-h-[400px] overflow-hidden w-full p-10 md:p-12">
+                  
+                  {/* Top-Left Ambient Glow Overlay */}
+                  <div className="absolute top-0 left-0 w-64 h-64 bg-[radial-gradient(circle_at_top_left,rgba(0,168,255,0.2),transparent_70%)] pointer-events-none z-0" />
+                  
+                  <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center">
+                    
+                    {!activeCard.isCta ? (
+                      <>
+                        <div className="text-7xl font-serif font-extrabold text-transparent bg-clip-text bg-linear-to-b from-[#00a8ff] to-[#0044cc] mb-6 drop-shadow-[0_0_15px_rgba(0,168,255,0.4)]">
+                          {activeCard.step}
+                        </div>
+                        <h4 className="font-serif text-2xl md:text-4xl font-bold text-white mb-5 leading-tight">
+                          {activeCard.title}
+                        </h4>
+                        <p className="text-gray-300 text-base md:text-lg leading-relaxed">
+                          {activeCard.desc}
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <h4 className="font-serif text-3xl md:text-4xl font-bold text-white mb-5 leading-tight">
+                          {activeCard.title}
+                        </h4>
+                        <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-10">
+                          {activeCard.desc}
+                        </p>
+                        <a
+                          href="#program"
+                          className="px-8 py-4 bg-linear-to-r from-[#00a8ff] to-[#0044cc] rounded-full text-base font-bold text-white hover:shadow-[0_0_25px_rgba(0,168,255,0.5)] transition-all hover:-translate-y-1"
+                        >
+                          Explore The Studio
+                        </a>
+                      </>
+                    )}
+
+                  </div>
+                  
+                </div>
+              </div>
+
+              {/* Navigation Arrows */}
+              <div className="flex justify-center items-center gap-6 mt-8">
+                <button 
+                  onClick={prevCard}
+                  className="w-12 h-12 rounded-full border border-white/10 bg-[#050b14]/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a8ff]/20 hover:border-[#00a8ff]/50 hover:text-[#00a8ff] transition-all duration-300 shadow-[0_0_15px_rgba(0,168,255,0.1)] hover:shadow-[0_0_25px_rgba(0,168,255,0.3)]"
+                >
+                  <ChevronLeft size={24} />
+                </button>
+                <div className="text-gray-400 font-mono text-sm font-bold tracking-widest">
+                  <span className="text-white">{activeCard.step}</span> <span className="text-gray-600">/</span> 08
+                </div>
+                <button 
+                  onClick={nextCard}
+                  className="w-12 h-12 rounded-full border border-white/10 bg-[#050b14]/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a8ff]/20 hover:border-[#00a8ff]/50 hover:text-[#00a8ff] transition-all duration-300 shadow-[0_0_15px_rgba(0,168,255,0.1)] hover:shadow-[0_0_25px_rgba(0,168,255,0.3)]"
+                >
+                  <ChevronRight size={24} />
+                </button>
+              </div>
+
             </div>
           </div>
 
