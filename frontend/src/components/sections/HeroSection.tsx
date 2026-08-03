@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Users, TrendingUp, Building2, Briefcase, CheckCircle2, ShieldAlert } from 'lucide-react';
+import { Users, TrendingUp, Building2 } from 'lucide-react';
 import pranjalsarkar from "../../assets/pranjalsarkar/18.webp"
 
 const stats = [
@@ -91,7 +91,7 @@ export default function HeroSection() {
               <div className="absolute w-[190%] aspect-square rounded-full border border-[#0080C7]/2" />
             </div>
 
-            <div className="relative w-full max-w-80 md:max-w-95 lg:max-w-120 aspect-[3.5/4] z-10">
+            <div className="relative w-full max-w-80 md:max-w-95 lg:max-w-120 aspect-3.5/4 z-10">
               <img
                 src={pranjalsarkar}
                 alt="Pranjal Sarkar Portrait"
