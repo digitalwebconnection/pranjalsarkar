@@ -1,58 +1,48 @@
 import { motion } from 'motion/react';
+import { useState, useRef } from 'react';
+import youtubeVideo from '../../assets/video/youtube.mp4';
 import { 
-  Calendar, 
   Users, 
-  Clock, 
-  Globe, 
-  Target, 
-  TrendingUp, 
-  Sparkles, 
-  Compass, 
-  Award, 
-  CheckCircle, 
-  Shield 
+  BrainCircuit,
+  Gavel,
+  Mountain,
+  Play
 } from 'lucide-react';
 
-const details = [
-  { icon: Calendar, label: 'Format', value: 'Live Cohort • 6 Weeks' },
-  { icon: Users, label: 'Cohort Size', value: 'Maximum 20 Leaders' },
-  { icon: Clock, label: 'Commitment', value: '4–6 Hours / Week' },
-  { icon: Globe, label: 'Mode', value: 'Online • India & Global' },
-  { icon: Target, label: 'Designed For', value: 'Senior PMs • EMs • Growth Leads' },
-  { icon: TrendingUp, label: 'Outcome', value: 'Director / Head of Product' },
+const leadershipSteps = [
+  { icon: BrainCircuit, label: 'THINK' },
+  { icon: Gavel, label: 'DECIDE' },
+  { icon: Users, label: 'AUGMENT' },
+  { icon: Mountain, label: 'LEAD' },
 ];
 
-const whatYouGet = [
-  { 
-    icon: Sparkles, 
-    heading: 'Executive Learning', 
-    desc: 'Build the mental models, frameworks and operating principles behind Product Leadership.' 
+
+
+const leadershipDetails = [
+  {
+    title: "Product Leadership Decision Principles",
+    whatIsIt: "Think with 50+ Product Leadership Decision Principles drawn from real executive situations, covering strategy, business trade-offs, AI leadership, organizational decisions and executive influence.",
+    howItWorks: "Decision principle is delivered as pre-work before each simulation weekend. You understand it before you face the situation, then experience why it matters when the consequences land.",
+    transformation: "You stop making decisions based on instinct or incomplete thinking and start arriving at difficult situations already prepared."
   },
-  { 
-    icon: Compass, 
-    heading: 'Executive Decision Simulations', 
-    desc: "Step into realistic business situations where you'll evaluate incomplete information, balance competing priorities and make executive-level product decisions." 
+  {
+    title: "Realistic Executive Simulation",
+    whatIsIt: "Decide under pressure inside a persistent business environment where you lead an operating company through 10 business crises, make executive decisions, face the consequences and discover where your judgment needs to improve before the stakes become real.",
+    howItWorks: "Every simulation puts you inside an unfolding business situation. You study the company communications, diagnose what is happening, identify where the real risk sits, choose your decision and execution strategy. Week after week, the company you are running carries the weight of every choice you made before.",
+    transformation: "You develop the judgment to recognize what really matters in complex situations, make difficult trade-offs and anticipate how your decisions will affect the wider organization."
   },
-  { 
-    icon: Users, 
-    heading: 'Executive Team Collaboration', 
-    desc: 'Work alongside experienced Product Managers, debate strategic options, challenge assumptions and defend your recommendations under pressure.' 
+  {
+    title: "AI Automation Workshops",
+    whatIsIt: "Augment your leadership work through Agentic AI by building tools that reduce the effort around research, analysis and preparation, giving you more time for judgment, direction and the decisions that need human leadership.",
+    howItWorks: "After each week you identify the thinking gap you just experienced and build an AI tool that addresses it directly. By the end of the session, you have a working system connected to a real leadership problem.",
+    transformation: "You become a product leader who knows how to redesign work around AI. You learn to identify where agents create real leverage, what must remain human-led and how to build AI into the way product decisions get made."
   },
-  { 
-    icon: Award, 
-    heading: 'AI Executive Conversations', 
-    desc: 'Practice difficult leadership conversations with AI executives who challenge your reasoning, expose weak assumptions and help strengthen your judgment.' 
-  },
-  { 
-    icon: CheckCircle, 
-    heading: 'AI Leadership Agent', 
-    desc: 'Design one practical AI leadership tool every week that improves how you analyse problems, prepare recommendations and make decisions in your day-to-day work.' 
-  },
-  { 
-    icon: Shield, 
-    heading: 'Product Leadership Exposure', 
-    desc: "Apply everything you've learned by solving a real product leadership challenge with a real company alongside business leaders." 
-  },
+  {
+    title: "Real Leadership Exposure",
+    whatIsIt: "Lead through a real company challenge during a 30-day assignment where a product company gives you a strategic business problem to investigate and solve independently, the way you would be expected to approach it in a leadership role.",
+    howItWorks: "After Week 5 you are placed with a partner company. Each participant independently investigates the problem, builds a strategy and presents recommendations to the company's leadership while defending every decision in front of people with real stakes in the outcome.",
+    transformation: "Everything you built inside the 5-weeks studio gets tested against a real organization with real complexity to find out how ready you actually are."
+  }
 ];
 
 const containerVariants = {
@@ -79,6 +69,20 @@ const itemVariants = {
 } as const;
 
 export default function ProgramIntroSection() {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleVideo = () => {
+    if (videoRef.current) {
+      if (isVideoPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsVideoPlaying(!isVideoPlaying);
+    }
+  };
+
   return (
     <section id="program" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 bg-[#000001]">
       {/* Background ambient lighting */}
@@ -98,136 +102,161 @@ export default function ProgramIntroSection() {
           <h2 className="font-serif font-bold text-2xl md:text-4xl lg:text-5xl leading-tight tracking-tight text-white mb-8">
             AI Product  <br />
             <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
-              Leadership Studio
+              Leadership Structure
               {/* Horizontal flare line */}
               <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
             </span> 
           </h2>
           <div className="text-gray-300 text-sm md:text-[13px] lg:text-[15px] leading-5 font-sans space-y-2">
-            <p>
-              AI Product Leadership Studio is an immersive executive learning experience designed for experienced Product Managers who want to transition into Product Leadership roles.
-            </p>
-            <p>
-              It is built around a belief that: Product Leadership cannot be learned by watching lectures. It is developed by making difficult decisions, defending them, understanding business trade-offs, leading AI initiatives, influencing executives and solving problems that resemble the job itself.
-            </p>
-            <p>
-              That is why this Studio goes beyond lectures, frameworks and traditional cohorts. Every week places you inside realistic leadership situations that closely resemble the role you are preparing for.
-            </p>
+           AIPLS develops Product Leadership through four connected layers:
           </div>
         </motion.div>
 
-        {/* Details Grid (Premium clean grid layout) */}
-        <motion.div 
-          className="grid grid-cols-2 lg:grid-cols-6 gap-4 md:gap-6 mb-16"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {details.map((d, i) => {
-            const IconComponent = d.icon;
-            return (
-              <motion.div 
-                key={i} 
-                variants={itemVariants}
-                className={`relative p-px rounded-xl transition-all duration-300 group overflow-hidden ${
-                  i === 0 
-                    ? "bg-linear-to-br from-[#0066ff] via-[#0044cc]/30 to-transparent shadow-[-35px_0_80px_-10px_rgba(0,102,255,0.9)]" 
-                    : "bg-linear-to-br from-white/10 to-transparent hover:from-[#0044cc]/70 hover:shadow-[0_0_30px_rgba(0,168,255,0.2)]"
-                }`}
-              >
-                <div className="h-full w-full bg-[#03060a] rounded-[11px] p-5 flex flex-col gap-4 relative z-10 overflow-hidden">
-                  {/* Inner one-sided glow for the first card */}
-                  {i === 0 && (
-                    <div className="absolute top-0 left-0 w-48 h-full bg-[radial-gradient(ellipse_at_left,rgba(0,102,255,0.2),transparent_70%)] pointer-events-none -z-10" />
-                  )}
-                  
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-shadow relative z-10 ${
-                    i === 0 
-                      ? "bg-[#00a8ff]/20 border border-[#00a8ff]/60 text-[#00a8ff] shadow-[0_0_25px_rgba(0,168,255,0.5)] group-hover:shadow-[0_0_40px_rgba(0,168,255,0.8)]"
-                      : "bg-[#0044cc]/15 border border-[#0044cc]/50 text-[#00a8ff] shadow-[0_0_15px_rgba(0,168,255,0.2)] group-hover:shadow-[0_0_25px_rgba(0,168,255,0.5)]"
-                  }`}>
-                    <IconComponent size={18} className="drop-shadow-[0_0_8px_rgba(0,168,255,0.9)]" />
-                  </div>
-                  <div className="flex flex-col flex-1">
-                    <span className="block text-white/50 text-[10px] font-bold uppercase tracking-widest mb-1.5">{d.label}</span>
-                    <span className="font-serif text-white text-sm md:text-base font-bold tracking-tight leading-tight group-hover:text-[#00a8ff] transition-colors mb-4">{d.value}</span>
-                    <div className={`mt-auto w-12 h-0.5 opacity-80 ${
-                      i === 0 
-                        ? "bg-linear-to-r from-[#00a8ff] to-transparent shadow-[0_0_8px_rgba(0,168,255,0.9)]" 
-                        : "bg-linear-to-r from-[#0044cc] to-transparent shadow-[0_0_8px_rgba(0,68,204,0.9)]"
-                    }`} />
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-
-        <div className="mt-20">
+        {/* Leadership Steps Timeline */}
+        <div className="relative max-w-6xl mx-auto mb-24 mt-16 px-4">
           <motion.div 
-            className="text-center mb-6 max-w-6xl mx-auto"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="relative inline-block font-serif text-3xl md:text-4xl font-bold text-white mb-3">
-              The Studio Experience
-              {/* Horizontal flare line under headline */}
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[#0066ff] to-transparent shadow-[0_0_20px_rgba(0,168,255,0.9)] opacity-90" />
-            </h3>
-            <p className="text-gray-100 text-sm md:text-[16px] leading-relaxed font-sans mt-4">
-              Every week places you inside situations that Product Directors face every day that enable you to develop one leadership capability that immediately changes how you think, make decisions and operate at work. By the end of five weeks, those capabilities come together to help you operate like a Product Director overall.
-            </p>
-          </motion.div>
-
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="flex flex-col md:flex-row justify-between items-start gap-16 md:gap-4 relative"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {whatYouGet.map((w, i) => {
-              const IconComp = w.icon;
+            {/* Horizontal Line for Desktop */}
+            <div className="absolute top-[3rem] left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-transparent via-white/10 to-transparent hidden md:block -z-10" />
+            <motion.div 
+              className="absolute top-[3rem] left-[10%] h-0.5 bg-gradient-to-r from-[#00a8ff] to-[#0044cc] hidden md:block -z-10 shadow-[0_0_15px_rgba(0,168,255,0.6)]"
+              initial={{ width: "0%" }}
+              whileInView={{ width: "80%" }}
+              transition={{ duration: 1.5, delay: 0.3, ease: "easeInOut" }}
+              viewport={{ once: true }}
+            />
+
+            {leadershipSteps.map((step, i) => {
+              const IconComponent = step.icon;
               return (
                 <motion.div 
                   key={i} 
                   variants={itemVariants}
-                  className="bg-[#060a14] border border-white/5 border-t-[#0066ff]/80 p-4 md:p-6 rounded-xl flex gap-5 transition-all duration-300 relative group overflow-hidden shadow-[0_0_90px_rgba(0,168,255,0.1)] "
+                  className="flex flex-col items-center group w-full md:w-1/4 relative"
                 >
-                  {/* Decorative glowing gradient border */}
-                  <div className="absolute top-0 right-0 w-80 h-80 bg-[radial-gradient(ellipse_at_top_right,rgba(0,168,255,0.15),transparent_70%)] opacity-100 pointer-events-none" />
-                  
-                  {/* Intense Vertical left glowing line */}
-                  <div className="w-1 rounded-full shrink-0 bg-linear-to-b from-[#0066ff] via-[#002ec7]/80 to-[#0044cc]/10 shadow-[0_0_30px_rgba(0,168,255,1)]" />
-                  
-                  <div className="flex-1 relative z-10">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-full bg-[#00a8ff]/30 border border-[#00a8ff]/50 flex items-center justify-center text-[#00a8ff] shrink-0 shadow-[0_0_30px_rgba(0,168,255,0.8)] transition-all">
-                        <IconComp size={14} className="drop-shadow-[0_0_10px_rgba(0,168,255,1)]" />
-                      </div>
-                      <h4 className="font-serif text-white font-bold text-lg md:text-xl tracking-tight drop-shadow-[0_0_8px_rgba(0,168,255,0.4)]">{w.heading}</h4>
+                  {/* Vertical Line for Mobile */}
+                  {i < leadershipSteps.length - 1 && (
+                    <div className="absolute top-[6rem] left-1/2 w-0.5 h-20 bg-gradient-to-b from-[#00a8ff]/50 to-transparent -translate-x-1/2 md:hidden -z-10" />
+                  )}
+
+                  {/* Icon Node Container */}
+                  <div className="relative mb-6 cursor-default">
+                    {/* Glowing background on hover */}
+                    <div className="absolute inset-0 bg-[#00a8ff]/20 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-125" />
+                    
+                    <div className="w-24 h-24 rounded-2xl bg-[#060a14] border border-white/10 group-hover:border-[#00a8ff]/50 flex items-center justify-center relative z-10 transition-all duration-300 shadow-[0_0_30px_rgba(0,0,0,0.5)] group-hover:shadow-[0_0_40px_rgba(0,168,255,0.2)]">
+                      <IconComponent 
+                        size={36} 
+                        strokeWidth={1.5}
+                        className="text-white/60 group-hover:text-[#00a8ff] transition-colors duration-300 drop-shadow-md"
+                      />
                     </div>
-                    <p className="text-gray-200 text-sm md:text-[15px] leading-relaxed font-sans">{w.desc}</p>
+                  </div>
+
+                  {/* Text Container */}
+                  <div className="text-center px-4 cursor-default">
+                    <h4 className="font-sans text-xl md:text-2xl font-black text-white tracking-[0.15em] uppercase mb-2 group-hover:text-[#00a8ff] transition-colors duration-300 drop-shadow-md">
+                      {step.label}
+                    </h4>
                   </div>
                 </motion.div>
               );
             })}
           </motion.div>
-
-          <motion.p 
-            className="text-center text-[#00a8ff] font-serif font-bold text-lg md:text-xl drop-shadow-[0_0_15px_rgba(0,168,255,0.9)] max-w-5xl mx-auto mt-7 leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            Every week combines these experiences so that learning becomes judgment, and knowledge becomes leadership capability.
-          </motion.p>
         </div>
 
-      </div>
+        {/* Leadership Details Section */}
+        <div className="max-w-7xl mx-auto px-4 mb-32 relative z-10 space-y-8">
+          {leadershipDetails.map((detail, index) => (
+            <motion.div 
+              key={index}
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              className="bg-[#060a14]/60 backdrop-blur-md border border-white/10 rounded-xl p-8 md:p-10 shadow-[0_0_40px_rgba(0,102,255,0.05)] hover:shadow-[0_0_50px_rgba(0,168,255,0.12)] transition-all duration-500 group relative overflow-hidden"
+            >
+              {/* Subtle background glow */}
+              <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(ellipse_at_top_right,rgba(0,168,255,0.08),transparent_70%)] pointer-events-none transition-opacity duration-500 opacity-50 group-hover:opacity-100" />
+              
+              <motion.div variants={itemVariants}>
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-[#0066ff] to-[#0044cc] flex items-center justify-center text-white font-bold text-lg shadow-[0_0_20px_rgba(0,102,255,0.5)] border-2 border-[#060a14]">
+                    0{index + 1}
+                  </div>
+                  <h3 className="font-serif text-2xl md:text-3xl font-bold text-white tracking-wide group-hover:text-[#00a8ff] transition-colors duration-300">
+                    {detail.title}
+                  </h3>
+                </div>
+              </motion.div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 relative z-10">
+                <motion.div variants={itemVariants} className="flex flex-col gap-3">
+                  <h4 className="text-[#00a8ff] font-sans font-bold text-xs md:text-sm tracking-widest uppercase">What is it?</h4>
+                  <p className="text-gray-300 text-[15px] leading-relaxed font-sans">{detail.whatIsIt}</p>
+                </motion.div>
+
+                <motion.div variants={itemVariants} className="flex flex-col gap-3">
+                  <h4 className="text-[#00a8ff] font-sans font-bold text-xs md:text-sm tracking-widest uppercase">How does it work?</h4>
+                  <p className="text-gray-300 text-[15px] leading-relaxed font-sans">{detail.howItWorks}</p>
+                </motion.div>
+
+                <motion.div variants={itemVariants} className="flex flex-col gap-3">
+                  <h4 className="text-[#00a8ff] font-sans font-bold text-xs md:text-sm tracking-widest uppercase">What transformation does it bring?</h4>
+                  <p className="text-gray-300 text-[15px] leading-relaxed font-sans">{detail.transformation}</p>
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Video Block */}
+        <motion.div 
+          className="max-w-7xl mx-auto mt-24 px-4 relative z-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0, y: 40 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+          }}
+        >
+          <div className="max-w-full mx-auto flex flex-col items-center mt-12 md:mt-20 h-[300px] md:h-[500px] lg:h-[700px]">
+            {/* Video Placeholder */}
+            <div 
+                className="w-full aspect-video rounded-xl bg-[#0a0e17] border border-white/10 shadow-[0_0_40px_rgba(24,37,226,0.15)] relative overflow-hidden flex items-center justify-center group cursor-pointer mb-12"
+                onClick={toggleVideo}
+            >
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,168,255,0.05)_0%,transparent_70%)] pointer-events-none z-10" />
+                
+                <video 
+                    ref={videoRef}
+                    className="absolute inset-0 w-full h-full object-cover z-0" 
+                    src={youtubeVideo} 
+                    onPlay={() => setIsVideoPlaying(true)}
+                    onPause={() => setIsVideoPlaying(false)}
+                    controls={isVideoPlaying}
+                />
+
+                {!isVideoPlaying && (
+                    <>
+                        {/* Play Button Glow */}
+                        <div className="absolute w-24 h-24 bg-[#0080C7]/30 blur-[30px] rounded-full group-hover:bg-[#0080C7]/50 transition-all duration-500 z-20 pointer-events-none" />
+                        
+                        {/* Play Button */}
+                        <div className="w-16 h-16 md:w-20 md:h-20 bg-white/10 border border-white/20 backdrop-blur-md rounded-full flex items-center justify-center relative z-20 group-hover:scale-110 transition-transform duration-300 pointer-events-none">
+                           <Play className="w-8 h-8 md:w-10 md:h-10 text-white ml-1.5 opacity-90 group-hover:opacity-100" fill="currentColor" />
+                        </div>
+                    </>
+                )}
+            </div>
+          </div>
+        </motion.div>      </div>
     </section>
   );
 }

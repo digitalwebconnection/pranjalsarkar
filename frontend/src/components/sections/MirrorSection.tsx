@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useState } from "react";
 import {
   TrendingUp,
   Clock3,
@@ -7,132 +7,61 @@ import {
   ArrowUpCircle,
   CheckCircle2,
   MessageSquareWarning,
-  BookOpen,
-  FileText,
-  Users,
-  Briefcase,
-  Target,
-  Bot,
-  BrainCircuit,
-  GraduationCap,
-  Compass,
-  Search,
-  ShieldCheck,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 
 export const painPoints = [
   {
     icon: TrendingUp,
     title: "Great feedback. No promotion.",
-    body: "My manager told me I am performing well. But when I asked what it will take to move into a leadership band, the conversation went quiet.",
+    body: "I was told I need to think more strategically before I can move into a leadership role. But when I asked what I should actually do differently, I never got a clear answer. I am still trying to figure out what “being more strategic” actually means in my role.",
   },
   {
     icon: Clock3,
     title: "Always 'next cycle.'",
-    body: "Last appraisal cycle my manager said \"you are on the right track, let's revisit in six months.\" Six months passed. The conversation never came back.",
+    body: "I joined before him as a senior PM and had more experience, but he moved into a leadership role first. When I asked my manager what he had done differently, I was told he had shown more readiness for a leadership role. I asked what that meant and what I was missing, but I never got a clear answer",
   },
   {
     icon: Lightbulb,
     title: "Think strategically... how?",
-    body: "My skip-level told me I need to think more strategically. I asked him what that looks like in my day-to-day. He said \"you'll figure it out as you grow.\" I am still figuring it out.",
+    body: "I had a good year, and we shipped what we planned and the numbers were good. My manager was happy with my performance, but in the review, I was again told that I was very good at execution. I remember thinking, what else do I need to show if I want to move into leadership?",
   },
   {
     icon: Presentation,
     title: "Leadership feels undefined.",
-    body: "HR sent my transition feedback. It said I need to develop executive presence and leadership communication. No one in that process could tell me what either of those means in a product review meeting.",
+    body: "I applied for a Director of Product role and reached the final round. I thought the interviews had gone quite well, but the feedback was that I didn't come across as strategic enough. I understood the feedback, but I honestly didn't know what I should have done differently in those interviews.",
   },
   {
     icon: ArrowUpCircle,
     title: "Others move ahead faster.",
-    body: "A colleague who joined six months after me was moved into a Group PM role. My manager said the timing was right for him. I never understood what timing had to do with it.",
+    body: "I want to apply for Head of Product roles, but somehow, I don't feel ready yet. Every time I look at a job description, there are a few things I haven't done before, and I stop myself from applying. It has been almost two years now.",
   },
   {
     icon: CheckCircle2,
     title: "Execution isn't enough.",
-    body: "I ran discovery, defined the roadmap, aligned engineering and design, shipped on time, and hit the metric. My performance review said \"strong execution.\" My role title did not change.",
+    body: "I can build a roadmap and explain where the product is going. But when the discussion moves to where the business needs to be in the next two or three years, I still find myself coming back to product priorities and features. I know there is a bigger picture I should be thinking about, but I am not always sure how to get there.",
   },
   {
     icon: MessageSquareWarning,
     title: "Pressure changes everything.",
-    body: "In a leadership review, a VP asked me why I prioritised that feature over three others. I knew the answer. But under pressure, in that room, I could not structure my thinking fast enough. I left that meeting thinking about it for days.",
-  },
-  {
-    icon: BookOpen,
-    title: "Frameworks don't save you.",
-    body: "I have read Inspired, Continuous Discovery Habits, and Shreyas Doshi's entire thread library. I can explain every framework. I still freeze when a senior stakeholder challenges my product decision in real time.",
-  },
-  {
-    icon: FileText,
-    title: "Ideas go unheard.",
-    body: "I put together a detailed strategic proposal for my product area. My director said \"good thinking\" and moved on. It was never discussed again in any planning meeting.",
-  },
-  {
-    icon: Users,
-    title: "The promotion gap.",
-    body: "My promotion case was built over eighteen months. In the final calibration, I was told the committee felt I did not yet have enough cross-functional influence. Nobody had mentioned cross-functional influence in any of my previous one-on-ones.",
-  },
-  {
-    icon: Briefcase,
-    title: "Execution vs. vision.",
-    body: "I applied for a Director of Product role at a Series B company. Made it to the final round. The feedback was \"we felt you were stronger at execution than strategic vision.\" I did not know how to respond to that.",
-  },
-  {
-    icon: Target,
-    title: "Waiting to feel ready.",
-    body: "I have been waiting to feel ready before applying for Head of Product roles. Every time I read a job description, I find one gap and talk myself out of it. That has been going on for almost two years.",
-  },
-  {
-    icon: Bot,
-    title: "AI changed leadership.",
-    body: "My company is building AI features into the core product. In every product strategy meeting, leadership talks about agentic workflows and model selection and AI-driven personalisation. I am in those meetings. I do not have a mental model for making product decisions in this context.",
-  },
-  {
-    icon: BrainCircuit,
-    title: "Will AI replace me?",
-    body: "I read that AI will not replace product managers but will replace average product managers. I saved that article. I have not stopped thinking about which side of that line I am on.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Courses. Little change.",
-    body: "I completed a Reforge program last year. The frameworks were solid. But when I got back to work on Monday, nothing about how I made decisions had actually changed.",
-  },
-  {
-    icon: Compass,
-    title: "Vision feels difficult.",
-    body: "I can ship. I can manage stakeholders. I can write a good PRD. But when someone asks me to articulate my product vision for the next two years, I notice I am describing features, not thinking like a leader.",
-  },
-  {
-    icon: Search,
-    title: "What do they know?",
-    body: "A peer with less product experience than me just moved into a leadership role at another company. When I looked at his LinkedIn, I could not point to what he had done differently. That gap I cannot explain is the thing that keeps me up at night.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "I don't need more theory.",
-    body: "I am not looking for another course with more frameworks. I want to understand how a product leader actually observes a situation, builds a point of view, and defends it when the room pushes back. I have not found anything that teaches that yet.",
-  },
+    body: "I have already done courses and learned a lot of frameworks. I know how they work but knowing them and actually making a difficult decision at work are two different things. I need more practice making those decisions and understanding where my thinking is going wrong.",
+  }
 ];
 
 export default function MirrorSection() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const nextCard = () => {
+    setCurrentIndex((prev) => (prev + 1) % painPoints.length);
+  };
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (scrollContainerRef.current) {
-        const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-        const card = scrollContainerRef.current.children[0] as HTMLElement;
-        const scrollAmount = card.offsetWidth + 24; // 24px is gap-6
+  const prevCard = () => {
+    setCurrentIndex((prev) => (prev - 1 + painPoints.length) % painPoints.length);
+  };
 
-        if (scrollLeft + clientWidth >= scrollWidth - 10) {
-           scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-           scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        }
-      }
-    }, 3000); // Slide every 3 seconds
 
-    return () => clearInterval(timer);
-  }, []);
+  const p = painPoints[currentIndex];
+  const IconComponent = p.icon;
 
   return (
     <section id="mirror" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 ">
@@ -149,7 +78,7 @@ export default function MirrorSection() {
             THE MIRROR
           </span>
           <h2 className="font-serif font-bold text-2xl md:text-4xl leading-tight tracking-tight mb-4 text-white">
-            Read these. These are real situations shared by<br />
+            These are real situations faced by<br />
             <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
               experienced Product Managers trying to become Product Leaders.
               {/* Horizontal flare line */}
@@ -158,41 +87,71 @@ export default function MirrorSection() {
           </h2>
         </div>
 
-        {/* Pain Point Carousel */}
+        {/* Single Pain Point Card Carousel */}
         <div 
-          ref={scrollContainerRef}
-          className="flex overflow-x-auto gap-6 pb-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] scrollbar-none"
+          className="relative max-w-6xl mx-auto mt-8 z-10"
         >
-          {painPoints.map((p, i) => (
-            <div 
-              key={i} 
-              className="w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start group relative rounded-2xl p-px bg-linear-to-br from-[#00a8ff]/90 via-white/10 to-white/10 shadow-[0_0_20px_rgba(0,0,0,0.3)] transition-all duration-300 ease-out hover:shadow-[0_0_30px_rgba(0,128,199,0.15)] hover:via-white/20 hover:to-white/20 flex flex-col"
-            >
-              <div className="relative h-full bg-[#060a14] group-hover:bg-[#0a0f1c] rounded-[15px] p-7 md:p-8 flex flex-col overflow-hidden transition-colors duration-300">
-                {/* Radial spotlight inside the card */}
-                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,rgba(0,128,199,0.08),transparent_70%)] pointer-events-none" />
+          <div className="group relative rounded-2xl p-px bg-linear-to-br from-[#00a8ff]/90 via-white/10 to-white/10 shadow-[0_0_20px_rgba(0,0,0,0.3)] transition-all duration-500 ease-out hover:shadow-[0_0_30px_rgba(0,128,199,0.15)] hover:via-white/20 hover:to-white/20 flex flex-col h-auto">
+            <div className="relative h-full bg-[#060a14] group-hover:bg-[#0a0f1c] rounded-[15px] p-8 md:p-12 flex flex-col overflow-hidden transition-colors duration-300 justify-center">
+              {/* Radial spotlight inside the card */}
+              <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,rgba(0,128,199,0.08),transparent_70%)] pointer-events-none" />
 
-                {/* Content Container */}
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="mb-6 w-12 h-12 rounded-full bg-[#0080C7]/5 border border-[#0080C7]/40 shadow-[0_0_15px_rgba(0,128,199,0.1)] flex items-center justify-center text-[#00a8ff] group-hover:bg-[#0080C7]/10 group-hover:border-[#0080C7]/70 group-hover:shadow-[0_0_20px_rgba(0,128,199,0.3)] transition-all duration-300 shrink-0">
-                    <p.icon size={22} strokeWidth={2} />
-                  </div>
-                  <p className="text-gray-300 text-[12px] md:text-[14px] leading-relaxed transition-colors duration-300 group-hover:text-white font-medium">
-                    {p.body}
+              {/* Content Container */}
+              <div className="relative z-10 flex flex-col sm:flex-row items-center sm:items-start gap-6 md:gap-8">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#0080C7]/5 border border-[#0080C7]/40 shadow-[0_0_15px_rgba(0,128,199,0.1)] flex items-center justify-center text-[#00a8ff] group-hover:bg-[#0080C7]/10 group-hover:border-[#0080C7]/70 group-hover:shadow-[0_0_20px_rgba(0,128,199,0.3)] transition-all duration-300 shrink-0">
+                  <IconComponent size={32} strokeWidth={2} />
+                </div>
+                <div className="text-center sm:text-left flex-1">
+                  <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+                    {p.title}
+                  </h3>
+                  <p className="text-gray-300 text-[15px] md:text-[28px] leading-relaxed transition-colors duration-300 group-hover:text-white font-medium italic">
+                    "{p.body}"
                   </p>
                 </div>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Navigation Arrows */}
+          <button 
+            onClick={prevCard} 
+            className="absolute left-[-15px] sm:left-[-30px] md:left-[-24px] lg:left-[-100px] top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-[#060a14] border border-white/20 text-white hover:bg-[#0080C7]/20 hover:border-[#0080C7]/50 shadow-lg transition-all z-20 cursor-pointer focus:outline-none"
+            aria-label="Previous card"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          
+          <button 
+            onClick={nextCard} 
+            className="absolute right-[-15px] sm:right-[-30px] md:right-[-24px] lg:right-[-100px] top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-[#060a14] border border-white/20 text-white hover:bg-[#0080C7]/20 hover:border-[#0080C7]/50 shadow-lg transition-all z-20 cursor-pointer focus:outline-none"
+            aria-label="Next card"
+          >
+            <ChevronRight size={24} />
+          </button>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center gap-2 mt-8">
+            {painPoints.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentIndex(i)}
+                className={`w-2 h-2 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 focus:outline-none ${
+                  i === currentIndex ? "bg-[#00a8ff] w-8 md:w-8" : "bg-white/20 hover:bg-white/40"
+                }`}
+                aria-label={`Go to card ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Closing Copy */}
-        <div className="max-w-7xl mx-auto mt-8 md:mt-12 relative">
-          <div className="p-4 md:p-6 border border-white/10 bg-[#0a0e17]/80 backdrop-blur-md rounded-2xl shadow-[0_0_40px_rgba(24,37,226,0.15)] relative overflow-hidden">
+        <div className="max-w-6xl mx-auto mt-8 md:mt-12 relative z-10">
+          <div className="p-2 md:p-2 border border-white/10 bg-[#0a0e17]/80 backdrop-blur-md rounded-2xl shadow-[0_0_40px_rgba(24,37,226,0.15)] relative overflow-hidden">
             {/* Subtle inner glow */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,168,255,0.05)_0%,transparent_70%)]" />
             <p className="text-gray-200 text-[15px] md:text-[14px] leading-relaxed text-center relative z-10">
-              If you recognised yourself in even three of these, something important just happened. You did not land on this page by accident. You have been carrying these questions alone for months, maybe years, telling yourself it is just timing, just politics, just one more cycle. But, it is not. There is a specific gap between how a Product Managers thinks and how a Product Leader thinks. It is real, it is learnable, and nobody in your organisation is going to teach it to you.
+              The gap is rarely another Product Management skill. It is understanding what you need to do differently when you move from managing products to leading them.
             </p>
           </div>
         </div>
