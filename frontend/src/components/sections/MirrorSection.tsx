@@ -1,53 +1,9 @@
 import { useState } from "react";
 import {
-  TrendingUp,
-  Clock3,
-  Lightbulb,
-  Presentation,
-  ArrowUpCircle,
-  CheckCircle2,
-  MessageSquareWarning,
   ChevronLeft,
   ChevronRight
 } from "lucide-react";
-
-export const painPoints = [
-  {
-    icon: TrendingUp,
-    title: "Great feedback. No promotion.",
-    body: "I was told I need to think more strategically before I can move into a leadership role. But when I asked what I should actually do differently, I never got a clear answer. I am still trying to figure out what “being more strategic” actually means in my role.",
-  },
-  {
-    icon: Clock3,
-    title: "Always 'next cycle.'",
-    body: "I joined before him as a senior PM and had more experience, but he moved into a leadership role first. When I asked my manager what he had done differently, I was told he had shown more readiness for a leadership role. I asked what that meant and what I was missing, but I never got a clear answer",
-  },
-  {
-    icon: Lightbulb,
-    title: "Think strategically... how?",
-    body: "I had a good year, and we shipped what we planned and the numbers were good. My manager was happy with my performance, but in the review, I was again told that I was very good at execution. I remember thinking, what else do I need to show if I want to move into leadership?",
-  },
-  {
-    icon: Presentation,
-    title: "Leadership feels undefined.",
-    body: "I applied for a Director of Product role and reached the final round. I thought the interviews had gone quite well, but the feedback was that I didn't come across as strategic enough. I understood the feedback, but I honestly didn't know what I should have done differently in those interviews.",
-  },
-  {
-    icon: ArrowUpCircle,
-    title: "Others move ahead faster.",
-    body: "I want to apply for Head of Product roles, but somehow, I don't feel ready yet. Every time I look at a job description, there are a few things I haven't done before, and I stop myself from applying. It has been almost two years now.",
-  },
-  {
-    icon: CheckCircle2,
-    title: "Execution isn't enough.",
-    body: "I can build a roadmap and explain where the product is going. But when the discussion moves to where the business needs to be in the next two or three years, I still find myself coming back to product priorities and features. I know there is a bigger picture I should be thinking about, but I am not always sure how to get there.",
-  },
-  {
-    icon: MessageSquareWarning,
-    title: "Pressure changes everything.",
-    body: "I have already done courses and learned a lot of frameworks. I know how they work but knowing them and actually making a difficult decision at work are two different things. I need more practice making those decisions and understanding where my thinking is going wrong.",
-  }
-];
+import { painPoints } from '../../constants/mirrorData';
 
 export default function MirrorSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -89,10 +45,10 @@ export default function MirrorSection() {
 
         {/* Single Pain Point Card Carousel */}
         <div 
-          className="relative max-w-6xl mx-auto mt-8 z-10"
+          className="relative max-w-7xl mx-auto mt-4 z-10"
         >
-          <div className="group relative rounded-2xl p-px bg-linear-to-br from-[#00a8ff]/90 via-white/10 to-white/10 shadow-[0_0_20px_rgba(0,0,0,0.3)] transition-all duration-500 ease-out hover:shadow-[0_0_30px_rgba(0,128,199,0.15)] hover:via-white/20 hover:to-white/20 flex flex-col h-auto">
-            <div className="relative h-full bg-[#060a14] group-hover:bg-[#0a0f1c] rounded-[15px] p-8 md:p-12 flex flex-col overflow-hidden transition-colors duration-300 justify-center">
+          <div className="group relative rounded-xl p-px bg-linear-to-br from-[#00a8ff]/90 via-white/10 to-white/10 shadow-[0_0_20px_rgba(0,0,0,0.3)] transition-all duration-500 ease-out hover:shadow-[0_0_30px_rgba(0,128,199,0.15)] hover:via-white/20 hover:to-white/20 flex flex-col h-auto">
+            <div className="relative h-full bg-[#060a14] group-hover:bg-[#0a0f1c] rounded-xl p-6 md:p-8 flex flex-col overflow-hidden transition-colors duration-300 justify-center">
               {/* Radial spotlight inside the card */}
               <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,rgba(0,128,199,0.08),transparent_70%)] pointer-events-none" />
 
@@ -105,7 +61,7 @@ export default function MirrorSection() {
                   <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
                     {p.title}
                   </h3>
-                  <p className="text-gray-300 text-[15px] md:text-[28px] leading-relaxed transition-colors duration-300 group-hover:text-white font-medium italic">
+                  <p className="text-gray-300 text-[15px] md:text-3xl  transition-colors duration-300 group-hover:text-white font-medium italic">
                     "{p.body}"
                   </p>
                 </div>
@@ -116,7 +72,7 @@ export default function MirrorSection() {
           {/* Navigation Arrows */}
           <button 
             onClick={prevCard} 
-            className="absolute left-[-15px] sm:left-[-30px] md:left-[-24px] lg:left-[-100px] top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-[#060a14] border border-white/20 text-white hover:bg-[#0080C7]/20 hover:border-[#0080C7]/50 shadow-lg transition-all z-20 cursor-pointer focus:outline-none"
+            className="absolute -left-3.75 sm:-left-7.5 md:-left-6 lg:-left-15 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-[#060a14] border border-white/20 text-white hover:bg-[#0080C7]/20 hover:border-[#0080C7]/50 shadow-lg transition-all z-20 cursor-pointer focus:outline-none"
             aria-label="Previous card"
           >
             <ChevronLeft size={24} />
@@ -124,7 +80,7 @@ export default function MirrorSection() {
           
           <button 
             onClick={nextCard} 
-            className="absolute right-[-15px] sm:right-[-30px] md:right-[-24px] lg:right-[-100px] top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-[#060a14] border border-white/20 text-white hover:bg-[#0080C7]/20 hover:border-[#0080C7]/50 shadow-lg transition-all z-20 cursor-pointer focus:outline-none"
+            className="absolute -right-3.75 sm:-right-7.5 md:-right-6 lg:-right-15 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-[#060a14] border border-white/20 text-white hover:bg-[#0080C7]/20 hover:border-[#0080C7]/50 shadow-lg transition-all z-20 cursor-pointer focus:outline-none"
             aria-label="Next card"
           >
             <ChevronRight size={24} />
@@ -146,7 +102,7 @@ export default function MirrorSection() {
         </div>
 
         {/* Closing Copy */}
-        <div className="max-w-6xl mx-auto mt-8 md:mt-12 relative z-10">
+        <div className="max-w-7xl mx-auto mt-4 md:mt-8 relative z-10">
           <div className="p-2 md:p-2 border border-white/10 bg-[#0a0e17]/80 backdrop-blur-md rounded-2xl shadow-[0_0_40px_rgba(24,37,226,0.15)] relative overflow-hidden">
             {/* Subtle inner glow */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,168,255,0.05)_0%,transparent_70%)]" />

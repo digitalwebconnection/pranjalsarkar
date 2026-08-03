@@ -7,7 +7,7 @@ export default function SmoothScroll() {
   useEffect(() => {
     // 1. Initialize Lenis
     const lenis = new Lenis({
-      lerp: 0.025, // Extremely low for maximum smoothing / floaty effect
+      lerp: 0.25, // Extremely low for maximum smoothing / floaty effect
       wheelMultiplier: 0.8, // Slightly softer wheel translation
       smoothWheel: true,
       touchMultiplier: 1.5,

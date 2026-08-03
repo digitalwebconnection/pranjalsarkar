@@ -1,13 +1,7 @@
 import { useState } from 'react';
-import { Users, TrendingUp, Building2 } from 'lucide-react';
+import { Users, TrendingUp } from 'lucide-react';
 import pranjalsarkar from "../../assets/pranjalsarkar/18.webp"
-
-const stats = [
-  { num: '50', label: 'Product Leadership Decision Principles', icon: Users },
-  { num: '10', label: 'Realistic Executive Simulations', icon: TrendingUp },
-  { num: '05', label: 'AI Automation Workshops', icon: Building2 },
-  { num: '30', label: 'Days Real Leadership Exposure', icon: TrendingUp },
-];
+import { stats } from '../../constants/heroData';
 
 export default function HeroSection() {
   const [fading] = useState(false);
@@ -46,7 +40,7 @@ export default function HeroSection() {
               <div className="w-24 md:w-32 lg:w-40 h-[2.5px] bg-linear-to-r from-[#00a8ff] via-[#2563EB] to-transparent mb-5 rounded-full shadow-[0_0_12px_rgba(0,168,255,0.8)]" />
 
               {/* Sub-headline Part 2 */}
-              <p className="text-gray-300 text-sm md:text-md leading-relaxed max-w-2xl mb-4">
+              <p className="text-gray-200 text-sm md:text-md leading-relaxed max-w-2xl mb-4">
                 AIPLS is a 5-week leadership development system followed by up to 30 days of real company exposure. Every week you make executive decisions, face the consequences inside a realistic business simulation and discover exactly where your judgment is strong and where it needs to grow.
               </p>
 
@@ -59,7 +53,7 @@ export default function HeroSection() {
                   Start Your Enrollment Here <span className="text-[14px] lg:text-[15px] font-bold">→</span>
                 </a>
                 <p className="text-gray-400 text-xs md:text-xs font-medium ml-1">
-                  Every application includes a 1:1 conversation with Pranjal Sarkar before admission.
+                  Every application includes a 1:1 conversation with Pranjal Sarkar before enrollment.
                 </p>
               </div>
               
@@ -103,20 +97,20 @@ export default function HeroSection() {
         </div>
 
         {/* Trust Stats Container - Box with Glow */}
-        <div className="flex flex-col w-full max-w-7xl mt-16 lg:mt-0 mb-8 relative z-20 gap-4">
+        <div className="flex flex-col w-full max-w-7xl mt-16 lg:mt-0 mb-4 relative z-20 gap-4">
             <div className="grid grid-cols-2 md:grid-cols-4 bg-[#0a0e17]/80 backdrop-blur-md border border-white/5 rounded-2xl shadow-xl overflow-hidden">
             {stats.map((st, i) => (
                 <div
                 key={i}
                 className={`flex flex-col items-center justify-center py-5 px-4 cursor-default border-white/5 ${i % 2 !== 0 ? 'border-l' : ''} ${i > 0 ? 'md:border-l' : ''} ${i >= 2 ? 'border-t md:border-t-0' : ''}`}
                 >
-                <div className="w-10 h-10 rounded-full bg-linear-to-b from-[#2563EB]/20 to-transparent border border-t-[#2563EB]/60 border-b-transparent border-x-transparent flex items-center justify-center mb-2 text-[#2563EB] shadow-[inset_0_1px_5px_rgba(37,99,235,0.2)]">
+                {/* <div className="w-10 h-10 rounded-full bg-linear-to-b from-[#2563EB]/20 to-transparent border border-t-[#2563EB]/60 border-b-transparent border-x-transparent flex items-center justify-center mb-2 text-[#2563EB] shadow-[inset_0_1px_5px_rgba(37,99,235,0.2)]">
                     <st.icon size={18} strokeWidth={2} className="drop-shadow-[0_0_5px_rgba(37,99,235,0.4)]" />
-                </div>
-                <span className="font-sans font-bold text-2xl md:text-[72px] leading-none mb-1.5 text-[#2563EB] drop-shadow-[0_0_8px_rgba(37,99,235,0.4)]">
+                </div> */}
+                <span className="font-sans font-bold text-2xl md:text-8xl leading-none mb-1.5 text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
                     {st.num}
                 </span>
-                <span className="text-white text-[11px] md:text-[14px] font-medium tracking-wide text-center">
+                <span className="text-white text-xs md:text-sm font-medium tracking-wide text-center">
                     {st.label}
                 </span>
                 </div>

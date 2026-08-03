@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import './styles/index.css';
 import Navbar from './components/layout/Navbar';
-// import SmoothScroll from './components/ui/SmoothScroll';
+import SmoothScroll from './components/ui/SmoothScroll';
 import HeroSection from './components/sections/HeroSection';
 import MirrorSection from './components/sections/MirrorSection';
 import DiagnosisSection from './components/sections/DiagnosisSection';
@@ -27,7 +27,8 @@ import { AdminPage } from './admin/AdminPage';
 function LandingPage() {
   return (
     <>
-      {/* <SmoothScroll /> */}
+      <SmoothScroll />
+
       {/* 1. Navigation */}
       <Navbar />
 
@@ -61,11 +62,8 @@ function LandingPage() {
       {/* New Video Preview Section */}
       <VideoSection />
 
-
       {/* 9. The Studio Experience */}
       <StudioExperienceSection />
-
-      
       
       {/* 9.5. Who Should Apply */}
       <WhoShouldApplySection />
@@ -78,7 +76,6 @@ function LandingPage() {
 
       {/* Events & Speaking Gallery Section */}
       <EventsGallerySection />
-
 
       {/* 13. FAQ — #12 */}
       <FAQSection />
