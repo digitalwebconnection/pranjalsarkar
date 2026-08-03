@@ -2,40 +2,11 @@ import { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import psHeadshot from '../../assets/pranjalsarkar/19.webp';
 import youtubeVideo from '../../assets/video/youtube.mp4';
-import { Users, Globe, RocketIcon, Play } from 'lucide-react';
+import { Play } from 'lucide-react';
 
-const MountainFlagIcon = ({ size = 24, strokeWidth = 1.5, className = "" }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" className={className}>
-    {/* Mountain */}
-    <path d="m7 7 4 8 5-5 5 11H3L7 7z" />
-    <path d="M5 11.5l2 1.5 2-1.5" />
-    {/* Flag */}
-    <path d="M7 7V2h5v4H7" />
-  </svg>
-);
 
-const stats = [
-  {
-    value: '20+ Yrs',
-    label: 'Product Leadership',
-    icon: MountainFlagIcon,
-  },
-  {
-    value: '3',
-    label: 'Startups Founded',
-    icon: RocketIcon,
-  },
-  {
-    value: '200+',
-    label: 'PMs Mentored',
-    icon: Users,
-  },
-  {
-    value: '10+',
-    label: 'Countries',
-    icon: Globe,
-  },
-];
+
+
 
 const containerVariants = {
   hidden: { opacity: 0 },

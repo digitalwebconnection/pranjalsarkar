@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import './styles/index.css';
 import Navbar from './components/layout/Navbar';
-import SmoothScroll from './components/ui/SmoothScroll';
+// import SmoothScroll from './components/ui/SmoothScroll';
 import HeroSection from './components/sections/HeroSection';
 import MirrorSection from './components/sections/MirrorSection';
 import DiagnosisSection from './components/sections/DiagnosisSection';
