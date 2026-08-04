@@ -239,7 +239,7 @@ export const AdminPage: React.FC = () => {
       />
 
       {toastMessage && (
-        <div className="fixed bottom-4 right-4 bg-emerald-600 text-white pl-4 pr-3 py-3 rounded-xl shadow-2xl font-bold text-sm animate-in slide-in-from-bottom-5 fade-in duration-300 z-[100] flex items-center justify-between min-w-[320px]">
+        <div className="fixed bottom-4 right-4 bg-emerald-600 text-white pl-4 pr-3 py-3 rounded-xl shadow-2xl font-bold text-sm animate-in slide-in-from-bottom-5 fade-in duration-300 z-100 flex items-center justify-between min-w-[320px]">
           <div className="flex items-center gap-2.5">
             <CheckCircle2 className="w-5 h-5 text-emerald-200" />
             <span>{toastMessage}</span>

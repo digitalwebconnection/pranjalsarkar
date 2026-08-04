@@ -33,7 +33,7 @@ export default function MirrorSection() {
           <span className="inline-flex items-center gap-2 px-6 py-2 bg-[#0080C7]/10 border border-[#0080C7]/30 rounded-md text-[12px] font-bold tracking-widest uppercase text-[#0080C7] mb-6 shadow-[0_0_15px_rgba(0,128,199,0.1)]">
             THE MIRROR
           </span>
-          <h2 className="font-serif font-bold text-2xl md:text-4xl leading-tight tracking-tight mb-4 text-white">
+          <h2 className="font-serif font-bold text-2xl md:text-5xl leading-tight tracking-tight mb-4 text-white">
             These are real situations faced by<br />
             <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
               experienced Product Managers trying to become Product Leaders.
@@ -58,10 +58,10 @@ export default function MirrorSection() {
                   <IconComponent size={32} strokeWidth={2} />
                 </div>
                 <div className="text-center sm:text-left flex-1">
-                  <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+                  <h3 className="text-3xl md:text-5xl font-serif font-bold text-white mb-4 tracking-tight">
                     {p.title}
                   </h3>
-                  <p className="text-gray-300 text-[15px] md:text-3xl  transition-colors duration-300 group-hover:text-white font-medium italic">
+                  <p className="text-gray-300 text-[15px] md:text-2xl  transition-colors duration-300 group-hover:text-white font-medium ">
                     "{p.body}"
                   </p>
                 </div>
@@ -86,7 +86,9 @@ export default function MirrorSection() {
             <ChevronRight size={24} />
           </button>
 
-          {/* Dots Indicator */}
+   
+        </div>
+       {/* Dots Indicator */}
           <div className="flex justify-center gap-2 mt-8">
             {painPoints.map((_, i) => (
               <button
@@ -99,11 +101,9 @@ export default function MirrorSection() {
               />
             ))}
           </div>
-        </div>
-
         {/* Closing Copy */}
         <div className="max-w-7xl mx-auto mt-4 md:mt-8 relative z-10">
-          <div className="p-2 md:p-2 border border-white/10 bg-[#0a0e17]/80 backdrop-blur-md rounded-2xl shadow-[0_0_40px_rgba(24,37,226,0.15)] relative overflow-hidden">
+          <div className="p-2 md:p-2 border border-white/10 bg-[#0a0e17]/80 backdrop-blur-md rounded-xl shadow-[0_0_40px_rgba(24,37,226,0.15)] relative overflow-hidden">
             {/* Subtle inner glow */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,168,255,0.05)_0%,transparent_70%)]" />
             <p className="text-gray-200 text-[15px] md:text-[14px] leading-relaxed text-center relative z-10">

@@ -71,8 +71,8 @@ export default function PhilosophySection() {
             
             <div className="relative w-full max-w-120">
               {/* The Card */}
-              <div className="relative rounded-2xl p-px bg-linear-to-br from-[#00a8ff]/60 via-[#00a8ff]/10 to-transparent shadow-[-15px_-15px_30px_rgba(0,168,255,0.15)] transition-all duration-300 hover:shadow-[-20px_-20px_40px_rgba(0,168,255,0.25)]">
-                <div className="relative rounded-2xl bg-[#050b14] flex flex-col min-h-100 overflow-hidden w-full p-10 md:p-12">
+              <div className="relative rounded-xl p-px bg-linear-to-br from-[#00a8ff]/60 via-[#00a8ff]/10 to-transparent shadow-[-15px_-15px_30px_rgba(0,168,255,0.15)] transition-all duration-300 hover:shadow-[-20px_-20px_40px_rgba(0,168,255,0.25)]">
+                <div className="relative rounded-xl bg-[#050b14] flex flex-col min-h-100 overflow-hidden w-full p-10 md:p-12">
                   
                   {/* Top-Left Ambient Glow Overlay */}
                   <div className="absolute top-0 left-0 w-64 h-64 bg-[radial-gradient(circle_at_top_left,rgba(0,168,255,0.2),transparent_70%)] pointer-events-none z-0" />

@@ -103,7 +103,7 @@ export default function AboutSection() {
             variants={itemVariants}
             {...floatAnimation}
           >
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 hover:border-white/20 shadow-[0_0_40px_rgba(0,128,199,0.15)] hover:shadow-[0_0_50px_rgba(0,128,199,0.3)] group">
+            <div className="relative rounded-xl overflow-hidden border border-white/10 transition-all duration-500 hover:border-white/20 shadow-[0_0_40px_rgba(0,128,199,0.15)] hover:shadow-[0_0_50px_rgba(0,128,199,0.3)] group">
               <div className="relative aspect-4/5 w-full bg-[#0a0c10]">
                 {/* Visual shadow mask overlay */}
                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent z-10 pointer-events-none" />

@@ -119,7 +119,7 @@ export default function JudgementSection() {
           {/* Background Ambient Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#0044cc] opacity-10 blur-[150px] rounded-full pointer-events-none" />
 
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className=" relative z-10">
             <div className="text-center mb-16">
               <h2 className="text-[#0080C7] text-sm md:text-base font-bold tracking-[0.2em] uppercase mb-4 font-mono drop-shadow-[0_0_15px_rgba(0,128,199,0.6)]">
                 What Happens After Week 5?

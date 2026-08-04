@@ -43,7 +43,7 @@ export default function HeroSection() {
               <p className="text-gray-200 text-sm md:text-md leading-relaxed max-w-2xl mb-4">
                 AIPLS is a 5-week leadership development system followed by up to 30 days of real company exposure. Every week you make executive decisions, face the consequences inside a realistic business simulation and discover exactly where your judgment is strong and where it needs to grow.
               </p>
-
+ 
               {/* CTA Buttons */}
               <div className="flex flex-col gap-2 justify-start pt-4 pb-4">
                 <a
@@ -98,7 +98,7 @@ export default function HeroSection() {
 
         {/* Trust Stats Container - Box with Glow */}
         <div className="flex flex-col w-full max-w-7xl mt-16 lg:mt-0 mb-4 relative z-20 gap-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 bg-[#0a0e17]/80 backdrop-blur-md border border-white/5 rounded-2xl shadow-xl overflow-hidden">
+            <div className="grid grid-cols-2 md:grid-cols-4 bg-[#0a0e17]/80 backdrop-blur-md border border-white/5 rounded-xl shadow-xl overflow-hidden">
             {stats.map((st, i) => (
                 <div
                 key={i}

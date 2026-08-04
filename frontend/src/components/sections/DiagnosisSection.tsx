@@ -154,7 +154,7 @@ export default function DiagnosisSection() {
 
           {/* Right Column: Dynamic Analysis Report Card */}
           <div className="col-span-7 flex">
-            <div className="w-full rounded-2xl bg-[#0a0c10] border border-[#0080C7]/20 p-8 md:p-12 flex flex-col justify-center relative overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(0,128,199,0.08)] hover:shadow-[0_0_30px_rgba(0,128,199,0.15)]">
+            <div className="w-full rounded-xl bg-[#0a0c10] border border-[#0080C7]/20 p-8 md:p-12 flex flex-col justify-center relative overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(0,128,199,0.08)] hover:shadow-[0_0_30px_rgba(0,128,199,0.15)]">
 
               {/* Permanent Top Edge Glow and Inner Gradient */}
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
@@ -205,7 +205,7 @@ export default function DiagnosisSection() {
         {/* Mobile & Tablet Layout */}
         <div className="lg:hidden flex flex-col gap-6 mb-16">
           {diagnosisData.map((item) => (
-            <div key={item.id} className="rounded-2xl bg-[#121212] border border-white/8 p-6 md:p-8 flex flex-col relative overflow-hidden transition-all duration-300 hover:border-[#0080C7]/30 hover:shadow-[0_0_30px_rgba(0,128,199,0.15)]">
+            <div key={item.id} className="rounded-xl bg-[#121212] border border-white/8 p-6 md:p-8 flex flex-col relative overflow-hidden transition-all duration-300 hover:border-[#0080C7]/30 hover:shadow-[0_0_30px_rgba(0,128,199,0.15)]">
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#0080C7]/30 to-transparent" />
 
               {/* Stat Circle & Label Row */}

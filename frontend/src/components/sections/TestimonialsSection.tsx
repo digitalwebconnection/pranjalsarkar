@@ -45,8 +45,8 @@ function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
 
   return (
     <div className="shrink-0 group px-3 py-4 flex" style={{ width: '320px' }}>
-      <div className="relative rounded-2xl p-px bg-linear-to-br from-[#00a8ff]/60 via-transparent to-transparent shadow-[-15px_-15px_30px_rgba(0,168,255,0.15)] transition-all duration-300  flex flex-col h-full w-full group">
-        <div className="relative rounded-2xl bg-[#050b14] flex flex-col h-full overflow-hidden w-full">
+      <div className="relative rounded-xl p-px bg-linear-to-br from-[#00a8ff]/60 via-transparent to-transparent shadow-[-15px_-15px_30px_rgba(0,168,255,0.15)] transition-all duration-300  flex flex-col h-full w-full group">
+        <div className="relative rounded-xl bg-[#050b14] flex flex-col h-full overflow-hidden w-full">
           
           {/* Upper Half: Image */}
           <div className="relative w-full shrink-0 h-68">

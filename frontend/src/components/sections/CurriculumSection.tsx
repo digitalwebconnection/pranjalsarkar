@@ -158,7 +158,7 @@ export default function dCurriculumSection() {
           </div>
 
           {/* Right Column: Detailed Curriculum Card Panel with Signature Gradient Border */}
-          <div className="lg:col-span-7 group relative rounded-2xl p-px bg-linear-to-br from-[#0075ff]/90 via-white/10 to-white/10 shadow-[0_0_35px_rgba(0,128,199,0.25)] transition-all duration-300 flex flex-col">
+          <div className="lg:col-span-7 group relative rounded-xl p-px bg-linear-to-br from-[#0075ff]/90 via-white/10 to-white/10 shadow-[0_0_35px_rgba(0,128,199,0.25)] transition-all duration-300 flex flex-col">
             <div className="relative h-full w-full bg-[#000000] group-hover:bg-[#070e1c] rounded-[15px] p-4 md:p-8 flex flex-col justify-between overflow-hidden transition-colors duration-300 z-10 min-h-120">
 
 

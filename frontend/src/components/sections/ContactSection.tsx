@@ -104,9 +104,9 @@ export default function ContactSection() {
     setSubmitError('');
     setIsSubmitting(true);
 
-    const phoneRegex = /^[0-9]{10}$/;
+    const phoneRegex = /^\+?[0-9\s\-()]{7,20}$/;
     if (!phoneRegex.test(form.phone)) {
-      setSubmitError('Mobile number must be a 10-digit number.');
+      setSubmitError('Mobile number must be a valid phone number.');
       setIsSubmitting(false);
       return;
     }
@@ -201,7 +201,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <div className="text-[#8a93a0] text-[12px] font-bold tracking-widest uppercase mb-1">PHONE NUMBER</div>
-                  <div className="text-white text-base font-bold tracking-wide">+91 12345 67890</div>
+                  <div className="text-white text-base font-bold tracking-wide">+91 99794 29183</div>
                 </div>
               </div>
 
@@ -287,24 +287,24 @@ export default function ContactSection() {
                     <label className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
                       PHONE NUMBER
                     </label>
-                    <div className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border ${form.phone.length > 0 && form.phone.length < 10 ? 'border-red-500/50 focus-within:border-red-500/50 focus-within:shadow-[0_0_15px_rgba(239,68,68,0.25)]' : 'border-[#172740] focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]'} bg-[#070e1b] transition-all`}>
+                    <div className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border ${form.phone.length > 0 && !/^\+?[0-9\s\-()]{7,20}$/.test(form.phone) ? 'border-red-500/50 focus-within:border-red-500/50 focus-within:shadow-[0_0_15px_rgba(239,68,68,0.25)]' : 'border-[#172740] focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]'} bg-[#070e1b] transition-all`}>
                       <Phone className="w-5 h-5 text-[#0070f3] shrink-0" />
                       <input
                         type="tel"
                         required
                         value={form.phone}
                         onChange={e => {
-                          const value = e.target.value.replace(/\D/g, '');
-                          if (value.length <= 10) {
+                          const value = e.target.value.replace(/[^\d\s\-\+\(\)]/g, '');
+                          if (value.length <= 20) {
                             setForm(f => ({ ...f, phone: value }));
                           }
                         }}
-                        placeholder="1234567890"
+                        placeholder="+1 (234) 567-8900"
                         className="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-[#99a1ac]"
                       />
                     </div>
-                    {form.phone.length > 0 && form.phone.length < 10 && (
-                      <span className="text-red-400 text-xs mt-1.5 ml-1 font-medium">Must be exactly 10 digits</span>
+                    {form.phone.length > 0 && !/^\+?[0-9\s\-()]{7,20}$/.test(form.phone) && (
+                      <span className="text-red-400 text-xs mt-1.5 ml-1 font-medium">Please enter a valid phone number</span>
                     )}
                   </div>
 
@@ -375,7 +375,7 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full mt-3 py-4 px-6 rounded-2xl text-white font-bold text-lg bg-linear-to-r from-[#0088ff] via-[#0066ff] to-[#0052eb] hover:from-[#0096ff] hover:via-[#0075ff] hover:to-[#005eff] border-t border-white/40 transition-all duration-300 shadow-[0_0_35px_rgba(0,120,255,0.7)] hover:shadow-[0_0_50px_rgba(0,140,255,0.9)] flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="w-full mt-3 py-4 px-6 rounded-xl text-white font-bold text-lg bg-linear-to-r from-[#0088ff] via-[#0066ff] to-[#0052eb] hover:from-[#0096ff] hover:via-[#0075ff] hover:to-[#005eff] border-t border-white/40 transition-all duration-300 shadow-[0_0_35px_rgba(0,120,255,0.7)] hover:shadow-[0_0_50px_rgba(0,140,255,0.9)] flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>

@@ -101,7 +101,7 @@ export default function Navbar() {
                       'text-[16px] font-medium no-underline transition-colors duration-200',
                       isActive
                         ? 'text-white'
-                        : 'text-[#9CA3AF] hover:text-white',
+                        : 'text-[#dee2e9] hover:text-white',
                     ].join(' ')}
                   >
                     {l.label}

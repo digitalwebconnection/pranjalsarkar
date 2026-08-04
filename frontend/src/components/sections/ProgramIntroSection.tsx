@@ -106,9 +106,9 @@ export default function ProgramIntroSection() {
                   {/* Icon Node Container */}
                   <div className="relative mb-6 cursor-default">
                     {/* Glowing background on hover */}
-                    <div className="absolute inset-0 bg-[#00a8ff]/20 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-125" />
+                    <div className="absolute inset-0 bg-[#00a8ff]/20 rounded-xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-125" />
 
-                    <div className="w-24 h-24 rounded-2xl bg-[#060a14] border border-white/10 group-hover:border-[#00a8ff]/50 flex items-center justify-center relative z-10 transition-all duration-300 shadow-[0_0_30px_rgba(0,0,0,0.5)] group-hover:shadow-[0_0_40px_rgba(0,168,255,0.2)]">
+                    <div className="w-24 h-24 rounded-xl bg-[#060a14] border  border-[#00a8ff]/50 flex items-center justify-center relative z-10 transition-all duration-300 shadow-[0_0_40px_rgba(0,168,255,0.2)]">
                       <IconComponent
                         size={46}
                         strokeWidth={1.5}
@@ -146,7 +146,7 @@ export default function ProgramIntroSection() {
 
                 <motion.div variants={itemVariants}>
                   <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-12 shrink-0 rounded-2xl bg-linear-to-br from-[#0066ff] to-[#0044cc] flex items-center justify-center text-white font-bold text-lg shadow-[0_0_20px_rgba(0,102,255,0.5)] border-2 border-[#060a14]">
+                    <div className="w-12 h-12 shrink-0 rounded-xl bg-linear-to-br from-[#0066ff] to-[#0044cc] flex items-center justify-center text-white font-bold text-lg shadow-[0_0_20px_rgba(0,102,255,0.5)] border-2 border-[#060a14]">
                       0{index + 1}
                     </div>
                     <h3 className="font-serif text-2xl md:text-3xl font-bold text-white tracking-wide group-hover:text-[#00a8ff] transition-colors duration-300">

@@ -50,7 +50,7 @@ export default function StudioExperienceSection() {
           </motion.div>
 
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-7xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 max-w-7xl mx-auto"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -62,7 +62,7 @@ export default function StudioExperienceSection() {
                 <motion.div 
                   key={i} 
                   variants={itemVariants}
-                  className="bg-[#060a14] h-full border border-white/5 border-t-[#0066ff]/80 p-6 md:p-8 rounded-2xl flex gap-5 md:gap-6 transition-all duration-300 relative group overflow-hidden shadow-[0_0_90px_rgba(0,168,255,0.1)] hover:shadow-[0_0_90px_rgba(0,168,255,0.2)]"
+                  className="bg-[#060a14] h-full border border-white/5 border-t-[#0066ff]/80 p-6 md:p-8 rounded-xl flex gap-5 md:gap-6 transition-all duration-300 relative group overflow-hidden shadow-[0_0_90px_rgba(0,168,255,0.1)] hover:shadow-[0_0_90px_rgba(0,168,255,0.2)]"
                 >
                   {/* Decorative glowing gradient border */}
                   <div className="absolute top-0 right-0 w-80 h-80 bg-[radial-gradient(ellipse_at_top_right,rgba(0,168,255,0.15),transparent_70%)] opacity-100 pointer-events-none" />

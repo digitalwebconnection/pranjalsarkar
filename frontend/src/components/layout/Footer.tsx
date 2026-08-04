@@ -29,14 +29,14 @@ const footerLinkHashes: Record<string, string> = {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#000000] pt-14 pb-6">
+    <footer className="bg-[#000000] pt-10 pb-6">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
 
         {/* Top Section: Brand + Links */}
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-0 mb-10">
 
           {/* Brand Info (Left Col) */}
-          <div className="lg:w-[35%] lg:pr-16 lg:border-r lg:border-white/10 flex flex-col items-start">
+          <div className="lg:w-[35%] lg:pr-16 lg:border-r lg:border-white/50 flex flex-col items-start">
             <img src={Logo} alt="Pranjal Sarkar" className="w-56 h-auto mb-3" style={{ filter: 'brightness(0) invert(1)' }} />
 
             {/* Glowing line */}
@@ -95,12 +95,12 @@ export default function Footer() {
         </div>
 
         {/* Newsletter Box */}
-        <div className="border border-white/10 w-full lg:w-[85%] ml-auto rounded-2xl p-6 md:px-10 md:py-6 flex flex-col lg:flex-row items-center justify-between gap-6 mb-10 relative overflow-hidden bg-white/1">
+        <div className="border border-white/50 w-full lg:w-[85%] ml-auto rounded-2xl p-6 md:px-10 md:py-6 flex flex-col lg:flex-row items-center justify-between gap-6 mb-10 relative overflow-hidden bg-white/1">
           <div className="flex items-center gap-6 z-10 w-full lg:w-auto">
             <div className="w-13 h-13 rounded-full border border-[#3B82F6]/30 flex items-center justify-center shrink-0">
               <Mail className="w-6 h-6 text-[#3B82F6]" />
             </div>
-            <p className="text-[14px] md:text-[15px] text-[#9CA3AF] max-w-lg leading-relaxed">
+            <p className="text-[14px] md:text-[15px] text-[#d1d5dd] max-w-lg leading-relaxed">
               <span className="text-white font-bold block md:inline mr-1">Stay in the loop.</span>
               Insights, frameworks, and product leadership lessons — straight to your inbox.
             </p>
@@ -109,7 +109,7 @@ export default function Footer() {
             <input
               type="email"
               placeholder="Your email address"
-              className="bg-[#0A101F] border border-white/10 rounded-lg pl-5 pr-30 py-3.5 text-[14px] text-white placeholder-gray-500 w-full focus:outline-none focus:border-[#3B82F6]/50 transition-colors"
+              className="bg-[#0A101F] border border-white/50 rounded-lg pl-5 pr-30 py-3.5 text-[14px] text-white placeholder-gray-500 w-full focus:outline-none focus:border-[#3B82F6]/50 transition-colors"
             />
             <button className="absolute right-1.5 top-1.5 bottom-1.5 px-6 rounded-md text-white text-[14px] font-bold transition-all duration-300 bg-linear-to-r from-[#2563EB] to-[#1D4ED8] hover:shadow-[0_0_15px_rgba(37,99,235,0.4)]">
               Subscribe
@@ -118,7 +118,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row items-center justify-between gap-6 relative">
+        <div className="border-t border-white/50 pt-6 flex flex-col md:flex-row items-center justify-between gap-6 relative">
           <div className="flex items-center gap-4 z-10">
             <div className=" flex items-center justify-center shrink-0">
               <ShieldCheck className="w-8 h-8 text-[#3B82F6]" />
