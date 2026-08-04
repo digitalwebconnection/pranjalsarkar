@@ -8,7 +8,6 @@ const event7 = '/events/Pranjal-Sarkar-Delivering-Session-07.webp';
 const event8 = '/events/Pranjal-Sarkar-Delivering-Session-08.webp';
 const event9 = '/events/Pranjal-Sarkar-Delivering-Session-09.webp';
 const event10 = '/events/20251120_143802.webp';
-const event11 = '/events/20251120_144429.webp';
 const event12 = '/events/20251120_144745.webp';
 const event13 = '/events/20251120_144814.webp';
 const event14 = '/events/20251120_152313.webp';
@@ -92,13 +91,6 @@ export const EVENT_IMAGES: EventImage[] = [
     location: 'Bengaluru, India',
     date: 'November 2025',
     tag: 'Bootcamp',
-  },
-  {
-    src: event11,
-    title: 'AI Product Architecture Masterclass',
-    location: 'Mumbai, India',
-    date: 'November 2025',
-    tag: 'Workshop',
   },
   {
     src: event12,

@@ -1,12 +1,8 @@
 import { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import psHeadshot from '../../assets/pranjalsarkar/19.webp';
-const youtubeVideo = '/video/youtube.mp4';
+const youtubeVideo = '/video/Aipls%20Simulation%20Explainer%20Video6.mp4';
 import { Play } from 'lucide-react';
-
-
-
-
 
 const containerVariants = {
   hidden: { opacity: 0 },

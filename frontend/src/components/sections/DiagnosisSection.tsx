@@ -1,6 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
-import { Play } from 'lucide-react';
-const youtubeVideo = '/video/youtube.mp4';
+import { useState, useEffect } from 'react';
 
 const StatRing = ({ value, label, isActive }: { value: number; label?: string; isActive?: boolean }) => {
   const r = 22;
@@ -42,19 +40,7 @@ import { diagnosisData } from '../../constants/diagnosisData';
 export default function DiagnosisSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoplay, setIsAutoplay] = useState(true);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
-  const toggleVideo = () => {
-    if (videoRef.current) {
-      if (isVideoPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsVideoPlaying(!isVideoPlaying);
-    }
-  };
 
   useEffect(() => {
     if (!isAutoplay) return;
@@ -70,10 +56,10 @@ export default function DiagnosisSection() {
     <section id="diagnosis" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 ">
       {/* Background Dots Pattern & Glows */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(rgba(255,255,255,0.35)_1.5px,transparent_1.5px)] bg-size-[24px_24px] mask-[radial-gradient(ellipse_80%_100%_at_center,transparent_40%,black_100%)] opacity-100 pointer-events-none" />
-      
+
       {/* Intense Top-Right Blue Glow */}
       <div className="absolute top-[-5%] right-[-10%] w-[55%] h-[75%] z-0 bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.45)_0%,transparent_70%)] blur-[90px] pointer-events-none" />
-      
+
       {/* Subtle Left Blue Glow */}
       <div className="absolute top-[15%] left-[-15%] w-[45%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.25)_0%,transparent_60%)] blur-[80px] pointer-events-none" />
 
@@ -105,7 +91,7 @@ export default function DiagnosisSection() {
             </span>
           </h2>
           <p className="text-gray-100 text-sm md:text-[15px] leading-relaxed max-w-6xl mx-auto mt-4">
-        Generative AI didn't replace Product Managers. It changed what organizations value. Activities that once differentiated experienced Product Managers like writing PRDs, creating roadmaps, documenting requirements and producing polished presentations are increasingly becoming faster, cheaper and easier with AI. As these tasks become commodities, organizations are placing greater value on leaders who can make sound business decisions, navigate ambiguity, lead AI initiatives, build organizations and influence executive teams. The gap is no longer defined by experience alone. It is defined by the ability to operate at a different level.   </p>
+            Generative AI didn't replace Product Managers. It changed what organizations value. Activities that once differentiated experienced Product Managers like writing PRDs, creating roadmaps, documenting requirements and producing polished presentations are increasingly becoming faster, cheaper and easier with AI. As these tasks become commodities, organizations are placing greater value on leaders who can make sound business decisions, navigate ambiguity, lead AI initiatives, build organizations and influence executive teams. The gap is no longer defined by experience alone. It is defined by the ability to operate at a different level.   </p>
         </div>
 
         {/* Desktop Interactive Panel Layout */}
@@ -221,60 +207,27 @@ export default function DiagnosisSection() {
               <h3 className="font-serif text-2xl font-bold text-[#00a8ff] mb-4">
                 {item.headline}
               </h3>
-              
+
               <p className="text-base text-gray-200 leading-relaxed font-medium mb-6">
                 {item.description}
               </p>
 
               <div className="mt-auto pt-5 border-t border-white/10">
-                  <a href={item.link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-[13px] text-[#00a8ff] font-semibold hover:text-white transition-colors duration-200">
-                    {item.sourceName}
-                  </a>
+                <a href={item.link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-[13px] text-[#00a8ff] font-semibold hover:text-white transition-colors duration-200">
+                  {item.sourceName}
+                </a>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Video Block and Bridge Line */}
-        <div className="max-w-full mx-auto flex flex-col items-center mt-12 md:mt-20 h-160 ">
-            {/* Video Placeholder */}
-            <div 
-                className="w-full aspect-video rounded-xl bg-[#0a0e17] border border-white/10 shadow-[0_0_40px_rgba(24,37,226,0.15)] relative overflow-hidden flex items-center justify-center group cursor-pointer mb-12"
-                onClick={toggleVideo}
-            >
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,168,255,0.05)_0%,transparent_70%)] pointer-events-none z-10" />
-                
-                <video 
-                    ref={videoRef}
-                    className="absolute inset-0 w-full h-full object-cover z-0" 
-                    src={youtubeVideo} 
-                    onPlay={() => setIsVideoPlaying(true)}
-                    onPause={() => setIsVideoPlaying(false)}
-                    controls={isVideoPlaying}
-                />
-
-                {!isVideoPlaying && (
-                    <>
-                        {/* Play Button Glow */}
-                        <div className="absolute w-24 h-24 bg-[#0080C7]/30 blur-[30px] rounded-full group-hover:bg-[#0080C7]/50 transition-all duration-500 z-20 pointer-events-none" />
-                        
-                        {/* Play Button */}
-                        <div className="w-16 h-16 md:w-20 md:h-20 bg-white/10 border border-white/20 backdrop-blur-md rounded-full flex items-center justify-center relative z-20 group-hover:scale-110 transition-transform duration-300 pointer-events-none">
-                           <Play className="w-8 h-8 md:w-10 md:h-10 text-white ml-1.5 opacity-90 group-hover:opacity-100" fill="currentColor" />
-                        </div>
-                    </>
-                )}
-            </div>
-
-            {/* Bridge Line */}
-            <div className="max-w-6xl text-center">
-               <p className="text-gray-300 text-base md:text-[16px] leading-[1.8] font-medium">
-                 The next generation of Product Leaders won't be defined by how much they know. They'll be defined by the quality of the decisions they make under uncertainty. That's why this Studio doesn't stop at teaching concepts. <span className="text-white font-bold">It develops executive judgment through repeated practice, feedback, and real-world application.</span>
-               </p>
-            </div>
+          {/* Bridge Line */}
+          <div className="max-w-6xl text-center">
+            <p className="text-gray-300 text-base md:text-[16px] leading-[1.8] font-medium">
+              The next generation of Product Leaders won't be defined by how much they know. They'll be defined by the quality of the decisions they make under uncertainty. That's why this Studio doesn't stop at teaching concepts. <span className="text-white font-bold">It develops executive judgment through repeated practice, feedback, and real-world application.</span>
+            </p>
+          </div>
         </div>
-
-      </div>
     </section>
   );
 }
