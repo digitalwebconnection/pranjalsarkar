@@ -1,5 +1,7 @@
 import express from "express";
+import helmet from "helmet";
 import dotenv from "dotenv";
+import logger from "./src/utils/logger.js";
 
 import { initSentry, Sentry } from "./src/config/sentry.js";
 import connectDB from "./src/config/db.js";
@@ -24,11 +26,13 @@ const app = express();
 // Middlewares
 // ===============================
 
+app.use(helmet());
+
 app.use(corsMiddleware);
 
-app.use(express.json());
+app.use(express.json({ limit: '10kb' }));
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 
 // ===============================
@@ -71,7 +75,7 @@ Sentry.setupExpressErrorHandler(app);
 
 app.use((err, req, res, next) => {
 
-  console.error(err);
+  logger.error(err);
 
   res.status(err.status || 500).json({
 
@@ -95,6 +99,6 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, "0.0.0.0", () => {
 
-  console.log(`🚀 Server running on port ${PORT}`);
+  logger.info(`🚀 Server running on port ${PORT}`);
 
 });

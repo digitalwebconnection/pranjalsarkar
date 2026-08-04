@@ -28,12 +28,21 @@ function LandingPage() {
   return (
     <>
       <SmoothScroll />
+      
+      {/* Skip Navigation Link for A11Y */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-blue-600 focus:text-white font-bold"
+      >
+        Skip to content
+      </a>
 
       {/* 1. Navigation */}
       <Navbar />
 
-      {/* 2. Hero Section — #1 Priority */}
-      <HeroSection />
+      <main id="main-content">
+        {/* 2. Hero Section — #1 Priority */}
+        <HeroSection />
 
       {/* 3. The Mirror — The Problem — #2 */}
       <MirrorSection />
@@ -85,6 +94,7 @@ function LandingPage() {
 
       {/* 15. Contact / Apply — #14 */}
       <ContactSection />
+      </main>
 
       {/* Footer */}
       <Footer />
@@ -112,6 +122,13 @@ export default function App() {
           <AdminPage />
         }
       />
+
+      {/* 404 Catch-all */}
+      <Route path="*" element={
+        <div className="h-screen flex items-center justify-center bg-black text-white">
+          <h1 className="text-3xl font-serif">404 — Page Not Found</h1>
+        </div>
+      } />
     </Routes>
   );
 }

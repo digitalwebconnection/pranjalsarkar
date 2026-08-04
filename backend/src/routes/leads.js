@@ -1,7 +1,10 @@
+import logger from '../utils/logger.js';
 import express from 'express';
 import Lead from '../models/Lead.js';
 import { protectAdmin } from '../middleware/auth.js';
+import rateLimiter from '../middleware/rateLimiter.js';
 import { sendNewLeadNotification, sendMenteeConfirmation } from '../utils/sendEmail.js';
+import { escapeRegex } from '../utils/security.js';
 
 const router = express.Router();
 
@@ -22,7 +25,7 @@ const VALID_TRANSITIONS = {
  * @desc    Submit a new lead from the public contact form (CTA)
  * @access  Public
  */
-router.post('/', async (req, res) => {
+router.post('/', rateLimiter, async (req, res) => {
   const { name, email, phone, role, company, message } = req.body;
 
   if (!name || !email) {
@@ -66,7 +69,7 @@ router.post('/', async (req, res) => {
 
     // Send internal notification email (non-blocking)
     sendNewLeadNotification(lead).catch((err) => {
-      console.error('[Lead Route] Failed to send notification email:', err.message);
+      logger.error('[Lead Route] Failed to send notification email:', err.message);
     });
 
     res.status(201).json({
@@ -80,7 +83,7 @@ router.post('/', async (req, res) => {
       },
     });
   } catch (error) {
-    console.error('Lead submission error:', error.message);
+    logger.error('Lead submission error:', error.message);
     res.status(500).json({
       success: false,
       message: 'Something went wrong. Please try again later.',
@@ -120,7 +123,7 @@ router.get('/stats', protectAdmin, async (req, res) => {
 
     res.json({ success: true, stats: result });
   } catch (error) {
-    console.error('Lead stats error:', error.message);
+    logger.error('Lead stats error:', error.message);
     res.status(500).json({ success: false, message: 'Failed to fetch lead stats.' });
   }
 });
@@ -132,9 +135,12 @@ router.get('/stats', protectAdmin, async (req, res) => {
  */
 router.get('/', protectAdmin, async (req, res) => {
   try {
-    const { status, search, page = 1, limit = 50, dateFilter, startDate, endDate } = req.query;
+    let { page = 1, limit = 10, status, dateFilter, search, startDate, endDate } = req.query;
 
-    const filter = {};
+    // Cap limit to 100 to prevent DoS attacks fetching the entire DB
+    limit = Math.min(parseInt(limit, 10) || 10, 100);
+
+    let filter = {};
 
     if (status && status !== 'ALL') {
       filter.status = status;
@@ -143,13 +149,15 @@ router.get('/', protectAdmin, async (req, res) => {
     if (dateFilter && dateFilter !== 'All') {
       const now = new Date();
       if (dateFilter === 'Today') {
-        const startOfToday = new Date(now.setHours(0,0,0,0));
-        filter.createdAt = { $gte: startOfToday };
+        const today = new Date(now);
+        filter.createdAt = { $gte: new Date(today.setHours(0, 0, 0, 0)) };
       } else if (dateFilter === '7days') {
-        const sevenDaysAgo = new Date(now.setDate(now.getDate() - 7));
+        const sevenDaysAgo = new Date(now);
+        sevenDaysAgo.setDate(now.getDate() - 7);
         filter.createdAt = { $gte: sevenDaysAgo };
       } else if (dateFilter === '30days') {
-        const thirtyDaysAgo = new Date(now.setDate(now.getDate() - 30));
+        const thirtyDaysAgo = new Date(now);
+        thirtyDaysAgo.setDate(now.getDate() - 30);
         filter.createdAt = { $gte: thirtyDaysAgo };
       } else if (dateFilter === 'Custom' && startDate && endDate) {
         filter.createdAt = { 
@@ -160,7 +168,7 @@ router.get('/', protectAdmin, async (req, res) => {
     }
 
     if (search) {
-      const searchRegex = new RegExp(search, 'i');
+      const searchRegex = new RegExp(escapeRegex(search), 'i');
       filter.$or = [
         { name: searchRegex },
         { email: searchRegex },
@@ -170,12 +178,12 @@ router.get('/', protectAdmin, async (req, res) => {
       ];
     }
 
-    const skip = (parseInt(page) - 1) * parseInt(limit);
+    const skip = (parseInt(page) - 1) * limit;
     const total = await Lead.countDocuments(filter);
     const leads = await Lead.find(filter)
       .sort({ createdAt: -1 })
       .skip(skip)
-      .limit(parseInt(limit));
+      .limit(limit);
 
     res.json({
       success: true,
@@ -183,12 +191,12 @@ router.get('/', protectAdmin, async (req, res) => {
       pagination: {
         total,
         page: parseInt(page),
-        limit: parseInt(limit),
-        totalPages: Math.ceil(total / parseInt(limit)),
+        limit: limit,
+        totalPages: Math.ceil(total / limit),
       },
     });
   } catch (error) {
-    console.error('Fetch leads error:', error.message);
+    logger.error('Fetch leads error:', error.message);
     res.status(500).json({ success: false, message: 'Failed to fetch leads.' });
   }
 });
@@ -208,7 +216,7 @@ router.get('/:id', protectAdmin, async (req, res) => {
 
     res.json({ success: true, lead });
   } catch (error) {
-    console.error('Fetch lead error:', error.message);
+    logger.error('Fetch lead error:', error.message);
     res.status(500).json({ success: false, message: 'Failed to fetch lead.' });
   }
 });
@@ -255,20 +263,24 @@ router.put('/:id/status', protectAdmin, async (req, res) => {
     // If marked as CONVERTED, trigger onboarding actions
     if (status === 'CONVERTED') {
       lead.paymentStatus = 'RECEIVED';
+    }
 
+    // Save lead first to ensure database consistency before sending emails
+    await lead.save();
+
+    if (status === 'CONVERTED') {
       // Send mentee confirmation email (non-blocking)
       sendMenteeConfirmation(lead)
         .then((sent) => {
           if (sent) {
-            Lead.findByIdAndUpdate(lead._id, { confirmationEmailSent: true }).catch(() => {});
+            Lead.findByIdAndUpdate(lead._id, { confirmationEmailSent: true })
+              .catch((err) => logger.error('[Lead Route] Failed to update confirmation flag:', err.message));
           }
         })
         .catch((err) => {
-          console.error('[Lead Route] Failed to send mentee confirmation:', err.message);
+          logger.error('[Lead Route] Failed to send mentee confirmation:', err.message);
         });
     }
-
-    await lead.save();
 
     res.json({
       success: true,
@@ -276,7 +288,7 @@ router.put('/:id/status', protectAdmin, async (req, res) => {
       lead,
     });
   } catch (error) {
-    console.error('Update lead status error:', error.message);
+    logger.error('Update lead status error:', error.message);
     res.status(500).json({ success: false, message: 'Failed to update lead status.' });
   }
 });
@@ -311,7 +323,7 @@ router.put('/:id', protectAdmin, async (req, res) => {
       lead,
     });
   } catch (error) {
-    console.error('Update lead error:', error.message);
+    logger.error('Update lead error:', error.message);
     res.status(500).json({ success: false, message: 'Failed to update lead.' });
   }
 });
@@ -334,7 +346,7 @@ router.delete('/:id', protectAdmin, async (req, res) => {
       message: `Lead "${lead.name}" has been deleted.`,
     });
   } catch (error) {
-    console.error('Delete lead error:', error.message);
+    logger.error('Delete lead error:', error.message);
     res.status(500).json({ success: false, message: 'Failed to delete lead.' });
   }
 });

@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { useState, useRef } from 'react';
-import youtubeVideo from '../../assets/video/youtube.mp4';
+const introVideo = '/video/Aipls Introduction Video.mp4';
 import { Play } from 'lucide-react';
 import { leadershipSteps, leadershipDetails } from '../../constants/programIntroData';
 
@@ -198,7 +198,7 @@ export default function ProgramIntroSection() {
               <video
                 ref={videoRef}
                 className="absolute inset-0 w-full h-full object-cover z-0"
-                src={youtubeVideo}
+                src={introVideo}
                 onPlay={() => setIsVideoPlaying(true)}
                 onPause={() => setIsVideoPlaying(false)}
                 controls={isVideoPlaying}

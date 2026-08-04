@@ -125,7 +125,8 @@ export const AdminPage: React.FC = () => {
       }
     } catch (err) {
       console.error(err);
-      alert('Failed to update status');
+      setToastMessage('Failed to update status');
+      setTimeout(() => setToastMessage(null), 3000);
     }
   };
 
@@ -159,7 +160,8 @@ export const AdminPage: React.FC = () => {
       }
     } catch (err) {
       console.error(err);
-      alert('Failed to update lead');
+      setToastMessage('Failed to update lead');
+      setTimeout(() => setToastMessage(null), 3000);
     } finally {
       setIsUpdatingLead(false);
     }

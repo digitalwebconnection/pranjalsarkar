@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play } from 'lucide-react';
-import youtubeVideo from '../../assets/video/youtube.mp4';
+const youtubeVideo = '/video/youtube.mp4';
 
 const StatRing = ({ value, label, isActive }: { value: number; label?: string; isActive?: boolean }) => {
   const r = 22;

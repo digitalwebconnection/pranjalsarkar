@@ -1,18 +1,18 @@
-import event1 from '../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-01.webp';
-import event2 from '../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-02.webp';
-import event3 from '../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-03.webp';
-import event4 from '../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-04.webp';
-import event5 from '../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-05.webp';
-import event6 from '../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-06.webp';
-import event7 from '../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-07.webp';
-import event8 from '../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-08.webp';
-import event9 from '../assets/Pranjal in Events/Pranjal-Sarkar-Delivering-Session-09.webp';
-import event10 from '../assets/Pranjal in Events/20251120_143802.webp';
-import event11 from '../assets/Pranjal in Events/20251120_144429.webp';
-import event12 from '../assets/Pranjal in Events/20251120_144745.webp';
-import event13 from '../assets/Pranjal in Events/20251120_144814.webp';
-import event14 from '../assets/Pranjal in Events/20251120_152313.webp';
-import event15 from '../assets/Pranjal in Events/20251120_155544.webp';
+const event1 = '/events/Pranjal-Sarkar-Delivering-Session-01.webp';
+const event2 = '/events/Pranjal-Sarkar-Delivering-Session-02.webp';
+const event3 = '/events/Pranjal-Sarkar-Delivering-Session-03.webp';
+const event4 = '/events/Pranjal-Sarkar-Delivering-Session-04.webp';
+const event5 = '/events/Pranjal-Sarkar-Delivering-Session-05.webp';
+const event6 = '/events/Pranjal-Sarkar-Delivering-Session-06.webp';
+const event7 = '/events/Pranjal-Sarkar-Delivering-Session-07.webp';
+const event8 = '/events/Pranjal-Sarkar-Delivering-Session-08.webp';
+const event9 = '/events/Pranjal-Sarkar-Delivering-Session-09.webp';
+const event10 = '/events/20251120_143802.webp';
+const event11 = '/events/20251120_144429.webp';
+const event12 = '/events/20251120_144745.webp';
+const event13 = '/events/20251120_144814.webp';
+const event14 = '/events/20251120_152313.webp';
+const event15 = '/events/20251120_155544.webp';
 
 export interface EventImage {
   src: string;

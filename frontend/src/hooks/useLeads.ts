@@ -23,7 +23,7 @@ export function useLeads(params?: Record<string, string>) {
     } finally {
       setIsLoading(false);
     }
-  }, [JSON.stringify(params)]);
+  }, [params]);
 
   const fetchStats = useCallback(async () => {
     try {

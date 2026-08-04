@@ -41,9 +41,9 @@ export const LeadsTab: React.FC<LeadsTabProps> = ({
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input type="text" value={leadSearchQuery} onChange={(e) => setLeadSearchQuery(e.target.value)} placeholder="Search leads..." className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-sm text-sm font-semibold focus:border-blue-500 outline-none" />
           </div>
-          <div className="relative hidden md:block">
+          <div className="relative">
             <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-            <select value={dateFilter} onChange={(e) => setDateFilter(e.target.value)} className="pl-9 pr-8 py-2 bg-slate-50 border border-slate-200 rounded-sm text-sm font-bold text-slate-700 outline-none cursor-pointer">
+            <select aria-label="Filter by date" value={dateFilter} onChange={(e) => setDateFilter(e.target.value)} className="pl-9 pr-8 py-2 bg-slate-50 border border-slate-200 rounded-sm text-sm font-bold text-slate-700 outline-none cursor-pointer">
               <option value="All">All Time</option>
               <option value="Today">Today</option>
               <option value="7days">Last 7 Days</option>
@@ -52,7 +52,7 @@ export const LeadsTab: React.FC<LeadsTabProps> = ({
             </select>
           </div>
           {dateFilter === 'Custom' && (
-            <div className="flex items-center gap-2 hidden md:flex">
+            <div className="flex items-center gap-2">
               <input 
                 type="date" 
                 max={new Date().toISOString().split('T')[0]}
@@ -76,7 +76,7 @@ export const LeadsTab: React.FC<LeadsTabProps> = ({
               />
             </div>
           )}
-          <select value={leadStatusFilter} onChange={(e) => setLeadStatusFilter(e.target.value)} className="bg-slate-50 border border-slate-200 rounded-sm px-3 py-2 text-sm font-bold text-slate-700 outline-none cursor-pointer">
+          <select aria-label="Filter by status" value={leadStatusFilter} onChange={(e) => setLeadStatusFilter(e.target.value)} className="bg-slate-50 border border-slate-200 rounded-sm px-3 py-2 text-sm font-bold text-slate-700 outline-none cursor-pointer">
             <option value="All">All Status</option>
             {Object.keys(STATUS_CONFIG).map(status => (
               <option key={status} value={status}>{STATUS_CONFIG[status as keyof typeof STATUS_CONFIG].label}</option>
@@ -127,6 +127,7 @@ export const LeadsTab: React.FC<LeadsTabProps> = ({
                   </td>
                   <td className="p-4 text-center">
                     <select
+                      aria-label={`Change status for ${lead.name}`}
                       value={lead.status}
                       onChange={(e) => handleStatusChange(lead._id, e.target.value)}
                       className={`text-xs font-bold px-3 py-1.5 rounded-sm border outline-none cursor-pointer ${(STATUS_CONFIG[lead.status as keyof typeof STATUS_CONFIG] || STATUS_CONFIG.NEW).bg} ${(STATUS_CONFIG[lead.status as keyof typeof STATUS_CONFIG] || STATUS_CONFIG.NEW).color} ${(STATUS_CONFIG[lead.status as keyof typeof STATUS_CONFIG] || STATUS_CONFIG.NEW).border}`}

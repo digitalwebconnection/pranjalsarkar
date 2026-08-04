@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import logger from '../utils/logger.js';
 
 dotenv.config();
 
@@ -15,7 +16,7 @@ export const protectAdmin = (req, res, next) => {
       token = req.headers.authorization.split(' ')[1];
 
       // Verify token
-      const decoded = jwt.verify(token, process.env.JWT_SECRET || 'creasun_super_secret_jwt_key_2025');
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
       // Check role
       if (decoded.role !== 'admin') {
@@ -25,7 +26,7 @@ export const protectAdmin = (req, res, next) => {
       req.admin = decoded;
       return next();
     } catch (error) {
-      console.error('Auth verification error:', error.message);
+      logger.error('Auth verification error:', error.message);
       return res.status(401).json({ message: 'Not authorized: Token is invalid or expired' });
     }
   }
@@ -44,11 +45,11 @@ export const protect = (req, res, next) => {
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     try {
       token = req.headers.authorization.split(' ')[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET || 'creasun_super_secret_jwt_key_2025');
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
       req.user = decoded; // Contains id, email, role
       return next();
     } catch (error) {
-      console.error('Auth verification error:', error.message);
+      logger.error('Auth verification error:', error.message);
       return res.status(401).json({ message: 'Not authorized: Token is invalid or expired' });
     }
   }

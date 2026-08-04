@@ -3,7 +3,7 @@
  * Centralizes base URL, headers, and auth token injection.
  */
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+import { API_URL } from '../../config';
 
 interface RequestOptions extends RequestInit {
   params?: Record<string, string>;

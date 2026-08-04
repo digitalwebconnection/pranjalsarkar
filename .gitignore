@@ -48,3 +48,5 @@ uploads/
 
 # Agent files
 .agent/
+
+frontend/public/video/*.mp4

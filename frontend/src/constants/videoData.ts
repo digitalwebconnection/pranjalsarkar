@@ -1,7 +1,7 @@
-import v1 from "../assets/video/1.mp4"
-import v2 from "../assets/video/2.mp4"
-import v3 from "../assets/video/3.mp4"
-import v4 from "../assets/video/4.mp4"
+const v1 = "/video/1.mp4";
+const v2 = "/video/2.mp4";
+const v3 = "/video/3.mp4";
+const v4 = "/video/4.mp4";
 
 export interface VideoData {
   id: number;

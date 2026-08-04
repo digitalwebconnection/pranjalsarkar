@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Phone, Calendar, User, Mail, Briefcase, Building2, Pencil, ShieldCheck, ArrowRight, Loader2, CheckCircle } from 'lucide-react';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+import { API_URL } from '../../../config';
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', role: '', company: '', message: '' });
@@ -28,8 +28,10 @@ export default function ContactSection() {
     window.addEventListener('resize', handleResize);
 
     let step = 0;
+    let isVisible = false;
 
     const render = () => {
+      if (!isVisible) return;
       ctx.clearRect(0, 0, width, height);
 
       // 1. Intense bottom-left electric blue radial burst (exact match to wireframe)
@@ -91,11 +93,23 @@ export default function ContactSection() {
       animationFrameId = requestAnimationFrame(render);
     };
 
-    render();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        isVisible = entries[0].isIntersecting;
+        if (isVisible) {
+          render();
+        } else {
+          cancelAnimationFrame(animationFrameId);
+        }
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(canvas);
 
     return () => {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
+      observer.disconnect();
     };
   }, []);
 
@@ -245,12 +259,13 @@ export default function ContactSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   {/* Name */}
                   <div className="flex flex-col">
-                    <label className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
+                    <label htmlFor="contact-name" className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
                       FULL NAME
                     </label>
                     <div className="flex items-center gap-3 px-4 py-3.5 rounded-xl border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
                       <User className="w-5 h-5 text-[#0070f3] shrink-0" />
                       <input
+                        id="contact-name"
                         type="text"
                         required
                         value={form.name}
@@ -263,12 +278,13 @@ export default function ContactSection() {
 
                   {/* Email */}
                   <div className="flex flex-col">
-                    <label className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
+                    <label htmlFor="contact-email" className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
                       WORK EMAIL
                     </label>
                     <div className="flex items-center gap-3 px-4 py-3.5 rounded-xl border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
                       <Mail className="w-5 h-5 text-[#0070f3] shrink-0" />
                       <input
+                        id="contact-email"
                         type="email"
                         required
                         value={form.email}
@@ -284,12 +300,13 @@ export default function ContactSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   {/* Phone */}
                   <div className="flex flex-col">
-                    <label className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
+                    <label htmlFor="contact-phone" className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
                       PHONE NUMBER
                     </label>
                     <div className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border ${form.phone.length > 0 && !/^\+?[0-9\s\-()]{7,20}$/.test(form.phone) ? 'border-red-500/50 focus-within:border-red-500/50 focus-within:shadow-[0_0_15px_rgba(239,68,68,0.25)]' : 'border-[#172740] focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]'} bg-[#070e1b] transition-all`}>
                       <Phone className="w-5 h-5 text-[#0070f3] shrink-0" />
                       <input
+                        id="contact-phone"
                         type="tel"
                         required
                         value={form.phone}
@@ -310,12 +327,13 @@ export default function ContactSection() {
 
                   {/* Role */}
                   <div className="flex flex-col">
-                    <label className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
+                    <label htmlFor="contact-role" className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
                       CURRENT ROLE
                     </label>
                     <div className="flex items-center gap-3 px-4 py-3.5 rounded-xl border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
                       <Briefcase className="w-5 h-5 text-[#0070f3] shrink-0" />
                       <input
+                        id="contact-role"
                         type="text"
                         required
                         value={form.role}
@@ -329,12 +347,13 @@ export default function ContactSection() {
 
                 {/* Company */}
                 <div className="flex flex-col">
-                  <label className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
+                  <label htmlFor="contact-company" className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
                     COMPANY
                   </label>
                   <div className="flex items-center gap-3 px-4 py-3.5 rounded-xl border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
                     <Building2 className="w-5 h-5 text-[#0070f3] shrink-0" />
                     <input
+                      id="contact-company"
                       type="text"
                       required
                       value={form.company}
@@ -347,12 +366,13 @@ export default function ContactSection() {
 
                 {/* Why applying */}
                 <div className="flex flex-col">
-                  <label className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
+                  <label htmlFor="contact-message" className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
                     WHY ARE YOU APPLYING? (2–3 SENTENCES)
                   </label>
                   <div className="flex items-start gap-3 px-4 py-3.5 rounded-xl border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
                     <Pencil className="w-5 h-5 text-[#0070f3] mt-0.5 shrink-0" />
                     <textarea
+                      id="contact-message"
                       required
                       rows={3}
                       value={form.message}

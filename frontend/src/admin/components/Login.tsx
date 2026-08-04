@@ -12,10 +12,12 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
   const [passwordInput, setPasswordInput] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoggingIn(true);
+    setErrorMsg('');
     try {
       const response = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
@@ -26,10 +28,10 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
       if (response.ok && data.token) {
         onLoginSuccess(data.token);
       } else {
-        alert(data.message || 'Login failed');
+        setErrorMsg(data.message || 'Login failed');
       }
     } catch (error) {
-      alert('Network error. Please try again.');
+      setErrorMsg('Network error. Please try again.');
     } finally {
       setIsLoggingIn(false);
     }
@@ -43,14 +45,20 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
           <h2 className="text-2xl font-black text-slate-800">Admin Login</h2>
         </div>
         <form onSubmit={handleLogin} className="space-y-4">
+          {errorMsg && (
+            <div className="bg-red-50 text-red-600 p-3 rounded-sm text-sm font-semibold border border-red-200 text-center">
+              {errorMsg}
+            </div>
+          )}
           <div>
-            <label className="block text-xs font-black text-slate-500 uppercase tracking-wider mb-2">Email</label>
-            <input type="email" required value={emailInput} onChange={(e) => setEmailInput(e.target.value)} className="w-full bg-slate-50 border border-slate-200 px-4 py-3 rounded-sm text-slate-900 text-sm font-semibold focus:border-blue-500 outline-none" />
+            <label htmlFor="login-email" className="block text-xs font-black text-slate-500 uppercase tracking-wider mb-2">Email</label>
+            <input id="login-email" type="email" required value={emailInput} onChange={(e) => setEmailInput(e.target.value)} className="w-full bg-slate-50 border border-slate-200 px-4 py-3 rounded-sm text-slate-900 text-sm font-semibold focus:border-blue-500 outline-none" />
           </div>
           <div>
-            <label className="block text-xs font-black text-slate-500 uppercase tracking-wider mb-2">Password</label>
+            <label htmlFor="login-password" className="block text-xs font-black text-slate-500 uppercase tracking-wider mb-2">Password</label>
             <div className="relative">
               <input
+                id="login-password"
                 type={showPassword ? 'text' : 'password'}
                 required
                 value={passwordInput}

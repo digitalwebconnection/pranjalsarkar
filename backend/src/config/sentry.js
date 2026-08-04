@@ -1,4 +1,5 @@
 import * as Sentry from '@sentry/node';
+import logger from '../utils/logger.js';
 
 export const initSentry = () => {
   if (process.env.SENTRY_DSN) {
@@ -6,9 +7,9 @@ export const initSentry = () => {
       dsn: process.env.SENTRY_DSN,
       tracesSampleRate: 1.0,
     });
-    console.log('Sentry initialized');
+    logger.info('Sentry initialized');
   } else {
-    console.log('SENTRY_DSN not provided, Sentry is disabled');
+    logger.info('SENTRY_DSN not provided, Sentry is disabled');
   }
 };
 

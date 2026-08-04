@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import psHeadshot from '../../assets/pranjalsarkar/19.webp';
-import youtubeVideo from '../../assets/video/youtube.mp4';
+const youtubeVideo = '/video/youtube.mp4';
 import { Play } from 'lucide-react';
 
 

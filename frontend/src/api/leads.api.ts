@@ -20,9 +20,11 @@ export interface LeadResponse {
   };
 }
 
+import type { Lead } from '../types';
+
 export interface LeadsListResponse {
   success: boolean;
-  leads: any[];
+  leads: Lead[];
   pagination: {
     total: number;
     page: number;

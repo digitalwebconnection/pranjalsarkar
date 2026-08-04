@@ -1,4 +1,4 @@
-import bgImage from '../../assets/Pranjal in Events/1.webp';
+const bgImage = '/events/1.webp';
 
 export default function FinalCTASection() {
   return (
