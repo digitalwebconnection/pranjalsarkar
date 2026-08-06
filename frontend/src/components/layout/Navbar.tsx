@@ -112,6 +112,7 @@ export default function Navbar() {
                         ? 'text-white'
                         : 'text-[#dee2e9] hover:text-white',
                     ].join(' ')}
+                    aria-current={isActive ? 'page' : undefined}
                   >
                     {l.label}
                   </Link>
@@ -216,6 +217,7 @@ export default function Navbar() {
                     ? 'text-[#2563EB] font-bold bg-white/5'
                     : 'text-[#9CA3AF] font-medium hover:text-white hover:bg-white/5 hover:translate-x-1',
                 ].join(' ')}
+                aria-current={isActive ? 'page' : undefined}
               >
                 <span>{l.label}</span>
                 {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] shadow-[0_0_10px_rgba(37,99,235,0.8)]" />}

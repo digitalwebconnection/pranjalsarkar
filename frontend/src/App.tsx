@@ -1,24 +1,33 @@
+import { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './styles/index.css';
+
+// Eager imports for above-the-fold components
 import Navbar from './components/layout/Navbar';
-import SmoothScroll from './components/ui/SmoothScroll';
 import HeroSection from './components/sections/HeroSection';
-import MirrorSection from './components/sections/MirrorSection';
-import PhilosophySection from './components/sections/PhilosophySection';
-import AboutSection from './components/sections/AboutSection';
-import TestimonialsSection from './components/sections/TestimonialsSection';
-import LogosSection from './components/sections/LogosSection';
-import ProgramIntroSection from './components/sections/ProgramIntroSection';
-import WhoShouldApplySection from './components/sections/WhoShouldApplySection';
-import JudgementSection from './components/sections/JudgementSection';
-import PostWeek5Section from './components/sections/PostWeek5Section';
-import CurriculumSection from './components/sections/CurriculumSection';
-import FAQSection from './components/sections/FAQSection';
-import FinalCTASection from './components/sections/FinalCTASection';
-import ContactSection from './components/sections/ContactSection';
-import Footer from './components/layout/Footer';
-import EventsGallerySection from './components/sections/EventsGallerySection';
-import { AdminPage } from './admin/AdminPage';
+import SmoothScroll from './components/ui/SmoothScroll';
+
+// Lazy imports for below-the-fold components
+const MirrorSection = lazy(() => import('./components/sections/MirrorSection'));
+const ProgramIntroSection = lazy(() => import('./components/sections/ProgramIntroSection'));
+const JudgementSection = lazy(() => import('./components/sections/JudgementSection'));
+const PostWeek5Section = lazy(() => import('./components/sections/PostWeek5Section'));
+const PhilosophySection = lazy(() => import('./components/sections/PhilosophySection'));
+const AboutSection = lazy(() => import('./components/sections/AboutSection'));
+const TestimonialsSection = lazy(() => import('./components/sections/TestimonialsSection'));
+const LogosSection = lazy(() => import('./components/sections/LogosSection'));
+const WhoShouldApplySection = lazy(() => import('./components/sections/WhoShouldApplySection'));
+const CurriculumSection = lazy(() => import('./components/sections/CurriculumSection'));
+const EventsGallerySection = lazy(() => import('./components/sections/EventsGallerySection'));
+const FAQSection = lazy(() => import('./components/sections/FAQSection'));
+const FinalCTASection = lazy(() => import('./components/sections/FinalCTASection'));
+const ContactSection = lazy(() => import('./components/sections/ContactSection'));
+const Footer = lazy(() => import('./components/layout/Footer'));
+
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const RefundPolicy = lazy(() => import('./pages/RefundPolicy'));
+const TermsOfUse = lazy(() => import('./pages/TermsOfUse'));
+const AdminPage = lazy(() => import('./admin/AdminPage').then(module => ({ default: module.AdminPage })));
 
 /** The main marketing / landing page */
 function LandingPage() {
@@ -38,87 +47,82 @@ function LandingPage() {
       <Navbar />
 
       <main id="main-content">
-        {/* 2. Hero Section — #1 Priority */}
+        {/* 2. Hero Section — #1 Priority (Eagerly loaded) */}
         <HeroSection />
 
-        {/* 3. The Mirror — The Problem — #2 */}
-        <MirrorSection />
+        <Suspense fallback={<div className="h-20 w-full bg-[#0A101F]" />}>
+          {/* 3. The Mirror — The Problem — #2 */}
+          <MirrorSection />
 
-        {/* 9. Program Introduction — AI Product Leadership Studio — #8 */}
-        <ProgramIntroSection />
+          {/* 9. Program Introduction — AI Product Leadership Studio — #8 */}
+          <ProgramIntroSection />
 
-        {/* 10. How Leadership-Level Judgment Gets Built — #9 */}
-        <JudgementSection />
+          {/* 10. How Leadership-Level Judgment Gets Built — #9 */}
+          <JudgementSection />
 
-        {/* Post-Week 5 — What Happens Next */}
-        <PostWeek5Section />
+          {/* Post-Week 5 — What Happens Next */}
+          <PostWeek5Section />
 
-        {/* 5. Philosophy — Build Product Judgment Under AI — #4 */}
-        <PhilosophySection />
+          {/* 5. Philosophy — Build Product Judgment Under AI — #4 */}
+          <PhilosophySection />
 
-        {/* 6. About Pranjal Sarkar — #5 */}
-        <AboutSection />
+          {/* 6. About Pranjal Sarkar — #5 */}
+          <AboutSection />
 
-        {/* 7. Testimonials — #6 */}
-        <TestimonialsSection />
+          {/* 7. Testimonials — #6 */}
+          <TestimonialsSection />
 
-        {/* 8. Logos Strip — #7 */}
-        <LogosSection />
+          {/* 8. Logos Strip — #7 */}
+          <LogosSection />
 
-        {/* 9.5. Who Should Apply */}
-        <WhoShouldApplySection />
+          {/* 9.5. Who Should Apply */}
+          <WhoShouldApplySection />
 
-        {/* 11. Program Details (formerly Takeaways) handled by CurriculumSection */}
+          {/* 12. Curriculum — #11 */}
+          <CurriculumSection />
 
-        {/* 12. Curriculum — #11 */}
-        <CurriculumSection />
+          {/* Events & Speaking Gallery Section */}
+          <EventsGallerySection />
 
-        {/* Events & Speaking Gallery Section */}
-        <EventsGallerySection />
+          {/* 13. FAQ — #12 */}
+          <FAQSection />
 
-        {/* 13. FAQ — #12 */}
-        <FAQSection />
+          {/* 14. Final CTA — #13 */}
+          <FinalCTASection />
 
-        {/* 14. Final CTA — #13 */}
-        <FinalCTASection />
-
-        {/* 15. Contact / Apply — #14 */}
-        <ContactSection />
+          {/* 15. Contact / Apply — #14 */}
+          <ContactSection />
+        </Suspense>
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </>
   );
 }
 
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import RefundPolicy from './pages/RefundPolicy';
-import TermsOfUse from './pages/TermsOfUse';
-
 export default function App() {
   return (
-    <Routes>
-      {/* Main website */}
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-      <Route path="/refund-policy" element={<RefundPolicy />} />
-      <Route path="/terms-of-use" element={<TermsOfUse />} />
+    <Suspense fallback={<div className="h-screen w-full bg-[#0A101F] flex items-center justify-center text-white">Loading...</div>}>
+      <Routes>
+        {/* Main website */}
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/refund-policy" element={<RefundPolicy />} />
+        <Route path="/terms-of-use" element={<TermsOfUse />} />
 
-      {/* Admin Panel — standalone page (no navbar/footer) */}
-      <Route
-        path="/admin"
-        element={
-          <AdminPage />
-        }
-      />
+        {/* Admin Panel — standalone page (no navbar/footer) */}
+        <Route path="/admin" element={<AdminPage />} />
 
-      {/* 404 Catch-all */}
-      <Route path="*" element={
-        <div className="h-screen flex items-center justify-center bg-black text-white">
-          <h1 className="text-3xl font-serif">404 — Page Not Found</h1>
-        </div>
-      } />
-    </Routes>
+        {/* 404 Catch-all */}
+        <Route path="*" element={
+          <div className="h-screen flex items-center justify-center bg-black text-white">
+            <h1 className="text-3xl font-serif">404 — Page Not Found</h1>
+          </div>
+        } />
+      </Routes>
+    </Suspense>
   );
 }

@@ -4,8 +4,17 @@ import Lead from '../models/Lead.js';
 import { protectAdmin } from '../middleware/auth.js';
 import rateLimiter from '../middleware/rateLimiter.js';
 import { sendNewLeadNotification, sendMenteeConfirmation } from '../utils/sendEmail.js';
+import { z } from 'zod';
 import { escapeRegex } from '../utils/security.js';
 
+const leadSchema = z.object({
+  name: z.string().min(1, 'Name is required').max(100),
+  email: z.string().email('Invalid email format'),
+  phone: z.string().max(20).optional().or(z.literal('')),
+  role: z.string().max(100).optional().or(z.literal('')),
+  company: z.string().max(100).optional().or(z.literal('')),
+  message: z.string().max(2000).optional().or(z.literal('')),
+});
 const router = express.Router();
 
 /**
@@ -26,14 +35,16 @@ const VALID_TRANSITIONS = {
  * @access  Public
  */
 router.post('/', rateLimiter, async (req, res) => {
-  const { name, email, phone, role, company, message } = req.body;
+  const result = leadSchema.safeParse(req.body);
 
-  if (!name || !email) {
+  if (!result.success) {
     return res.status(400).json({
       success: false,
-      message: 'Name and email are required.',
+      message: result.error.errors.map(e => e.message).join(', '),
     });
   }
+
+  const { name, email, phone, role, company, message } = result.data;
 
   try {
     // Check for duplicate lead by email (within last 24 hours to prevent spam)
