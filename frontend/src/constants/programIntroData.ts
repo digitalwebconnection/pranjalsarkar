@@ -1,15 +1,15 @@
 import {
-  Users,
-  BrainCircuit,
-  Gavel,
-  Mountain,
+  Brain,
+  Target,
+  Sparkles,
+  Flag,
 } from 'lucide-react';
 
 export const leadershipSteps = [
-  { icon: BrainCircuit, label: 'THINK' },
-  { icon: Gavel, label: 'DECIDE' },
-  { icon: Users, label: 'AUGMENT' },
-  { icon: Mountain, label: 'LEAD' },
+  { icon: Brain, label: 'THINK' },
+  { icon: Target, label: 'DECIDE' },
+  { icon: Sparkles, label: 'AUGMENT' },
+  { icon: Flag, label: 'LEAD' },
 ];
 
 export const leadershipDetails = [

@@ -30,9 +30,6 @@ export default function MirrorSection() {
 
         {/* Header */}
         <div className="max-w-6xl mx-auto text-center mb-10">
-          <span className="inline-flex items-center gap-2 px-6 py-2 bg-[#0080C7]/10 border border-[#0080C7]/30 rounded-md text-[12px] font-bold tracking-widest uppercase text-[#0080C7] mb-6 shadow-[0_0_15px_rgba(0,128,199,0.1)]">
-            THE MIRROR
-          </span>
           <h2 className="font-serif font-bold text-2xl md:text-5xl leading-tight tracking-tight mb-4 text-white">
             These are real situations faced by<br />
             <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">

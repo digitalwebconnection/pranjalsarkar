@@ -145,13 +145,23 @@ export default function ProgramIntroSection() {
                 <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(ellipse_at_top_right,rgba(0,68,204,0.15),transparent_70%)] pointer-events-none transition-opacity duration-500 opacity-50 group-hover:opacity-100" />
 
                 <motion.div variants={itemVariants}>
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-12 shrink-0 rounded-xl bg-linear-to-br from-[#0066ff] to-[#0044cc] flex items-center justify-center text-white font-bold text-lg shadow-[0_0_20px_rgba(0,102,255,0.5)] border-2 border-[#060a14]">
-                      0{index + 1}
+                  <div className="flex items-center justify-between gap-4 mb-8">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 shrink-0 rounded-xl bg-linear-to-br from-[#0066ff] to-[#0044cc] flex items-center justify-center text-white font-bold text-lg shadow-[0_0_20px_rgba(0,102,255,0.5)] border-2 border-[#060a14]">
+                        0{index + 1}
+                      </div>
+                      <h3 className="font-serif text-2xl md:text-3xl font-bold text-white tracking-wide group-hover:text-[#00a8ff] transition-colors duration-300">
+                        {detail.title}
+                      </h3>
                     </div>
-                    <h3 className="font-serif text-2xl md:text-3xl font-bold text-white tracking-wide group-hover:text-[#00a8ff] transition-colors duration-300">
-                      {detail.title}
-                    </h3>
+                    
+                    {/* Right-side icon */}
+                    <div className="shrink-0 w-14 h-14 rounded-full bg-[#00a8ff]/10 flex items-center justify-center text-[#00a8ff] shadow-[0_0_15px_rgba(0,168,255,0.2)] group-hover:bg-[#00a8ff]/20 group-hover:shadow-[0_0_25px_rgba(0,168,255,0.4)] group-hover:scale-110 transition-all duration-300">
+                      {(() => {
+                        const Icon = leadershipSteps[index].icon;
+                        return <Icon size={26} strokeWidth={2} className="drop-shadow-sm" />;
+                      })()}
+                    </div>
                   </div>
                 </motion.div>
 

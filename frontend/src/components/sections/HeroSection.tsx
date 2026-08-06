@@ -14,18 +14,18 @@ export default function HeroSection() {
       </div>
 
       {/* ── Content ── */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-6 flex flex-col justify-between flex-1">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-5 items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-6 flex flex-col justify-center flex-1 gap-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-5 items-stretch">
 
           {/* Left Column - Content */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
+          <div className="lg:col-span-7 flex flex-col items-start text-left self-center">
             <div
               className={`w-full transition-all duration-300 ease-out ${fading ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
                 }`}
             >
               {/* Pre-headline */}
               <div className="flex justify-start mb-4 lg:mb-5">
-                <span className="inline-flex items-center gap-2 px-4 py-1 bg-[#0080C7]/10 border border-[#0080C7]/20 rounded-full text-[10px] md:text-[11px] font-semibold text-blue-300 shadow-[0_0_15px_rgba(0,128,199,0.15)] max-w-full">
+                <span className="inline-flex items-center gap-2 px-4 py-1 bg-[#0080C7]/10 border border-[#0080C7]/20 rounded-full text-[12px] md:text-[16px] font-semibold text-blue-300 shadow-[0_0_15px_rgba(0,128,199,0.15)] max-w-full">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#0080C7] shadow-[0_0_8px_rgba(0,128,199,0.9)] shrink-0" />
                   <span className="text-left leading-tight">For Product Managers with 3–8 years of experience preparing for Product Leadership</span>
                 </span>
@@ -40,7 +40,7 @@ export default function HeroSection() {
               <div className="w-24 md:w-32 lg:w-40 h-[2.5px] bg-linear-to-r from-[#00a8ff] via-[#2563EB] to-transparent mb-5 rounded-full shadow-[0_0_12px_rgba(0,168,255,0.8)]" />
 
               {/* Sub-headline Part 2 */}
-              <p className="text-gray-200 text-sm md:text-md leading-relaxed max-w-2xl mb-4">
+              <p className="text-gray-200 text-[16px] md:text-[18px] leading-relaxed max-w-2xl mb-4">
                 AIPLS is a 5-week leadership development system followed by up to 30 days of real company exposure. Every week you make executive decisions, face the consequences inside a realistic business simulation and discover exactly where your judgment is strong and where it needs to grow.
               </p>
 
@@ -50,7 +50,7 @@ export default function HeroSection() {
                   href="#contact"
                   className="inline-flex items-center justify-center gap-1.5 px-8 py-3.5 rounded-md text-white text-[14px] lg:text-[15px] font-bold tracking-wide no-underline transition-all duration-200 bg-linear-to-r from-[#0080C7] to-[rgba(24,37,226,0.9)] shadow-[0_0_20px_rgba(24,37,226,0.4)] hover:from-[#00a8ff] hover:to-[rgba(24,37,226,1)] hover:shadow-[0_0_30px_rgba(24,37,226,0.6)] hover:-translate-y-0.5 w-fit"
                 >
-                  Start Your Enrollment Here <span className="text-[14px] lg:text-[15px] font-bold">→</span>
+                  Submit Interview Request <span className="text-[14px] lg:text-[15px] font-bold">→</span>
                 </a>
                 <p className="text-gray-400 text-xs md:text-xs font-medium ml-1">
                   Every application includes a 1:1 conversation with Pranjal Sarkar before enrollment.
@@ -70,7 +70,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right Column - Image of Pranjal Sarkar */}
-          <div className="lg:col-span-5 mt-12 lg:mt-0 flex justify-center lg:justify-end relative">
+          <div className="lg:col-span-5 mt-12 lg:mt-0 flex justify-center lg:justify-end relative self-end translate-y-4 lg:translate-y-8">
             {/* Background Radial Glow & Concentric Circles */}
             <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none translate-x-12 translate-y-12">
               <div className="absolute w-[140%] aspect-square rounded-full bg-[radial-gradient(circle_at_center,rgba(0,128,199,0.25)_0%,transparent_60%)] blur-[20px]" />
