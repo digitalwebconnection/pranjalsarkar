@@ -70,9 +70,6 @@ export default function AboutSection() {
 
         {/* Header Block */}
         <motion.div className="flex flex-col text-center justify-center mb-12" variants={itemVariants}>
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#0080C7]/10 border border-[#0080C7]/30 rounded-md text-[10px] font-bold tracking-wider uppercase text-[#0080C7] mb-6 shadow-[0_0_15px_rgba(0,128,199,0.1)] self-center">
-            ABOUT PRANJAL
-          </span>
           <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-5xl leading-tight tracking-tight text-white mb-4 text-center">
             The Person Behind{' '} <br />
             <span className="text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">

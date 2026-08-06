@@ -189,13 +189,6 @@ export default function ContactSection() {
 
           {/* Left Column */}
           <div className="max-w-xl">
-            {/* Pill Badge */}
-            <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#0070f3]/40 bg-[#0070f3]/10 mb-8 shadow-[0_0_15px_rgba(0,112,243,0.18)]">
-              <span className="text-[11px] font-bold tracking-widest uppercase text-[#38bdf8]">
-                CONTACT & APPLY
-              </span>
-            </div>
-
             {/* Header with Horizontal Laser Flare Line (100% copy of flare image) */}
             <div className="relative mb-8">
               <h2 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-tight text-white mb-2">

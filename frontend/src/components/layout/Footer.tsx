@@ -119,7 +119,7 @@ export default function Footer() {
           </div>
 
           {/* Developer Credit */}
-          <div className="text-[15px] font-serif text-white font-medium text-center z-10 md:absolute md:left-1/2 md:-translate-x-1/2 md:w-max">
+          <div className="text-[15px] text-white font-medium text-center z-10 md:absolute md:left-1/2 md:-translate-x-1/2 md:w-max">
             Digital Partner  <a href="https://digitalwebconnection.com/" target="_blank" rel="noopener noreferrer" className="text-[#3B82F6] hover:text-[#002ec7] transition-colors">Digital Web Connection</a>
           </div>
 

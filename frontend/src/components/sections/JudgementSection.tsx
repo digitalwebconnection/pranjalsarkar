@@ -4,7 +4,7 @@ import { stages } from '../../constants/judgementData';
 
 export default function JudgementSection() {
   return (
-    <section id="judgment" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 bg-[#000001]">
+    <section id="simulation" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 bg-[#000001]">
       {/* Background Decorative Gradients */}
       {/* Background Decorative Wavy Dots & Glow */}
       <div className="absolute top-0 right-0 w-150 h-150 md:w-225 md:h-225 opacity-80 pointer-events-none z-0"
@@ -71,7 +71,7 @@ export default function JudgementSection() {
                 {/* Left Column */}
                 <div className="flex flex-col gap-8 relative z-10 lg:sticky lg:top-8 self-start">
                   <div>
-                    <span className="text-[#0080C7] text-2xl font-bold tracking-[0.2em] uppercase block mb-3 font-mono drop-shadow-[0_0_5px_rgba(0,128,199,0.5)]">
+                    <span className="text-[#0080C7] text-[40px] font-bold tracking-[0.2em] uppercase block mb-3 font-mono drop-shadow-[0_0_5px_rgba(0,128,199,0.5)]">
                       {s.phase}
                     </span>
                     <h3 className="font-serif text-2xl lg:text-2xl font-bold text-white mb-5 leading-tight tracking-tight drop-shadow-md pr-4">
@@ -112,7 +112,7 @@ export default function JudgementSection() {
                                     {goal}
                                   </span>
                                   {specs && (
-                                    <span className="text-[11px] md:text-[12.5px] tracking-wider text-[#0080C7] opacity-90">
+                                    <span className="text-[11px] md:text-[18px] tracking-wider text-[#0080C7]">
                                       {specs}
                                     </span>
                                   )}

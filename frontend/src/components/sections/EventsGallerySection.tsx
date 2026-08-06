@@ -104,10 +104,6 @@ export default function EventsGallerySection() {
         {/* Header Block & Navigation Controls */}
         <div className="flex flex-col md:flex-row md:items-end justify-center text-center items-center gap-6 mb-16">
           <div className="flex flex-col items-center text-center">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#0080C7]/30 bg-[#0080C7]/5 mb-6 shadow-[0_0_15px_rgba(0,128,199,0.1)] text-[10px] font-bold tracking-widest uppercase text-[#33a8ff]">
-              Pranjal In Events
-            </span>
-
             <div className="relative mb-6">
               <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-5xl leading-tight tracking-tight text-white mb-2 max-w-2xl">
                 Speaking & Mentoring <br />

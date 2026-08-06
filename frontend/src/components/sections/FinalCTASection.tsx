@@ -23,17 +23,7 @@ export default function FinalCTASection() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-6 py-10 relative z-10 text-center w-full ">
-
         <div className="flex flex-col items-center justify-center">
-
-          {/* Label Badge */}
-          <div className="flex justify-center mb-4">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase text-[#33a8ff] bg-[#0080C7]/5 border border-[#0080C7]/30 shadow-[0_0_15px_rgba(0,128,199,0.1)]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#33a8ff] animate-pulse shrink-0 shadow-[0_0_8px_rgba(51,168,255,0.8)]" />
-              Limited Seats — Cohort 2
-            </span>
-          </div>
-
           <div className="relative mb-6">
             {/* Title */}
             <h2 className="font-serif font-bold text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight text-white mb-2">
@@ -57,7 +47,7 @@ export default function FinalCTASection() {
             >
               Submit Interview Request →
             </a>
-       
+
           </div>
 
           {/* Social Proof Mini Checklist */}

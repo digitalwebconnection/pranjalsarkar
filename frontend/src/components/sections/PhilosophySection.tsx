@@ -22,10 +22,6 @@ export default function PhilosophySection() {
 
           {/* Left Column: Typography, Manifesto & CTA */}
           <div className="lg:col-span-6 flex flex-col justify-start">
-            <span className="inline-flex items-center gap-2 px-5 py-2 bg-[#0080C7]/10 border border-[#0080C7]/30 rounded-md text-[12px] font-bold tracking-wider uppercase text-[#0080C7] mb-6 shadow-[0_0_15px_rgba(0,128,199,0.1)] self-start">
-              TRANSFORMATION PROMISE
-            </span>
-
             <h2 className="font-serif font-bold text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight text-white mb-6">
               What changes after this {" "}
               <span className="relative text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
@@ -51,7 +47,7 @@ export default function PhilosophySection() {
               href="#program"
               className="group inline-flex justify-center items-center gap-2.5 px-10 py-4 bg-linear-to-r from-[#0080C7] to-[rgba(24,37,226,0.9)] rounded-full text-white font-bold text-sm transition-all duration-300 hover:from-[#00a8ff] hover:to-[rgba(24,37,226,1)] shadow-[0_0_20px_rgba(24,37,226,0.4)] hover:shadow-[0_0_30px_rgba(24,37,226,0.6)] hover:-translate-y-0.5 cursor-pointer self-start"
             >
-              See How It Works
+              Submit Interview Request
               <svg
                 className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5"
                 fill="none"
@@ -72,7 +68,7 @@ export default function PhilosophySection() {
             <div className="relative w-full max-w-120">
               {/* The Card */}
               <div className="relative rounded-xl p-px bg-linear-to-br from-[#00a8ff]/60 via-[#00a8ff]/10 to-transparent shadow-[-15px_-15px_30px_rgba(0,168,255,0.15)] transition-all duration-300 hover:shadow-[-20px_-20px_40px_rgba(0,168,255,0.25)]">
-                <div className="relative rounded-xl bg-[#050b14] flex flex-col min-h-100 overflow-hidden w-full p-10 md:p-12">
+                <div className="relative rounded-xl bg-[#050b14] flex flex-col h-[450px] lg:h-[480px] overflow-hidden w-full p-8 md:p-12">
                   
                   {/* Top-Left Ambient Glow Overlay */}
                   <div className="absolute top-0 left-0 w-64 h-64 bg-[radial-gradient(circle_at_top_left,rgba(0,168,255,0.2),transparent_70%)] pointer-events-none z-0" />
@@ -100,7 +96,7 @@ export default function PhilosophySection() {
                           {activeCard.desc}
                         </p>
                         <a
-                          href="#program"
+                          href="#simulation"
                           className="px-8 py-4 bg-linear-to-r from-[#00a8ff] to-[#0044cc] rounded-full text-base font-bold text-white hover:shadow-[0_0_25px_rgba(0,168,255,0.5)] transition-all hover:-translate-y-1"
                         >
                           Explore The Studio

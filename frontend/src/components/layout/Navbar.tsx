@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom';
 import Logo from '../../assets/SignatureSticker.webp';
 
 const navLinks = [
-  { label: 'Mirror', href: '/#mirror' },
-  { label: 'AI Product', href: '/#ai-product' },
-  { label: 'Transformation', href: '/#transformation' },
-  { label: 'About', href: '/#about' },
+  { label: 'Program', href: '/#program' },
+  { label: 'Simulation', href: '/#simulation' },
   { label: 'Curriculum', href: '/#curriculum' },
-  { label: 'FAQ', href: '/#faq' },
+  { label: 'Transformation', href: '/#transformation' },
+  { label: 'Exposure', href: '/#exposure' },
 ];
 
 const sectionToNavLinkMap: Record<string, string> = {
