@@ -2,11 +2,11 @@ import { companies } from '../../constants/logosData';
 
 function CompanyLogo({ name, logo }: { name: string; logo: string }) {
   return (
-    <div className="inline-flex items-center justify-center px-10 shrink-0 select-none">
+    <div className="inline-flex items-center justify-center px-2 md:px-2 shrink-0 select-none">
       <img
         src={logo}
         alt={`${name} logo`}
-        className="h-10 md:h-12 w-40 object-contain transition-all duration-300 hover:scale-105"
+        className="h-20 md:h-30 w-64 md:w-90 object-contain transition-all duration-300 hover:scale-105"
       />
     </div>
   );

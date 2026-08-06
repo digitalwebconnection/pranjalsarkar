@@ -2,25 +2,23 @@ export const modules = [
   {
     week: 'Duration',
     title: 'Program Duration',
-    focus: '5 Weekends Executive Studio',
-    caseStudy: 'Up To 30 Days Real Product Leadership Exposure',
-    deliverable: 'Leadership Exposure Certificate',
+    focus: '5 Weeks Live Studio',
+    caseStudy: 'Up to 30 Days Real Company Exposure',
+    deliverable: '',
     topics: [
-      '5 Weekends Executive Studio',
-      '30 Days Leadership Exposure'
+      '5 Weeks Live Studio',
+      'Up to 30 Days Real Company Exposure'
     ],
   },
   {
-    week: 'Studio',
-    title: 'Executive Studio',
-    focus: '40 Hours Live Interactive Sessions',
-    caseStudy: 'Case Studies, Group Activities and AI Simulations',
-    deliverable: 'Interactive Learning Experience',
+    week: 'Live Studio',
+    title: 'Live Studio',
+    focus: '32+ Hours Live Sessions',
+    caseStudy: 'Group Simulations and AI Workshops',
+    deliverable: '',
     topics: [
-      '40 Hours Live Interactive Sessions',
-      'Case Studies',
-      'Group Activities',
-      'AI Simulations'
+      '32+ Hours Live Sessions',
+      'Group Simulations and AI Workshops'
     ],
   },
   {
@@ -28,7 +26,7 @@ export const modules = [
     title: 'Weekly Commitment',
     focus: '4 Hours Saturday + 4 Hours Sunday',
     caseStudy: '3-5 Hours of Weekly Practice',
-    deliverable: 'Weekly Practice assignments',
+    deliverable: '',
     topics: [
       '4 Hours Saturday',
       '4 Hours Sunday',
@@ -40,34 +38,35 @@ export const modules = [
     title: 'Application Process',
     focus: 'Admission is interview-only.',
     caseStudy: 'Every cohort is carefully curated through the Leadership Fit Interview.',
-    deliverable: 'Leadership Fit Interview',
+    deliverable: '',
     topics: [
-      'Admission is interview-only',
-      'Leadership Fit Interview',
-      'Carefully curated cohort'
+      'Admission is interview-only.',
+      'Every cohort is carefully curated through the Leadership Fit Interview.'
     ],
   },
   {
     week: 'Fee',
     title: 'Program Fee',
     focus: '₹49,500 (Founding Cohort Price)',
-    caseStudy: 'The program fee increases with every cohort as outcomes are established. Future cohort price: ₹1,50,000. Founding cohort participants get in at one-third of that.',
-    deliverable: 'Founding Cohort Pricing',
+    caseStudy: 'This is the lowest price this program will ever be offered at. As cohort outcomes are established the fee will increase. Future cohort price: ₹1,50,000.',
+    deliverable: '',
     topics: [
       '₹49,500 Founding Cohort Price',
-      'Future cohort price: ₹1,50,000',
-      'Founding cohort gets 1/3rd pricing'
+      'Lowest price ever offered',
+      'Future cohort price: ₹1,50,000'
     ],
   },
   {
     week: 'Timings',
     title: 'Class Timings',
-    focus: 'Sat + Sun 12PM – 4PM IST',
-    caseStudy: '(12PM – 4PM BST)',
-    deliverable: 'Weekend Schedule',
+    focus: 'Saturday and Sunday',
+    caseStudy: 'Multiple timezones supported',
+    deliverable: '',
     topics: [
-      'Sat + Sun 12PM – 4PM IST',
-      '12PM – 4PM BST'
+      'INDIA: 12:00PM – 4:00PM',
+      'UAE: 10:30AM – 2:30PM',
+      'SINGAPORE: 4:00PM – 8:00PM',
+      'UK: 7:30AM – 11:30AM'
     ],
   },
 ];

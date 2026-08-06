@@ -214,7 +214,7 @@ export default function ContactSection() {
                   <Phone className="w-5 h-5 text-[#38bdf8]" />
                 </div>
                 <div>
-                  <div className="text-[#8a93a0] text-[12px] font-bold tracking-widest uppercase mb-1">PHONE NUMBER</div>
+                  <div className="text-[#8a93a0] text-[12px] font-bold tracking-widest uppercase mb-1">WhatsApp  NUMBER</div>
                   <div className="text-white text-base font-bold tracking-wide">+91 99794 29183</div>
                 </div>
               </div>
@@ -226,7 +226,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <div className="text-[#8a93a0] text-[12px] font-bold tracking-widest uppercase mb-1">RESPONSE TIME</div>
-                  <div className="text-white text-base font-bold tracking-wide">Within 5 business days</div>
+                  <div className="text-white text-base font-bold tracking-wide">Within 24 hours </div>
                 </div>
               </div>
             </div>
@@ -241,7 +241,7 @@ export default function ContactSection() {
             <form onSubmit={handleSubmit} className="relative z-10 flex flex-col gap-5">
               <div className="mb-2">
                 <h3 className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
-                  Apply for <span className="text-[#0075ff]">Cohort 2</span>
+                  Apply for <span className="text-[#0075ff]">Enrollment</span>
                 </h3>
                 <p className="text-[#ffffff] text-sm sm:text-base mt-2">
                   All fields are required. Admissions are selective.
@@ -301,7 +301,7 @@ export default function ContactSection() {
                   {/* Phone */}
                   <div className="flex flex-col">
                     <label htmlFor="contact-phone" className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
-                      PHONE NUMBER
+                      Phone + WhatsApp enable number
                     </label>
                     <div className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border ${form.phone.length > 0 && !/^\+?[0-9\s\-()]{7,20}$/.test(form.phone) ? 'border-red-500/50 focus-within:border-red-500/50 focus-within:shadow-[0_0_15px_rgba(239,68,68,0.25)]' : 'border-[#172740] focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]'} bg-[#070e1b] transition-all`}>
                       <Phone className="w-5 h-5 text-[#0070f3] shrink-0" />
@@ -316,7 +316,7 @@ export default function ContactSection() {
                             setForm(f => ({ ...f, phone: value }));
                           }
                         }}
-                        placeholder="+1 (234) 567-8900"
+                        placeholder="+91 98765 43210"
                         className="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-[#99a1ac]"
                       />
                     </div>
@@ -367,7 +367,7 @@ export default function ContactSection() {
                 {/* Why applying */}
                 <div className="flex flex-col">
                   <label htmlFor="contact-message" className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
-                    WHY ARE YOU APPLYING? (2–3 SENTENCES)
+                    Paste your linkedin address
                   </label>
                   <div className="flex items-start gap-3 px-4 py-3.5 rounded-xl border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
                     <Pencil className="w-5 h-5 text-[#0070f3] mt-0.5 shrink-0" />
@@ -404,7 +404,7 @@ export default function ContactSection() {
                     </>
                   ) : (
                     <>
-                      Submit Application
+                      Submit Interview Request
                       <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                     </>
                   )}

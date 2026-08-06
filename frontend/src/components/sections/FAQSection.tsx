@@ -11,7 +11,7 @@ export default function FAQSection() {
   const displayedFaqs = showAll ? faqs : faqs.slice(0, 4);
 
   return (
-    <section id="faq" className="relative py-8 md:py-14 overflow-hidden bg-[#000000] text-white border-b border-white/5">
+    <section id="faq" className="relative py-8 md:py-14 overflow-hidden bg-[#000000] text-white">
 
       {/* Outer section dot matrix grid overlay */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">

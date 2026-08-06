@@ -4,9 +4,9 @@ import Logo from '../../assets/SignatureSticker.webp';
 
 const navLinks = [
   { label: 'About', href: '/#about' },
-  { label: 'Problem', href: '/#mirror' },
-  { label: 'Philosophy', href: '/#philosophy' },
-  { label: 'Program', href: '/#program' },
+  { label: 'Mirror', href: '/#mirror' },
+  { label: 'Transformation', href: '/#transformation' },
+  { label: 'AI Product', href: '/#ai-product' },
   { label: 'Curriculum', href: '/#curriculum' },
   { label: 'FAQ', href: '/#faq' },
 ];
@@ -63,11 +63,21 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
-  /* ── Close menu on scroll ── */
+  /* ── Menu side-effects (scroll lock & auto-close) ── */
   useEffect(() => {
     const close = () => { if (menuOpen) setMenuOpen(false); };
     window.addEventListener('scroll', close, { passive: true });
-    return () => window.removeEventListener('scroll', close);
+
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      window.removeEventListener('scroll', close);
+      document.body.style.overflow = '';
+    };
   }, [menuOpen]);
 
   return (
@@ -82,15 +92,15 @@ export default function Navbar() {
               : 'bg-[#0A101F]/80 backdrop-blur-sm border-white/5',
           ].join(' ')}
         >
-          <div className="flex justify-between h-full px-3 md:px-4">
+          <div className="flex justify-between items-center h-full px-3 md:px-4 py-2 lg:py-0">
 
             {/* ── Logo ── */}
             <Link to="/#hero" className="flex items-center gap-3 no-underline shrink-0">
-              <img src={Logo} alt="Logo" className="w-52 h-auto object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
+              <img src={Logo} alt="Logo" className="w-40 md:w-52 h-auto object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
             </Link>
 
             {/* ── Center: Desktop nav links ── */}
-            <div className="flex items-center gap-6">
+            <div className="hidden lg:flex items-center gap-6">
               {navLinks.map(l => {
                 const isActive = activeId === l.href.replace('/#', '');
                 return (
@@ -108,90 +118,122 @@ export default function Navbar() {
                   </Link>
                 );
               })}
-              {/* ── Right: CTA + Hamburger ── */}
-              <div className="flex justify-end shrink-0">
-                {/* Desktop CTA */}
-                <Link
-                  to="/#contact"
-                  className="hidden md:inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-white text-[14px] font-bold tracking-wide no-underline transition-all duration-300 bg-linear-to-r from-[#2563EB] to-[#050B14] shadow-[0_0_80px_rgba(37,99,235,0.4)] hover:-translate-y-px"
-                >
-                  Apply Now <span>→</span>
-                </Link>
-
-                {/* Hamburger — mobile only */}
-                <button
-                  onClick={() => setMenuOpen(o => !o)}
-                  aria-label="Toggle menu"
-                  aria-expanded={menuOpen}
-                  className={[
-                    'lg:hidden flex flex-col items-center justify-center gap-1.25 w-9.5 h-9.5 rounded-md border cursor-pointer transition-all duration-150',
-                    menuOpen
-                      ? 'bg-white/5 border-white/15'
-                      : 'bg-transparent border-white/8 hover:bg-white/3',
-                  ].join(' ')}
-                >
-                  <span
-                    className={[
-                      'block w-4.5 h-[1.5px] rounded-sm transition-all duration-150',
-                      menuOpen ? 'bg-[#3B82F6] rotate-45 translate-x-1 translate-y-1.25' : 'bg-white',
-                    ].join(' ')}
-                  />
-                  <span
-                    className={[
-                      'block w-4.5 h-[1.5px] rounded-sm transition-opacity duration-150',
-                      menuOpen ? 'opacity-0 bg-[#3B82F6]' : 'opacity-100 bg-white',
-                    ].join(' ')}
-                  />
-                  <span
-                    className={[
-                      'block w-4.5 h-[1.5px] rounded-sm transition-all duration-150',
-                      menuOpen ? 'bg-[#3B82F6] -rotate-45 translate-x-1 -translate-y-1.25' : 'bg-white',
-                    ].join(' ')}
-                  />
-                </button>
-              </div>
             </div>
 
-          </div>
-
-          {/* ── Mobile menu panel ── */}
-          <div
-            className={[
-              'lg:hidden overflow-hidden transition-all duration-200 ease-in-out absolute top-20 left-0 right-0 rounded-xl bg-[#0A101F]/95 backdrop-blur-md border border-white/10 mx-auto shadow-2xl pointer-events-auto',
-              menuOpen ? 'max-h-125 opacity-100' : 'max-h-0 opacity-0 border-transparent',
-            ].join(' ')}
-          >
-            <div className="flex flex-col gap-1 pb-5 pt-3 px-4">
-              {navLinks.map(l => {
-                const isActive = activeId === l.href.replace('/#', '');
-                return (
-                  <Link
-                    key={l.label}
-                    to={l.href}
-                    onClick={() => setMenuOpen(false)}
-                    className={[
-                      'flex items-center justify-between px-4 py-3 rounded-lg text-[14px] no-underline transition-all duration-150',
-                      isActive
-                        ? 'text-[#2563EB] font-bold bg-white/5 border border-white/5'
-                        : 'text-[#9CA3AF] font-medium border border-transparent hover:text-white hover:bg-white/5',
-                    ].join(' ')}
-                  >
-                    <span>{l.label}</span>
-                  </Link>
-                );
-              })}
-
-              {/* Mobile CTA */}
+            {/* ── Right: CTA + Hamburger ── */}
+            <div className="flex justify-end items-center shrink-0">
+              {/* Desktop CTA */}
               <Link
                 to="/#contact"
-                onClick={() => setMenuOpen(false)}
-                className="mt-4 flex items-center justify-center gap-2 py-3.5 rounded-lg text-white text-[14px] font-bold no-underline tracking-wide bg-linear-to-r from-[#2563EB] via-[#1E40AF] to-[#050B14] shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]"
+                className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-white text-[14px] font-bold tracking-wide no-underline transition-all duration-300 bg-linear-to-r from-[#2563EB] to-[#050B14] shadow-[0_0_80px_rgba(37,99,235,0.4)] hover:-translate-y-px"
               >
-                Apply Now →
+                Submit Interview Request <span>→</span>
               </Link>
+
+              {/* Hamburger — mobile only */}
+              <button
+                onClick={() => setMenuOpen(o => !o)}
+                aria-label="Toggle menu"
+                aria-expanded={menuOpen}
+                className={[
+                  'lg:hidden flex flex-col items-center justify-center gap-1.25 w-10 h-10 rounded-md border cursor-pointer transition-all duration-150',
+                  menuOpen
+                    ? 'bg-white/5 border-white/15'
+                    : 'bg-transparent border-white/8 hover:bg-white/3',
+                ].join(' ')}
+              >
+                <span
+                  className={[
+                    'block w-5 h-0.5 rounded-sm transition-all duration-150',
+                    menuOpen ? 'bg-[#3B82F6] rotate-45 translate-y-1.75' : 'bg-white',
+                  ].join(' ')}
+                />
+                <span
+                  className={[
+                    'block w-5 h-0.5 rounded-sm transition-opacity duration-150',
+                    menuOpen ? 'opacity-0 bg-[#3B82F6]' : 'opacity-100 bg-white',
+                  ].join(' ')}
+                />
+                <span
+                  className={[
+                    'block w-5 h-0.5 rounded-sm transition-all duration-150',
+                    menuOpen ? 'bg-[#3B82F6] -rotate-45 -translate-y-1.75' : 'bg-white',
+                  ].join(' ')}
+                />
+              </button>
             </div>
+
           </div>
+
         </nav>
+      </div>
+
+      {/* ── Mobile menu overlay ── */}
+      <div
+        className={[
+          'fixed inset-0 bg-[#0A101F]/80 backdrop-blur-sm z-60 lg:hidden transition-opacity duration-300',
+          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        ].join(' ')}
+        onClick={() => setMenuOpen(false)}
+      />
+
+      {/* ── Mobile menu sidebar (Left Slide-in) ── */}
+      <div
+        className={[
+          'fixed top-0 left-0 bottom-0 w-70 bg-[#0A101F] border-r border-white/10 z-70 lg:hidden flex flex-col transition-transform duration-300 ease-in-out shadow-[20px_0_50px_rgba(0,0,0,0.5)]',
+          menuOpen ? 'translate-x-0' : '-translate-x-full'
+        ].join(' ')}
+      >
+        {/* Sidebar Header */}
+        <div className="flex items-center justify-between p-5 border-b border-white/5">
+          <Link to="/#hero" onClick={() => setMenuOpen(false)} className="no-underline shrink-0">
+            <img src={Logo} alt="Logo" className="w-32 h-auto object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
+          </Link>
+          <button
+            onClick={() => setMenuOpen(false)}
+            aria-label="Close menu"
+            className="p-2 -mr-2 text-white/50 hover:text-white transition-colors flex items-center justify-center cursor-pointer"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        {/* Sidebar Links */}
+        <div className="flex flex-col gap-2 p-5 overflow-y-auto flex-1">
+          {navLinks.map(l => {
+            const isActive = activeId === l.href.replace('/#', '');
+            return (
+              <Link
+                key={l.label}
+                to={l.href}
+                onClick={() => setMenuOpen(false)}
+                className={[
+                  'flex items-center justify-between px-4 py-3.5 rounded-lg text-[15px] no-underline transition-all duration-200',
+                  isActive
+                    ? 'text-[#2563EB] font-bold bg-white/5'
+                    : 'text-[#9CA3AF] font-medium hover:text-white hover:bg-white/5 hover:translate-x-1',
+                ].join(' ')}
+              >
+                <span>{l.label}</span>
+                {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] shadow-[0_0_10px_rgba(37,99,235,0.8)]" />}
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Sidebar Footer CTA */}
+        <div className="p-5 border-t border-white/5 pb-8">
+          <Link
+            to="/#contact"
+            onClick={() => setMenuOpen(false)}
+            className="flex items-center justify-center gap-2 w-full py-4 rounded-xl text-white text-[15px] font-bold no-underline tracking-wide bg-linear-to-r from-[#2563EB] to-[#050B14] shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] transition-all"
+          >
+            Submit Interview Request →
+          </Link>
+        </div>
       </div>
     </>
   );

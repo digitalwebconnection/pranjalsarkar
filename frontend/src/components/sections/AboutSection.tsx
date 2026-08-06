@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion } from 'motion/react';
-import psHeadshot from '../../assets/pranjalsarkar/19.webp';
+import psHeadshot from '../../assets/pranjalsarkar/pranjals.png';
 const youtubeVideo = '/video/Aipls%20Simulation%20Explainer%20Video6.mp4';
 import { Play } from 'lucide-react';
 
@@ -113,7 +113,7 @@ export default function AboutSection() {
                 {/* Live Mentor Indicator Pill */}
                 <div className="absolute top-5 left-5 z-20 px-3 py-1.5 bg-[#0a0c10]/80 backdrop-blur-md border border-[#0080C7]/50 rounded-full flex items-center gap-2 shadow-[0_0_20px_rgba(0,128,199,0.3)] group-hover:shadow-[0_0_25px_rgba(0,128,199,0.5)] transition-shadow">
                   <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,1)] animate-pulse" />
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-white font-mono drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">ACTIVE INSTRUCTOR</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-white font-mono drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">Founder</span>
                 </div>
               </div>
             </div>

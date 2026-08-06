@@ -1,10 +1,10 @@
-const bgImage = '/events/1.webp';
+const bgImage = '/events/3.webp';
 
 export default function FinalCTASection() {
   return (
     <section
       id="final-cta"
-      className="relative h-100 md:h-auto flex items-center justify-center overflow-hidden  bg-[#010308] group"
+      className="relative h-100 md:h-auto flex items-center justify-center overflow-hidden  bg-[#000000] group"
       style={{ clipPath: 'inset(0)' }}
     >
 
@@ -53,13 +53,13 @@ export default function FinalCTASection() {
           <div className="flex flex-row gap-3.5 justify-center items-center mb-6 w-full sm:w-auto">
             <a
               href="#contact"
-              className="px-6 py-2.5 rounded-md text-neutral-950 text-[13px] md:text-[14px] font-bold tracking-wide no-underline transition-all duration-200 bg-[#0080C7] hover:bg-[#009CEE] hover:-translate-y-0.5 shadow-[0_0_24px_rgba(0,128,199,0.65)]"
+              className="px-6 py-2.5 rounded-md text-neutral-950 text-[13px] md:text-xl font-bold tracking-wide no-underline transition-all duration-200 bg-[#0080C7] hover:bg-[#009CEE] hover:-translate-y-0.5 shadow-[0_0_24px_rgba(0,128,199,0.65)]"
             >
-              Apply for Cohort 2 →
+              Submit Interview Request →
             </a>
             <a
               href="#judgment"
-              className="px-6 py-2.5 rounded-md text-white text-[13px] md:text-[14px] font-semibold tracking-wide no-underline transition-all duration-200 border border-white/15 bg-white/3 hover:bg-white/8 hover:-translate-y-0.5 hover:border-white/30"
+              className="px-6 py-2.5 rounded-md text-white text-[13px] md:text-xl font-semibold tracking-wide no-underline transition-all duration-200 border border-white/15 bg-white/3 hover:bg-white/8 hover:-translate-y-0.5 hover:border-white/30"
             >
               Curriculum
             </a>

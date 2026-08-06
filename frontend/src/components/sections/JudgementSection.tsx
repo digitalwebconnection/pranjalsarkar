@@ -115,17 +115,23 @@ export default function JudgementSection() {
         <div className="h-[60vh] min-h-75" aria-hidden="true" />
 
         {/* Post-Week 5 Section */}
-        <div className="relative z-20  mt-12">
+        <div className="relative z-20  mt-5">
           {/* Background Ambient Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#0044cc] opacity-10 blur-[150px] rounded-full pointer-events-none" />
 
           <div className=" relative z-10">
-            <div className="text-center mb-16">
-              <h2 className="text-[#0080C7] text-sm md:text-base font-bold tracking-[0.2em] uppercase mb-4 font-mono drop-shadow-[0_0_15px_rgba(0,128,199,0.6)]">
+            <div className="text-center mb-10 relative">
+              {/* Celebration Glow for Aha Moment */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] md:w-3/4 h-50 bg-yellow-500/20 blur-[100px] rounded-full pointer-events-none" />
+              
+            
+
+              <h2 className="relative z-10 text-transparent bg-clip-text bg-linear-to-r from-yellow-400 via-yellow-200 to-yellow-500 text-4xl md:text-6xl lg:text-5xl font-bold tracking-tight mb-8 font-serif drop-shadow-[0_0_25px_rgba(252,211,77,0.6)]">
                 What Happens After Week 5?
               </h2>
-              <p className="text-gray-300 text-[16px] md:text-[18px] font-sans max-w-4xl mx-auto leading-relaxed px-4 drop-shadow-md">
-                After five weeks of simulations, decision principles and AI practice, you move into up to <span className="text-white font-semibold drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">30 days of real company exposure</span> where you work on a strategic challenge provided by a real product company.
+              
+              <p className="relative z-10 text-gray-200 text-[18px] md:text-[22px] font-sans max-w-6xl mx-auto leading-relaxed px-4 drop-shadow-md">
+                After five weeks of simulations, decision principles and AI practice, you move into up to <span className="text-white font-bold drop-shadow-[0_0_10px_rgba(255,255,255,0.6)] border-b-2 border-yellow-500/50 pb-1">30 days of real company exposure</span> where you work on a strategic challenge provided by a real product company.
               </p>
             </div>
 

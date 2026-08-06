@@ -35,7 +35,7 @@ export default function HeroSection() {
               <h1 className="font-serif font-bold leading-[1.1] tracking-tight text-white mb-4 text-2xl md:text-3xl lg:text-5xl">
                 The rules change when you move from <span className="text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">Product Manager to Product Leader.</span>
               </h1>
-              
+
               {/* Horizontal flare line */}
               <div className="w-24 md:w-32 lg:w-40 h-[2.5px] bg-linear-to-r from-[#00a8ff] via-[#2563EB] to-transparent mb-5 rounded-full shadow-[0_0_12px_rgba(0,168,255,0.8)]" />
 
@@ -43,7 +43,7 @@ export default function HeroSection() {
               <p className="text-gray-200 text-sm md:text-md leading-relaxed max-w-2xl mb-4">
                 AIPLS is a 5-week leadership development system followed by up to 30 days of real company exposure. Every week you make executive decisions, face the consequences inside a realistic business simulation and discover exactly where your judgment is strong and where it needs to grow.
               </p>
- 
+
               {/* CTA Buttons */}
               <div className="flex flex-col gap-2 justify-start pt-4 pb-4">
                 <a
@@ -56,14 +56,14 @@ export default function HeroSection() {
                   Every application includes a 1:1 conversation with Pranjal Sarkar before enrollment.
                 </p>
               </div>
-              
+
               {/* Trust line */}
               <div className="mt-4 flex items-center gap-3 ml-1">
-                 <div className="flex -space-x-2">
-                    <div className="w-7 h-7 rounded-full bg-blue-900 border-2 border-[#000001] flex items-center justify-center z-30"><Users size={12} className="text-blue-300"/></div>
-                    <div className="w-7 h-7 rounded-full bg-blue-800 border-2 border-[#000001] flex items-center justify-center z-20"><TrendingUp size={12} className="text-blue-200"/></div>
-                 </div>
-                 <p className="text-gray-300 text-[13px] font-semibold">1,000+ product professionals mentored across 10 countries.</p>
+                <div className="flex -space-x-2">
+                  <div className="w-7 h-7 rounded-full bg-blue-900 border-2 border-[#000001] flex items-center justify-center z-30"><Users size={12} className="text-blue-300" /></div>
+                  <div className="w-7 h-7 rounded-full bg-blue-800 border-2 border-[#000001] flex items-center justify-center z-20"><TrendingUp size={12} className="text-blue-200" /></div>
+                </div>
+                <p className="text-gray-300 text-[13px] font-semibold">1,000+ product professionals mentored across 10 countries.</p>
               </div>
 
             </div>
@@ -98,24 +98,24 @@ export default function HeroSection() {
 
         {/* Trust Stats Container - Box with Glow */}
         <div className="flex flex-col w-full max-w-7xl mt-16 lg:mt-0 mb-4 relative z-20 gap-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 bg-[#0a0e17]/80 backdrop-blur-md border border-white/5 rounded-xl shadow-xl overflow-hidden">
+          <div className="grid grid-cols-2 md:grid-cols-4 bg-[#0a0e17]/80 backdrop-blur-md border border-white/5 rounded-xl shadow-xl overflow-hidden">
             {stats.map((st, i) => (
-                <div
+              <div
                 key={i}
                 className={`flex flex-col items-center justify-center py-5 px-4 cursor-default border-white/5 ${i % 2 !== 0 ? 'border-l' : ''} ${i > 0 ? 'md:border-l' : ''} ${i >= 2 ? 'border-t md:border-t-0' : ''}`}
-                >
+              >
                 {/* <div className="w-10 h-10 rounded-full bg-linear-to-b from-[#2563EB]/20 to-transparent border border-t-[#2563EB]/60 border-b-transparent border-x-transparent flex items-center justify-center mb-2 text-[#2563EB] shadow-[inset_0_1px_5px_rgba(37,99,235,0.2)]">
                     <st.icon size={18} strokeWidth={2} className="drop-shadow-[0_0_5px_rgba(37,99,235,0.4)]" />
                 </div> */}
                 <span className="font-sans font-bold text-2xl md:text-8xl leading-none mb-1.5 text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
-                    {st.num}
+                  {st.num}
                 </span>
                 <span className="text-white text-xs md:text-sm font-medium tracking-wide text-center">
-                    {st.label}
+                  {st.label}
                 </span>
-                </div>
+              </div>
             ))}
-            </div>
+          </div>
         </div>
       </div>
     </section>

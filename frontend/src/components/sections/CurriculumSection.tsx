@@ -61,10 +61,10 @@ export default function dCurriculumSection() {
           {/* Key Facts List with Gradient Borders & Blue Glow */}
           <div className="grid grid-cols-2 gap-5">
             {[
-              { label: 'Live sessions', value: '40 hrs', icon: Video },
-              { label: 'Leadership Modules', value: '6 total', icon: Box },
-              { label: 'AI Simulations', value: '10+', icon: Layers },
-              { label: 'Leadership Exposure', value: '30 Days', icon: Users },
+              { label: 'Live sessions', value: '32+ hrs', icon: Video },
+              { label: 'Weekly Practice', value: '3-5 hrs', icon: Box },
+              { label: 'Program Duration', value: '5 Weeks', icon: Layers },
+              { label: 'Company Exposure', value: '30 Days', icon: Users },
             ].map((s, i) => (
               <div
                 key={i}
@@ -178,7 +178,7 @@ export default function dCurriculumSection() {
                     </h3>
                   </div>
                   <span className="px-3.5 py-1.5 bg-[#0080C7]/10 border border-[#0080C7]/30 rounded text-white text-[10px] font-bold uppercase tracking-wider font-mono shadow-[0_0_10px_rgba(0,128,199,0.2)]">
-                    Module {activeTab + 1}
+                    Detail {activeTab + 1}
                   </span>
                 </div>
 
@@ -186,7 +186,7 @@ export default function dCurriculumSection() {
                 <div className="space-y-8">
                   <div>
                     <h4 className="text-[10px] font-bold text-[#64748b] tracking-widest uppercase mb-2 font-mono flex items-center gap-2">
-                      <Target size={14} className="text-[#33a8ff]" /> Module Focus
+                      <Target size={14} className="text-[#33a8ff]" /> Overview
                     </h4>
                     <p className="text-[#e2e8f0] text-sm md:text-base lg:text-lg leading-relaxed">
                       {modules[activeTab].focus}
@@ -195,7 +195,7 @@ export default function dCurriculumSection() {
 
                   <div>
                     <h4 className="text-[10px] font-bold text-[#ffffff] tracking-widest uppercase mb-4 font-mono flex items-center gap-2">
-                      <BookOpen size={14} className="text-[#33a8ff]" /> Core Subjects covered
+                      <BookOpen size={14} className="text-[#33a8ff]" /> Key Details
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {modules[activeTab].topics.map((t, idx) => (
@@ -210,18 +210,20 @@ export default function dCurriculumSection() {
               </div>
 
               {/* Practical Simulation & Deliverable Details Footer */}
-              <div className="relative z-10 border-t border-[#0080C7]/20 pt-6 mt-8 space-y-4">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-lg bg-[#0080C7]/10 border border-[#0080C7]/30 shadow-[0_0_15px_rgba(0,128,199,0.15)]">
-                  <div>
-                    <span className="block text-[10px] font-bold text-[#33a8ff] uppercase tracking-wider font-mono mb-1.5 drop-shadow-[0_0_5px_rgba(0,128,199,0.5)]">
-                      WEEKLY PRACTICAL WORK
-                    </span>
-                    <p className="text-sm text-[#f8fafc] font-bold m-0 leading-relaxed">
-                      {modules[activeTab].caseStudy}
-                    </p>
+              {modules[activeTab].caseStudy && (
+                <div className="relative z-10 border-t border-[#0080C7]/20 pt-6 mt-8 space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-lg bg-[#0080C7]/10 border border-[#0080C7]/30 shadow-[0_0_15px_rgba(0,128,199,0.15)]">
+                    <div>
+                      <span className="block text-[10px] font-bold text-[#33a8ff] uppercase tracking-wider font-mono mb-1.5 drop-shadow-[0_0_5px_rgba(0,128,199,0.5)]">
+                        ADDITIONAL INFO
+                      </span>
+                      <p className="text-sm text-[#f8fafc] font-bold m-0 leading-relaxed">
+                        {modules[activeTab].caseStudy}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
 
             </div>
           </div>
