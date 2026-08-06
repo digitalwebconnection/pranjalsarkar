@@ -1,24 +1,31 @@
 import { Link } from 'react-router-dom';
-import {  ShieldCheck } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
 import Logo from '../../assets/SignatureSticker.webp';
 
 const footerLinks = {
-  PROGRAM: ['About the Studio', 'Curriculum', 'Program Framework', 'Application Process', 'Alumni Stories'],
+  PROGRAM: [
+    'Program Framework',
+    'Post-Week 5',
+    'Curriculum',
+    'Who Should Apply',
+    'Events',
+    'FAQ',
+
+  ],
   CONNECT: ['LinkedIn', 'Twitter / X', 'YouTube', 'Instagram', 'Facebook', 'Medium'],
-  STUDO: ['ProductLeadership'],
+  STUDIO: ['Product Leadership'],
 };
 
 const footerLinkHashes: Record<string, string> = {
-  'About the Studio': '#program',
-  'Curriculum': '#curriculum',
   'Program Framework': '#judgment',
+  'Post-Week 5': '#post-week-5',
+  'Curriculum': '#curriculum',
+  'Who Should Apply': '#who-should-apply',
+  'FAQ': '#faq',
+  'Events': '#events',
+  'About Pranjal Sarkar': '#about',
+  'Testimonials': '#testimonials',
   'Application Process': '#contact',
-  'Alumni Stories': '#testimonials',
-  'PM Judgment Deck': '#philosophy',
-  'Free Workshop': '#contact',
-  'Blog': '#contact',
-  'Case Studies': '#testimonials',
-  'The Judgment Members': '#philosophy',
   'LinkedIn': 'https://linkedin.com/in/pranjalsarkar',
   'Twitter / X': 'https://x.com/thepsprinciples',
   'YouTube': 'https://youtube.com/@thepsprinciples',

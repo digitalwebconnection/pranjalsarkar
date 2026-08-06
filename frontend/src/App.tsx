@@ -11,6 +11,7 @@ import LogosSection from './components/sections/LogosSection';
 import ProgramIntroSection from './components/sections/ProgramIntroSection';
 import WhoShouldApplySection from './components/sections/WhoShouldApplySection';
 import JudgementSection from './components/sections/JudgementSection';
+import PostWeek5Section from './components/sections/PostWeek5Section';
 import CurriculumSection from './components/sections/CurriculumSection';
 import FAQSection from './components/sections/FAQSection';
 import FinalCTASection from './components/sections/FinalCTASection';
@@ -48,6 +49,9 @@ function LandingPage() {
 
         {/* 10. How Leadership-Level Judgment Gets Built — #9 */}
         <JudgementSection />
+
+        {/* Post-Week 5 — What Happens Next */}
+        <PostWeek5Section />
 
         {/* 5. Philosophy — Build Product Judgment Under AI — #4 */}
         <PhilosophySection />

@@ -118,9 +118,16 @@ export default function ContactSection() {
     setSubmitError('');
     setIsSubmitting(true);
 
-    const phoneRegex = /^\+?[0-9\s\-()]{7,20}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(form.email)) {
+      setSubmitError('Please enter a valid email address.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    const phoneRegex = /^\d{10}$/;
     if (!phoneRegex.test(form.phone)) {
-      setSubmitError('Mobile number must be a valid phone number.');
+      setSubmitError('Mobile number must be exactly 10 digits.');
       setIsSubmitting(false);
       return;
     }
@@ -209,15 +216,22 @@ export default function ContactSection() {
             {/* Contact info cards */}
             <div className="flex flex-col gap-4 max-w-xs">
               {/* Phone Card */}
-              <div className="flex items-center gap-5 p-4 rounded-xl border border-[#0070f3]/25 bg-[#060d1a]/25 backdrop-blur-md shadow-[0_0_25px_rgba(0,100,255,0.06)] hover:border-[#0070f3]/50 transition-all duration-300">
-                <div className="w-12 h-12 rounded-full border border-[#0070f3]/50 bg-[#00142c] text-[#38bdf8] flex items-center justify-center shadow-[inset_0_0_12px_rgba(0,136,255,0.35)] shrink-0">
-                  <Phone className="w-5 h-5 text-[#38bdf8]" />
+              <a 
+                href="https://wa.me/919979429183" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-5 p-4 rounded-xl border border-[#0070f3]/25 bg-[#060d1a]/25 backdrop-blur-md shadow-[0_0_25px_rgba(0,100,255,0.06)] hover:border-[#25D366]/50 hover:shadow-[0_0_25px_rgba(37,211,102,0.15)] transition-all duration-300 group cursor-pointer no-underline"
+              >
+                <div className="w-12 h-12 rounded-full border border-[#0070f3]/50 group-hover:border-[#25D366]/60 bg-[#00142c] text-[#38bdf8] group-hover:text-[#25D366] flex items-center justify-center shadow-[inset_0_0_12px_rgba(0,136,255,0.35)] group-hover:shadow-[inset_0_0_15px_rgba(37,211,102,0.35)] shrink-0 transition-all duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M12.031 0C5.405 0 .028 5.378.028 12.003c0 2.115.548 4.183 1.593 6.002L.038 23.999l6.147-1.611c1.761.966 3.743 1.477 5.845 1.477 6.626 0 12.004-5.377 12.004-12.003C24.034 5.378 18.657 0 12.031 0zm6.577 17.387c-.267.753-1.547 1.439-2.127 1.503-.58.064-1.285.234-4.103-.941-3.385-1.413-5.59-4.872-5.76-5.097-.17-.225-1.377-1.83-1.377-3.489 0-1.658.85-2.476 1.157-2.793.307-.317.674-.396.896-.396.222 0 .445.006.634.015.202.01.472-.078.736.56.28.673.955 2.336 1.04 2.505.085.17.142.368.028.593-.114.225-.17.368-.34.566-.17.198-.354.437-.505.58-.17.16-.35.34-.146.689.204.35 1.115 1.838 2.456 3.036 1.733 1.549 3.197 2.036 3.553 2.193.355.157.562.13.771-.115.21-.245.912-1.06 1.156-1.425.245-.365.489-.304.815-.184.326.12 2.062.973 2.416 1.152.354.179.59.266.674.412.085.146.085.844-.182 1.597z" />
+                  </svg>
                 </div>
                 <div>
-                  <div className="text-[#8a93a0] text-[12px] font-bold tracking-widest uppercase mb-1">WhatsApp  NUMBER</div>
+                  <div className="text-[#8a93a0] text-[12px] font-bold tracking-widest uppercase mb-1">WhatsApp NUMBER</div>
                   <div className="text-white text-base font-bold tracking-wide">+91 99794 29183</div>
                 </div>
-              </div>
+              </a>
 
               {/* Response Time Card */}
               <div className="flex items-center gap-5 p-4 rounded-xl border border-[#0070f3]/25 bg-[#060d1a]/25 backdrop-blur-md shadow-[0_0_25px_rgba(0,100,255,0.06)] hover:border-[#0070f3]/50 transition-all duration-300">
@@ -281,7 +295,7 @@ export default function ContactSection() {
                     <label htmlFor="contact-email" className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
                       WORK EMAIL
                     </label>
-                    <div className="flex items-center gap-3 px-4 py-3.5 rounded-xl border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
+                    <div className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border ${form.email.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) ? 'border-red-500/50 focus-within:border-red-500/50 focus-within:shadow-[0_0_15px_rgba(239,68,68,0.25)]' : 'border-[#172740] focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]'} bg-[#070e1b] transition-all`}>
                       <Mail className="w-5 h-5 text-[#0070f3] shrink-0" />
                       <input
                         id="contact-email"
@@ -293,6 +307,9 @@ export default function ContactSection() {
                         className="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-[#99a1ac]"
                       />
                     </div>
+                    {form.email.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) && (
+                      <span className="text-red-400 text-xs mt-1.5 ml-1 font-medium">Please enter a valid email address</span>
+                    )}
                   </div>
                 </div>
 
@@ -303,7 +320,7 @@ export default function ContactSection() {
                     <label htmlFor="contact-phone" className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
                       Phone + WhatsApp enable number
                     </label>
-                    <div className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border ${form.phone.length > 0 && !/^\+?[0-9\s\-()]{7,20}$/.test(form.phone) ? 'border-red-500/50 focus-within:border-red-500/50 focus-within:shadow-[0_0_15px_rgba(239,68,68,0.25)]' : 'border-[#172740] focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]'} bg-[#070e1b] transition-all`}>
+                    <div className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border ${form.phone.length > 0 && form.phone.length !== 10 ? 'border-red-500/50 focus-within:border-red-500/50 focus-within:shadow-[0_0_15px_rgba(239,68,68,0.25)]' : 'border-[#172740] focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]'} bg-[#070e1b] transition-all`}>
                       <Phone className="w-5 h-5 text-[#0070f3] shrink-0" />
                       <input
                         id="contact-phone"
@@ -311,17 +328,17 @@ export default function ContactSection() {
                         required
                         value={form.phone}
                         onChange={e => {
-                          const value = e.target.value.replace(/[^\d\s\-\+\(\)]/g, '');
-                          if (value.length <= 20) {
+                          const value = e.target.value.replace(/[^\d]/g, '');
+                          if (value.length <= 10) {
                             setForm(f => ({ ...f, phone: value }));
                           }
                         }}
-                        placeholder="+91 98765 43210"
+                        placeholder="9876543210"
                         className="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-[#99a1ac]"
                       />
                     </div>
-                    {form.phone.length > 0 && !/^\+?[0-9\s\-()]{7,20}$/.test(form.phone) && (
-                      <span className="text-red-400 text-xs mt-1.5 ml-1 font-medium">Please enter a valid phone number</span>
+                    {form.phone.length > 0 && form.phone.length !== 10 && (
+                      <span className="text-red-400 text-xs mt-1.5 ml-1 font-medium">Please enter a valid 10-digit phone number</span>
                     )}
                   </div>
 

@@ -57,12 +57,7 @@ export default function FinalCTASection() {
             >
               Submit Interview Request →
             </a>
-            <a
-              href="#judgment"
-              className="px-6 py-2.5 rounded-md text-white text-[13px] md:text-xl font-semibold tracking-wide no-underline transition-all duration-200 border border-white/15 bg-white/3 hover:bg-white/8 hover:-translate-y-0.5 hover:border-white/30"
-            >
-              Curriculum
-            </a>
+       
           </div>
 
           {/* Social Proof Mini Checklist */}

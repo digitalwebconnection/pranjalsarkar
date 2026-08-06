@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import Logo from '../../assets/SignatureSticker.webp';
 
 const navLinks = [
-  { label: 'About', href: '/#about' },
   { label: 'Mirror', href: '/#mirror' },
-  { label: 'Transformation', href: '/#transformation' },
   { label: 'AI Product', href: '/#ai-product' },
+  { label: 'Transformation', href: '/#transformation' },
+  { label: 'About', href: '/#about' },
   { label: 'Curriculum', href: '/#curriculum' },
   { label: 'FAQ', href: '/#faq' },
 ];
@@ -14,20 +14,20 @@ const navLinks = [
 const sectionToNavLinkMap: Record<string, string> = {
   hero: '',
   mirror: 'mirror',
-  diagnosis: 'mirror',
-  philosophy: 'philosophy',
+  'ai-product': 'ai-product',
+  judgment: 'ai-product',
+  transformation: 'transformation',
   about: 'about',
-  preview: 'about',
-  testimonials: 'philosophy',
-  logos: 'program',
-  program: 'program',
-  judgment: 'program',
-  takeaways: 'program',
+  testimonials: 'about',
+  logos: 'about',
+  'who-should-apply': 'curriculum',
   curriculum: 'curriculum',
+  events: 'curriculum',
   faq: 'faq',
   'final-cta': 'faq',
   contact: '',
 };
+
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
