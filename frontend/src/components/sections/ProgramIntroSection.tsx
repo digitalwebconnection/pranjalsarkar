@@ -59,9 +59,9 @@ export default function ProgramIntroSection() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="font-serif font-bold text-2xl md:text-4xl lg:text-5xl leading-tight tracking-tight text-white mb-8">
-            AI Product Leadership   <br />
+            AI Product Leadership Studio <br />
             <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
-              Studio Program Structure
+              Program Structure
               {/* Horizontal flare line */}
               <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
             </span>
