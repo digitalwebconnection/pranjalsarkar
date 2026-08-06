@@ -13,7 +13,7 @@ const footerLinks = {
 
   ],
   CONNECT: ['LinkedIn', 'Twitter / X', 'YouTube', 'Instagram', 'Facebook', 'Medium'],
-  STUDIO: ['Product Leadership'],
+  STUDIO: ['ProductLeadership.Studio'],
 };
 
 const footerLinkHashes: Record<string, string> = {

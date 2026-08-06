@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion } from 'motion/react';
-import psHeadshot from '../../assets/pranjalsarkar/pranjals.png';
+import psHeadshot from '../../assets/pranjalsarkar/imagep.png';
 const youtubeVideo = '/video/Aipls%20Simulation%20Explainer%20Video6.mp4';
 import { Play } from 'lucide-react';
 
@@ -107,7 +107,7 @@ export default function AboutSection() {
                 <img
                   src={psHeadshot}
                   alt="Pranjal Sarkar"
-                  className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105"
+                  className="w-full h-full object-cover transition-all duration-700 transform "
                 />
 
                 {/* Live Mentor Indicator Pill */}
