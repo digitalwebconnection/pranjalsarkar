@@ -54,43 +54,43 @@ function LandingPage() {
           {/* 3. The Mirror — The Problem — #2 */}
           <MirrorSection />
 
-          {/* 9. Program Introduction — AI Product Leadership Studio — #8 */}
+          {/* 4. Program Introduction — AI Product Leadership Studio — #8 */}
           <ProgramIntroSection />
 
-          {/* 10. How Leadership-Level Judgment Gets Built — #9 */}
+          {/* 5. How Leadership-Level Judgment Gets Built — #9 */}
           <JudgementSection />
 
-          {/* Post-Week 5 — What Happens Next */}
+          {/* 6 — What Happens Next */}
           <PostWeek5Section />
 
-          {/* 5. Philosophy — Build Product Judgment Under AI — #4 */}
+          {/* 7. Philosophy — Build Product Judgment Under AI — #4 */}
           <PhilosophySection />
 
-          {/* 6. About Pranjal Sarkar — #5 */}
+          {/* 8. About Pranjal Sarkar — #5 */}
           <AboutSection />
 
-          {/* 7. Testimonials — #6 */}
+          {/* 9. Testimonials — #6 */}
           <TestimonialsSection />
 
-          {/* 8. Logos Strip — #7 */}
+          {/* 10. Logos Strip — #7 */}
           <LogosSection />
 
-          {/* 9.5. Who Should Apply */}
+          {/* 11. Who Should Apply */}
           <WhoShouldApplySection />
 
           {/* 12. Curriculum — #11 */}
           <CurriculumSection />
 
-          {/* Events & Speaking Gallery Section */}
+          {/*13  Events & Speaking Gallery Section */}
           <EventsGallerySection />
 
-          {/* 13. FAQ — #12 */}
+          {/* 14. FAQ — #12 */}
           <FAQSection />
 
-          {/* 14. Final CTA — #13 */}
+          {/* 15. Final CTA — #13 */}
           <FinalCTASection />
 
-          {/* 15. Contact / Apply — #14 */}
+          {/* 16. Contact / Apply — #14 */}
           <ContactSection />
         </Suspense>
       </main>
