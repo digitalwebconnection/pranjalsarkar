@@ -107,7 +107,7 @@ export default function Navbar() {
                     key={l.label}
                     to={l.href}
                     className={[
-                      'text-[16px] font-medium no-underline transition-colors duration-200',
+                      'text-lg font-medium no-underline transition-colors duration-200',
                       isActive
                         ? 'text-white'
                         : 'text-[#dee2e9] hover:text-white',
@@ -117,9 +117,7 @@ export default function Navbar() {
                   </Link>
                 );
               })}
-            </div>
-
-            {/* ── Right: CTA + Hamburger ── */}
+                 {/* ── Right: CTA + Hamburger ── */}
             <div className="flex justify-end items-center shrink-0">
               {/* Desktop CTA */}
               <Link
@@ -161,6 +159,9 @@ export default function Navbar() {
                 />
               </button>
             </div>
+            </div>  
+
+         
 
           </div>
 

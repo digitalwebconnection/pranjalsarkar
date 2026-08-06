@@ -88,7 +88,7 @@ export default function AboutSection() {
         </motion.div>
 
         {/* Two Column Dashboard Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-10 items-center">
 
           {/* Left Column (Desktop): Premium Image Card with Floating Animation */}
           <motion.div
@@ -117,7 +117,7 @@ export default function AboutSection() {
           </motion.div>
 
           {/* Right Column (Desktop): Metrics & Narrative */}
-          <div className="lg:col-span-7 flex flex-col justify-center  lg:pl-6">
+          <div className="lg:col-span-7 flex flex-col justify-center  ">
 
             {/* Biography Narratives */}
             <motion.div variants={itemVariants} className="mb-2">
@@ -138,7 +138,7 @@ export default function AboutSection() {
 
             {/* Quick Metrics Row - Separate Cards */}
             <motion.div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2" variants={itemVariants}>
-              
+
               {/* Card 1 */}
               <div className="relative flex flex-col text-center bg-[#0a0c10] border border-white/20 rounded-lg shadow-[0_0_30px_rgba(0,128,199,0.3)] overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,168,255,0.15)_0%,transparent_70%)] pointer-events-none" />
@@ -147,7 +147,7 @@ export default function AboutSection() {
                   <div className="text-white text-sm md:text-base">Years</div>
                 </div>
                 <div className="relative z-10 p-3 md:p-4 flex-1">
-                  <div className="text-xs text-gray-300 leading-snug">Product and Business<br className="hidden lg:block"/> Leadership</div>
+                  <div className="text-xs text-gray-300 leading-snug">Product and Business<br className="hidden lg:block" /> Leadership</div>
                 </div>
               </div>
 
@@ -159,7 +159,7 @@ export default function AboutSection() {
                   <div className="text-white text-sm md:text-base">Startups</div>
                 </div>
                 <div className="relative z-10 p-3 md:p-4 flex-1">
-                  <div className="text-xs text-gray-300 leading-snug">Built from Idea<br className="hidden lg:block"/> to Business</div>
+                  <div className="text-xs text-gray-300 leading-snug">Built from Idea<br className="hidden lg:block" /> to Business</div>
                 </div>
               </div>
 
@@ -183,7 +183,7 @@ export default function AboutSection() {
                   <div className="text-white text-sm md:text-base">Countries</div>
                 </div>
                 <div className="relative z-10 p-3 md:p-4 flex-1">
-                  <div className="text-xs text-gray-300 leading-snug">Product Professionals<br className="hidden lg:block"/> Mentored</div>
+                  <div className="text-xs text-gray-300 leading-snug">Product Professionals<br className="hidden lg:block" /> Mentored</div>
                 </div>
               </div>
 
