@@ -184,73 +184,42 @@ export default function ContactSection() {
         <div className="absolute top-0 right-0 w-150 h-150 bg-[radial-gradient(circle_at_top_right,rgba(0,70,180,0.12)_0%,transparent_60%)] pointer-events-none" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.25fr] gap-12 lg:gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.25fr] gap-10 lg:gap-x-16 lg:gap-y-10 items-center">
 
-          {/* Left Column */}
-          <div className="max-w-xl">
-            {/* Header with Horizontal Laser Flare Line (100% copy of flare image) */}
-            <div className="relative mb-8">
+          {/* Top Left: Header and Text */}
+          <div className="max-w-xl lg:max-w-none mx-auto lg:mx-0 w-full lg:col-start-1 lg:row-start-1 lg:self-end">
+            {/* Header with Horizontal Laser Flare Line */}
+            <div className="relative mb-6 sm:mb-8 text-center lg:text-left">
               <h2 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-tight text-white mb-2">
                 Ready to make<br />
                 <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">your move?</span>
               </h2>
 
-              {/* Razor-thin 2px Horizontal Laser Flare Line with Exact Glow */}
-              <div className="relative mt-5 mb-3 w-50 sm:w-70 h-0.75 pointer-events-none">
-                <div className="absolute -bottom-3 left-0 w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[rgba(24,37,226,1)] to-transparent shadow-[0_0_15px_rgba(24,37,226,0.9)] opacity-80" />
+              {/* Razor-thin 2px Horizontal Laser Flare Line */}
+              <div className="relative mt-4 sm:mt-5 mb-3 w-40 sm:w-50 mx-auto lg:mx-0 h-0.75 pointer-events-none">
+                <div className="absolute -bottom-3 left-1/2 lg:left-0 -translate-x-1/2 lg:translate-x-0 w-32 sm:w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[rgba(24,37,226,1)] to-transparent shadow-[0_0_15px_rgba(24,37,226,0.9)] opacity-80" />
               </div>
             </div>
 
-            <p className="text-white text-base sm:text-lg leading-relaxed mb-10 max-w-lg">
+            <p className="text-[#D1D5DB] text-sm sm:text-base md:text-lg leading-relaxed text-center lg:text-left max-w-lg mx-auto lg:mx-0">
               Fill out the application form. It takes 1–3 minutes. We review every application personally and respond within <span className="text-white font-bold">24 hours</span>.
             </p>
 
-            {/* Contact info cards */}
-            <div className="flex flex-col gap-4 max-w-xs">
-              {/* Phone Card */}
-              <a 
-                href="https://wa.me/919979429183" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex items-center gap-5 p-4 rounded-xl border border-[#0070f3]/25 bg-[#060d1a]/25 backdrop-blur-md shadow-[0_0_25px_rgba(0,100,255,0.06)] hover:border-[#25D366]/50 hover:shadow-[0_0_25px_rgba(37,211,102,0.15)] transition-all duration-300 group cursor-pointer no-underline"
-              >
-                <div className="w-12 h-12 rounded-full border border-[#0070f3]/50 group-hover:border-[#25D366]/60 bg-[#00142c] text-[#38bdf8] group-hover:text-[#25D366] flex items-center justify-center shadow-[inset_0_0_12px_rgba(0,136,255,0.35)] group-hover:shadow-[inset_0_0_15px_rgba(37,211,102,0.35)] shrink-0 transition-all duration-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M12.031 0C5.405 0 .028 5.378.028 12.003c0 2.115.548 4.183 1.593 6.002L.038 23.999l6.147-1.611c1.761.966 3.743 1.477 5.845 1.477 6.626 0 12.004-5.377 12.004-12.003C24.034 5.378 18.657 0 12.031 0zm6.577 17.387c-.267.753-1.547 1.439-2.127 1.503-.58.064-1.285.234-4.103-.941-3.385-1.413-5.59-4.872-5.76-5.097-.17-.225-1.377-1.83-1.377-3.489 0-1.658.85-2.476 1.157-2.793.307-.317.674-.396.896-.396.222 0 .445.006.634.015.202.01.472-.078.736.56.28.673.955 2.336 1.04 2.505.085.17.142.368.028.593-.114.225-.17.368-.34.566-.17.198-.354.437-.505.58-.17.16-.35.34-.146.689.204.35 1.115 1.838 2.456 3.036 1.733 1.549 3.197 2.036 3.553 2.193.355.157.562.13.771-.115.21-.245.912-1.06 1.156-1.425.245-.365.489-.304.815-.184.326.12 2.062.973 2.416 1.152.354.179.59.266.674.412.085.146.085.844-.182 1.597z" />
-                  </svg>
-                </div>
-                <div>
-                  <div className="text-[#8a93a0] text-[12px] font-bold tracking-widest uppercase mb-1">WhatsApp NUMBER</div>
-                  <div className="text-white text-base font-bold tracking-wide">+91 99794 29183</div>
-                </div>
-              </a>
-
-              {/* Response Time Card */}
-              <div className="flex items-center gap-5 p-4 rounded-xl border border-[#0070f3]/25 bg-[#060d1a]/25 backdrop-blur-md shadow-[0_0_25px_rgba(0,100,255,0.06)] hover:border-[#0070f3]/50 transition-all duration-300">
-                <div className="w-12 h-12 rounded-full border border-[#0070f3]/50 bg-[#00142c] text-[#38bdf8] flex items-center justify-center shadow-[inset_0_0_12px_rgba(0,136,255,0.35)] shrink-0">
-                  <Calendar className="w-5 h-5 text-[#38bdf8]" />
-                </div>
-                <div>
-                  <div className="text-[#8a93a0] text-[12px] font-bold tracking-widest uppercase mb-1">RESPONSE TIME</div>
-                  <div className="text-white text-base font-bold tracking-wide">Within 24 hours </div>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Right Column — Glowing Form Box (100% copy of wireframe) */}
-          <div className="relative w-full rounded-3xl bg-[#040914]/90 border-2 border-[#0070f3]/70 shadow-[0_0_60px_rgba(0,112,243,0.4),inset_0_0_35px_rgba(0,112,243,0.15)] p-6 sm:p-8 md:p-10 z-10 backdrop-blur-xl">
+          <div className="relative w-full rounded-xl bg-[#040914]/90 border-2 border-[#0070f3]/70 shadow-[0_0_40px_rgba(0,112,243,0.3),inset_0_0_25px_rgba(0,112,243,0.15)] sm:shadow-[0_0_60px_rgba(0,112,243,0.4),inset_0_0_35px_rgba(0,112,243,0.15)] p-5 sm:p-8 md:p-10 z-10 backdrop-blur-xl lg:col-start-2 lg:row-start-1 lg:row-span-2">
             {/* Top and right inner gradient border light line glows */}
             <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#38bdf8] to-transparent opacity-90" />
             <div className="absolute top-0 bottom-0 right-0 w-0.5 bg-linear-to-b from-transparent via-[#0070f3] to-transparent opacity-60" />
 
-            <form onSubmit={handleSubmit} className="relative z-10 flex flex-col gap-5">
-              <div className="mb-2">
-                <h3 className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            <form onSubmit={handleSubmit} className="relative z-10 flex flex-col gap-4 sm:gap-5">
+              <div className="mb-2 sm:mb-4 text-center sm:text-left">
+                <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">
                   Apply for <span className="text-[#0075ff]">Enrollment</span>
                 </h3>
-                <p className="text-[#ffffff] text-sm sm:text-base mt-2">
+                <p className="text-[#D1D5DB] text-xs sm:text-sm md:text-base mt-2">
                   All fields are required. Admissions are selective.
                 </p>
               </div>
@@ -263,14 +232,14 @@ export default function ContactSection() {
               )}
 
                 {/* Name + Email */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-2 gap-3 sm:gap-5">
                   {/* Name */}
                   <div className="flex flex-col">
-                    <label htmlFor="contact-name" className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
+                    <label htmlFor="contact-name" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase mb-1 sm:mb-2">
                       FULL NAME
                     </label>
-                    <div className="flex items-center gap-3 px-4 py-3.5 rounded-xl border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
-                      <User className="w-5 h-5 text-[#0070f3] shrink-0" />
+                    <div className="flex items-center gap-2 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-lg border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
+                      <User className="w-4 h-4 sm:w-5 sm:h-5 text-[#0070f3] shrink-0" />
                       <input
                         id="contact-name"
                         type="text"
@@ -278,18 +247,18 @@ export default function ContactSection() {
                         value={form.name}
                         onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                         placeholder="Your Name"
-                        className="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-[#99a1ac]"
+                        className="bg-transparent border-none outline-none text-white text-xs sm:text-sm w-full placeholder:text-[#99a1ac]"
                       />
                     </div>
                   </div>
 
                   {/* Email */}
                   <div className="flex flex-col">
-                    <label htmlFor="contact-email" className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
+                    <label htmlFor="contact-email" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase mb-1 sm:mb-2">
                       WORK EMAIL
                     </label>
-                    <div className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border ${form.email.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) ? 'border-red-500/50 focus-within:border-red-500/50 focus-within:shadow-[0_0_15px_rgba(239,68,68,0.25)]' : 'border-[#172740] focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]'} bg-[#070e1b] transition-all`}>
-                      <Mail className="w-5 h-5 text-[#0070f3] shrink-0" />
+                    <div className={`flex items-center gap-2 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-lg border ${form.email.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) ? 'border-red-500/50 focus-within:border-red-500/50 focus-within:shadow-[0_0_15px_rgba(239,68,68,0.25)]' : 'border-[#172740] focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]'} bg-[#070e1b] transition-all`}>
+                      <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-[#0070f3] shrink-0" />
                       <input
                         id="contact-email"
                         type="email"
@@ -297,24 +266,24 @@ export default function ContactSection() {
                         value={form.email}
                         onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                         placeholder="you@company.com"
-                        className="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-[#99a1ac]"
+                        className="bg-transparent border-none outline-none text-white text-xs sm:text-sm w-full placeholder:text-[#99a1ac]"
                       />
                     </div>
                     {form.email.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) && (
-                      <span className="text-red-400 text-xs mt-1.5 ml-1 font-medium">Please enter a valid email address</span>
+                      <span className="text-red-400 text-[10px] sm:text-xs mt-1.5 ml-1 font-medium">Invalid email</span>
                     )}
                   </div>
                 </div>
 
                 {/* Phone + Role */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-2 gap-3 sm:gap-5">
                   {/* Phone */}
                   <div className="flex flex-col">
-                    <label htmlFor="contact-phone" className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
-                      Phone + WhatsApp enable number
+                    <label htmlFor="contact-phone" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase mb-1 sm:mb-2 truncate">
+                      WhatsApp Number
                     </label>
-                    <div className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border ${form.phone.length > 0 && form.phone.length !== 10 ? 'border-red-500/50 focus-within:border-red-500/50 focus-within:shadow-[0_0_15px_rgba(239,68,68,0.25)]' : 'border-[#172740] focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]'} bg-[#070e1b] transition-all`}>
-                      <Phone className="w-5 h-5 text-[#0070f3] shrink-0" />
+                    <div className={`flex items-center gap-2 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-lg border ${form.phone.length > 0 && form.phone.length !== 10 ? 'border-red-500/50 focus-within:border-red-500/50 focus-within:shadow-[0_0_15px_rgba(239,68,68,0.25)]' : 'border-[#172740] focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]'} bg-[#070e1b] transition-all`}>
+                      <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-[#0070f3] shrink-0" />
                       <input
                         id="contact-phone"
                         type="tel"
@@ -327,29 +296,29 @@ export default function ContactSection() {
                           }
                         }}
                         placeholder="9876543210"
-                        className="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-[#99a1ac]"
+                        className="bg-transparent border-none outline-none text-white text-xs sm:text-sm w-full placeholder:text-[#99a1ac]"
                       />
                     </div>
                     {form.phone.length > 0 && form.phone.length !== 10 && (
-                      <span className="text-red-400 text-xs mt-1.5 ml-1 font-medium">Please enter a valid 10-digit phone number</span>
+                      <span className="text-red-400 text-[10px] sm:text-xs mt-1.5 ml-1 font-medium">Invalid phone</span>
                     )}
                   </div>
 
                   {/* Role */}
                   <div className="flex flex-col">
-                    <label htmlFor="contact-role" className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
+                    <label htmlFor="contact-role" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase mb-1 sm:mb-2">
                       CURRENT ROLE
                     </label>
-                    <div className="flex items-center gap-3 px-4 py-3.5 rounded-xl border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
-                      <Briefcase className="w-5 h-5 text-[#0070f3] shrink-0" />
+                    <div className="flex items-center gap-2 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-lg border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
+                      <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-[#0070f3] shrink-0" />
                       <input
                         id="contact-role"
                         type="text"
                         required
                         value={form.role}
                         onChange={e => setForm(f => ({ ...f, role: e.target.value }))}
-                        placeholder="Senior PM, EM, etc."
-                        className="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-[#99a1ac]"
+                        placeholder="PM, EM, etc."
+                        className="bg-transparent border-none outline-none text-white text-xs sm:text-sm w-full placeholder:text-[#99a1ac]"
                       />
                     </div>
                   </div>
@@ -357,11 +326,11 @@ export default function ContactSection() {
 
                 {/* Company */}
                 <div className="flex flex-col">
-                  <label htmlFor="contact-company" className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
+                  <label htmlFor="contact-company" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase mb-1 sm:mb-2">
                     COMPANY
                   </label>
-                  <div className="flex items-center gap-3 px-4 py-3.5 rounded-xl border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
-                    <Building2 className="w-5 h-5 text-[#0070f3] shrink-0" />
+                  <div className="flex items-center gap-2 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-lg border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
+                    <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#0070f3] shrink-0" />
                     <input
                       id="contact-company"
                       type="text"
@@ -369,18 +338,18 @@ export default function ContactSection() {
                       value={form.company}
                       onChange={e => setForm(f => ({ ...f, company: e.target.value }))}
                       placeholder="Where you work"
-                      className="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-[#99a1ac]"
+                      className="bg-transparent border-none outline-none text-white text-xs sm:text-sm w-full placeholder:text-[#99a1ac]"
                     />
                   </div>
                 </div>
 
                 {/* Why applying */}
                 <div className="flex flex-col">
-                  <label htmlFor="contact-message" className="text-[#b2c0d3] text-[11px] font-bold tracking-widest uppercase mb-2">
+                  <label htmlFor="contact-message" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase mb-1 sm:mb-2">
                     Paste your linkedin address
                   </label>
-                  <div className="flex items-start gap-3 px-4 py-3.5 rounded-xl border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
-                    <Pencil className="w-5 h-5 text-[#0070f3] mt-0.5 shrink-0" />
+                  <div className="flex items-start gap-2 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-lg border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
+                    <Pencil className="w-4 h-4 sm:w-5 sm:h-5 text-[#0070f3] mt-0.5 shrink-0" />
                     <textarea
                       id="contact-message"
                       required
@@ -388,7 +357,7 @@ export default function ContactSection() {
                       value={form.message}
                       onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                       placeholder="What's the leadership gap you're trying to close?&#10;What's at stake?"
-                      className="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-[#99a1ac] resize-none"
+                      className="bg-transparent border-none outline-none text-white text-xs sm:text-sm w-full placeholder:text-[#99a1ac] resize-none"
                     />
                   </div>
                 </div>
@@ -401,33 +370,67 @@ export default function ContactSection() {
                   </div>
                 )}
 
-                {/* Submit Button (GRADIENT MATCH 100% COPY OF WIREFRAME) */}
+                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full mt-3 py-4 px-6 rounded-xl text-white font-bold text-lg bg-linear-to-r from-[#0088ff] via-[#0066ff] to-[#0052eb] hover:from-[#0096ff] hover:via-[#0075ff] hover:to-[#005eff] border-t border-white/40 transition-all duration-300 shadow-[0_0_35px_rgba(0,120,255,0.7)] hover:shadow-[0_0_50px_rgba(0,140,255,0.9)] flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="w-full mt-2 sm:mt-4 py-3.5 sm:py-4 px-6 rounded-lg text-white font-bold text-base sm:text-lg bg-linear-to-r from-[#0088ff] via-[#0066ff] to-[#0052eb] hover:from-[#0096ff] hover:via-[#0075ff] hover:to-[#005eff] border-t border-white/40 transition-all duration-300 shadow-[0_0_25px_rgba(0,120,255,0.6)] hover:shadow-[0_0_40px_rgba(0,140,255,0.8)] flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
+                      <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
                       Submitting...
                     </>
                   ) : (
                     <>
                       Submit Interview Request
-                      <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1" />
                     </>
                   )}
                 </button>
 
                 {/* Footer Privacy Text */}
-                <div className="flex items-center justify-center gap-2 mt-2">
-                  <ShieldCheck className="w-4 h-4 text-[#38bdf8]" />
-                  <p className="text-[#bec3ca] text-xs font-medium">
+                <div className="flex items-center justify-center gap-2 mt-1 sm:mt-2">
+                  <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#38bdf8]" />
+                  <p className="text-[#bec3ca] text-[11px] sm:text-xs font-medium">
                     We respect your privacy. No spam. Ever.
                   </p>
                 </div>
               </form>
+          </div>
+
+          {/* Bottom Left: Contact info cards */}
+          <div className="w-full max-w-xl lg:max-w-none mx-auto lg:mx-0 lg:col-start-1 lg:row-start-2 lg:self-start">
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-4 w-full justify-center lg:justify-start">
+              {/* Phone Card */}
+              <a 
+                href="https://wa.me/919979429183" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex-1 flex items-center gap-4 sm:gap-5 p-3.5 sm:p-4 rounded-xl border border-[#0070f3]/25 bg-[#060d1a]/25 backdrop-blur-md shadow-[0_0_25px_rgba(0,100,255,0.06)] hover:border-[#25D366]/50 hover:shadow-[0_0_25px_rgba(37,211,102,0.15)] transition-all duration-300 group cursor-pointer no-underline w-full max-w-sm sm:max-w-none mx-auto lg:mx-0 lg:max-w-xs"
+              >
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#0070f3]/50 group-hover:border-[#25D366]/60 bg-[#00142c] text-[#38bdf8] group-hover:text-[#25D366] flex items-center justify-center shadow-[inset_0_0_12px_rgba(0,136,255,0.35)] group-hover:shadow-[inset_0_0_15px_rgba(37,211,102,0.35)] shrink-0 transition-all duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor">
+                    <path d="M12.031 0C5.405 0 .028 5.378.028 12.003c0 2.115.548 4.183 1.593 6.002L.038 23.999l6.147-1.611c1.761.966 3.743 1.477 5.845 1.477 6.626 0 12.004-5.377 12.004-12.003C24.034 5.378 18.657 0 12.031 0zm6.577 17.387c-.267.753-1.547 1.439-2.127 1.503-.58.064-1.285.234-4.103-.941-3.385-1.413-5.59-4.872-5.76-5.097-.17-.225-1.377-1.83-1.377-3.489 0-1.658.85-2.476 1.157-2.793.307-.317.674-.396.896-.396.222 0 .445.006.634.015.202.01.472-.078.736.56.28.673.955 2.336 1.04 2.505.085.17.142.368.028.593-.114.225-.17.368-.34.566-.17.198-.354.437-.505.58-.17.16-.35.34-.146.689.204.35 1.115 1.838 2.456 3.036 1.733 1.549 3.197 2.036 3.553 2.193.355.157.562.13.771-.115.21-.245.912-1.06 1.156-1.425.245-.365.489-.304.815-.184.326.12 2.062.973 2.416 1.152.354.179.59.266.674.412.085.146.085.844-.182 1.597z" />
+                  </svg>
+                </div>
+                <div>
+                  <div className="text-[#8a93a0] text-[10px] sm:text-[12px] font-bold tracking-widest uppercase mb-1">WhatsApp NUMBER</div>
+                  <div className="text-white text-[13px] sm:text-base font-bold tracking-wide">+91 99794 29183</div>
+                </div>
+              </a>
+
+              {/* Response Time Card */}
+              <div className="flex-1 flex items-center gap-4 sm:gap-5 p-3.5 sm:p-4 rounded-xl border border-[#0070f3]/25 bg-[#060d1a]/25 backdrop-blur-md shadow-[0_0_25px_rgba(0,100,255,0.06)] hover:border-[#0070f3]/50 transition-all duration-300 w-full max-w-sm sm:max-w-none mx-auto lg:mx-0 lg:max-w-xs">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#0070f3]/50 bg-[#00142c] text-[#38bdf8] flex items-center justify-center shadow-[inset_0_0_12px_rgba(0,136,255,0.35)] shrink-0">
+                  <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-[#38bdf8]" />
+                </div>
+                <div>
+                  <div className="text-[#8a93a0] text-[10px] sm:text-[12px] font-bold tracking-widest uppercase mb-1">RESPONSE TIME</div>
+                  <div className="text-white text-[13px] sm:text-base font-bold tracking-wide">Within 24 hours </div>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>

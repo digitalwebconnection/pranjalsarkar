@@ -66,28 +66,28 @@ export default function EventsGallerySection() {
   }, [lightboxIndex, handlePrev, handleNext]);
 
   return (
-    <section id="events" className="relative py-8 md:py-14 overflow-hidden  bg-[#010308]">
+    <section id="events" className="relative py-6 md:py-14 overflow-hidden  bg-[#010308]">
 
       {/* Background glow */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
-        <div className="absolute -top-25 left-[50%] -translate-x-1/2 w-200 h-200 bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.15)_0%,transparent_60%)] blur-[50px]" />
+        <div className="absolute -top-10 sm:-top-25 left-[50%] -translate-x-1/2 w-[150%] sm:w-200 h-[300px] sm:h-200 bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.15)_0%,transparent_60%)] blur-[30px] sm:blur-[50px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
 
         {/* Header Block & Navigation Controls */}
-        <div className="flex flex-col md:flex-row md:items-end justify-center text-center items-center gap-6 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-center text-center items-center gap-6 mb-6 sm:mb-12">
           <div className="flex flex-col items-center text-center">
-            <div className="relative mb-6">
-              <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-5xl leading-tight tracking-tight text-white mb-2 max-w-2xl">
+            <div className="relative mb-4 sm:mb-6">
+              <h2 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl lg:text-5xl leading-tight tracking-tight text-white mb-2 max-w-2xl">
                 Speaking & Mentoring <br />
                 <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">In Action</span>
               </h2>
               {/* Horizontal flare line (centered) */}
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_15px_rgba(0,128,199,0.9)] opacity-80" />
+              <div className="absolute -bottom-2 sm:-bottom-3 left-1/2 -translate-x-1/2 w-40 sm:w-48 md:w-80 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_15px_rgba(0,128,199,0.9)] opacity-80" />
             </div>
 
-            <p className="text-[#ffffff] text-sm md:text-base lg:text-lg max-w-2xl font-light leading-relaxed">
+            <p className="text-[#ffffff] text-sm md:text-base lg:text-lg max-w-2xl font-light leading-relaxed px-2 sm:px-0">
               Interactive workshops, executive strategy masterclasses, and keynote panels in action.
             </p>
           </div>
@@ -120,7 +120,7 @@ export default function EventsGallerySection() {
                     const fullIndex = filteredImages.findIndex((fi) => fi.src === img.src);
                     setLightboxIndex(fullIndex);
                   }}
-                  className="group snap-start shrink-0 w-full sm:w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] lg:w-[calc(25%-12px)] relative aspect-square rounded-xl overflow-hidden bg-neutral-900 border border-white/8 hover:border-[#0080C7]/40 shadow-lg hover:shadow-[0_0_20px_rgba(0,128,199,0.25)] cursor-pointer transition-all duration-500 ease-out"
+                  className="group snap-start shrink-0 w-[85%] sm:w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] lg:w-[calc(25%-12px)] relative aspect-[4/3] sm:aspect-square rounded-xl overflow-hidden bg-neutral-900 border border-white/8 hover:border-[#0080C7]/40 shadow-lg hover:shadow-[0_0_20px_rgba(0,128,199,0.25)] cursor-pointer transition-all duration-500 ease-out"
                 >
                   {/* Image */}
                   <img
@@ -157,8 +157,8 @@ export default function EventsGallerySection() {
             }}
           >
             {/* Top Bar */}
-            <div className="flex items-center justify-between px-6 py-4 bg-linear-to-b from-black/80 to-transparent z-10">
-              <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-linear-to-b from-black/80 to-transparent z-10">
+              <div className="flex items-center gap-2 sm:gap-3">
                 <span className="text-xs font-mono font-bold tracking-widest text-[#0080C7] bg-[#0080C7]/10 border border-[#0080C7]/20 px-3 py-1.5 rounded">
                   {lightboxIndex + 1} / {filteredImages.length}
                 </span>
@@ -182,10 +182,10 @@ export default function EventsGallerySection() {
               {/* Left Arrow */}
               <button
                 onClick={(e) => { e.stopPropagation(); handlePrev(); }}
-                className="absolute left-4 sm:left-8 z-10 w-14 h-14 rounded-full bg-black/50 border border-white/10 flex items-center justify-center text-white/70 hover:text-[#0080C7] hover:border-[#0080C7]/40 hover:bg-black/80 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                className="absolute left-2 sm:left-8 z-10 w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-black/50 border border-white/10 flex items-center justify-center text-white/70 hover:text-[#0080C7] hover:border-[#0080C7]/40 hover:bg-black/80 hover:scale-105 active:scale-95 transition-all cursor-pointer"
                 aria-label="Previous image"
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
 
               {/* Centered Image Container */}
@@ -207,28 +207,28 @@ export default function EventsGallerySection() {
               {/* Right Arrow */}
               <button
                 onClick={(e) => { e.stopPropagation(); handleNext(); }}
-                className="absolute right-4 sm:right-8 z-10 w-14 h-14 rounded-full bg-black/50 border border-white/10 flex items-center justify-center text-white/70 hover:text-[#0080C7] hover:border-[#0080C7]/40 hover:bg-black/80 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                className="absolute right-2 sm:right-8 z-10 w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-black/50 border border-white/10 flex items-center justify-center text-white/70 hover:text-[#0080C7] hover:border-[#0080C7]/40 hover:bg-black/80 hover:scale-105 active:scale-95 transition-all cursor-pointer"
                 aria-label="Next image"
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
 
             </div>
 
             {/* Bottom Caption & Mini-Carousel Strip */}
-            <div className="bg-linear-to-t from-black/90 via-black/80 to-transparent pt-6 pb-8 px-6 z-10">
-              <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-white/10 pb-6 mb-6">
+            <div className="bg-linear-to-t from-black/90 via-black/80 to-transparent pt-4 pb-6 px-4 sm:pt-6 sm:pb-8 sm:px-6 z-10">
+              <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4 border-b border-white/10 pb-4 sm:pb-6 mb-4 sm:mb-6">
                 <div>
-                  <h3 className="font-serif text-2xl font-bold leading-tight tracking-wide text-white">
+                  <h3 className="font-serif text-lg sm:text-2xl font-bold leading-tight tracking-wide text-white">
                     {filteredImages[lightboxIndex].title}
                   </h3>
-                  <div className="flex flex-wrap gap-x-6 gap-y-1 mt-2 text-xs text-white/60 font-light">
-                    <span className="flex items-center gap-1.5">
-                      <MapPin className="w-3.5 h-3.5 text-[#0080C7]" />
+                  <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-1 mt-1.5 sm:mt-2 text-[10.5px] sm:text-xs text-white/60 font-light">
+                    <span className="flex items-center gap-1 sm:gap-1.5">
+                      <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#0080C7]" />
                       {filteredImages[lightboxIndex].location}
                     </span>
-                    <span className="flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5 text-[#0080C7]" />
+                    <span className="flex items-center gap-1 sm:gap-1.5">
+                      <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#0080C7]" />
                       {filteredImages[lightboxIndex].date}
                     </span>
                   </div>
@@ -236,12 +236,12 @@ export default function EventsGallerySection() {
               </div>
 
               {/* Miniature Thumbnail Strips */}
-              <div className="max-w-4xl mx-auto flex justify-center gap-2.5 overflow-x-auto py-1 scrollbar-none snap-x">
+              <div className="max-w-4xl mx-auto flex justify-start sm:justify-center gap-2 sm:gap-2.5 overflow-x-auto py-1 scrollbar-none snap-x pr-4 sm:pr-0">
                 {filteredImages.map((thumb, idx) => (
                   <button
                     key={thumb.src}
                     onClick={() => setLightboxIndex(idx)}
-                    className={`w-14 h-14 rounded-lg overflow-hidden shrink-0 border transition-all duration-300 cursor-pointer snap-center ${lightboxIndex === idx
+                    className={`w-12 h-12 sm:w-14 sm:h-14 rounded-lg overflow-hidden shrink-0 border transition-all duration-300 cursor-pointer snap-center ${lightboxIndex === idx
                       ? 'border-[#0080C7] scale-110 shadow-[0_0_15px_rgba(0,128,199,0.5)] brightness-110 z-10'
                       : 'border-white/20 opacity-40 hover:opacity-85 hover:scale-105'
                       }`}

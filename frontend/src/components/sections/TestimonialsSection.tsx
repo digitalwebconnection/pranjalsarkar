@@ -56,11 +56,11 @@ function TestimonialCard({ t, onExpandChange }: { t: typeof testimonials[0], onE
   const flagCode = getFlagUrl(t.location);
 
   return (
-    <div className="shrink-0 px-3 py-6 flex" style={{ width: '340px' }}>
-      <div className="relative flex flex-col h-full w-full bg-[#080d1a] pb-12 shadow-[0_0_35px_rgba(0,168,255,0.25)] border border-[#00a8ff]/20 rounded-xl overflow-visible transition-all duration-300 hover:shadow-[0_0_50px_rgba(0,168,255,0.4)] hover:-translate-y-1">
+    <div className="shrink-0 px-2 sm:px-3 py-6 flex w-75 sm:w-85">
+      <div className="relative flex flex-col h-full w-full bg-linear-to-b from-[#080d1a] to-[#04060d] md:bg-[#080d1a] pb-10 sm:pb-12 shadow-[0_0_20px_rgba(0,168,255,0.15)] md:shadow-[0_0_35px_rgba(0,168,255,0.25)] border border-[#00a8ff]/20 rounded-xl overflow-visible transition-all duration-300 md:hover:shadow-[0_0_50px_rgba(0,168,255,0.4)] md:hover:-translate-y-1">
 
         {/* Upper Half: Image with Blue Border */}
-        <div className="w-full shrink-0 h-70  pb-0">
+        <div className="w-full shrink-0 h-64 sm:h-70 pb-0">
           <div className="w-full h-full border border-[#00a8ff]/30 rounded-t-xl overflow-hidden shadow-[0_0_15px_rgba(0,168,255,0.1)]">
             <img src={t.image} alt={t.name} className="w-full h-full object-fill object-top" loading="lazy" />
           </div>
@@ -79,19 +79,19 @@ function TestimonialCard({ t, onExpandChange }: { t: typeof testimonials[0], onE
         </div>
 
         {/* Content */}
-        <div className="flex flex-col flex-1 px-6 text-center z-10">
+        <div className="flex flex-col flex-1 px-4 sm:px-6 text-center z-10">
           {/* Name & Location (Fixed height to keep card sizes equal) */}
           <div className="mb-4 h-15 flex flex-col justify-center">
-            <h4 className="font-sans text-white text-[20px] tracking-widest uppercase mb-1 line-clamp-1">
+            <h4 className="font-sans text-white text-[18px] sm:text-[20px] tracking-widest uppercase mb-1 line-clamp-1">
               {t.name}
             </h4>
-            <p className="text-white text-[11px] font-bold tracking-wider line-clamp-1">
+            <p className="text-white text-[10.5px] sm:text-[11px] font-bold tracking-wider line-clamp-1">
               {t.location}
             </p>
           </div>
 
           {/* Quote (Dynamic Height container) */}
-          <div className={`relative mb-2 text-left flex flex-col transition-all duration-300 ${!isExpanded ? 'h-[160px]' : ''}`}>
+          <div className={`relative mb-2 text-left flex flex-col transition-all duration-300 ${!isExpanded ? 'h-36.25 sm:h-40' : ''}`}>
             <div className="relative z-10 flex-1 overflow-hidden">
               <p
                 ref={textRef}
@@ -118,14 +118,15 @@ function TestimonialCard({ t, onExpandChange }: { t: typeof testimonials[0], onE
         </div>
 
         {/* Prominent LinkedIn Icon overlapping bottom */}
-        <div className="absolute -bottom-7 left-1/2 -translate-x-1/2">
+        <div className="absolute -bottom-6 sm:-bottom-7 left-1/2 -translate-x-1/2">
           <a
             href={t.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-14 h-14 bg-[#0a66c2] hover:bg-[#004182] rounded-full text-white transition-all duration-300 shadow-[0_4px_10px_rgba(0,0,0,0.8)]"
+            className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-[#0a66c2] hover:bg-[#004182] rounded-full text-white transition-all duration-300 shadow-[0_4px_10px_rgba(0,0,0,0.8)]"
           >
-            <Linkedin size={28} />
+            <Linkedin size={24} className="sm:hidden" />
+            <Linkedin size={28} className="hidden sm:block" />
           </a>
         </div>
       </div>
@@ -145,7 +146,8 @@ export default function TestimonialsSection() {
       if (scrollLeft + clientWidth >= scrollWidth - 10) {
         scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
       } else {
-        scrollContainerRef.current.scrollBy({ left: 340, behavior: 'smooth' });
+        const scrollStep = window.innerWidth < 640 ? 300 : 340;
+        scrollContainerRef.current.scrollBy({ left: scrollStep, behavior: 'smooth' });
       }
     }, 5000);
     return () => clearInterval(interval);
@@ -153,13 +155,15 @@ export default function TestimonialsSection() {
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: -400, behavior: 'smooth' });
+      const scrollStep = window.innerWidth < 640 ? -300 : -400;
+      scrollContainerRef.current.scrollBy({ left: scrollStep, behavior: 'smooth' });
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: 400, behavior: 'smooth' });
+      const scrollStep = window.innerWidth < 640 ? 300 : 400;
+      scrollContainerRef.current.scrollBy({ left: scrollStep, behavior: 'smooth' });
     }
   };
 
@@ -170,13 +174,13 @@ export default function TestimonialsSection() {
       <div className="absolute top-1/4 -left-32 w-125 h-125 rounded-full z-0 bg-[#0044cc] blur-[130px] opacity-40 pointer-events-none" />
 
       {/* Section Header */}
-      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 text-center mb-14">
-        <h2 className="font-serif font-bold text-3xl md:text-5xl leading-tight tracking-tight text-white mb-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 text-center mb-6 sm:mb-14">
+        <h2 className="font-serif font-bold text-[34px] sm:text-3xl md:text-5xl leading-[1.15] md:leading-tight tracking-tight text-white mb-4 sm:mb-6">
           The results speak <br />
           <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
             louder than the pitch.
             {/* Horizontal flare line */}
-            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-32 md:w-64 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-40 md:w-64 h-0.5 bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_20px_rgba(0,128,199,0.9)] opacity-90" />
           </span>
         </h2>
       </div>
@@ -193,9 +197,9 @@ export default function TestimonialsSection() {
         {/* Left Navigation Arrow */}
         <button
           onClick={scrollLeft}
-          className="absolute left-0 sm:left-4 top-[45%] -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 bg-[#050b14]/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a8ff]/20 hover:border-[#00a8ff]/50 hover:text-[#00a8ff] transition-all duration-300 shadow-[0_0_15px_rgba(0,168,255,0.1)] hover:shadow-[0_0_25px_rgba(0,168,255,0.3)] opacity-100 disabled:opacity-50"
+          className="absolute left-1 sm:left-4 top-[45%] -translate-y-1/2 z-20 w-9 h-9 sm:w-12 sm:h-12 rounded-full border border-white/10 bg-[#050b14]/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a8ff]/20 hover:border-[#00a8ff]/50 hover:text-[#00a8ff] transition-all duration-300 shadow-[0_0_15px_rgba(0,168,255,0.1)] hover:shadow-[0_0_25px_rgba(0,168,255,0.3)] opacity-90 sm:opacity-100 disabled:opacity-50"
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
         <div
@@ -207,7 +211,7 @@ export default function TestimonialsSection() {
         >
           <div
             ref={scrollContainerRef}
-            className="flex gap-4 overflow-x-auto snap-x snap-mandatory py-5 px-6 md:px-12 scroll-smooth items-start"
+            className="flex gap-2 sm:gap-4 overflow-x-auto snap-x snap-mandatory py-5 px-6 md:px-12 scroll-smooth items-start"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <style>{`
@@ -231,25 +235,25 @@ export default function TestimonialsSection() {
         {/* Right Navigation Arrow */}
         <button
           onClick={scrollRight}
-          className="absolute right-0 sm:right-4 top-[45%] -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 bg-[#050b14]/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a8ff]/20 hover:border-[#00a8ff]/50 hover:text-[#00a8ff] transition-all duration-300 shadow-[0_0_15px_rgba(0,168,255,0.1)] hover:shadow-[0_0_25px_rgba(0,168,255,0.3)] opacity-100 disabled:opacity-50"
+          className="absolute right-1 sm:right-4 top-[45%] -translate-y-1/2 z-20 w-9 h-9 sm:w-12 sm:h-12 rounded-full border border-white/10 bg-[#050b14]/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a8ff]/20 hover:border-[#00a8ff]/50 hover:text-[#00a8ff] transition-all duration-300 shadow-[0_0_15px_rgba(0,168,255,0.1)] hover:shadow-[0_0_25px_rgba(0,168,255,0.3)] opacity-90 sm:opacity-100 disabled:opacity-50"
         >
-          <ChevronRight size={24} />
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
       </div>
 
       {/* Final CTA */}
-      <div className="mt-12 text-center pb-8 z-10 relative">
-        <div className="inline-block relative group">
+      <div className="mt-8 sm:mt-12 text-center pb-8 z-10 relative">
+        <div className="inline-block relative group px-4 w-full sm:w-auto max-w-sm mx-auto">
           {/* Animated glow pulse effect behind the button */}
           <div className="absolute inset-0 bg-[#00a8ff] rounded-full blur-xl opacity-40 group-hover:opacity-70 group-hover:blur-2xl transition-all duration-500 animate-pulse" />
 
           <a
             href="#contact"
-            className="relative inline-flex items-center justify-center gap-3 px-12 py-4 md:px-14 md:py-2 bg-linear-to-r from-[#1749eb] via-[#0066ff] to-[#012368] text-white font-bold text-xl md:text-2xl rounded-full shadow-[0_0_25px_rgba(0,168,255,0.6)] hover:shadow-[0_0_40px_rgba(0,168,255,0.8)] hover:-translate-y-1.5 transition-all duration-300 border border-white/20 hover:border-white/50"
+            className="relative flex sm:inline-flex items-center justify-center gap-3 px-8 py-3.5 sm:px-12 sm:py-4 md:px-14 md:py-2 bg-linear-to-r from-[#1749eb] via-[#0066ff] to-[#012368] text-white font-bold text-[17px] sm:text-xl md:text-2xl rounded-full shadow-[0_0_25px_rgba(0,168,255,0.6)] hover:shadow-[0_0_40px_rgba(0,168,255,0.8)] hover:-translate-y-1.5 transition-all duration-300 border border-white/20 hover:border-white/50 w-full sm:w-auto"
           >
             Submit Interview Request
-            <svg className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </a>

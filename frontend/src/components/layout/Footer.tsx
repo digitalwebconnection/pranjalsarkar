@@ -36,11 +36,11 @@ const footerLinkHashes: Record<string, string> = {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#000000] pt-10 pb-6">
+    <footer className="bg-[#000000] pt-6 pb-6">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
 
         {/* Top Section: Brand + Links */}
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-0 mb-10">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-0 mb-6">
 
           {/* Brand Info (Left Col) */}
           <div className="lg:w-[35%] lg:pr-16 lg:border-r lg:border-white/50 flex flex-col items-start">
@@ -70,25 +70,25 @@ export default function Footer() {
           </div>
 
           {/* Links Columns (Right Col) */}
-          <div className="lg:w-[65%] lg:pl-16 grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8 pt-4">
+          <div className="lg:w-[65%] lg:pl-16 grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-12 lg:gap-8 pt-2 lg:pt-4">
             {Object.entries(footerLinks).map(([col, links]) => (
-              <div key={col}>
-                <h4 className="text-[#3B82F6] text-[14px] font-bold tracking-widest uppercase mb-3">
+              <div key={col} className="col-span-1">
+                <h4 className="text-[#3B82F6] text-[13px] md:text-[14px] font-bold tracking-widest uppercase mb-3">
                   {col}
                 </h4>
-                <div className="w-16 h-[2.5px] bg-linear-to-r from-[#3B82F6] to-transparent mb-8 rounded-full" />
-                <ul className="flex flex-col gap-5">
+                <div className="w-12 md:w-16 h-[2.5px] bg-linear-to-r from-[#3B82F6] to-transparent mb-6 md:mb-8 rounded-full" />
+                <ul className="flex flex-col gap-4 md:gap-5">
                   {links.map(l => {
                     const href = footerLinkHashes[l] || '#contact';
                     const isExternal = href.startsWith('http');
                     return (
-                      <li key={l} className="flex items-center gap-3.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
+                      <li key={l} className="flex items-start md:items-center gap-2.5 md:gap-3.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] mt-2 md:mt-0 shrink-0" />
                         <a
                           href={href}
                           target={isExternal ? '_blank' : undefined}
                           rel={isExternal ? 'noopener noreferrer' : undefined}
-                          className="text-[#D1D5DB] text-[14px] font-medium hover:text-white transition-colors duration-150"
+                          className="text-[#D1D5DB] text-[13px] md:text-[14px] font-medium hover:text-white transition-colors duration-150 leading-snug"
                         >
                           {l}
                         </a>
@@ -101,33 +101,33 @@ export default function Footer() {
           </div>
         </div>
 
-
         {/* Bottom Bar */}
-        <div className="border-t border-white/50 pt-6 flex flex-col md:flex-row items-center justify-between gap-6 relative">
-          <div className="flex items-center gap-4 z-10">
-            <div className=" flex items-center justify-center shrink-0">
+        <div className="border-t border-white/50 pt-4 pb-2 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 relative">
+          <div className="flex flex-col md:flex-row items-center text-center md:text-left gap-4 z-10">
+            <div className="flex items-center justify-center shrink-0">
               <ShieldCheck className="w-8 h-8 text-[#3B82F6]" />
             </div>
             <div className="flex flex-col">
-              <span className="text-[#9CA3AF] text-[14px]">
+              <span className="text-[#9CA3AF] text-[13px] md:text-[14px]">
                 © 2026 Pranjal Sarkar. All rights reserved.
               </span>
-              <span className="text-[#3B82F6] text-[14px] font-medium mt-0.5">
+              <span className="text-[#3B82F6] text-[13px] md:text-[14px] font-medium mt-1 md:mt-0.5">
                 Product Leadership Studio
               </span>
             </div>
           </div>
 
           {/* Developer Credit */}
-          <div className="text-[15px] text-white font-medium text-center z-10 md:absolute md:left-1/2 md:-translate-x-1/2 md:w-max">
-            Digital Partner  <a href="https://digitalwebconnection.com/" target="_blank" rel="noopener noreferrer" className="text-[#3B82F6] hover:text-[#002ec7] transition-colors">Digital Web Connection</a>
+          <div className="text-[13px] md:text-[15px] text-white font-medium text-center z-10 md:absolute md:left-1/2 md:-translate-x-1/2 md:w-max">
+            Digital Partner <a href="https://digitalwebconnection.com/" target="_blank" rel="noopener noreferrer" className="text-[#3B82F6] hover:text-[#002ec7] transition-colors ml-1">Digital Web Connection</a>
           </div>
 
-          <div className="flex items-center gap-4 md:gap-8 text-[#3B82F6] text-[14px] font-medium z-10">
+          {/* Legal Links */}
+          <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-3 md:gap-6 text-[#3B82F6] text-[13px] md:text-[14px] font-medium z-10">
             <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <span className="w-1.25 h-1.25 rounded-full bg-[#3B82F6]" />
+            <span className="hidden sm:block w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
             <Link to="/terms-of-use" className="hover:text-white transition-colors">Terms of Use</Link>
-            <span className="w-1.25 h-1.25 rounded-full bg-[#3B82F6]" />
+            <span className="hidden sm:block w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
             <Link to="/refund-policy" className="hover:text-white transition-colors">Refund Policy</Link>
           </div>
         </div>
