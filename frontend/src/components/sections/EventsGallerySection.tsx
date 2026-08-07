@@ -159,7 +159,7 @@ export default function EventsGallerySection() {
             {/* Top Bar */}
             <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-linear-to-b from-black/80 to-transparent z-10">
               <div className="flex items-center gap-2 sm:gap-3">
-                <span className="text-xs font-mono font-bold tracking-widest text-[#0080C7] bg-[#0080C7]/10 border border-[#0080C7]/20 px-3 py-1.5 rounded">
+                <span className="text-xs font-mono font-bold tracking-widest text-[#3399FF] bg-[#0080C7]/10 border border-[#0080C7]/20 px-3 py-1.5 rounded">
                   {lightboxIndex + 1} / {filteredImages.length}
                 </span>
                 <span className="hidden sm:inline bg-white/10 text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded border border-white/5">
@@ -224,11 +224,11 @@ export default function EventsGallerySection() {
                   </h3>
                   <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-1 mt-1.5 sm:mt-2 text-[10.5px] sm:text-xs text-white/60 font-light">
                     <span className="flex items-center gap-1 sm:gap-1.5">
-                      <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#0080C7]" />
+                      <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#3399FF]" />
                       {filteredImages[lightboxIndex].location}
                     </span>
                     <span className="flex items-center gap-1 sm:gap-1.5">
-                      <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#0080C7]" />
+                      <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#3399FF]" />
                       {filteredImages[lightboxIndex].date}
                     </span>
                   </div>

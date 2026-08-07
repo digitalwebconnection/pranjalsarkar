@@ -28,8 +28,8 @@ export default function PostWeek5Section() {
               {/* Step 01 */}
               <div className="bg-[#0a0c10] border border-[#0080C7]/20 p-6 rounded-xl hover:border-[#0080C7]/70 hover:bg-[#0080C7]/10 transition-all duration-300 group shadow-[0_0_20px_rgba(0,128,199,0.15)] hover:shadow-[0_0_40px_rgba(0,128,199,0.4)] relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#0080C7] opacity-0 group-hover:opacity-20 blur-[50px] transition-opacity duration-500 rounded-full" />
-                <div className="text-[#0080C7] text-4xl font-serif font-bold mb-4 opacity-70 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_15px_rgba(0,128,199,0.5)] group-hover:drop-shadow-[0_0_25px_rgba(0,128,199,0.8)] relative z-10">01</div>
-                <h4 className="text-white text-lg font-bold mb-3 font-serif leading-snug drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] relative z-10">Understand the Business Challenge</h4>
+                <div className="text-[#3399FF] text-4xl font-serif font-bold mb-4 opacity-70 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_15px_rgba(0,128,199,0.5)] group-hover:drop-shadow-[0_0_25px_rgba(0,128,199,0.8)] relative z-10">01</div>
+                <h3 className="text-white text-lg font-bold mb-3 font-serif leading-snug drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] relative z-10">Understand the Business Challenge</h3>
                 <p className="text-gray-400 text-[14px] leading-relaxed font-sans group-hover:text-gray-200 transition-colors relative z-10">
                   The real company leadership introduces the business context, strategic challenge, expectations and constraints you will work within.
                 </p>
@@ -37,8 +37,8 @@ export default function PostWeek5Section() {
               {/* Step 02 */}
               <div className="bg-[#0a0c10] border border-[#0080C7]/20 p-6 rounded-xl hover:border-[#0080C7]/70 hover:bg-[#0080C7]/10 transition-all duration-300 group shadow-[0_0_20px_rgba(0,128,199,0.15)] hover:shadow-[0_0_40px_rgba(0,128,199,0.4)] relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#0080C7] opacity-0 group-hover:opacity-20 blur-[50px] transition-opacity duration-500 rounded-full" />
-                <div className="text-[#0080C7] text-4xl font-serif font-bold mb-4 opacity-70 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_15px_rgba(0,128,199,0.5)] group-hover:drop-shadow-[0_0_25px_rgba(0,128,199,0.8)] relative z-10">02</div>
-                <h4 className="text-white text-lg font-bold mb-3 font-serif leading-snug drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] relative z-10">Investigate and Build Your Point of View</h4>
+                <div className="text-[#3399FF] text-4xl font-serif font-bold mb-4 opacity-70 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_15px_rgba(0,128,199,0.5)] group-hover:drop-shadow-[0_0_25px_rgba(0,128,199,0.8)] relative z-10">02</div>
+                <h3 className="text-white text-lg font-bold mb-3 font-serif leading-snug drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] relative z-10">Investigate and Build Your Point of View</h3>
                 <p className="text-gray-400 text-[14px] leading-relaxed font-sans group-hover:text-gray-200 transition-colors relative z-10">
                   You study the real problem, gather evidence, work through incomplete information and decide what you believe the real company should do.
                 </p>
@@ -46,8 +46,8 @@ export default function PostWeek5Section() {
               {/* Step 03 */}
               <div className="bg-[#0a0c10] border border-[#0080C7]/20 p-6 rounded-xl hover:border-[#0080C7]/70 hover:bg-[#0080C7]/10 transition-all duration-300 group shadow-[0_0_20px_rgba(0,128,199,0.15)] hover:shadow-[0_0_40px_rgba(0,128,199,0.4)] relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#0080C7] opacity-0 group-hover:opacity-20 blur-[50px] transition-opacity duration-500 rounded-full" />
-                <div className="text-[#0080C7] text-4xl font-serif font-bold mb-4 opacity-70 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_15px_rgba(0,128,199,0.5)] group-hover:drop-shadow-[0_0_25px_rgba(0,128,199,0.8)] relative z-10">03</div>
-                <h4 className="text-white text-lg font-bold mb-3 font-serif leading-snug drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] relative z-10">Build Your Strategy With Your Judgment</h4>
+                <div className="text-[#3399FF] text-4xl font-serif font-bold mb-4 opacity-70 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_15px_rgba(0,128,199,0.5)] group-hover:drop-shadow-[0_0_25px_rgba(0,128,199,0.8)] relative z-10">03</div>
+                <h3 className="text-white text-lg font-bold mb-3 font-serif leading-snug drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] relative z-10">Build Your Strategy With Your Judgment</h3>
                 <p className="text-gray-400 text-[14px] leading-relaxed font-sans group-hover:text-gray-200 transition-colors relative z-10">
                   You develop your own strategy and document the decisions, trade-offs, risks and reasoning behind your recommendation.
                 </p>
@@ -55,8 +55,8 @@ export default function PostWeek5Section() {
               {/* Step 04 */}
               <div className="bg-[#0a0c10] border border-[#0080C7]/20 p-6 rounded-xl hover:border-[#0080C7]/70 hover:bg-[#0080C7]/10 transition-all duration-300 group shadow-[0_0_20px_rgba(0,128,199,0.15)] hover:shadow-[0_0_40px_rgba(0,128,199,0.4)] relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#0080C7] opacity-0 group-hover:opacity-20 blur-[50px] transition-opacity duration-500 rounded-full" />
-                <div className="text-[#0080C7] text-4xl font-serif font-bold mb-4 opacity-70 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_15px_rgba(0,128,199,0.5)] group-hover:drop-shadow-[0_0_25px_rgba(0,128,199,0.8)] relative z-10">04</div>
-                <h4 className="text-white text-lg font-bold mb-3 font-serif leading-snug drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] relative z-10">Face the Leadership Team and Defend Your Strategy</h4>
+                <div className="text-[#3399FF] text-4xl font-serif font-bold mb-4 opacity-70 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_15px_rgba(0,128,199,0.5)] group-hover:drop-shadow-[0_0_25px_rgba(0,128,199,0.8)] relative z-10">04</div>
+                <h3 className="text-white text-lg font-bold mb-3 font-serif leading-snug drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] relative z-10">Face the Leadership Team and Defend Your Strategy</h3>
                 <p className="text-gray-400 text-[14px] leading-relaxed font-sans group-hover:text-gray-200 transition-colors relative z-10">
                   You present your recommendation to real company leaders, respond to their questions and defend the judgment behind the decisions you made.
                 </p>
@@ -65,7 +65,7 @@ export default function PostWeek5Section() {
 
             <div className="bg-[#0a0c10] border border-[#0080C7]/40 p-6 md:p-8 rounded-xl text-center max-w-7xl mx-auto relative overflow-hidden group hover:border-[#0080C7]/80 transition-all duration-500 shadow-[0_0_40px_-10px_rgba(0,128,199,0.4)] hover:shadow-[0_0_60px_-5px_rgba(0,128,199,0.6)]">
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.25)_0%,transparent_70%)] pointer-events-none opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700" />
-              <h4 className="text-white font-serif text-2xl md:text-3xl font-bold mb-6 drop-shadow-[0_0_15px_rgba(0,128,199,0.8)] relative z-10">What You Walk Away With</h4>
+              <h3 className="text-white font-serif text-2xl md:text-3xl font-bold mb-6 drop-shadow-[0_0_15px_rgba(0,128,199,0.8)] relative z-10">What You Walk Away With</h3>
               <div className="flex flex-col md:flex-row justify-center items-start md:items-center gap-4 md:gap-12 relative z-10 w-fit mx-auto md:w-auto">
                 <div className="flex items-center gap-3">
                   <CheckCircle className="text-[#0080C7] drop-shadow-[0_0_8px_rgba(0,128,199,0.6)]" size={22} />

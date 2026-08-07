@@ -91,11 +91,15 @@ export default function MirrorSection() {
               <button
                 key={i}
                 onClick={() => setCurrentIndex(i)}
-                className={`w-2 h-2 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 focus:outline-none ${
-                  i === currentIndex ? "bg-[#00a8ff] w-8 md:w-8" : "bg-white/20 hover:bg-white/40"
-                }`}
+                className="p-2 md:p-3 focus:outline-none group flex items-center justify-center cursor-pointer"
                 aria-label={`Go to card ${i + 1}`}
-              />
+              >
+                <span 
+                  className={`h-2 md:h-2.5 rounded-full transition-all duration-300 ${
+                    i === currentIndex ? "bg-[#00a8ff] w-8 md:w-8" : "bg-white/20 group-hover:bg-white/40 w-2 md:w-2.5"
+                  }`}
+                />
+              </button>
             ))}
           </div>
         {/* Closing Copy */}

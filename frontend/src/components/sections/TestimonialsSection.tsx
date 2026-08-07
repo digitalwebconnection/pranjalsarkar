@@ -82,9 +82,9 @@ function TestimonialCard({ t, onExpandChange }: { t: typeof testimonials[0], onE
         <div className="flex flex-col flex-1 px-4 sm:px-6 text-center z-10">
           {/* Name & Location (Fixed height to keep card sizes equal) */}
           <div className="mb-4 h-15 flex flex-col justify-center">
-            <h4 className="font-sans text-white text-[18px] sm:text-[20px] tracking-widest uppercase mb-1 line-clamp-1">
+            <h3 className="font-sans text-white text-[18px] sm:text-[20px] tracking-widest uppercase mb-1 line-clamp-1">
               {t.name}
-            </h4>
+            </h3>
             <p className="text-white text-[10.5px] sm:text-[11px] font-bold tracking-wider line-clamp-1">
               {t.location}
             </p>
@@ -123,6 +123,7 @@ function TestimonialCard({ t, onExpandChange }: { t: typeof testimonials[0], onE
             href={t.linkedin}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`LinkedIn profile for ${t.name}`}
             className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-[#0a66c2] hover:bg-[#004182] rounded-full text-white transition-all duration-300 shadow-[0_4px_10px_rgba(0,0,0,0.8)]"
           >
             <Linkedin size={24} className="sm:hidden" />
@@ -197,6 +198,7 @@ export default function TestimonialsSection() {
         {/* Left Navigation Arrow */}
         <button
           onClick={scrollLeft}
+          aria-label="Previous testimonial"
           className="absolute left-1 sm:left-4 top-[45%] -translate-y-1/2 z-20 w-9 h-9 sm:w-12 sm:h-12 rounded-full border border-white/10 bg-[#050b14]/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a8ff]/20 hover:border-[#00a8ff]/50 hover:text-[#00a8ff] transition-all duration-300 shadow-[0_0_15px_rgba(0,168,255,0.1)] hover:shadow-[0_0_25px_rgba(0,168,255,0.3)] opacity-90 sm:opacity-100 disabled:opacity-50"
         >
           <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -235,6 +237,7 @@ export default function TestimonialsSection() {
         {/* Right Navigation Arrow */}
         <button
           onClick={scrollRight}
+          aria-label="Next testimonial"
           className="absolute right-1 sm:right-4 top-[45%] -translate-y-1/2 z-20 w-9 h-9 sm:w-12 sm:h-12 rounded-full border border-white/10 bg-[#050b14]/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a8ff]/20 hover:border-[#00a8ff]/50 hover:text-[#00a8ff] transition-all duration-300 shadow-[0_0_15px_rgba(0,168,255,0.1)] hover:shadow-[0_0_25px_rgba(0,168,255,0.3)] opacity-90 sm:opacity-100 disabled:opacity-50"
         >
           <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />

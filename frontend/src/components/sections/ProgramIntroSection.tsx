@@ -113,9 +113,9 @@ export default function ProgramIntroSection() {
 
                   {/* Text Container */}
                   <div className="text-center px-0 md:px-4 cursor-default">
-                    <h4 className="font-serif text-[10px] sm:text-xs md:text-2xl font-black text-white tracking-wider md:tracking-[0.15em] uppercase mb-2 group-hover:text-[#00a8ff] transition-colors duration-300 drop-shadow-md wrap-break-word">
+                    <h3 className="font-serif text-[10px] sm:text-xs md:text-2xl font-black text-white tracking-wider md:tracking-[0.15em] uppercase mb-2 group-hover:text-[#00a8ff] transition-colors duration-300 drop-shadow-md wrap-break-word">
                       {step.label}
-                    </h4>
+                    </h3>
                   </div>
                 </motion.div>
               );

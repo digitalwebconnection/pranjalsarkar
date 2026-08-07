@@ -99,7 +99,7 @@ export default function FinalCTASection() {
             <div className="flex-1 h-px bg-linear-to-l from-transparent to-[#0066FF]/50 relative max-w-8.75 sm:max-w-15 lg:hidden">
               <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-[#009CEE] rounded-full shadow-[0_0_12px_rgba(0,156,238,1)]" />
             </div>
-            <span className="text-[#0066FF] font-bold tracking-[0.15em] text-[10.5px] sm:text-xs md:text-lg uppercase text-center">
+            <span className="text-[#3399FF] font-bold tracking-[0.15em] text-[10.5px] sm:text-xs md:text-lg uppercase text-center">
               AI Product Leadership Studio
             </span>
             <div className="flex-1 h-px bg-linear-to-r from-transparent to-[#0066FF]/50 relative max-w-8.75 sm:max-w-15 lg:max-w-50">
@@ -145,7 +145,7 @@ export default function FinalCTASection() {
 
             {/* Feature 1 - Simulation-First Learning */}
             <div className="w-1/4 flex flex-col items-center text-center gap-2 md:gap-3 px-1 sm:px-2">
-              <div className="text-[#0066FF]">
+              <div className="text-[#3399FF]">
                 <PiTarget className=   "w-8 h-8 sm:w-10 sm:h-10 md:w-15 md:h-15" height="light" />
               </div>
               <span className="text-[9px] sm:text-[11px] md:text-[13px] text-gray-200 font-medium leading-[1.2] sm:leading-snug">Simulation-First<br />Learning</span>
@@ -153,7 +153,7 @@ export default function FinalCTASection() {
 
             {/* Feature 2 - Peer Cohort */}
             <div className="w-1/4 flex flex-col items-center text-center gap-2 md:gap-3 px-1 sm:px-2 border-l border-[#0066FF]/20">
-              <div className="text-[#0066FF]">
+              <div className="text-[#3399FF]">
                 <PiUsersThree className="w-8 h-8 sm:w-10 sm:h-10 md:w-15 md:h-15" height="light" />
               </div>
               <span className="text-[9px] sm:text-[11px] md:text-[13px] text-gray-200 font-medium leading-[1.2] sm:leading-snug">Peer Cohort of<br />Product Leaders</span>
@@ -161,7 +161,7 @@ export default function FinalCTASection() {
 
             {/* Feature 3 - Real Company Exposure */}
             <div className="w-1/4 flex flex-col items-center text-center gap-2 md:gap-3 px-1 sm:px-2 border-l border-[#0066FF]/20">
-              <div className="text-[#0066FF]">
+              <div className="text-[#3399FF]">
                 <PiBuildings className="w-8 h-8 sm:w-10 sm:h-10 md:w-15 md:h-15" height="light" />
               </div>
               <span className="text-[9px] sm:text-[11px] md:text-[13px] text-gray-200 font-medium leading-[1.2] sm:leading-snug">Real Company<br />Exposure</span>
@@ -169,7 +169,7 @@ export default function FinalCTASection() {
 
             {/* Feature 4 - Leadership Transformation */}
             <div className="w-1/4 flex flex-col items-center text-center gap-2 md:gap-3 px-1 sm:px-2 border-l border-[#0066FF]/20">
-              <div className="text-[#0066FF]">
+              <div className="text-[#3399FF]">
                 <PiChartLineUp className="w-8 h-8 sm:w-10 sm:h-10 md:w-15 md:h-15" height="light" />
               </div>
               <span className="text-[9px] sm:text-[11px] md:text-[13px] text-gray-200 font-medium leading-[1.2] sm:leading-snug">Leadership<br />Transformation</span>

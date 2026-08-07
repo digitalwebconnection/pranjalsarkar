@@ -80,18 +80,18 @@ export default function PhilosophySection() {
                         <div className="text-7xl font-serif font-extrabold text-transparent bg-clip-text bg-linear-to-b from-[#00a8ff] to-[#0044cc] mb-6 drop-shadow-[0_0_15px_rgba(0,168,255,0.4)]">
                           {activeCard.step}
                         </div>
-                        <h4 className="font-serif text-2xl md:text-4xl font-bold text-white mb-5 leading-tight">
+                        <h3 className="font-serif text-2xl md:text-4xl font-bold text-white mb-5 leading-tight">
                           {activeCard.title}
-                        </h4>
+                        </h3>
                         <p className="text-gray-300 text-base md:text-lg leading-relaxed">
                           {activeCard.desc}
                         </p>
                       </>
                     ) : (
                       <>
-                        <h4 className="font-serif text-3xl md:text-4xl font-bold text-white mb-5 leading-tight">
+                        <h3 className="font-serif text-3xl md:text-4xl font-bold text-white mb-5 leading-tight">
                           {activeCard.title}
-                        </h4>
+                        </h3>
                         <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-10">
                           {activeCard.desc}
                         </p>
@@ -113,6 +113,7 @@ export default function PhilosophySection() {
               <div className="flex justify-center items-center gap-6 mt-8">
                 <button 
                   onClick={prevCard}
+                  aria-label="Previous card"
                   className="w-12 h-12 rounded-full border border-white/10 bg-[#050b14]/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a8ff]/20 hover:border-[#00a8ff]/50 hover:text-[#00a8ff] transition-all duration-300 shadow-[0_0_15px_rgba(0,168,255,0.1)] hover:shadow-[0_0_25px_rgba(0,168,255,0.3)]"
                 >
                   <ChevronLeft size={24} />
@@ -122,6 +123,7 @@ export default function PhilosophySection() {
                 </div>
                 <button 
                   onClick={nextCard}
+                  aria-label="Next card"
                   className="w-12 h-12 rounded-full border border-white/10 bg-[#050b14]/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a8ff]/20 hover:border-[#00a8ff]/50 hover:text-[#00a8ff] transition-all duration-300 shadow-[0_0_15px_rgba(0,168,255,0.1)] hover:shadow-[0_0_25px_rgba(0,168,255,0.3)]"
                 >
                   <ChevronRight size={24} />

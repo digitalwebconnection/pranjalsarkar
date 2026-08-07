@@ -93,9 +93,9 @@ export default function JudgementSection() {
 
                   <div className="pt-6 lg:pt-0">
                     {/* Transformation Expected */}
-                    <h4 className="text-[#0080C7] text-[16px] font-bold uppercase tracking-widest mb-3 font-mono drop-shadow-[0_0_5px_rgba(0,128,199,0.3)]">
+                    <h3 className="text-[#3399FF] text-[16px] font-bold uppercase tracking-widest mb-3 font-mono drop-shadow-[0_0_5px_rgba(0,128,199,0.3)]">
                       Transformation Expected:
-                    </h4>
+                    </h3>
                     <p className="text-gray-300 text-[14px] md:text-[18px] leading-relaxed font-sans italic border-l-2 border-[#0080C7]/40 pl-4 py-1 bg-linear-to-r from-[#0080C7]/5 to-transparent">
                       {s.transformation}
                     </p>
@@ -110,9 +110,9 @@ export default function JudgementSection() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-x-10 md:gap-y-8">
                       {s.curriculum.map((cur, idx) => (
                         <div key={idx} className="flex flex-col bg-[#0f1624] md:bg-transparent p-5 md:p-0 rounded-xl md:rounded-none border border-[#0080C7]/20 md:border-transparent shadow-lg md:shadow-none relative">
-                          <h4 className="text-white font-serif font-bold text-[17px] leading-tight mb-2 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]">
+                          <h3 className="text-white font-serif font-bold text-[17px] leading-tight mb-2 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]">
                             {cur.category}
-                          </h4>
+                          </h3>
                           <div className="mb-4 block max-w-[95%]">
                             {(() => {
                               const parts = cur.meta.split('. ');
@@ -124,7 +124,7 @@ export default function JudgementSection() {
                                     {goal}
                                   </span>
                                   {specs && (
-                                    <span className="text-[11px] md:text-[18px] tracking-wider text-[#0080C7]">
+                                    <span className="text-[11px] md:text-[18px] tracking-wider text-[#3399FF]">
                                       {specs}
                                     </span>
                                   )}

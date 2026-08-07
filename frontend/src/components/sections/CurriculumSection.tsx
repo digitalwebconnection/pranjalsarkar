@@ -170,7 +170,7 @@ export default function dCurriculumSection() {
                       Clock,
                     };
                     const IconComponent = iconMap[modules[activeTab].iconName] || Calendar;
-                    return <IconComponent className="w-12 h-12 text-[#0080C7] drop-shadow-[0_0_8px_rgba(0,128,199,0.5)]" strokeWidth={1.5} />;
+                    return <IconComponent className="w-12 h-12 text-[#3399FF] drop-shadow-[0_0_8px_rgba(0,128,199,0.5)]" strokeWidth={1.5} />;
                   })()}
                 </div>
 
