@@ -1,21 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { BookOpen, Target, Video, Box, Layers, Users } from 'lucide-react';
 
 import { modules } from '../../constants/curriculumData';
 
 export default function dCurriculumSection() {
   const [activeTab, setActiveTab] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
-  useEffect(() => {
-    if (isPaused) return;
-
-    const interval = setInterval(() => {
-      setActiveTab((prev) => (prev + 1) % modules.length);
-    }, 6000);
-
-    return () => clearInterval(interval);
-  }, [isPaused]);
 
   return (
     <section id="curriculum" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 bg-[#010308]">
@@ -90,11 +79,7 @@ export default function dCurriculumSection() {
         </div>
 
         {/* Desktop Split-Screen Dashboard & Mobile Tabbed View */}
-        <div
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
           {/* Mobile Horizontal Navigation Tabs */}
           <div className="lg:hidden flex overflow-x-auto gap-2 pb-4 scrollbar-none snap-x">

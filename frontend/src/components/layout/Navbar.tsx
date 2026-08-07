@@ -118,7 +118,9 @@ export default function Navbar() {
                   </Link>
                 );
               })}
-                 {/* ── Right: CTA + Hamburger ── */}
+            </div>
+
+            {/* ── Right: CTA + Hamburger ── */}
             <div className="flex justify-end items-center shrink-0">
               {/* Desktop CTA */}
               <Link
@@ -160,12 +162,7 @@ export default function Navbar() {
                 />
               </button>
             </div>
-            </div>  
-
-         
-
           </div>
-
         </nav>
       </div>
 

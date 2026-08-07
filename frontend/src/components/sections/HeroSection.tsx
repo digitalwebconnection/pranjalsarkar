@@ -15,10 +15,10 @@ export default function HeroSection() {
 
       {/* ── Content ── */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-6 flex flex-col justify-center flex-1 gap-0">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-5 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-5 items-stretch">
 
           {/* Left Column - Content */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left self-center">
+          <div className="order-2 lg:order-1 lg:col-span-7 flex flex-col items-start text-left self-center mt-0">
             <div
               className={`w-full transition-all duration-300 ease-out ${fading ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
                 }`}
@@ -48,7 +48,7 @@ export default function HeroSection() {
               <div className="flex flex-col gap-2 justify-start pt-4 pb-4">
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center gap-1.5 px-8 py-3.5 rounded-md text-white text-[14px] lg:text-[15px] font-bold tracking-wide no-underline transition-all duration-200 bg-linear-to-r from-[#0080C7] to-[rgba(24,37,226,0.9)] shadow-[0_0_20px_rgba(24,37,226,0.4)] hover:from-[#00a8ff] hover:to-[rgba(24,37,226,1)] hover:shadow-[0_0_30px_rgba(24,37,226,0.6)] hover:-translate-y-0.5 w-fit"
+                  className="inline-flex items-center justify-center gap-1.5 px-8 py-3.5 rounded-md text-white text-[14px] lg:text-[15px] font-bold tracking-wide no-underline transition-all duration-200 bg-linear-to-r from-[#0080C7] to-[rgba(24,37,226,0.9)] shadow-[0_0_20px_rgba(24,37,226,0.4)] hover:from-[#00a8ff] hover:to-[rgba(24,37,226,1)] hover:shadow-[0_0_30px_rgba(24,37,226,0.6)] hover:-translate-y-0.5 w-full md:w-fit"
                 >
                   Submit Interview Request <span className="text-[14px] lg:text-[15px] font-bold">→</span>
                 </a>
@@ -70,7 +70,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right Column - Image of Pranjal Sarkar */}
-          <div className="lg:col-span-5 mt-12 lg:mt-0 flex justify-center lg:justify-end relative self-end translate-y-4 lg:translate-y-8">
+          <div className="order-1 lg:order-2 lg:col-span-5 flex justify-center lg:justify-end relative self-end translate-y-0 lg:translate-y-8">
             {/* Background Radial Glow & Concentric Circles */}
             <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none translate-x-12 translate-y-12">
               <div className="absolute w-[140%] aspect-square rounded-full bg-[radial-gradient(circle_at_center,rgba(0,128,199,0.25)_0%,transparent_60%)] blur-[20px]" />
@@ -107,7 +107,7 @@ export default function HeroSection() {
                 {/* <div className="w-10 h-10 rounded-full bg-linear-to-b from-[#2563EB]/20 to-transparent border border-t-[#2563EB]/60 border-b-transparent border-x-transparent flex items-center justify-center mb-2 text-[#2563EB] shadow-[inset_0_1px_5px_rgba(37,99,235,0.2)]">
                     <st.icon size={18} strokeWidth={2} className="drop-shadow-[0_0_5px_rgba(37,99,235,0.4)]" />
                 </div> */}
-                <span className="font-sans font-bold text-2xl md:text-8xl leading-none mb-1.5 text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
+                <span className="font-sans font-bold text-5xl md:text-8xl leading-none mb-1.5 text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
                   {st.num}
                 </span>
                 <span className="text-white text-xs md:text-sm font-medium tracking-wide text-center">

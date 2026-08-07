@@ -21,7 +21,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from '../../constants/testimonialsData';
 
 
-function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
+function TestimonialCard({ t, onExpandChange }: { t: typeof testimonials[0], onExpandChange?: (expanded: boolean) => void }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isTruncated, setIsTruncated] = useState(false);
   const textRef = useRef<HTMLParagraphElement>(null);
@@ -33,7 +33,7 @@ function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
     if (l.includes("sweden")) return "se";
     if (l.includes("south africa")) return "za";
     if (l.includes("germany")) return "de";
-    return ""; 
+    return "";
   };
 
   useEffect(() => {
@@ -58,22 +58,22 @@ function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
   return (
     <div className="shrink-0 px-3 py-6 flex" style={{ width: '340px' }}>
       <div className="relative flex flex-col h-full w-full bg-[#080d1a] pb-12 shadow-[0_0_35px_rgba(0,168,255,0.25)] border border-[#00a8ff]/20 rounded-xl overflow-visible transition-all duration-300 hover:shadow-[0_0_50px_rgba(0,168,255,0.4)] hover:-translate-y-1">
-        
+
         {/* Upper Half: Image with Blue Border */}
         <div className="w-full shrink-0 h-70  pb-0">
-           <div className="w-full h-full border border-[#00a8ff]/30 rounded-t-xl overflow-hidden shadow-[0_0_15px_rgba(0,168,255,0.1)]">
-             <img src={t.image} alt={t.name} className="w-full h-full object-fill object-top" loading="lazy" />
-           </div>
+          <div className="w-full h-full border border-[#00a8ff]/30 rounded-t-xl overflow-hidden shadow-[0_0_15px_rgba(0,168,255,0.1)]">
+            <img src={t.image} alt={t.name} className="w-full h-full object-fill object-top" loading="lazy" />
+          </div>
         </div>
 
         {/* Flag Icon */}
         <div className="flex justify-center mt-3 mb-2 h-6">
           {flagCode && (
-            <img 
-              src={`https://flagcdn.com/w40/${flagCode}.png`} 
-              width="28" 
-              alt="flag" 
-              className="drop-shadow-sm object-contain" 
+            <img
+              src={`https://flagcdn.com/w40/${flagCode}.png`}
+              width="28"
+              alt="flag"
+              className="drop-shadow-sm object-contain"
             />
           )}
         </div>
@@ -90,15 +90,10 @@ function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
             </p>
           </div>
 
-          {/* Quote (Fixed Height container to keep card sizes equal) */}
-          <div className="relative mb-2 text-left flex flex-col h-37.5">
-            <div className={`relative z-10 flex-1 ${isExpanded ? 'overflow-y-auto pr-1' : 'overflow-hidden'}`}>
-              <style>{`
-                .overflow-y-auto::-webkit-scrollbar { width: 4px; }
-                .overflow-y-auto::-webkit-scrollbar-track { background: transparent; }
-                .overflow-y-auto::-webkit-scrollbar-thumb { background: #555; border-radius: 4px; }
-              `}</style>
-              <p 
+          {/* Quote (Dynamic Height container) */}
+          <div className={`relative mb-2 text-left flex flex-col transition-all duration-300 ${!isExpanded ? 'h-[160px]' : ''}`}>
+            <div className="relative z-10 flex-1 overflow-hidden">
+              <p
                 ref={textRef}
                 className={`text-gray-300 text-[11px] leading-loose ${!isExpanded ? 'line-clamp-6' : ''}`}
               >
@@ -107,9 +102,13 @@ function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
             </div>
             {(isTruncated || isExpanded) && (
               <div className="text-right mt-1 shrink-0">
-                <button 
-                  onClick={() => setIsExpanded(!isExpanded)}
-                  className="text-white text-[12px] font-bold tracking-wide hover:text-gray-300 transition-colors"
+                <button
+                  onClick={() => {
+                    const next = !isExpanded;
+                    setIsExpanded(next);
+                    if (onExpandChange) onExpandChange(next);
+                  }}
+                  className="text-white text-[12px] font-bold tracking-wide hover:text-gray-300 transition-colors cursor-pointer"
                 >
                   {isExpanded ? 'Read Less' : 'Read More'}
                 </button>
@@ -117,13 +116,13 @@ function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
             )}
           </div>
         </div>
-        
+
         {/* Prominent LinkedIn Icon overlapping bottom */}
         <div className="absolute -bottom-7 left-1/2 -translate-x-1/2">
-          <a 
-            href={t.linkedin} 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href={t.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center justify-center w-14 h-14 bg-[#0a66c2] hover:bg-[#004182] rounded-full text-white transition-all duration-300 shadow-[0_4px_10px_rgba(0,0,0,0.8)]"
           >
             <Linkedin size={28} />
@@ -136,6 +135,21 @@ function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
 
 export default function TestimonialsSection() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const expandedCountRef = useRef(0);
+  const isHoveringRef = useRef(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (isHoveringRef.current || expandedCountRef.current > 0 || !scrollContainerRef.current) return;
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      if (scrollLeft + clientWidth >= scrollWidth - 10) {
+        scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        scrollContainerRef.current.scrollBy({ left: 340, behavior: 'smooth' });
+      }
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -168,12 +182,18 @@ export default function TestimonialsSection() {
       </div>
 
       {/* Manual Scrolling Track with side arrows */}
-      <div className="relative w-full z-10 max-w-7xl mx-auto px-2 sm:px-8  group">
+      <div 
+        className="relative w-full z-10 max-w-7xl mx-auto px-2 sm:px-8 group"
+        onMouseEnter={() => { isHoveringRef.current = true; }}
+        onMouseLeave={() => { isHoveringRef.current = false; }}
+        onTouchStart={() => { isHoveringRef.current = true; }}
+        onTouchEnd={() => { isHoveringRef.current = false; }}
+      >
 
         {/* Left Navigation Arrow */}
         <button
           onClick={scrollLeft}
-          className="absolute left-0 sm:left-4 top-[45%] -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 bg-[#050b14]/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a8ff]/20 hover:border-[#00a8ff]/50 hover:text-[#00a8ff] transition-all duration-300 shadow-[0_0_15px_rgba(0,168,255,0.1)] hover:shadow-[0_0_25px_rgba(0,168,255,0.3)] opacity-0 group-hover:opacity-100 disabled:opacity-50"
+          className="absolute left-0 sm:left-4 top-[45%] -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 bg-[#050b14]/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a8ff]/20 hover:border-[#00a8ff]/50 hover:text-[#00a8ff] transition-all duration-300 shadow-[0_0_15px_rgba(0,168,255,0.1)] hover:shadow-[0_0_25px_rgba(0,168,255,0.3)] opacity-100 disabled:opacity-50"
         >
           <ChevronLeft size={24} />
         </button>
@@ -187,7 +207,7 @@ export default function TestimonialsSection() {
         >
           <div
             ref={scrollContainerRef}
-            className="flex gap-4 overflow-x-auto snap-x snap-mandatory py-5 px-6 md:px-12 scroll-smooth"
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory py-5 px-6 md:px-12 scroll-smooth items-start"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <style>{`
@@ -196,7 +216,13 @@ export default function TestimonialsSection() {
 
             {testimonials.map((t, idx) => (
               <div className="snap-start shrink-0" key={idx}>
-                <TestimonialCard t={t} />
+                <TestimonialCard 
+                  t={t} 
+                  onExpandChange={(expanded) => {
+                    if (expanded) expandedCountRef.current += 1;
+                    else expandedCountRef.current = Math.max(0, expandedCountRef.current - 1);
+                  }}
+                />
               </div>
             ))}
           </div>
@@ -205,7 +231,7 @@ export default function TestimonialsSection() {
         {/* Right Navigation Arrow */}
         <button
           onClick={scrollRight}
-          className="absolute right-0 sm:right-4 top-[45%] -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 bg-[#050b14]/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a8ff]/20 hover:border-[#00a8ff]/50 hover:text-[#00a8ff] transition-all duration-300 shadow-[0_0_15px_rgba(0,168,255,0.1)] hover:shadow-[0_0_25px_rgba(0,168,255,0.3)] opacity-0 group-hover:opacity-100 disabled:opacity-50"
+          className="absolute right-0 sm:right-4 top-[45%] -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 bg-[#050b14]/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a8ff]/20 hover:border-[#00a8ff]/50 hover:text-[#00a8ff] transition-all duration-300 shadow-[0_0_15px_rgba(0,168,255,0.1)] hover:shadow-[0_0_25px_rgba(0,168,255,0.3)] opacity-100 disabled:opacity-50"
         >
           <ChevronRight size={24} />
         </button>

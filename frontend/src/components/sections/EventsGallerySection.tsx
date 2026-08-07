@@ -30,36 +30,10 @@ export default function EventsGallerySection() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const sliderRef = useRef<HTMLDivElement>(null);
-  const isHoveringRef = useRef<boolean>(false);
-
 
   const filteredImages = selectedTag === 'All'
     ? EVENT_IMAGES
     : EVENT_IMAGES.filter((img) => img.tag === selectedTag);
-
-  // Autoplay functionality shifting right to left
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (isHoveringRef.current) return;
-      if (sliderRef.current) {
-        const container = sliderRef.current;
-        const card = container.firstElementChild as HTMLElement;
-        if (!card) return;
-
-        const cardWidth = card.offsetWidth;
-        const gap = 16;
-        const maxScroll = container.scrollWidth - container.clientWidth;
-
-        if (container.scrollLeft >= maxScroll - 15) {
-          // Wrap back to beginning
-          container.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          container.scrollBy({ left: cardWidth + gap, behavior: 'smooth' });
-        }
-      }
-    }, 3500);
-    return () => clearInterval(interval);
-  }, []);
 
   // Reset scroll when changing filters
   useEffect(() => {
@@ -133,8 +107,6 @@ export default function EventsGallerySection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            onMouseEnter={() => { isHoveringRef.current = true; }}
-            onMouseLeave={() => { isHoveringRef.current = false; }}
             className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-4"
           >
             <AnimatePresence mode="popLayout">

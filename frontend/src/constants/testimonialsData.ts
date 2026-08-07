@@ -61,7 +61,7 @@ export const testimonials = [
       "It has been around five to six weeks, and he is really an amazing human being and a good mentor. He keeps you encouraged and motivated throughout the process. There are certain times when you feel this is very difficult and you wonder how you will accomplish your goals, and he helps you understand your individual goals and encourages you to work toward them. And not just during the sessions, whenever we were doing assignments and got stuck anywhere, we could get in touch with him anytime. He was always available.",
   },
   {
-    name: "Krishna Kamal Katarla",
+    name: "Krishna Kamal",
     location: "Bengaluru, Karnataka, India",
     linkedin: "https://www.linkedin.com/in/krishna-kamal-katarla-850b8849/",
     image: krishnaImg,

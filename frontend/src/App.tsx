@@ -81,14 +81,14 @@ function LandingPage() {
           {/* 12. Curriculum — #11 */}
           <CurriculumSection />
 
+          {/* 15. Final CTA — #13 */}
+          <FinalCTASection />
+
           {/*13  Events & Speaking Gallery Section */}
           <EventsGallerySection />
 
           {/* 14. FAQ — #12 */}
           <FAQSection />
-
-          {/* 15. Final CTA — #13 */}
-          <FinalCTASection />
 
           {/* 16. Contact / Apply — #14 */}
           <ContactSection />
