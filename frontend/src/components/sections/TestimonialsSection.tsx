@@ -187,7 +187,7 @@ export default function TestimonialsSection() {
 
       {/* Manual Scrolling Track with side arrows */}
       <div 
-        className="relative w-full z-10 max-w-7xl mx-auto px-2 sm:px-8 group"
+        className="relative w-full z-10 max-w-7xl mx-auto px-4 sm:px-8 group"
         onMouseEnter={() => { isHoveringRef.current = true; }}
         onMouseLeave={() => { isHoveringRef.current = false; }}
         onTouchStart={() => { isHoveringRef.current = true; }}

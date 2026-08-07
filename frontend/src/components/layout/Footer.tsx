@@ -37,7 +37,7 @@ const footerLinkHashes: Record<string, string> = {
 export default function Footer() {
   return (
     <footer className="bg-[#000000] pt-6 pb-6">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
 
         {/* Top Section: Brand + Links */}
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-0 mb-6">

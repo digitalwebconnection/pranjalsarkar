@@ -14,7 +14,7 @@ export default function HeroSection() {
       </div>
 
       {/* ── Content ── */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-6 flex flex-col justify-center flex-1 gap-0">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6 flex flex-col justify-center flex-1 gap-0">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-5 items-stretch">
 
           {/* Left Column - Content */}
@@ -97,17 +97,15 @@ export default function HeroSection() {
         </div>
 
         {/* Trust Stats Container - Box with Glow */}
-        <div className="flex flex-col w-full max-w-7xl mt-16 lg:mt-0 mb-4 relative z-20 gap-4">
+        <div className="flex flex-col w-full max-w-7xl mt-1 lg:mt-0 mb-4 relative z-20 gap-4">
           <div className="grid grid-cols-2 md:grid-cols-4 bg-[#0a0e17]/80 backdrop-blur-md border border-white/5 rounded-xl shadow-xl overflow-hidden">
             {stats.map((st, i) => (
               <div
                 key={i}
                 className={`flex flex-col items-center justify-center py-5 px-4 cursor-default border-white/5 ${i % 2 !== 0 ? 'border-l' : ''} ${i > 0 ? 'md:border-l' : ''} ${i >= 2 ? 'border-t md:border-t-0' : ''}`}
               >
-                {/* <div className="w-10 h-10 rounded-full bg-linear-to-b from-[#2563EB]/20 to-transparent border border-t-[#2563EB]/60 border-b-transparent border-x-transparent flex items-center justify-center mb-2 text-[#2563EB] shadow-[inset_0_1px_5px_rgba(37,99,235,0.2)]">
-                    <st.icon size={18} strokeWidth={2} className="drop-shadow-[0_0_5px_rgba(37,99,235,0.4)]" />
-                </div> */}
-                <span className="font-sans font-bold text-5xl md:text-8xl leading-none mb-1.5 text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
+                
+                <span className="font-sans font-bold text-6xl md:text-8xl leading-none mb-1.5 text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
                   {st.num}
                 </span>
                 <span className="text-white text-xs md:text-sm font-medium tracking-wide text-center">

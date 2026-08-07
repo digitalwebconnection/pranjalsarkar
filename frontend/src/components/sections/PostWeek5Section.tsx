@@ -3,7 +3,7 @@ import { CheckCircle } from 'lucide-react';
 export default function PostWeek5Section() {
   return (
     <section id="post-week-5" className="relative pb-8 md:pb-14 overflow-hidden border-b border-white/8 bg-[#000001]">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         <div className="relative z-20 mt-5">
           {/* Background Ambient Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#0044cc] opacity-10 blur-[150px] rounded-full pointer-events-none" />

@@ -12,9 +12,7 @@ export default function RefundPolicy() {
       {/* Background ambient lighting */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-64 bg-[#0080C7] blur-[150px] opacity-20 pointer-events-none z-0" />
       
-      <div className="relative z-10 w-full">
-        <Navbar />
-      </div>
+      <Navbar />
 
       <main className="flex-1 relative z-10 pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6 md:px-12 max-w-4xl mx-auto w-full">
         <div className="text-center mb-8 sm:mb-12">

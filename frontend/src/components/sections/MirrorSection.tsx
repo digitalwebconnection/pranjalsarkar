@@ -26,7 +26,7 @@ export default function MirrorSection() {
         <div className="absolute top-[-15%] left-[-10%] w-[80%] md:w-[60%] h-[80%] bg-[radial-gradient(ellipse_at_top_left,rgba(37,99,235,0.5)_0%,rgba(30,64,175,0.3)_30%,transparent_70%)] blur-[80px]" />
         <div className="absolute top-[-5%] left-[-5%] w-[50%] h-[50%] bg-[radial-gradient(circle_at_top_left,rgba(0,168,255,0.2)_0%,transparent_50%)] blur-[60px]" />
       </div>
-      <div className="max-w-7xl mx-auto px-6 md:px-4">
+      <div className="max-w-7xl mx-auto px-4 md:px-4">
 
         {/* Header */}
         <div className="max-w-6xl mx-auto text-center mb-10">

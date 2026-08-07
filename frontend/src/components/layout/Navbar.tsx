@@ -82,10 +82,10 @@ export default function Navbar() {
   return (
     <>
       {/* ── Floating Fixed Navbar ── */}
-      <div className="fixed top-4 left-0 right-0 z-50 flex justify-center pointer-events-none px-4">
+      <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
         <nav
           className={[
-            'w-[98%] max-w-7xl pointer-events-auto transition-all duration-300 rounded-xl h-18 border',
+            'w-[98%] max-w-7xl transition-all duration-300 rounded-xl h-18 border',
             scrolled
               ? 'bg-[#0A101F]/90 backdrop-blur-md border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.4)]'
               : 'bg-[#0A101F]/80 backdrop-blur-sm border-white/5',
@@ -169,8 +169,8 @@ export default function Navbar() {
       {/* ── Mobile menu overlay ── */}
       <div
         className={[
-          'fixed inset-0 bg-[#0A101F]/80 backdrop-blur-sm z-60 lg:hidden transition-opacity duration-300',
-          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          'fixed inset-0 bg-[#0A101F]/80 backdrop-blur-sm z-60 lg:hidden transition-all duration-300',
+          menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         ].join(' ')}
         onClick={() => setMenuOpen(false)}
       />

@@ -48,7 +48,7 @@ export default function ProgramIntroSection() {
       <div className="absolute top-0 left-0 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_top_left,rgba(0,128,199,0.15)_0%,transparent_60%)] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[70%] h-[70%] z-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(0,128,199,0.1)_0%,transparent_60%)] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
 
         {/* Section Header */}
         <motion.div
@@ -124,7 +124,7 @@ export default function ProgramIntroSection() {
         </div>
 
         {/* Leadership Details Section */}
-        <div className="max-w-7xl mx-auto px-0 mb-5 relative z-10 space-y-8">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 mb-5 relative z-10 space-y-8">
           {leadershipDetails.map((detail, index) => (
             <motion.div
               key={index}
@@ -182,7 +182,7 @@ export default function ProgramIntroSection() {
 
         {/* Video Block */}
         <motion.div
-          className="max-w-7xl mx-auto px-0 relative z-10"
+          className="max-w-7xl mx-auto px-4 md:px-8 relative z-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}

@@ -4,7 +4,7 @@ import { stages } from '../../constants/judgementData';
 
 export default function JudgementSection() {
   return (
-    <section id="simulation" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 bg-[#000001]">
+    <section id="simulation" className="relative py-4 md:py-14 overflow-hidden border-b border-white/8 bg-[#000001]">
       {/* Background Decorative Gradients */}
       {/* Background Decorative Wavy Dots & Glow */}
       <div className="absolute top-0 right-0 w-150 h-150 md:w-225 md:h-225 opacity-80 pointer-events-none z-0"
@@ -19,11 +19,11 @@ export default function JudgementSection() {
       <div className="absolute top-0 right-0 w-[50%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,68,204,0.4)_0%,transparent_60%)] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,128,199,0.1)_0%,transparent_60%)] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
 
         {/* Header */}
-        <div className="max-w-6xl mx-auto text-center justify-center mb-5">
-          <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-5xl leading-tight tracking-tight text-white mb-8">
+        <div className="max-w-6xl mx-auto text-center justify-center mb-0">
+          <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-5xl leading-tight tracking-tight text-white mb-4">
             What You Learn<br />
             <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
               Each Week

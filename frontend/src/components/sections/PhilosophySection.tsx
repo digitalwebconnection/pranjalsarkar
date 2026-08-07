@@ -17,7 +17,7 @@ export default function PhilosophySection() {
       <div className="absolute top-[-5%] right-[-10%] w-[60%] h-[80%] z-0 bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.45)_0%,transparent_70%)] blur-[90px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,128,199,0.15)_0%,transparent_60%)] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
           {/* Left Column: Typography, Manifesto & CTA */}
@@ -45,7 +45,7 @@ export default function PhilosophySection() {
             {/* See How It Works CTA Button */}
             <a
               href="#program"
-              className="group inline-flex justify-center items-center gap-2.5 px-10 py-4 bg-linear-to-r from-[#0080C7] to-[rgba(24,37,226,0.9)] rounded-full text-white font-bold text-sm transition-all duration-300 hover:from-[#00a8ff] hover:to-[rgba(24,37,226,1)] shadow-[0_0_20px_rgba(24,37,226,0.4)] hover:shadow-[0_0_30px_rgba(24,37,226,0.6)] hover:-translate-y-0.5 cursor-pointer self-start"
+              className="group flex sm:inline-flex w-full sm:w-auto justify-center items-center gap-2.5 px-10 py-4 bg-linear-to-r from-[#0080C7] to-[rgba(24,37,226,0.9)] rounded-full text-white font-bold text-sm transition-all duration-300 hover:from-[#00a8ff] hover:to-[rgba(24,37,226,1)] shadow-[0_0_20px_rgba(24,37,226,0.4)] hover:shadow-[0_0_30px_rgba(24,37,226,0.6)] hover:-translate-y-0.5 cursor-pointer self-center sm:self-start"
             >
               Submit Interview Request
               <svg
