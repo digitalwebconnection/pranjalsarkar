@@ -113,7 +113,7 @@ export default function ProgramIntroSection() {
 
                   {/* Text Container */}
                   <div className="text-center px-0 md:px-4 cursor-default">
-                    <h4 className="font-serif text-[10px] sm:text-xs md:text-2xl font-black text-white tracking-wider md:tracking-[0.15em] uppercase mb-2 group-hover:text-[#00a8ff] transition-colors duration-300 drop-shadow-md break-words">
+                    <h4 className="font-serif text-[10px] sm:text-xs md:text-2xl font-black text-white tracking-wider md:tracking-[0.15em] uppercase mb-2 group-hover:text-[#00a8ff] transition-colors duration-300 drop-shadow-md wrap-break-word">
                       {step.label}
                     </h4>
                   </div>
@@ -124,7 +124,7 @@ export default function ProgramIntroSection() {
         </div>
 
         {/* Leadership Details Section */}
-        <div className="max-w-7xl mx-auto px-0 mb-12 relative z-10 space-y-8">
+        <div className="max-w-7xl mx-auto px-0 mb-5 relative z-10 space-y-8">
           {leadershipDetails.map((detail, index) => (
             <motion.div
               key={index}
@@ -191,10 +191,10 @@ export default function ProgramIntroSection() {
             visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
           }}
         >
-          <div className="max-w-full mx-auto flex flex-col items-center h-75 md:h-125 lg:h-150">
+          <div className="max-w-full mx-auto flex flex-col items-center h-58 md:h-125 lg:h-150">
             {/* Video Placeholder */}
             <div
-              className="w-full aspect-video rounded-lg bg-[#0a0e17] border border-white/10 shadow-[0_0_40px_rgba(24,37,226,0.15)] relative overflow-hidden flex items-center justify-center group cursor-pointer mb-12"
+              className="w-full aspect-video rounded-lg bg-[#0a0e17] border border-white/10 shadow-[0_0_40px_rgba(24,37,226,0.15)] relative overflow-hidden flex items-center justify-center group cursor-pointer mb-5"
               onClick={toggleVideo}
             >
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,168,255,0.05)_0%,transparent_70%)] pointer-events-none z-10" />

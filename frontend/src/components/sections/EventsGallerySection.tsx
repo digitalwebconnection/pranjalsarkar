@@ -70,7 +70,7 @@ export default function EventsGallerySection() {
 
       {/* Background glow */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
-        <div className="absolute -top-10 sm:-top-25 left-[50%] -translate-x-1/2 w-[150%] sm:w-200 h-[300px] sm:h-200 bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.15)_0%,transparent_60%)] blur-[30px] sm:blur-[50px]" />
+        <div className="absolute -top-10 sm:-top-25 left-[50%] -translate-x-1/2 w-[150%] sm:w-200 h-75 sm:h-200 bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.15)_0%,transparent_60%)] blur-[30px] sm:blur-[50px]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
@@ -120,7 +120,7 @@ export default function EventsGallerySection() {
                     const fullIndex = filteredImages.findIndex((fi) => fi.src === img.src);
                     setLightboxIndex(fullIndex);
                   }}
-                  className="group snap-start shrink-0 w-[85%] sm:w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] lg:w-[calc(25%-12px)] relative aspect-[4/3] sm:aspect-square rounded-xl overflow-hidden bg-neutral-900 border border-white/8 hover:border-[#0080C7]/40 shadow-lg hover:shadow-[0_0_20px_rgba(0,128,199,0.25)] cursor-pointer transition-all duration-500 ease-out"
+                  className="group snap-start shrink-0 w-[85%] sm:w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] lg:w-[calc(25%-12px)] relative aspect-4/3 sm:aspect-square rounded-xl overflow-hidden bg-neutral-900 border border-white/8 hover:border-[#0080C7]/40 shadow-lg hover:shadow-[0_0_20px_rgba(0,128,199,0.25)] cursor-pointer transition-all duration-500 ease-out"
                 >
                   {/* Image */}
                   <img

@@ -214,7 +214,7 @@ export default function AboutSection() {
           <div className="w-40 sm:w-64 md:w-96 h-0.5 mx-auto bg-linear-to-r from-transparent via-[#0080C7] to-transparent shadow-[0_0_15px_rgba(0,128,199,0.8)]"></div>
         </div>
 
-        <div className="max-w-5xl mx-auto flex flex-col items-center mt-6 md:mt-8">
+        <div className="max-w-7xl mx-auto flex flex-col items-center mt-6 md:mt-8">
           {/* Video Placeholder */}
           <div
             className="w-full aspect-video rounded-xl bg-[#0a0e17] border border-white/10 shadow-[0_0_40px_rgba(24,37,226,0.15)] relative overflow-hidden flex items-center justify-center group cursor-pointer mb-6"

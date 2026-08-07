@@ -44,7 +44,7 @@ export default function MirrorSection() {
         <div 
           className="relative max-w-7xl mx-auto mt-4 z-10"
         >
-          <div className="group relative rounded-xl p-px bg-linear-to-br from-[#00a8ff]/90 via-white/10 to-white/10 shadow-[0_0_20px_rgba(0,0,0,0.3)] transition-all duration-500 ease-out hover:shadow-[0_0_30px_rgba(0,128,199,0.15)] hover:via-white/20 hover:to-white/20 flex flex-col min-h-[480px] sm:min-h-[380px] md:min-h-[320px] lg:min-h-[280px]">
+          <div className="group relative rounded-xl p-px bg-linear-to-br from-[#00a8ff]/90 via-white/10 to-white/10 shadow-[0_0_20px_rgba(0,0,0,0.3)] transition-all duration-500 ease-out hover:shadow-[0_0_30px_rgba(0,128,199,0.15)] hover:via-white/20 hover:to-white/20 flex flex-col min-h-120 sm:min-h-95 md:min-h-80 lg:min-h-70">
             <div className="relative flex-1 w-full bg-[#060a14] group-hover:bg-[#0a0f1c] rounded-xl p-6 md:p-8 flex flex-col overflow-hidden transition-colors duration-300 justify-center">
               {/* Radial spotlight inside the card */}
               <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,rgba(0,128,199,0.08),transparent_70%)] pointer-events-none" />

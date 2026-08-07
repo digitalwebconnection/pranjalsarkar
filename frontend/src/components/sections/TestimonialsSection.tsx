@@ -56,7 +56,7 @@ function TestimonialCard({ t, onExpandChange }: { t: typeof testimonials[0], onE
   const flagCode = getFlagUrl(t.location);
 
   return (
-    <div className="shrink-0 px-2 sm:px-3 py-6 flex w-75 sm:w-85">
+    <div className="shrink-0 px-4 sm:px-3 py-6 flex w-full sm:w-85 sm:flex-none">
       <div className="relative flex flex-col h-full w-full bg-linear-to-b from-[#080d1a] to-[#04060d] md:bg-[#080d1a] pb-10 sm:pb-12 shadow-[0_0_20px_rgba(0,168,255,0.15)] md:shadow-[0_0_35px_rgba(0,168,255,0.25)] border border-[#00a8ff]/20 rounded-xl overflow-visible transition-all duration-300 md:hover:shadow-[0_0_50px_rgba(0,168,255,0.4)] md:hover:-translate-y-1">
 
         {/* Upper Half: Image with Blue Border */}
@@ -146,7 +146,7 @@ export default function TestimonialsSection() {
       if (scrollLeft + clientWidth >= scrollWidth - 10) {
         scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
       } else {
-        const scrollStep = window.innerWidth < 640 ? 300 : 340;
+        const scrollStep = window.innerWidth < 640 ? clientWidth : 340;
         scrollContainerRef.current.scrollBy({ left: scrollStep, behavior: 'smooth' });
       }
     }, 5000);
@@ -155,14 +155,14 @@ export default function TestimonialsSection() {
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
-      const scrollStep = window.innerWidth < 640 ? -300 : -400;
+      const scrollStep = window.innerWidth < 640 ? -scrollContainerRef.current.clientWidth : -400;
       scrollContainerRef.current.scrollBy({ left: scrollStep, behavior: 'smooth' });
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
-      const scrollStep = window.innerWidth < 640 ? 300 : 400;
+      const scrollStep = window.innerWidth < 640 ? scrollContainerRef.current.clientWidth : 400;
       scrollContainerRef.current.scrollBy({ left: scrollStep, behavior: 'smooth' });
     }
   };
@@ -211,7 +211,7 @@ export default function TestimonialsSection() {
         >
           <div
             ref={scrollContainerRef}
-            className="flex gap-2 sm:gap-4 overflow-x-auto snap-x snap-mandatory py-5 px-6 md:px-12 scroll-smooth items-start"
+            className="flex sm:gap-4 overflow-x-auto snap-x snap-mandatory py-5 px-0 sm:px-12 scroll-smooth items-start"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <style>{`
@@ -219,7 +219,7 @@ export default function TestimonialsSection() {
             `}</style>
 
             {testimonials.map((t, idx) => (
-              <div className="snap-start shrink-0" key={idx}>
+              <div className="snap-center shrink-0 w-full sm:w-auto flex justify-center" key={idx}>
                 <TestimonialCard 
                   t={t} 
                   onExpandChange={(expanded) => {
@@ -244,7 +244,7 @@ export default function TestimonialsSection() {
 
       {/* Final CTA */}
       <div className="mt-8 sm:mt-12 text-center pb-8 z-10 relative">
-        <div className="inline-block relative group px-4 w-full sm:w-auto max-w-sm mx-auto">
+        <div className="inline-block relative group px-4 w-full sm:w-auto max-w-xl mx-auto">
           {/* Animated glow pulse effect behind the button */}
           <div className="absolute inset-0 bg-[#00a8ff] rounded-full blur-xl opacity-40 group-hover:opacity-70 group-hover:blur-2xl transition-all duration-500 animate-pulse" />
 

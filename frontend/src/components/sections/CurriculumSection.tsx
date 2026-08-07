@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BookOpen, Target, Video, Box, Layers, Users, Calendar, Presentation, Handshake, FileText, DollarSign, Clock } from 'lucide-react';
+import {  Video, Box, Layers, Users, Calendar, Presentation, Handshake, FileText, DollarSign, Clock } from 'lucide-react';
 
 import { modules } from '../../constants/curriculumData';
 
@@ -195,7 +195,7 @@ export default function dCurriculumSection() {
                               SPACER
                             </span>
                           )}
-                          <div className="border border-[#0080C7]/40 bg-[#060a14] p-4 rounded-sm flex-1 flex items-center min-h-[60px]">
+                          <div className="border border-[#0080C7]/40 bg-[#060a14] p-4 rounded-sm flex-1 flex items-center min-h-15">
                             <span className="font-sans text-[#0075ff] text-[14px] md:text-[15px] leading-snug font-medium tracking-wide whitespace-pre-wrap">
                               {box.text}
                             </span>

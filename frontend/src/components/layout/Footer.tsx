@@ -43,18 +43,19 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-0 mb-6">
 
           {/* Brand Info (Left Col) */}
-          <div className="lg:w-[35%] lg:pr-16 lg:border-r lg:border-white/50 flex flex-col items-start">
+          {/* Brand Info (Left Col) */}
+          <div className="lg:w-[35%] lg:pr-16 lg:border-r lg:border-white/50 flex flex-col items-center lg:items-start text-center lg:text-left">
             <img src={Logo} alt="Pranjal Sarkar" className="w-56 h-auto mb-3" style={{ filter: 'brightness(0) invert(1)' }} />
 
             {/* Glowing line */}
-            <div className="w-28 h-0.5 bg-linear-to-r from-[#3B82F6]/10 via-[#3B82F6] to-[#3B82F6]/10 shadow-[0_0_15px_rgba(59,130,246,0.8)] mb-8 rounded-full" />
+            <div className="w-28 h-0.5 bg-linear-to-r from-[#3B82F6]/10 via-[#3B82F6] to-[#3B82F6]/10 shadow-[0_0_15px_rgba(59,130,246,0.8)] mb-4 rounded-full" />
 
-            <p className="text-[#D1D5DB] text-[15px] leading-relaxed mb-10 max-w-70 font-medium">
+            <p className="text-[#D1D5DB] text-[15px] leading-relaxed mb-6 max-w-70 font-medium">
               Building future-ready product leaders<br />who create <span className="text-[#3B82F6] font-semibold">impact</span> that lasts.
             </p>
 
             {/* Social Icons */}
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-center lg:justify-start flex-wrap">
               {[
                 { name: 'LinkedIn', icon: <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>, href: 'https://linkedin.com/in/pranjalsarkar' },
                 { name: 'X', icon: <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>, href: 'https://x.com/thepsprinciples' },
@@ -70,7 +71,7 @@ export default function Footer() {
           </div>
 
           {/* Links Columns (Right Col) */}
-          <div className="lg:w-[65%] lg:pl-16 grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-12 lg:gap-8 pt-2 lg:pt-4">
+          <div className="lg:w-[65%] lg:pl-16 grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-12 lg:gap-8 pt-0 lg:pt-4">
             {Object.entries(footerLinks).map(([col, links]) => (
               <div key={col} className="col-span-1">
                 <h4 className="text-[#3B82F6] text-[13px] md:text-[14px] font-bold tracking-widest uppercase mb-3">
