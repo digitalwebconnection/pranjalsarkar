@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import './styles/index.css';
 
 // Eager imports for above-the-fold components
@@ -27,12 +28,31 @@ const Footer = lazy(() => import('./components/layout/Footer'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const RefundPolicy = lazy(() => import('./pages/RefundPolicy'));
 const TermsOfUse = lazy(() => import('./pages/TermsOfUse'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 const AdminPage = lazy(() => import('./admin/AdminPage').then(module => ({ default: module.AdminPage })));
 
 /** The main marketing / landing page */
 function LandingPage() {
+  const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "AI Product Leadership Studio",
+    "description": "A highly selective, live cohort program for senior PMs, EMs, and growth leads transitioning to Director and Head of Product roles.",
+    "provider": {
+      "@type": "Person",
+      "name": "Pranjal Sarkar",
+      "sameAs": "https://linkedin.com/in/pranjalsarkar"
+    }
+  };
+
   return (
     <>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(schemaMarkup)}
+        </script>
+      </Helmet>
+      
       <SmoothScroll />
 
       {/* Skip Navigation Link for A11Y */}
@@ -117,11 +137,7 @@ export default function App() {
         <Route path="/admin" element={<AdminPage />} />
 
         {/* 404 Catch-all */}
-        <Route path="*" element={
-          <div className="h-screen flex items-center justify-center bg-black text-white">
-            <h1 className="text-3xl font-serif">404 — Page Not Found</h1>
-          </div>
-        } />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>
   );

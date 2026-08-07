@@ -43,7 +43,7 @@ export default function ProgramIntroSection() {
   };
 
   return (
-    <section id="program" className="relative pt-8 md:py-0 overflow-hidden border-b border-white/8 bg-[#000001]">
+    <section id="program" className="relative pt-8 md:py-10 overflow-hidden border-b border-white/8 bg-[#000001]">
       {/* Background ambient lighting */}
       <div className="absolute top-0 left-0 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_top_left,rgba(0,128,199,0.15)_0%,transparent_60%)] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[70%] h-[70%] z-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(0,128,199,0.1)_0%,transparent_60%)] pointer-events-none" />

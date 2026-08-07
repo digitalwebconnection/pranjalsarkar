@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 
@@ -9,6 +10,10 @@ export default function TermsOfUse() {
 
   return (
     <div className="relative bg-[#000001] text-white min-h-screen flex flex-col font-sans overflow-hidden">
+      <Helmet>
+        <title>Terms of Use | Pranjal Sarkar</title>
+        <meta name="description" content="Terms of Use for Pranjal Sarkar's AI Product Leadership Studio. Read our guidelines, intellectual property policies, and terms of service." />
+      </Helmet>
       {/* Background ambient lighting */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-64 bg-[#0080C7] blur-[150px] opacity-20 pointer-events-none z-0" />
       

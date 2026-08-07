@@ -8,6 +8,7 @@ import { OverviewTab } from './components/OverviewTab';
 import { LeadsTab } from './components/LeadsTab';
 import { LeadModal } from './components/LeadModal';
 import { LogoutModal } from './components/LogoutModal';
+import { Helmet } from 'react-helmet-async';
 
 export const AdminPage: React.FC = () => {
   const [token, setToken] = useState<string | null>(() => localStorage.getItem('adminToken'));
@@ -176,11 +177,22 @@ export const AdminPage: React.FC = () => {
   };
 
   if (!token) {
-    return <Login onLoginSuccess={handleLoginSuccess} />;
+    return (
+      <>
+        <Helmet>
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
+        <Login onLoginSuccess={handleLoginSuccess} />
+      </>
+    );
   }
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex flex-col md:flex-row font-sans text-slate-800 selection:bg-blue-300 selection:text-black">
+      <Helmet>
+        <title>Admin Dashboard</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       {/* Mobile Header */}
       <div className="md:hidden bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-30 shadow-sm">
         <h1 className="text-lg font-black tracking-tight text-slate-800">CRM Dashboard</h1>

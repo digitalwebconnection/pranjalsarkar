@@ -118,50 +118,51 @@ export default function Navbar() {
                   </Link>
                 );
               })}
+              {/* ── Right: CTA + Hamburger ── */}
+              <div className="flex justify-end items-center shrink-0">
+                {/* Desktop CTA */}
+                <Link
+                  to="/#contact"
+                  className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-white text-[14px] font-bold tracking-wide no-underline transition-all duration-300 bg-linear-to-r from-[#2563EB] to-[#050B14] shadow-[0_0_80px_rgba(37,99,235,0.4)] hover:-translate-y-px"
+                >
+                  Submit Interview Request <span>→</span>
+                </Link>
+
+                {/* Hamburger — mobile only */}
+                <button
+                  onClick={() => setMenuOpen(o => !o)}
+                  aria-label="Toggle menu"
+                  aria-expanded={menuOpen}
+                  className={[
+                    'lg:hidden flex flex-col items-center justify-center gap-1.25 w-10 h-10 rounded-md border cursor-pointer transition-all duration-150',
+                    menuOpen
+                      ? 'bg-white/5 border-white/15'
+                      : 'bg-transparent border-white/8 hover:bg-white/3',
+                  ].join(' ')}
+                >
+                  <span
+                    className={[
+                      'block w-5 h-0.5 rounded-sm transition-all duration-150',
+                      menuOpen ? 'bg-[#3B82F6] rotate-45 translate-y-1.75' : 'bg-white',
+                    ].join(' ')}
+                  />
+                  <span
+                    className={[
+                      'block w-5 h-0.5 rounded-sm transition-opacity duration-150',
+                      menuOpen ? 'opacity-0 bg-[#3B82F6]' : 'opacity-100 bg-white',
+                    ].join(' ')}
+                  />
+                  <span
+                    className={[
+                      'block w-5 h-0.5 rounded-sm transition-all duration-150',
+                      menuOpen ? 'bg-[#3B82F6] -rotate-45 -translate-y-1.75' : 'bg-white',
+                    ].join(' ')}
+                  />
+                </button>
+              </div>
             </div>
 
-            {/* ── Right: CTA + Hamburger ── */}
-            <div className="flex justify-end items-center shrink-0">
-              {/* Desktop CTA */}
-              <Link
-                to="/#contact"
-                className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-white text-[14px] font-bold tracking-wide no-underline transition-all duration-300 bg-linear-to-r from-[#2563EB] to-[#050B14] shadow-[0_0_80px_rgba(37,99,235,0.4)] hover:-translate-y-px"
-              >
-                Submit Interview Request <span>→</span>
-              </Link>
 
-              {/* Hamburger — mobile only */}
-              <button
-                onClick={() => setMenuOpen(o => !o)}
-                aria-label="Toggle menu"
-                aria-expanded={menuOpen}
-                className={[
-                  'lg:hidden flex flex-col items-center justify-center gap-1.25 w-10 h-10 rounded-md border cursor-pointer transition-all duration-150',
-                  menuOpen
-                    ? 'bg-white/5 border-white/15'
-                    : 'bg-transparent border-white/8 hover:bg-white/3',
-                ].join(' ')}
-              >
-                <span
-                  className={[
-                    'block w-5 h-0.5 rounded-sm transition-all duration-150',
-                    menuOpen ? 'bg-[#3B82F6] rotate-45 translate-y-1.75' : 'bg-white',
-                  ].join(' ')}
-                />
-                <span
-                  className={[
-                    'block w-5 h-0.5 rounded-sm transition-opacity duration-150',
-                    menuOpen ? 'opacity-0 bg-[#3B82F6]' : 'opacity-100 bg-white',
-                  ].join(' ')}
-                />
-                <span
-                  className={[
-                    'block w-5 h-0.5 rounded-sm transition-all duration-150',
-                    menuOpen ? 'bg-[#3B82F6] -rotate-45 -translate-y-1.75' : 'bg-white',
-                  ].join(' ')}
-                />
-              </button>
-            </div>
           </div>
         </nav>
       </div>
