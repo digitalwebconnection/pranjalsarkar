@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BookOpen, Target, Video, Box, Layers, Users } from 'lucide-react';
+import { BookOpen, Target, Video, Box, Layers, Users, Calendar, Presentation, Handshake, FileText, DollarSign, Clock } from 'lucide-react';
 
 import { modules } from '../../constants/curriculumData';
 
@@ -57,20 +57,20 @@ export default function dCurriculumSection() {
             ].map((s, i) => (
               <div
                 key={i}
-                className="group relative rounded-xl p-px bg-linear-to-br from-[#00a8ff]/70 via-white/10 to-white/10  transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,168,255,0.25)] hover:from-[#00a8ff] flex flex-col"
+                className="group relative rounded-xl p-px bg-linear-to-br from-[#00a8ff]/70 via-white/10 to-white/10 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,168,255,0.25)] hover:from-[#00a8ff] flex flex-col"
               >
-                <div className="relative h-full bg-[#060a14] group-hover:bg-[#0a0f1c] rounded-xl p-5 flex items-center gap-4 overflow-hidden transition-colors duration-300">
+                <div className="relative h-full bg-[#060a14] group-hover:bg-[#0a0f1c] rounded-xl p-3 sm:p-5 flex items-center gap-3 sm:gap-4 overflow-hidden transition-colors duration-300">
                   {/* Top highlight line */}
                   <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-linear-to-r from-transparent via-[#00a2ff]/60 to-transparent opacity-80" />
 
                   {/* Circular Icon Badge */}
-                  <div className="w-11 h-11 rounded-full border border-[#0070f3]/10 bg-[#001026] text-[#0075ff] flex items-center justify-center shrink-0 shadow-[inset_0_0_10px_rgba(0,136,255,0.25)] group-hover:border-[#00a8ff] transition-colors">
-                    <s.icon className="w-5 h-5 text-[#00a8ff] drop-shadow-[0_0_6px_rgba(0,168,255,0.6)]" />
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-[#0070f3]/10 bg-[#001026] text-[#0075ff] flex items-center justify-center shrink-0 shadow-[inset_0_0_10px_rgba(0,136,255,0.25)] group-hover:border-[#00a8ff] transition-colors">
+                    <s.icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#00a8ff] drop-shadow-[0_0_6px_rgba(0,168,255,0.6)]" />
                   </div>
 
                   <div className="flex flex-col justify-center min-w-0">
-                    <span className="text-[#91a0b6] text-[10px] uppercase font-bold tracking-widest mb-1 truncate">{s.label}</span>
-                    <span className="font-['Outfit',sans-serif] text-[#0075ff] text-[18px] md:text-[20px] font-black drop-shadow-[0_0_8px_rgba(0,168,255,0.5)] transition-colors">{s.value}</span>
+                    <span className="text-[#91a0b6] text-[8.5px] sm:text-[10px] uppercase font-bold tracking-widest mb-0.5 sm:mb-1 leading-tight">{s.label}</span>
+                    <span className="font-['Outfit',sans-serif] text-[#0075ff] text-[15px] sm:text-[18px] md:text-[20px] font-black drop-shadow-[0_0_8px_rgba(0,168,255,0.5)] transition-colors whitespace-nowrap">{s.value}</span>
                   </div>
                 </div>
               </div>
@@ -82,17 +82,17 @@ export default function dCurriculumSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
           {/* Mobile Horizontal Navigation Tabs */}
-          <div className="lg:hidden flex overflow-x-auto gap-2 pb-4 scrollbar-none snap-x">
+          <div className="lg:hidden grid grid-cols-3 gap-2 pb-4 w-full">
             {modules.map((m, i) => (
               <button
                 key={i}
                 onClick={() => setActiveTab(i)}
-                className={`snap-center px-5 py-3.5 rounded-lg border text-[11px] font-bold uppercase tracking-wider whitespace-nowrap shrink-0 transition-all cursor-pointer ${activeTab === i
+                className={`py-3 px-1 rounded-lg border text-[9px] sm:text-[10px] font-bold uppercase tracking-wider whitespace-nowrap transition-all cursor-pointer flex items-center justify-center overflow-hidden text-ellipsis ${activeTab === i
                   ? 'bg-black text-white border-transparent shadow-[0_0_20px_rgba(0,168,255,0.5)]'
                   : 'bg-[#050B14] text-[#a1a1aa] border-[#0080C7]/20'
                   }`}
               >
-                {m.week}
+                <span className="truncate">{m.week}</span>
               </button>
             ))}
           </div>
@@ -151,64 +151,61 @@ export default function dCurriculumSection() {
               {/* Subtle inner radial glow */}
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,117,255,0.65)_0%,transparent_40%)] pointer-events-none" />
 
-              <div className="relative z-10">
+              <div className="relative z-10 w-full h-full flex flex-col">
                 {/* Header Info */}
-                <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#0080C7]/20 pb-6 mb-6">
+                <div className="flex justify-between items-start mb-8 relative z-10">
                   <div>
-                    <span className="text-[#0075ff] text-[10px] font-bold tracking-[0.2em] uppercase block mb-1.5 font-mono">
-                      {modules[activeTab].week}
-                    </span>
-                    <h3 className="font-serif text-2xl md:text-3xl font-bold text-white leading-tight">
+                    <span className="text-[#91a0b6] text-[12px] font-bold block mb-1">#{activeTab + 1}</span>
+                    <h3 className="text-white text-3xl md:text-4xl font-sans tracking-wide">
                       {modules[activeTab].title}
                     </h3>
                   </div>
-                  <span className="px-3.5 py-1.5 bg-[#0080C7]/10 border border-[#0080C7]/30 rounded text-white text-[10px] font-bold uppercase tracking-wider font-mono shadow-[0_0_10px_rgba(0,128,199,0.2)]">
-                    Detail {activeTab + 1}
-                  </span>
+                  {(() => {
+                    const iconMap: Record<string, React.ElementType> = {
+                      Calendar,
+                      Presentation,
+                      Handshake,
+                      FileText,
+                      DollarSign,
+                      Clock,
+                    };
+                    const IconComponent = iconMap[modules[activeTab].iconName] || Calendar;
+                    return <IconComponent className="w-12 h-12 text-[#0080C7] drop-shadow-[0_0_8px_rgba(0,128,199,0.5)]" strokeWidth={1.5} />;
+                  })()}
                 </div>
 
-                {/* Focus and Topics Grid */}
-                <div className="space-y-8">
-                  <div>
-                    <h4 className="text-[10px] font-bold text-[#64748b] tracking-widest uppercase mb-2 font-mono flex items-center gap-2">
-                      <Target size={14} className="text-[#33a8ff]" /> Overview
-                    </h4>
-                    <p className="text-[#e2e8f0] text-sm md:text-base lg:text-lg leading-relaxed">
-                      {modules[activeTab].focus}
-                    </p>
-                  </div>
-
-                  <div>
-                    <h4 className="text-[10px] font-bold text-[#ffffff] tracking-widest uppercase mb-4 font-mono flex items-center gap-2">
-                      <BookOpen size={14} className="text-[#33a8ff]" /> Key Details
-                    </h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {modules[activeTab].topics.map((t, idx) => (
-                        <div key={idx} className="flex gap-3.5 items-start p-3.5 rounded-lg bg-[#0A101C] border border-[#0080C7]/20 hover:border-[#0080C7]/50 transition-colors">
-                          <span className="text-[#33a8ff] shrink-0 mt-0.5 font-bold text-sm">→</span>
-                          <span className="text-[#e1e1e9] text-[14px] leading-relaxed">{t}</span>
+                {/* Boxes */}
+                <div className="relative z-10 flex-1 flex flex-col justify-center">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {modules[activeTab].boxes?.map((box, idx) => {
+                      // Render an empty spacer if there's no text (used for layout alignment)
+                      if (!box.text) {
+                        return <div key={idx} className={`hidden sm:block ${box.colSpan === 2 ? 'sm:col-span-2' : 'sm:col-span-1'}`} aria-hidden="true" />;
+                      }
+                      
+                      return (
+                        <div key={idx} className={`flex flex-col ${box.colSpan === 2 ? 'sm:col-span-2' : 'sm:col-span-1'}`}>
+                          {box.header ? (
+                            <span className="text-gray-200 text-[11px] uppercase font-bold tracking-widest block mb-2">
+                              {box.header}
+                            </span>
+                          ) : (
+                            // Spacer to align boxes perfectly using exact same text styles but invisible
+                            <span className="text-[11px] uppercase font-bold tracking-widest mb-2 invisible hidden sm:block" aria-hidden="true">
+                              SPACER
+                            </span>
+                          )}
+                          <div className="border border-[#0080C7]/40 bg-[#060a14] p-4 rounded-sm flex-1 flex items-center min-h-[60px]">
+                            <span className="font-sans text-[#0075ff] text-[14px] md:text-[15px] leading-snug font-medium tracking-wide whitespace-pre-wrap">
+                              {box.text}
+                            </span>
+                          </div>
                         </div>
-                      ))}
-                    </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
-
-              {/* Practical Simulation & Deliverable Details Footer */}
-              {modules[activeTab].caseStudy && (
-                <div className="relative z-10 border-t border-[#0080C7]/20 pt-6 mt-8 space-y-4">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-lg bg-[#0080C7]/10 border border-[#0080C7]/30 shadow-[0_0_15px_rgba(0,128,199,0.15)]">
-                    <div>
-                      <span className="block text-[10px] font-bold text-[#33a8ff] uppercase tracking-wider font-mono mb-1.5 drop-shadow-[0_0_5px_rgba(0,128,199,0.5)]">
-                        ADDITIONAL INFO
-                      </span>
-                      <p className="text-sm text-[#f8fafc] font-bold m-0 leading-relaxed">
-                        {modules[activeTab].caseStudy}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
 
             </div>
           </div>

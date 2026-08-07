@@ -43,7 +43,7 @@ export default function ProgramIntroSection() {
   };
 
   return (
-    <section id="program" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 bg-[#000001]">
+    <section id="program" className="relative pt-8 md:py-0 overflow-hidden border-b border-white/8 bg-[#000001]">
       {/* Background ambient lighting */}
       <div className="absolute top-0 left-0 w-[60%] h-[60%] z-0 bg-[radial-gradient(ellipse_at_top_left,rgba(0,128,199,0.15)_0%,transparent_60%)] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[70%] h-[70%] z-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(0,128,199,0.1)_0%,transparent_60%)] pointer-events-none" />
@@ -74,16 +74,16 @@ export default function ProgramIntroSection() {
         {/* Leadership Steps Timeline */}
         <div className="relative max-w-7xl mx-auto mb-10 mt-10 px-4">
           <motion.div
-            className="flex flex-col md:flex-row justify-between items-start gap-16 md:gap-4 relative"
+            className="flex flex-row justify-between items-start gap-1 sm:gap-2 md:gap-4 relative"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {/* Horizontal Line for Desktop */}
-            <div className="absolute top-12 left-[10%] right-[10%] h-0.5 bg-linear-to-r from-transparent via-white/10 to-transparent hidden md:block -z-10" />
+            {/* Horizontal Line for all screens */}
+            <div className="absolute top-7 md:top-12 left-[10%] right-[10%] h-0.5 bg-linear-to-r from-transparent via-white/10 to-transparent -z-10" />
             <motion.div
-              className="absolute top-12 left-[10%] h-0.5 bg-linear-to-r from-[#00a8ff] to-[#0044cc] hidden md:block -z-10 shadow-[0_0_15px_rgba(0,168,255,0.6)]"
+              className="absolute top-7 md:top-12 left-[10%] h-0.5 bg-linear-to-r from-[#00a8ff] to-[#0044cc] -z-10 shadow-[0_0_15px_rgba(0,168,255,0.6)]"
               initial={{ width: "0%" }}
               whileInView={{ width: "80%" }}
               transition={{ duration: 1.5, delay: 0.3, ease: "easeInOut" }}
@@ -96,30 +96,24 @@ export default function ProgramIntroSection() {
                 <motion.div
                   key={i}
                   variants={itemVariants}
-                  className="flex flex-col items-center group w-full md:w-1/4 relative"
+                  className="flex flex-col items-center group w-1/4 relative px-1 sm:px-2"
                 >
-                  {/* Vertical Line for Mobile */}
-                  {i < leadershipSteps.length - 1 && (
-                    <div className="absolute top-24 left-1/2 w-0.5 h-20 bg-linear-to-b from-[#00a8ff]/50 to-transparent -translate-x-1/2 md:hidden -z-10" />
-                  )}
-
                   {/* Icon Node Container */}
-                  <div className="relative mb-6 cursor-default">
+                  <div className="relative mb-3 md:mb-6 cursor-default">
                     {/* Glowing background on hover */}
                     <div className="absolute inset-0 bg-[#00a8ff]/20 rounded-xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-125" />
 
-                    <div className="w-24 h-24 rounded-xl bg-[#060a14] border  border-[#00a8ff]/50 flex items-center justify-center relative z-10 transition-all duration-300 shadow-[0_0_40px_rgba(0,168,255,0.2)]">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-24 md:h-24 rounded-xl bg-[#060a14] border border-[#00a8ff]/50 flex items-center justify-center relative z-10 transition-all duration-300 shadow-[0_0_40px_rgba(0,168,255,0.2)]">
                       <IconComponent
-                        size={46}
                         strokeWidth={1.5}
-                        className="text-white/60 group-hover:text-[#00a8ff] transition-colors duration-300 drop-shadow-md"
+                        className="text-white/60 group-hover:text-[#00a8ff] transition-colors duration-300 drop-shadow-md w-6 h-6 sm:w-7 sm:h-7 md:w-11 md:h-11"
                       />
                     </div>
                   </div>
 
                   {/* Text Container */}
-                  <div className="text-center px-4 cursor-default">
-                    <h4 className="font-serif text-xl md:text-2xl font-black text-white tracking-[0.15em] uppercase mb-2 group-hover:text-[#00a8ff] transition-colors duration-300 drop-shadow-md">
+                  <div className="text-center px-0 md:px-4 cursor-default">
+                    <h4 className="font-serif text-[10px] sm:text-xs md:text-2xl font-black text-white tracking-wider md:tracking-[0.15em] uppercase mb-2 group-hover:text-[#00a8ff] transition-colors duration-300 drop-shadow-md break-words">
                       {step.label}
                     </h4>
                   </div>
@@ -130,7 +124,7 @@ export default function ProgramIntroSection() {
         </div>
 
         {/* Leadership Details Section */}
-        <div className="max-w-7xl mx-auto px-4 mb-12 relative z-10 space-y-8">
+        <div className="max-w-7xl mx-auto px-0 mb-12 relative z-10 space-y-8">
           {leadershipDetails.map((detail, index) => (
             <motion.div
               key={index}
@@ -140,7 +134,7 @@ export default function ProgramIntroSection() {
               viewport={{ once: true, margin: "-50px" }}
               className="group relative rounded-xl p-px bg-linear-to-br from-[#0044cc]/90 via-transparent to-transparent shadow-[0_0_25px_rgba(0,68,204,0.2)] transition-all duration-500 ease-out hover:shadow-[0_0_40px_rgba(0,68,204,0.4)] hover:from-[#0066ff]/90"
             >
-              <div className="relative h-full bg-[#060a14]/95 backdrop-blur-md rounded-[11px] p-6 md:p-8 flex flex-col overflow-hidden">
+              <div className="relative h-full bg-[#060a14]/95 backdrop-blur-md rounded-[11px] px-4 py-6 md:p-8 flex flex-col overflow-hidden">
                 {/* Subtle background glow */}
                 <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(ellipse_at_top_right,rgba(0,68,204,0.15),transparent_70%)] pointer-events-none transition-opacity duration-500 opacity-50 group-hover:opacity-100" />
 
@@ -188,7 +182,7 @@ export default function ProgramIntroSection() {
 
         {/* Video Block */}
         <motion.div
-          className="max-w-7xl mx-auto px-4 relative z-10"
+          className="max-w-7xl mx-auto px-0 relative z-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -197,10 +191,10 @@ export default function ProgramIntroSection() {
             visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
           }}
         >
-          <div className="max-w-full mx-auto flex flex-col items-center  h-75 md:h-125 lg:h-150">
+          <div className="max-w-full mx-auto flex flex-col items-center h-75 md:h-125 lg:h-150">
             {/* Video Placeholder */}
             <div
-              className="w-full aspect-video rounded-xl bg-[#0a0e17] border border-white/10 shadow-[0_0_40px_rgba(24,37,226,0.15)] relative overflow-hidden flex items-center justify-center group cursor-pointer mb-12"
+              className="w-full aspect-video rounded-lg bg-[#0a0e17] border border-white/10 shadow-[0_0_40px_rgba(24,37,226,0.15)] relative overflow-hidden flex items-center justify-center group cursor-pointer mb-12"
               onClick={toggleVideo}
             >
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,168,255,0.05)_0%,transparent_70%)] pointer-events-none z-10" />

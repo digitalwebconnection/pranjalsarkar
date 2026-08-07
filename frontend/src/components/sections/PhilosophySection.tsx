@@ -61,7 +61,7 @@ export default function PhilosophySection() {
           </div>
 
           {/* Right Column: Manual Cards */}
-          <div className="lg:col-span-6 w-full flex flex-col justify-center items-center relative mt-10 lg:mt-0 px-4">
+          <div className="lg:col-span-6 w-full flex flex-col justify-center items-center relative mt-10 lg:mt-0 px-0 lg:px-4">
             {/* Ambient backlight behind the cards */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#00a8ff] blur-[120px] opacity-15 pointer-events-none -z-10" />
             

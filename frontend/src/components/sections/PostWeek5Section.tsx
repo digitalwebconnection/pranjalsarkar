@@ -66,7 +66,7 @@ export default function PostWeek5Section() {
             <div className="bg-[#0a0c10] border border-[#0080C7]/40 p-6 md:p-8 rounded-xl text-center max-w-7xl mx-auto relative overflow-hidden group hover:border-[#0080C7]/80 transition-all duration-500 shadow-[0_0_40px_-10px_rgba(0,128,199,0.4)] hover:shadow-[0_0_60px_-5px_rgba(0,128,199,0.6)]">
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,128,199,0.25)_0%,transparent_70%)] pointer-events-none opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700" />
               <h4 className="text-white font-serif text-2xl md:text-3xl font-bold mb-6 drop-shadow-[0_0_15px_rgba(0,128,199,0.8)] relative z-10">What You Walk Away With</h4>
-              <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 relative z-10">
+              <div className="flex flex-col md:flex-row justify-center items-start md:items-center gap-4 md:gap-12 relative z-10 w-fit mx-auto md:w-auto">
                 <div className="flex items-center gap-3">
                   <CheckCircle className="text-[#0080C7] drop-shadow-[0_0_8px_rgba(0,128,199,0.6)]" size={22} />
                   <span className="text-gray-200 font-sans text-[17px] font-medium drop-shadow-md">Certificate of Completion</span>

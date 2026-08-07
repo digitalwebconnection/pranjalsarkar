@@ -37,8 +37,20 @@ export default function JudgementSection() {
           </p>
         </div>
 
+        {/* Disable ScrollStack overlap effect on mobile so tall cards can be read fully without being covered */}
+        <style>{`
+          @media (max-width: 1023px) {
+            .mobile-no-stack .scroll-stack-card {
+              transform: none !important;
+              filter: none !important;
+              margin-bottom: 3rem !important;
+            }
+          }
+        `}</style>
+
         {/* Interactive Scroll Stack Container */}
         <ScrollStack
+          className="mobile-no-stack"
           useWindowScroll={true}
           itemDistance={150}
           itemScale={0.03}
@@ -50,7 +62,7 @@ export default function JudgementSection() {
         >
           {stages.map((s, i) => (
             <ScrollStackItem key={i}>
-              <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 lg:gap-12 p-6 md:p-8 rounded-xl bg-[#0a0c10] border border-white/10 border-l-[3px] border-l-[#0044cc] shadow-[inset_30px_30px_80px_-20px_rgba(0,68,204,0.4),0_15px_40px_rgba(0,0,0,0.5)] hover:shadow-[inset_30px_30px_100px_-20px_rgba(0,68,204,0.5),0_20px_50px_rgba(0,0,0,0.6)] hover:border-white/20 hover:border-l-[#0044cc] h-auto min-h-100 flex-col justify-between transition-all duration-500 relative overflow-hidden group">
+              <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 lg:gap-12 px-4 py-6 md:p-8 rounded-xl bg-[#0a0c10] border border-white/10 border-l-[3px] border-l-[#0044cc] shadow-[inset_30px_30px_80px_-20px_rgba(0,68,204,0.4),0_15px_40px_rgba(0,0,0,0.5)] hover:shadow-[inset_30px_30px_100px_-20px_rgba(0,68,204,0.5),0_20px_50px_rgba(0,0,0,0.6)] hover:border-white/20 hover:border-l-[#0044cc] h-auto min-h-100 flex-col justify-between transition-all duration-500 relative overflow-hidden group">
 
                 {/* Inner radial glow */}
                 <div className="absolute top-0 right-0 w-[80%] h-[80%] bg-[radial-gradient(ellipse_at_top_right,rgba(0,68,204,0.15),transparent_70%)] pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
@@ -71,7 +83,7 @@ export default function JudgementSection() {
                 {/* Left Column */}
                 <div className="flex flex-col gap-8 relative z-10 lg:sticky lg:top-8 self-start">
                   <div>
-                    <span className="text-[#0080C7] text-[40px] font-bold tracking-[0.2em] uppercase block mb-3 font-mono drop-shadow-[0_0_5px_rgba(0,128,199,0.5)]">
+                    <span className="text-[#0080C7] text-[32px] md:text-[40px] font-bold tracking-[0.2em] uppercase block mb-3 font-mono drop-shadow-[0_0_5px_rgba(0,128,199,0.5)]">
                       {s.phase}
                     </span>
                     <h3 className="font-serif text-2xl lg:text-2xl font-bold text-white mb-5 leading-tight tracking-tight drop-shadow-md pr-4">
@@ -95,9 +107,9 @@ export default function JudgementSection() {
                   <div>
 
                     {/* Curriculum Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-10 md:gap-y-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-x-10 md:gap-y-8">
                       {s.curriculum.map((cur, idx) => (
-                        <div key={idx} className="flex flex-col">
+                        <div key={idx} className="flex flex-col bg-[#0f1624] md:bg-transparent p-5 md:p-0 rounded-xl md:rounded-none border border-[#0080C7]/20 md:border-transparent shadow-lg md:shadow-none relative">
                           <h4 className="text-white font-serif font-bold text-[17px] leading-tight mb-2 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]">
                             {cur.category}
                           </h4>
@@ -139,8 +151,8 @@ export default function JudgementSection() {
           ))}
         </ScrollStack>
 
-        {/* Spacer to allow the final card to scroll cleanly without the next section overlapping it prematurely */}
-        <div className="h-[60vh] min-h-75" aria-hidden="true" />
+        {/* Spacer to allow the final card to scroll cleanly without the next section overlapping it prematurely (Desktop only) */}
+        <div className="hidden lg:block h-[60vh] min-h-75" aria-hidden="true" />
 
 
       </div>
