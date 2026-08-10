@@ -118,8 +118,10 @@ export default function Navbar() {
                   </Link>
                 );
               })}
-              {/* ── Right: CTA + Hamburger ── */}
-              <div className="flex justify-end items-center shrink-0">
+            </div>
+
+            {/* ── Right: CTA + Hamburger ── */}
+            <div className="flex justify-end items-center shrink-0">
                 {/* Desktop CTA */}
                 <Link
                   to="/#contact"
@@ -137,9 +139,9 @@ export default function Navbar() {
                     'lg:hidden flex flex-col items-center justify-center gap-1.25 w-10 h-10 rounded-md border cursor-pointer transition-all duration-150',
                     menuOpen
                       ? 'bg-white/5 border-white/15'
-                      : 'bg-transparent border-white/8 hover:bg-white/3',
+                      : 'bg-transparent border-white/0 hover:bg-white/0',
                   ].join(' ')}
-                >
+                > 
                   <span
                     className={[
                       'block w-5 h-0.5 rounded-sm transition-all duration-150',
@@ -159,7 +161,6 @@ export default function Navbar() {
                     ].join(' ')}
                   />
                 </button>
-              </div>
             </div>
 
 

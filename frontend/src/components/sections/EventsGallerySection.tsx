@@ -42,6 +42,19 @@ export default function EventsGallerySection() {
     }
   }, [selectedTag]);
 
+  // Carousel Navigation
+  const scrollLeft = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollBy({ left: -350, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollBy({ left: 350, behavior: 'smooth' });
+    }
+  };
+
   // Lightbox Navigation
   const handlePrev = useCallback(() => {
     if (lightboxIndex === null) return;
@@ -95,10 +108,26 @@ export default function EventsGallerySection() {
 
 
         {/* Sliding Carousel Wrapper */}
-        <div className="relative w-full overflow-visible">
+        <div className="relative w-full overflow-visible group/slider">
           {/* Side Fades for Premium Aesthetics */}
           <div className="absolute top-0 bottom-0 -left-6 w-8 bg-linear-to-r from-[#000001]/90 to-transparent z-10 pointer-events-none hidden md:block" />
           <div className="absolute top-0 bottom-0 -right-6 w-8 bg-linear-to-l from-[#000001]/90 to-transparent z-10 pointer-events-none hidden md:block" />
+
+          {/* Navigation Buttons (visible on hover) */}
+          <button 
+            onClick={scrollLeft} 
+            className="absolute -left-2 md:-left-5 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 bg-black/60 backdrop-blur-md flex items-center justify-center text-white shadow-[0_0_15px_rgba(0,0,0,0.5)] z-20 opacity-100 md:opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-[#ea580c] hover:border-[#ea580c] cursor-pointer"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button 
+            onClick={scrollRight} 
+            className="absolute -right-2 md:-right-5 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 bg-black/60 backdrop-blur-md flex items-center justify-center text-white shadow-[0_0_15px_rgba(0,0,0,0.5)] z-20 opacity-100 md:opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-[#ea580c] hover:border-[#ea580c] cursor-pointer"
+            aria-label="Scroll right"
+          >
+            <ChevronRight size={24} />
+          </button>
 
           <motion.div
             ref={sliderRef}
