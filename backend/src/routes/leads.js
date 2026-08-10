@@ -280,9 +280,11 @@ router.put('/:id/status', protectAdmin, async (req, res) => {
     await lead.save();
 
     if (status === 'CONVERTED') {
-      // Send mentee confirmation email using Resend (non-blocking)
+      // Send mentee confirmation email using Brevo (non-blocking)
+      logger.info(`[Lead Route] Lead converted! Sending confirmation email to ${lead.email}...`);
       sendMenteeConfirmation(lead)
         .then((sent) => {
+          logger.info(`[Lead Route] sendMenteeConfirmation returned: ${sent}`);
           if (sent) {
             Lead.findByIdAndUpdate(lead._id, { confirmationEmailSent: true })
               .catch((err) => logger.error('[Lead Route] Failed to update confirmation flag:', err.message));

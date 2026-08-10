@@ -20,7 +20,7 @@ export const sendNewLeadNotification = async (lead) => {
     const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
 
     sendSmtpEmail.subject = `🔔 New Lead: ${lead.name}`;
-    sendSmtpEmail.sender = { name: 'CRM System', email: 'office@pranjalsarkar.com' };
+    sendSmtpEmail.sender = { name: 'CRM System', email: 'vaibhavdigitalwebconnection@gmail.com' };
     sendSmtpEmail.to = [{ email: 'vaibhavdigitalwebconnection@gmail.com', name: 'Support' }];
     sendSmtpEmail.htmlContent = `
         <h2>New Lead Application</h2>
@@ -50,7 +50,7 @@ export const sendMenteeConfirmation = async (lead) => {
     const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
 
     sendSmtpEmail.subject = '🎊 Welcome Aboard! AI Product Leadership Studio';
-    sendSmtpEmail.sender = { name: 'Team Pranjal Sarkar', email: 'office@pranjalsarkar.com' };
+    sendSmtpEmail.sender = { name: 'Team Pranjal Sarkar', email: 'bhargav.digitalwebconnection@gmail.com' };
     sendSmtpEmail.to = [{ email: lead.email, name: lead.name }];
     sendSmtpEmail.htmlContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
