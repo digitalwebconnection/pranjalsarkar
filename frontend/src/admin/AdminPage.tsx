@@ -137,35 +137,6 @@ export const AdminPage: React.FC = () => {
         body: JSON.stringify({ status: newStatus }),
       });
       if (response.ok) {
-        
-        // Send email notification to Office via Web3Forms if Converted
-        if (newStatus === "Converted") {
-          const leadToUpdate = leads.find(l => l._id === leadId);
-          if (leadToUpdate) {
-            try {
-              fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  Accept: "application/json",
-                },
-                body: JSON.stringify({
-                  access_key: "7a4483f0-c3dc-40be-a109-9c896709158d",
-                  subject: `✅ Lead Converted: ${leadToUpdate.name}`,
-                  from_name: "Product Leadership Studio CRM",
-                  name: leadToUpdate.name,
-                  email: leadToUpdate.email,
-                  "Lead Name": leadToUpdate.name,
-                  "Email Address": leadToUpdate.email,
-                  "Status": "Successfully Converted!"
-                })
-              }).catch(e => console.error("Web3Forms error:", e));
-            } catch (e) {
-              console.error("Web3Forms error:", e);
-            }
-          }
-        }
-
         fetchLeads();
         fetchLeadStats();
         if (selectedLead && selectedLead._id === leadId) {

@@ -149,33 +149,6 @@ export default function ContactSection() {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        // Send email notification to Admin via Web3Forms (bypassing backend Cloudflare issues)
-        try {
-          await fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-            body: JSON.stringify({
-              access_key: "a825aac6-7cd8-4618-b763-f274d1f0d081",
-              subject: `🔔 New Lead: ${form.name} — ${form.role || 'Unknown'} at ${form.company || 'Unknown'}`,
-              from_name: "Product Leadership Studio CRM",
-              name: form.name,
-              email: form.email,
-              "Lead Name": form.name,
-              "Email Address": form.email,
-              "Phone Number": form.phone || 'Not provided',
-              "Company Name": form.company || 'Not provided',
-              "Role": form.role || 'Not provided',
-              "Message": form.message || 'No message',
-              "Action Required": "Please call and qualify this lead."
-            })
-          });
-        } catch (e) {
-          console.error("Web3Forms error:", e);
-        }
-
         setSubmitted(true);
         setForm({ name: '', email: '', phone: '', role: '', company: '', message: '' });
         setTimeout(() => {
