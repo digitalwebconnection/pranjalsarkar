@@ -3,7 +3,6 @@ import express from 'express';
 import Lead from '../models/Lead.js';
 import { protectAdmin } from '../middleware/auth.js';
 import rateLimiter from '../middleware/rateLimiter.js';
-import { sendNewLeadNotification, sendMenteeConfirmation } from '../utils/sendEmail.js';
 import { z } from 'zod';
 import { escapeRegex } from '../utils/security.js';
 
@@ -78,10 +77,7 @@ router.post('/', rateLimiter, async (req, res) => {
       ],
     });
 
-    // Send internal notification email (non-blocking)
-    sendNewLeadNotification(lead).catch((err) => {
-      logger.error('[Lead Route] Failed to send notification email:', err.message);
-    });
+    // Removed backend email notification, now handled by frontend via Web3Forms directly
 
     res.status(201).json({
       success: true,
@@ -280,17 +276,10 @@ router.put('/:id/status', protectAdmin, async (req, res) => {
     await lead.save();
 
     if (status === 'CONVERTED') {
-      // Send mentee confirmation email (non-blocking)
-      sendMenteeConfirmation(lead)
-        .then((sent) => {
-          if (sent) {
-            Lead.findByIdAndUpdate(lead._id, { confirmationEmailSent: true })
-              .catch((err) => logger.error('[Lead Route] Failed to update confirmation flag:', err.message));
-          }
-        })
-        .catch((err) => {
-          logger.error('[Lead Route] Failed to send mentee confirmation:', err.message);
-        });
+      // Backend confirmation email removed.
+      // Admins will receive a Web3Forms notification from the frontend instead.
+      lead.confirmationEmailSent = true;
+      await lead.save();
     }
 
     res.json({

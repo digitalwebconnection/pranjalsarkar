@@ -1,18 +1,20 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Menu, X, CheckCircle2 } from 'lucide-react';
-import { API_URL } from '../../config';
-import { type Lead, type LeadStatsResponse } from './types';
-import { Login } from './components/Login';
-import { Sidebar } from './components/Sidebar';
-import { OverviewTab } from './components/OverviewTab';
-import { LeadsTab } from './components/LeadsTab';
-import { LeadModal } from './components/LeadModal';
-import { LogoutModal } from './components/LogoutModal';
-import { Helmet } from 'react-helmet-async';
+import React, { useState, useEffect, useCallback } from "react";
+import { Menu, X, CheckCircle2 } from "lucide-react";
+import { API_URL } from "../../config";
+import { type Lead, type LeadStatsResponse } from "./types";
+import { Login } from "./components/Login";
+import { Sidebar } from "./components/Sidebar";
+import { OverviewTab } from "./components/OverviewTab";
+import { LeadsTab } from "./components/LeadsTab";
+import { LeadModal } from "./components/LeadModal";
+import { LogoutModal } from "./components/LogoutModal";
+import { Helmet } from "react-helmet-async";
 
 export const AdminPage: React.FC = () => {
-  const [token, setToken] = useState<string | null>(() => localStorage.getItem('adminToken'));
-  const [activeTab, setActiveTab] = useState<'overview' | 'leads'>('overview');
+  const [token, setToken] = useState<string | null>(() =>
+    localStorage.getItem("adminToken"),
+  );
+  const [activeTab, setActiveTab] = useState<"overview" | "leads">("overview");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -20,27 +22,33 @@ export const AdminPage: React.FC = () => {
   const [leadStats, setLeadStats] = useState<LeadStatsResponse | null>(null);
   const [loadingLeads, setLoadingLeads] = useState(true);
 
-  const [leadSearchQuery, setLeadSearchQuery] = useState('');
-  const [leadStatusFilter, setLeadStatusFilter] = useState('All');
+  const [leadSearchQuery, setLeadSearchQuery] = useState("");
+  const [leadStatusFilter, setLeadStatusFilter] = useState("All");
 
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const [isUpdatingLead, setIsUpdatingLead] = useState(false);
-  const [leadNotes, setLeadNotes] = useState('');
-  const [newNoteText, setNewNoteText] = useState('');
+  const [leadNotes, setLeadNotes] = useState("");
+  const [newNoteText, setNewNoteText] = useState("");
   const [isAddingNote, setIsAddingNote] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [dateFilter, setDateFilter] = useState('All');
-  const [customStartDate, setCustomStartDate] = useState('');
-  const [customEndDate, setCustomEndDate] = useState('');
+  const [dateFilter, setDateFilter] = useState("All");
+  const [customStartDate, setCustomStartDate] = useState("");
+  const [customEndDate, setCustomEndDate] = useState("");
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [leadStatusFilter, leadSearchQuery, dateFilter, customStartDate, customEndDate]);
+  }, [
+    leadStatusFilter,
+    leadSearchQuery,
+    dateFilter,
+    customStartDate,
+    customEndDate,
+  ]);
 
   // Fetch Logic
   const fetchLeads = useCallback(async () => {
@@ -48,44 +56,55 @@ export const AdminPage: React.FC = () => {
     try {
       setLoadingLeads(true);
       const params = new URLSearchParams();
-      if (leadStatusFilter !== 'All') params.append('status', leadStatusFilter);
-      if (leadSearchQuery) params.append('search', leadSearchQuery);
-      params.append('page', currentPage.toString());
-      params.append('limit', '10');
-      if (dateFilter !== 'All') {
-        params.append('dateFilter', dateFilter);
-        if (dateFilter === 'Custom' && customStartDate && customEndDate) {
-          params.append('startDate', customStartDate);
-          params.append('endDate', customEndDate);
+      if (leadStatusFilter !== "All") params.append("status", leadStatusFilter);
+      if (leadSearchQuery) params.append("search", leadSearchQuery);
+      params.append("page", currentPage.toString());
+      params.append("limit", "10");
+      if (dateFilter !== "All") {
+        params.append("dateFilter", dateFilter);
+        if (dateFilter === "Custom" && customStartDate && customEndDate) {
+          params.append("startDate", customStartDate);
+          params.append("endDate", customEndDate);
         }
       }
 
-      const response = await fetch(`${API_URL}/api/leads?${params.toString()}`, {
-        headers: { 'Authorization': `Bearer ${token}` }
-      });
+      const response = await fetch(
+        `${API_URL}/api/leads?${params.toString()}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       if (response.ok) {
         const data = await response.json();
         setLeads(data.leads || []);
         if (data.pagination) setTotalPages(data.pagination.totalPages || 1);
       }
     } catch (err) {
-      console.error('Error fetching leads:', err);
+      console.error("Error fetching leads:", err);
     } finally {
       setLoadingLeads(false);
     }
-  }, [token, leadStatusFilter, leadSearchQuery, currentPage, dateFilter, customStartDate, customEndDate]);
+  }, [
+    token,
+    leadStatusFilter,
+    leadSearchQuery,
+    currentPage,
+    dateFilter,
+    customStartDate,
+    customEndDate,
+  ]);
 
   const fetchLeadStats = useCallback(async () => {
     if (!token) return;
     try {
       const response = await fetch(`${API_URL}/api/leads/stats`, {
-        headers: { 'Authorization': `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       });
       if (response.ok) {
         setLeadStats(await response.json());
       }
     } catch (err) {
-      console.error('Error fetching lead stats:', err);
+      console.error("Error fetching lead stats:", err);
     }
   }, [token]);
 
@@ -98,26 +117,55 @@ export const AdminPage: React.FC = () => {
 
   const handleLoginSuccess = (newToken: string) => {
     setToken(newToken);
-    localStorage.setItem('adminToken', newToken);
+    localStorage.setItem("adminToken", newToken);
   };
 
   const confirmLogout = () => {
     setToken(null);
-    localStorage.removeItem('adminToken');
+    localStorage.removeItem("adminToken");
     setIsLogoutModalOpen(false);
   };
 
   const handleStatusChange = async (leadId: string, newStatus: string) => {
     try {
       const response = await fetch(`${API_URL}/api/leads/${leadId}/status`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ status: newStatus })
+        body: JSON.stringify({ status: newStatus }),
       });
       if (response.ok) {
+        
+        // Send email notification to Office via Web3Forms if Converted
+        if (newStatus === "Converted") {
+          const leadToUpdate = leads.find(l => l._id === leadId);
+          if (leadToUpdate) {
+            try {
+              fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                },
+                body: JSON.stringify({
+                  access_key: "7a4483f0-c3dc-40be-a109-9c896709158d",
+                  subject: `✅ Lead Converted: ${leadToUpdate.name}`,
+                  from_name: "Product Leadership Studio CRM",
+                  name: leadToUpdate.name,
+                  email: leadToUpdate.email,
+                  "Lead Name": leadToUpdate.name,
+                  "Email Address": leadToUpdate.email,
+                  "Status": "Successfully Converted!"
+                })
+              }).catch(e => console.error("Web3Forms error:", e));
+            } catch (e) {
+              console.error("Web3Forms error:", e);
+            }
+          }
+        }
+
         fetchLeads();
         fetchLeadStats();
         if (selectedLead && selectedLead._id === leadId) {
@@ -126,7 +174,7 @@ export const AdminPage: React.FC = () => {
       }
     } catch (err) {
       console.error(err);
-      setToastMessage('Failed to update status');
+      setToastMessage("Failed to update status");
       setTimeout(() => setToastMessage(null), 3000);
     }
   };
@@ -134,7 +182,7 @@ export const AdminPage: React.FC = () => {
   const handleUpdateLeadDetails = async () => {
     if (!selectedLead) return;
     setIsUpdatingLead(true);
-    
+
     let finalNotes = leadNotes;
     if (newNoteText.trim()) {
       const dateStr = new Date().toLocaleString();
@@ -144,24 +192,24 @@ export const AdminPage: React.FC = () => {
 
     try {
       const response = await fetch(`${API_URL}/api/leads/${selectedLead._id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          notes: finalNotes
-        })
+          notes: finalNotes,
+        }),
       });
       if (response.ok) {
         fetchLeads();
         setIsLeadModalOpen(false);
-        setToastMessage('Lead details updated successfully!');
+        setToastMessage("Lead details updated successfully!");
         setTimeout(() => setToastMessage(null), 3000);
       }
     } catch (err) {
       console.error(err);
-      setToastMessage('Failed to update lead');
+      setToastMessage("Failed to update lead");
       setTimeout(() => setToastMessage(null), 3000);
     } finally {
       setIsUpdatingLead(false);
@@ -170,8 +218,8 @@ export const AdminPage: React.FC = () => {
 
   const openLeadModal = (lead: Lead) => {
     setSelectedLead(lead);
-    setLeadNotes(lead.notes || '');
-    setNewNoteText('');
+    setLeadNotes(lead.notes || "");
+    setNewNoteText("");
     setIsAddingNote(false);
     setIsLeadModalOpen(true);
   };
@@ -195,14 +243,23 @@ export const AdminPage: React.FC = () => {
       </Helmet>
       {/* Mobile Header */}
       <div className="md:hidden bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-30 shadow-sm">
-        <h1 className="text-lg font-black tracking-tight text-slate-800">CRM Dashboard</h1>
-        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 -mr-2 text-slate-500 hover:bg-slate-100 rounded-md">
-          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        <h1 className="text-lg font-black tracking-tight text-slate-800">
+          CRM Dashboard
+        </h1>
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="p-2 -mr-2 text-slate-500 hover:bg-slate-100 rounded-md"
+        >
+          {isMobileMenuOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
         </button>
       </div>
 
-      <Sidebar 
-        activeTab={activeTab} 
+      <Sidebar
+        activeTab={activeTab}
         setActiveTab={setActiveTab}
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
@@ -214,9 +271,9 @@ export const AdminPage: React.FC = () => {
       {/* Main Content */}
       <main className="flex-1 max-h-screen overflow-y-auto bg-slate-50 p-4 sm:p-8">
         <div className="max-w-6xl mx-auto">
-          {activeTab === 'overview' && <OverviewTab leadStats={leadStats} />}
-          {activeTab === 'leads' && (
-            <LeadsTab 
+          {activeTab === "overview" && <OverviewTab leadStats={leadStats} />}
+          {activeTab === "leads" && (
+            <LeadsTab
               leads={leads}
               loadingLeads={loadingLeads}
               totalPages={totalPages}
@@ -239,7 +296,7 @@ export const AdminPage: React.FC = () => {
         </div>
       </main>
 
-      <LeadModal 
+      <LeadModal
         selectedLead={selectedLead}
         leadNotes={leadNotes}
         newNoteText={newNoteText}
@@ -268,7 +325,7 @@ export const AdminPage: React.FC = () => {
         </div>
       )}
 
-      <LogoutModal 
+      <LogoutModal
         isLogoutModalOpen={isLogoutModalOpen}
         setIsLogoutModalOpen={setIsLogoutModalOpen}
         confirmLogout={confirmLogout}
