@@ -15,7 +15,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({ leadStats }) => {
   return (
     <div className="space-y-6">
       <h2 className="text-xl font-black text-slate-800">Dashboard Overview</h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {overviewStats.map((stat, i) => (
           <div key={i} className="bg-white p-5 rounded-sm border border-slate-200 shadow-sm flex items-center gap-4">
             <div className={`p-3 rounded-sm ${stat.bg} ${stat.color}`}>

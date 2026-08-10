@@ -35,7 +35,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
         </div>
 
         <div className="p-6 overflow-y-auto space-y-6">
-          <div className="grid grid-cols-2 gap-4 text-sm bg-slate-50 p-4 rounded-sm border border-slate-100">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm bg-slate-50 p-4 rounded-sm border border-slate-100">
             <div><span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Email</span><span className="font-semibold text-slate-700">{selectedLead.email}</span></div>
             <div><span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Phone</span><span className="font-semibold text-slate-700">{selectedLead.phone || 'N/A'}</span></div>
             <div><span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Company</span><span className="font-semibold text-slate-700">{selectedLead.company || 'N/A'}</span></div>
@@ -71,7 +71,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
           </div>
         </div>
 
-        <div className="p-5 border-t border-slate-100 bg-slate-50 flex items-center justify-end gap-3">
+        <div className="p-5 border-t border-slate-100 bg-slate-50 flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-3">
           <button onClick={() => setIsLeadModalOpen(false)} className="px-5 py-2.5 text-sm bg-slate-300 rounded-sm font-bold text-slate-600 hover:text-slate-800 transition-colors cursor-pointer">Cancel</button>
           <button onClick={handleUpdateLeadDetails} disabled={isUpdatingLead} className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-sm shadow-md shadow-blue-500/20 transition-all flex items-center gap-2 disabled:opacity-70 cursor-pointer">
             {isUpdatingLead && <Loader2 className="w-4 h-4 animate-spin" />}
