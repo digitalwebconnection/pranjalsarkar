@@ -25,12 +25,16 @@ export default function PhilosophySection() {
   }, [activeIdx, isDescExpanded]);
 
   const nextCard = () => {
-    setActiveIdx((prev) => (prev + 1) % cardData.length);
-    setIsDescExpanded(false);
+    if (activeIdx < cardData.length - 1) {
+      setActiveIdx((prev) => prev + 1);
+      setIsDescExpanded(false);
+    }
   };
   const prevCard = () => {
-    setActiveIdx((prev) => (prev === 0 ? cardData.length - 1 : prev - 1));
-    setIsDescExpanded(false);
+    if (activeIdx > 0) {
+      setActiveIdx((prev) => prev - 1);
+      setIsDescExpanded(false);
+    }
   };
 
   const activeCard = cardData[activeIdx];
@@ -162,8 +166,9 @@ export default function PhilosophySection() {
                       <div className="flex justify-between items-center w-full relative px-2">
                         <button
                           onClick={prevCard}
+                          disabled={activeIdx === 0}
                           aria-label="Previous card"
-                          className="w-10 h-10 rounded-full border border-[#f59e0b] bg-transparent flex items-center justify-center text-white  transition-all duration-300"
+                          className={`w-10 h-10 rounded-full border border-[#f59e0b] bg-transparent flex items-center justify-center text-white transition-all duration-300 ${activeIdx === 0 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-[#f59e0b]/20'}`}
                         >
                           <ChevronLeft size={20} />
                         </button>
@@ -178,8 +183,9 @@ export default function PhilosophySection() {
 
                         <button
                           onClick={nextCard}
+                          disabled={activeIdx === cardData.length - 1}
                           aria-label="Next card"
-                          className="w-10 h-10 rounded-full border border-[#f59e0b] bg-transparent flex items-center justify-center text-white  transition-all duration-300"
+                          className={`w-10 h-10 rounded-full border border-[#f59e0b] bg-transparent flex items-center justify-center text-white transition-all duration-300 ${activeIdx === cardData.length - 1 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-[#f59e0b]/20'}`}
                         >
                           <ChevronRight size={20} />
                         </button>
