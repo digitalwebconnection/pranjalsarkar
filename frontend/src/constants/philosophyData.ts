@@ -5,7 +5,7 @@ import img4 from "../assets/PhilosophySection/Deciding Above AI.png";
 import img5 from "../assets/PhilosophySection/Fluent In The Boardroom.png";
 import img6 from "../assets/PhilosophySection/Owning The Full Leadership Table.png";
 import img7 from "../assets/PhilosophySection/Your Honest Leadership Mirror.png";
-import img8 from "../assets/PhilosophySection/Your Next Step.png";
+// import img8 from "../assets/PhilosophySection/Your Next Step.png";
 
 export const cardData = [
   {
@@ -52,9 +52,9 @@ export const cardData = [
   },
   {
     step: "08",
-    title: "Your\nNext Step",
+    // title: "Your\nNext Step",
     // desc: "Join the Studio and build the product judgment required to lead in an AI-first world.",
     isCta: true,
-    image: img8
+    // image: img8
   }
 ];

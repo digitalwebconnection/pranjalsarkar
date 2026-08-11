@@ -104,57 +104,66 @@ export default function PhilosophySection() {
                   <div className="relative z-10 flex flex-col justify-between items-center text-center h-full w-full">
 
                     {/* Background Image (Absolute positioning prevents layout shifts, visible on all cards) */}
-                    <div className="absolute top-[54%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[85%] sm:max-w-92 h-70 sm:h-80.5 md:h-100 lg:h-80.5 flex items-center justify-center pointer-events-none z-0">
-                      {/* Decorative glow behind image */}
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-[#ea580c]/30 blur-[60px] rounded-full" />
-                      <img src={activeCard.image} alt={activeCard.title} className="relative z-10 w-full h-full object-contain mix-blend-screen scale-[1.25] lg:scale-[1.4]" />
-                    </div>
+                    {!activeCard.isCta && activeCard.image && (
+                      <div className="absolute top-[54%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[85%] sm:max-w-92 h-70 sm:h-80.5 md:h-100 lg:h-80.5 flex items-center justify-center pointer-events-none z-0">
+                        {/* Decorative glow behind image */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-[#ea580c]/30 blur-[60px] rounded-full" />
+                        <img src={activeCard.image} alt={activeCard.title} className="relative z-10 w-full h-full object-contain mix-blend-screen scale-[1.25] lg:scale-[1.4]" />
+                      </div>
+                    )}
 
                     {/* Header Group */}
-                    <div className="flex flex-col items-center w-full z-10 relative">
-                      <div className="mb-2">
-                        <span className="inline-block px-4 py-1.5 bg-linear-to-r from-[#ea580c] to-[#f59e0b] text-white text-[11px] font-bold tracking-widest rounded-full uppercase shadow-[0_0_15px_rgba(234,88,12,0.4)]">
-                          {activeCard.isCta ? "Your Next Step" : `Transformation #${parseInt(activeCard.step, 10)}`}
-                        </span>
-                      </div>
+                    {!activeCard.isCta && (
+                      <div className="flex flex-col items-center w-full z-10 relative">
+                        <div className="mb-2">
+                          <span className="inline-block px-4 py-1.5 bg-linear-to-r from-[#ea580c] to-[#f59e0b] text-white text-[11px] font-bold tracking-widest rounded-full uppercase shadow-[0_0_15px_rgba(234,88,12,0.4)]">
+                            {`Transformation #${parseInt(activeCard.step, 10)}`}
+                          </span>
+                        </div>
 
-                      <div className="flex flex-col items-center gap-1.5 mb-1">
-                        <span className="text-[#f59e0b] text-[10px] font-bold tracking-[0.2em] uppercase">
-                          After this program
-                        </span>
-                        <span className="text-[#f59e0b] text-lg font-bold tracking-[0.15em] uppercase">
-                          You will develop
-                        </span>
-                      </div>
+                        <div className="flex flex-col items-center gap-1.5 mb-1">
+                          <span className="text-[#f59e0b] text-[10px] font-bold tracking-[0.2em] uppercase">
+                            After this program
+                          </span>
+                          <span className="text-[#f59e0b] text-lg font-bold tracking-[0.15em] uppercase">
+                            You will develop
+                          </span>
+                        </div>
 
-                      <h3 className="font-serif text-2xl md:text-3xl font-bold text-white leading-tight px-2 drop-shadow-md whitespace-pre-line">
-                        {activeCard.title}
-                      </h3>
-                    </div>
+                        <h3 className="font-serif text-2xl md:text-3xl font-bold text-white leading-tight px-2 drop-shadow-md whitespace-pre-line">
+                          {activeCard.title}
+                        </h3>
+                      </div>
+                    )}
 
                     {/* Spacer to push content apart */}
-                    <div className="flex-1 w-full min-h-40 sm:min-h-55 md:min-h-65 z-10"></div>
+                    {!activeCard.isCta && (
+                      <div className="flex-1 w-full min-h-40 sm:min-h-55 md:min-h-65 z-10"></div>
+                    )}
 
                     {/* Description Group */}
-                    <div className="flex flex-col items-center w-full z-10 relative">
-                      <p
-                        ref={descRef}
-                        className={`text-gray-300 text-sm md:text-[14px] font-medium max-w-xl mx-auto transition-all duration-300 mb-1 ${!isDescExpanded ? 'line-clamp-3 md:line-clamp-none' : ''}`}
-                      >
-                        {activeCard.desc}
-                      </p>
-                      {(showReadMore || isDescExpanded) && !activeCard.isCta && (
-                        <button
-                          onClick={() => setIsDescExpanded(!isDescExpanded)}
-                          className=" text-[#ea580c] text-[11px] font-bold uppercase tracking-wider hover:text-[#f59e0b] transition-colors md:hidden"
-                        >
-                          {isDescExpanded ? 'Show Less' : 'Read More'}
-                        </button>
-                      )}
-                      {activeCard.isCta && (
+                    <div className={`flex flex-col items-center w-full z-10 relative ${activeCard.isCta ? 'flex-1 justify-center' : ''}`}>
+                      {!activeCard.isCta ? (
+                        <>
+                          <p
+                            ref={descRef}
+                            className={`text-gray-300 text-sm md:text-[14px] font-medium max-w-xl mx-auto transition-all duration-300 mb-1 ${!isDescExpanded ? 'line-clamp-3 md:line-clamp-none' : ''}`}
+                          >
+                            {activeCard.desc}
+                          </p>
+                          {(showReadMore || isDescExpanded) && (
+                            <button
+                              onClick={() => setIsDescExpanded(!isDescExpanded)}
+                              className=" text-[#ea580c] text-[11px] font-bold uppercase tracking-wider hover:text-[#f59e0b] transition-colors md:hidden"
+                            >
+                              {isDescExpanded ? 'Show Less' : 'Read More'}
+                            </button>
+                          )}
+                        </>
+                      ) : (
                         <a
                           href="#simulation"
-                          className="mt-2 px-10 py-2 bg-linear-to-r from-[#ea580c] to-[#f59e0b] rounded-full text-sm font-bold text-white hover:shadow-[0_0_25px_rgba(234,88,12,0.5)] transition-all hover:-translate-y-1"
+                          className="px-10 py-3.5 bg-linear-to-r from-[#ea580c] to-[#f59e0b] rounded-full text-base font-bold text-white hover:shadow-[0_0_25px_rgba(234,88,12,0.6)] shadow-[0_0_15px_rgba(234,88,12,0.4)] transition-all hover:-translate-y-1 hover:scale-105"
                         >
                           Explore The Studio
                         </a>
