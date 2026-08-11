@@ -125,7 +125,7 @@ export default function Navbar() {
                 {/* Desktop CTA */}
                 <Link
                   to="/#contact"
-                  className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-white text-[14px] font-bold tracking-wide no-underline transition-all duration-300 bg-linear-to-r from-[#2563EB] to-[#050B14] shadow-[0_0_80px_rgba(37,99,235,0.4)] hover:-translate-y-px"
+                  className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-white text-[14px] font-bold tracking-wide no-underline transition-all duration-300 bg-[#2563EB]  shadow-[0_0_80px_rgba(37,99,235,0.4)] hover:-translate-y-px"
                 >
                   Submit Interview Request <span>→</span>
                 </Link>

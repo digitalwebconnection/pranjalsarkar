@@ -4,7 +4,7 @@ import { shouldApply, shouldNotApply } from '../../constants/whoShouldApplyData'
 export default function WhoShouldApplySection() {
 
   return (
-    <section id="exposure" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 bg-[#000000]">
+    <section id="" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 bg-[#000000]">
       {/* Glows */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
         <div className="absolute -top-25 left-1/2 -translate-x-1/2 w-[150%] sm:w-225 h-75 sm:h-150 bg-[radial-gradient(ellipse_at_top,rgba(0,136,255,0.25)_0%,rgba(0,60,180,0.12)_45%,transparent_75%)] blur-2xl sm:blur-[60px]" />

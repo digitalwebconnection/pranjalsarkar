@@ -4,7 +4,7 @@ import { stages } from '../../constants/judgementData';
 
 export default function JudgementSection() {
   return (
-    <section id="simulation" className="relative py-4 md:py-14 overflow-hidden border-b border-white/8 bg-[#000001]">
+    <section id="curriculum" className="relative py-4 md:py-14 overflow-hidden border-b border-white/8 bg-[#000001]">
       {/* Background Decorative Gradients */}
       {/* Background Decorative Wavy Dots & Glow */}
       <div className="absolute top-0 right-0 w-150 h-150 md:w-225 md:h-225 opacity-80 pointer-events-none z-0"

@@ -53,7 +53,7 @@ export const cardData = [
   {
     step: "08",
     title: "Your\nNext Step",
-    desc: "Join the Studio and build the product judgment required to lead in an AI-first world.",
+    // desc: "Join the Studio and build the product judgment required to lead in an AI-first world.",
     isCta: true,
     image: img8
   }
