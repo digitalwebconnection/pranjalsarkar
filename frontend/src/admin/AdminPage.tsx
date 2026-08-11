@@ -229,6 +229,14 @@ export const AdminPage: React.FC = () => {
         </button>
       </div>
 
+      {/* Mobile Menu Backdrop */}
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-40 md:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
       <Sidebar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -240,7 +248,7 @@ export const AdminPage: React.FC = () => {
       />
 
       {/* Main Content */}
-      <main className="flex-1 max-h-screen overflow-y-auto bg-slate-50 p-4 sm:p-8">
+      <main className="flex-1 w-full md:h-screen md:overflow-y-auto bg-slate-50 p-4 sm:p-8">
         <div className="max-w-6xl mx-auto">
           {activeTab === "overview" && <OverviewTab leadStats={leadStats} />}
           {activeTab === "leads" && (

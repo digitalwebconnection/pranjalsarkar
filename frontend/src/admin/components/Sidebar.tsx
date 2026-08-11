@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Search, FileText, LogOut } from 'lucide-react';
+import { Menu, Search, FileText, LogOut, X } from 'lucide-react';
 
 interface SidebarProps {
   activeTab: 'overview' | 'leads';
@@ -16,7 +16,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   return (
     <aside className={`
-      fixed md:static inset-y-0 left-0 z-20
+      fixed md:static inset-y-0 left-0 z-50 md:z-20
       bg-white border-r border-slate-200 shadow-xl md:shadow-none
       transform transition-all duration-300 ease-in-out flex flex-col
       ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
@@ -30,6 +30,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
         )}
         <button onClick={() => setIsCollapsed(!isCollapsed)} className="hidden md:flex p-1.5 rounded-sm bg-slate-50 hover:bg-slate-100 text-slate-400 cursor-ew-resize">
           <Menu className="w-4 h-4" />
+        </button>
+        <button onClick={() => setIsMobileMenuOpen(false)} className="md:hidden p-1.5 rounded-sm bg-slate-50 hover:bg-slate-100 text-slate-400 cursor-pointer">
+          <X className="w-4 h-4" />
         </button>
       </div>
 

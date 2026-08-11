@@ -36,14 +36,14 @@ export const LeadsTab: React.FC<LeadsTabProps> = ({
           <h3 className="text-lg font-black text-slate-800">Leads Funnel</h3>
           <p className="text-xs font-semibold text-slate-400">Manage applicants and program candidates</p>
         </div>
-        <div className="flex items-center gap-3 w-full md:w-auto">
-          <div className="relative flex-1 md:w-64">
+        <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 w-full md:w-auto">
+          <div className="relative w-full sm:flex-1 md:w-64">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input type="text" value={leadSearchQuery} onChange={(e) => setLeadSearchQuery(e.target.value)} placeholder="Search leads..." className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-sm text-sm font-semibold focus:border-blue-500 outline-none" />
           </div>
-          <div className="relative">
+          <div className="relative w-full sm:w-auto">
             <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-            <select aria-label="Filter by date" value={dateFilter} onChange={(e) => setDateFilter(e.target.value)} className="pl-9 pr-8 py-2 bg-slate-50 border border-slate-200 rounded-sm text-sm font-bold text-slate-700 outline-none cursor-pointer">
+            <select aria-label="Filter by date" value={dateFilter} onChange={(e) => setDateFilter(e.target.value)} className="w-full sm:w-auto pl-9 pr-8 py-2 bg-slate-50 border border-slate-200 rounded-sm text-sm font-bold text-slate-700 outline-none cursor-pointer">
               <option value="All">All Time</option>
               <option value="Today">Today</option>
               <option value="7days">Last 7 Days</option>
@@ -52,7 +52,7 @@ export const LeadsTab: React.FC<LeadsTabProps> = ({
             </select>
           </div>
           {dateFilter === 'Custom' && (
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
               <input 
                 type="date" 
                 max={new Date().toISOString().split('T')[0]}
@@ -63,20 +63,20 @@ export const LeadsTab: React.FC<LeadsTabProps> = ({
                     setCustomEndDate(e.target.value);
                   }
                 }} 
-                className="px-2 py-1.5 bg-slate-50 border border-slate-200 rounded-sm text-xs font-bold text-slate-700 outline-none cursor-pointer" 
+                className="w-full sm:w-auto px-2 py-1.5 bg-slate-50 border border-slate-200 rounded-sm text-xs font-bold text-slate-700 outline-none cursor-pointer" 
               />
-              <span className="text-slate-400 font-bold">-</span>
+              <span className="hidden sm:inline text-slate-400 font-bold">-</span>
               <input 
                 type="date" 
                 min={customStartDate}
                 max={new Date().toISOString().split('T')[0]}
                 value={customEndDate} 
                 onChange={e => setCustomEndDate(e.target.value)} 
-                className="px-2 py-1.5 bg-slate-50 border border-slate-200 rounded-sm text-xs font-bold text-slate-700 outline-none cursor-pointer" 
+                className="w-full sm:w-auto px-2 py-1.5 bg-slate-50 border border-slate-200 rounded-sm text-xs font-bold text-slate-700 outline-none cursor-pointer" 
               />
             </div>
           )}
-          <select aria-label="Filter by status" value={leadStatusFilter} onChange={(e) => setLeadStatusFilter(e.target.value)} className="bg-slate-50 border border-slate-200 rounded-sm px-3 py-2 text-sm font-bold text-slate-700 outline-none cursor-pointer">
+          <select aria-label="Filter by status" value={leadStatusFilter} onChange={(e) => setLeadStatusFilter(e.target.value)} className="w-full sm:w-auto bg-slate-50 border border-slate-200 rounded-sm px-3 py-2 text-sm font-bold text-slate-700 outline-none cursor-pointer">
             <option value="All">All Status</option>
             {Object.keys(STATUS_CONFIG).map(status => (
               <option key={status} value={status}>{STATUS_CONFIG[status as keyof typeof STATUS_CONFIG].label}</option>
