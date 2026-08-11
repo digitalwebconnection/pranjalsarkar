@@ -1,5 +1,5 @@
 export const shouldApply = [
-  "You have 3+ years of Product Management experience.",
+  "You have 5+ years of experience working on digital products and aspire to lead product strategy and business decisions.",
   "You're already driving products and want to grow into Director-level responsibilities.",
   "You're ready to think beyond features and roadmaps, and make business and strategic decisions.",
   "You're willing to challenge your assumptions through executive discussions, simulations and feedback.",
@@ -8,7 +8,7 @@ export const shouldApply = [
 ];
 
 export const shouldNotApply = [
-  "You have less than 3 years of Product Management experience.",
+  "You have less than 5 years of professional experience in a product company.",
   "You're looking for an entry-level or foundational Product Management course.",
   "Your primary goal is interview preparation or earning a certificate.",
   "You prefer passive, self-paced video courses with minimal participation.",

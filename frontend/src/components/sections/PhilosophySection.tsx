@@ -122,12 +122,12 @@ export default function PhilosophySection() {
                         <span className="text-[#f59e0b] text-[10px] font-bold tracking-[0.2em] uppercase">
                           After this program
                         </span>
-                        <span className="text-[#f59e0b] text-[13px] font-bold tracking-[0.15em] uppercase">
+                        <span className="text-[#f59e0b] text-lg font-bold tracking-[0.15em] uppercase">
                           You will develop
                         </span>
                       </div>
 
-                      <h3 className="font-serif text-2xl md:text-3xl font-bold text-white leading-tight px-2 drop-shadow-md">
+                      <h3 className="font-serif text-2xl md:text-3xl font-bold text-white leading-tight px-2 drop-shadow-md whitespace-pre-line">
                         {activeCard.title}
                       </h3>
                     </div>

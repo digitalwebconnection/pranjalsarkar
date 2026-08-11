@@ -15,7 +15,7 @@ export default function HeroSection() {
 
       {/* ── Content ── */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6 flex flex-col justify-center flex-1 gap-0">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-5 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-4 items-stretch">
 
           {/* Left Column - Content */}
           <div className="order-2 lg:order-1 lg:col-span-7 flex flex-col items-start text-left self-center mt-0">
@@ -25,15 +25,15 @@ export default function HeroSection() {
             >
               {/* Pre-headline */}
               <div className="flex justify-start mb-4 lg:mb-5">
-                <span className="inline-flex items-center gap-2 px-4 py-1 bg-[#0080C7]/10 border border-[#0080C7]/20 rounded-full text-[12px] md:text-[16px] font-semibold text-blue-300 shadow-[0_0_15px_rgba(0,128,199,0.15)] max-w-full">
+                <span className="inline-flex items-center gap-2 px-4 py-1 bg-[#0080C7]/10 border border-[#0080C7]/20 rounded-full text-[12px] md:text-[15px] font-semibold text-blue-300 shadow-[0_0_15px_rgba(0,128,199,0.15)] max-w-full">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#0080C7] shadow-[0_0_8px_rgba(0,128,199,0.9)] shrink-0" />
-                  <span className="text-left leading-tight">For Product Managers with 3–8 years of experience preparing for Product Leadership</span>
+                  <span className="text-left leading-tight">For professionals with 5+ years of experience preparing for leadership in Product Management.</span>
                 </span>
               </div>
 
               {/* Headline */}
               <h1 className="font-serif font-bold leading-[1.1] tracking-tight text-white mb-4 text-2xl md:text-3xl lg:text-5xl">
-                The rules change when you move from <span className="text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">Product Manager to Product Leader.</span>
+                The Rules Change When You <span className="text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">Step Into Product Leadership.</span>
               </h1>
 
               {/* Horizontal flare line */}
