@@ -104,7 +104,7 @@ export default function PhilosophySection() {
                   <div className="relative z-10 flex flex-col justify-between items-center text-center h-full w-full">
 
                     {/* Background Image (Absolute positioning prevents layout shifts, visible on all cards) */}
-                    <div className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[85%] sm:max-w-92 h-70 sm:h-80.5 md:h-100 lg:h-80.5 flex items-center justify-center pointer-events-none z-0">
+                    <div className="absolute top-[54%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[85%] sm:max-w-92 h-70 sm:h-80.5 md:h-100 lg:h-80.5 flex items-center justify-center pointer-events-none z-0">
                       {/* Decorative glow behind image */}
                       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-[#ea580c]/30 blur-[60px] rounded-full" />
                       <img src={activeCard.image} alt={activeCard.title} className="relative z-10 w-full h-full object-contain mix-blend-screen scale-[1.25] lg:scale-[1.4]" />
