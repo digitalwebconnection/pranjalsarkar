@@ -7,7 +7,7 @@ export default function HeroSection() {
   const [fading] = useState(false);
 
   return (
-    <section id="hero" className="relative w-full min-h-screen lg:min-h-screen flex flex-col justify-between overflow-hidden bg-[#000001] border-b border-white/8 pt-24 lg:pt-28 pb-6 lg:pb-8">
+    <section id="hero" className="relative w-full lg:min-h-screen flex flex-col justify-between overflow-hidden bg-[#000001] border-b border-white/8 pt-24 lg:pt-28 pb-6 lg:pb-8">
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,rgba(37,99,235,0.25)_0%,transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left_center,rgba(0,168,255,0.1)_0%,transparent_50%)]" />
