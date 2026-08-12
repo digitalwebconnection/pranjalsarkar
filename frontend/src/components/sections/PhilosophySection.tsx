@@ -49,7 +49,7 @@ export default function PhilosophySection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 lg:gap-12 items-center">
 
           {/* Left Column: Typography, Manifesto & CTA */}
-          <div className="lg:col-span-6 flex flex-col justify-start">
+          <div className="lg:col-span-6 flex flex-col justify-start items-center text-center lg:items-start lg:text-left">
             <h2 className="font-serif font-bold text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight text-white mb-6">
               What changes after this {" "}
               <span className="relative text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">
@@ -60,7 +60,7 @@ export default function PhilosophySection() {
             </h2>
 
             {/* Manifesto Quote Block */}
-            <div className="relative border-l-2 border-[#0080C7] pl-6 my-6 shadow-[-4px_0_15px_-4px_rgba(0,128,199,0.6)]">
+            <div className="relative border-l-2 border-[#0080C7] pl-4 md:pl-6 my-6 shadow-[-4px_0_15px_-4px_rgba(0,128,199,0.6)] text-left w-full max-w-xl">
               <p className="text-lg md:text-xl font-serif  text-white/95 leading-relaxed drop-shadow-sm">
                 "The Studio is designed to help you build judgment and not just knowledge."
               </p>
@@ -73,7 +73,7 @@ export default function PhilosophySection() {
             {/* See How It Works CTA Button */}
             <a
               href="#program"
-              className="group flex sm:inline-flex w-full sm:w-auto justify-center items-center gap-2.5 px-10 py-4 bg-linear-to-r from-[#0080C7] to-[rgba(24,37,226,0.9)] rounded-full text-white font-bold text-sm transition-all duration-300 hover:from-[#00a8ff] hover:to-[rgba(24,37,226,1)] shadow-[0_0_20px_rgba(24,37,226,0.4)] hover:shadow-[0_0_30px_rgba(24,37,226,0.6)] hover:-translate-y-0.5 cursor-pointer self-center sm:self-start"
+              className="group flex sm:inline-flex w-full sm:w-auto justify-center items-center gap-2.5 px-10 py-4 bg-linear-to-r from-[#0080C7] to-[rgba(24,37,226,0.9)] rounded-full text-white font-bold text-sm transition-all duration-300 hover:from-[#00a8ff] hover:to-[rgba(24,37,226,1)] shadow-[0_0_20px_rgba(24,37,226,0.4)] hover:shadow-[0_0_30px_rgba(24,37,226,0.6)] hover:-translate-y-0.5 cursor-pointer self-center lg:self-start"
             >
               Submit Interview Request
               <svg

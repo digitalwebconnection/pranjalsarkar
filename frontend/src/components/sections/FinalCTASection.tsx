@@ -8,10 +8,6 @@ export default function FinalCTASection() {
       id="final-cta"
       className="relative min-h-150 lg:h-190 flex items-center overflow-hidden bg-[#02050A] group py-6 lg:py-0"
     >
-
-
-
-
       {/* --- CONTENT --- */}
       <div className="max-w-7xl mx-auto relative z-10 w-full flex flex-col lg:flex-row items-center h-full">
 
@@ -53,7 +49,7 @@ export default function FinalCTASection() {
           {/* Mobile Image (Cropped and masked to remove the white artifact at the bottom) */}
           <div className="w-full relative lg:hidden  md:pt-2 z-20 flex justify-center pointer-events-none select-none">
             <div 
-              className="relative w-full max-w-sm aspect-[1.1/1] overflow-hidden"
+              className="relative w-full max-w-sm md:max-w-4xl aspect-[1.1/1] overflow-hidden"
               style={{ 
                 maskImage: 'linear-gradient(to bottom, black 65%, transparent 100%)', 
                 WebkitMaskImage: 'linear-gradient(to bottom, black 65%, transparent 100%)' 
@@ -92,7 +88,7 @@ export default function FinalCTASection() {
         </div>
 
         {/* Right Column - Text & CTA */}
-        <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start lg:pl-0 xl:pl-12 mt-10 px-6 md:px-0">
+        <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start lg:pl-0 xl:pl-12 mt-10 px-6 md:px-8 lg:px-0">
 
           {/* Top Label */}
           <div className="flex items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-4 w-full">
@@ -111,22 +107,21 @@ export default function FinalCTASection() {
           <h2 className="font-sans font-bold text-[38px] sm:text-5xl md:text-5xl lg:text-6xl leading-[1.05] text-white mb-2 tracking-tight text-center lg:text-left">
             Become the <br />
             <span className="text-transparent bg-clip-text bg-linear-to-b from-[rgba(24,37,226,1)] to-[#006eff] drop-shadow-[0_0_15px_rgba(24,37,226,0.6)]">Product Leader</span><br />
-            Who Drives<br />
-            What Matters<span className="text-[#0053ee]">.</span>
+            Who Drives What Matters<span className="text-[#0053ee]">.</span>
           </h2>
 
           {/* Decorative blue gradient line */}
           <div className="hidden lg:block w-24 md:w-32 h-0.5 ms-2 bg-linear-to-r from-[#0066FF] to-transparent mb-4" />
 
           {/* Subtitle */}
-          <p className="text-[#E0E4EB] text-[15px] sm:text-lg md:text-2xl leading-relaxed max-w-md mb-8 font-light text-center lg:text-left">
+          <p className="text-[#E0E4EB] text-[15px] sm:text-lg md:text-2xl leading-relaxed max-w-full lg:max-w-xl mb-8 font-light text-center lg:text-left">
             A simulation-first executive program for experienced PMs ready to lead at the top.
           </p>
 
           {/* CTA Button */}
           <a
             href="#contact"
-            className="group flex items-stretch bg-linear-to-t from-[#0023a1] to-[#0066FF] hover:from-[#0044FF] hover:to-[#0077FF] text-white rounded-xl transition-all duration-300 shadow-[0_0_25px_rgba(0,102,255,0.5)] hover:shadow-[0_0_40px_rgba(0,102,255,0.7)] border border-[#ffffff10] w-fit mb-10 hover:-translate-y-1 overflow-hidden mx-auto lg:mx-0"
+            className="group flex items-stretch bg-linear-to-t from-[#0023a1] to-[#0066FF] hover:from-[#0044FF] hover:to-[#0077FF] text-white rounded-xl transition-all duration-300 shadow-[0_0_25px_rgba(0,102,255,0.5)] hover:shadow-[0_0_40px_rgba(0,102,255,0.7)] border border-[#ffffff10]  lg:w-fit mb-10 hover:-translate-y-1 overflow-hidden mx-auto lg:mx-0"
           >
             {/* Arrow section */}
             <div className="flex items-center justify-center px-5 sm:px-6 md:px-8 py-3.5 sm:py-4 md:py-5 border-r border-white/15 bg-white/5">
@@ -135,7 +130,7 @@ export default function FinalCTASection() {
               </svg>
             </div>
             {/* Text section */}
-            <div className="flex items-center px-5 sm:px-6 md:px-10 py-3.5 sm:py-4 md:py-5 font-semibold text-[13px] sm:text-sm md:text-[17px] tracking-wide uppercase">
+            <div className="flex items-center  px-5 sm:px-6 md:px-10 py-3.5 sm:py-4 md:py-5 font-semibold text-[13px] sm:text-sm md:text-[17px] tracking-wide uppercase">
               SUBMIT INTERVIEW REQUEST
             </div>
           </a>

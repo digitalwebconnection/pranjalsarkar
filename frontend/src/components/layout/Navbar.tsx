@@ -180,21 +180,21 @@ export default function Navbar() {
       {/* ── Mobile menu sidebar (Left Slide-in) ── */}
       <div
         className={[
-          'fixed top-0 left-0 bottom-0 w-70 bg-[#0A101F] border-r border-white/10 z-70 lg:hidden flex flex-col transition-transform duration-300 ease-in-out shadow-[20px_0_50px_rgba(0,0,0,0.5)]',
+          'fixed top-0 left-0 bottom-0 w-70 md:w-96 bg-[#0A101F] border-r border-white/10 z-70 lg:hidden flex flex-col transition-transform duration-300 ease-in-out shadow-[20px_0_50px_rgba(0,0,0,0.5)]',
           menuOpen ? 'translate-x-0' : '-translate-x-full'
         ].join(' ')}
       >
         {/* Sidebar Header */}
-        <div className="flex items-center justify-between p-5 border-b border-white/5">
+        <div className="flex items-center justify-between p-5 md:p-8 border-b border-white/5">
           <Link to="/#hero" onClick={() => setMenuOpen(false)} className="no-underline shrink-0">
-            <img src={Logo} alt="Logo" className="w-32 h-auto object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
+            <img src={Logo} alt="Logo" className="w-32 md:w-48 h-auto object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
           </Link>
           <button
             onClick={() => setMenuOpen(false)}
             aria-label="Close menu"
             className="p-2 -mr-2 text-white/50 hover:text-white transition-colors flex items-center justify-center cursor-pointer"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 md:w-8 md:h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
@@ -202,7 +202,7 @@ export default function Navbar() {
         </div>
 
         {/* Sidebar Links */}
-        <div className="flex flex-col gap-2 p-5 overflow-y-auto flex-1">
+        <div className="flex flex-col gap-2 p-5 md:p-8 overflow-y-auto flex-1">
           {navLinks.map(l => {
             const isActive = activeId === l.href.replace('/#', '');
             return (
@@ -211,7 +211,7 @@ export default function Navbar() {
                 to={l.href}
                 onClick={() => setMenuOpen(false)}
                 className={[
-                  'flex items-center justify-between px-4 py-3.5 rounded-lg text-[15px] no-underline transition-all duration-200',
+                  'flex items-center justify-between px-4 md:px-6 py-3.5 md:py-5 rounded-lg text-[15px] md:text-xl no-underline transition-all duration-200',
                   isActive
                     ? 'text-[#2563EB] font-bold bg-white/5'
                     : 'text-[#9CA3AF] font-medium hover:text-white hover:bg-white/5 hover:translate-x-1',
@@ -219,18 +219,18 @@ export default function Navbar() {
                 aria-current={isActive ? 'page' : undefined}
               >
                 <span>{l.label}</span>
-                {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] shadow-[0_0_10px_rgba(37,99,235,0.8)]" />}
+                {isActive && <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#2563EB] shadow-[0_0_10px_rgba(37,99,235,0.8)]" />}
               </Link>
             );
           })}
         </div>
 
         {/* Sidebar Footer CTA */}
-        <div className="p-5 border-t border-white/5 pb-8">
+        <div className="p-5 md:p-8 border-t border-white/5 pb-8 md:pb-12">
           <Link
             to="/#contact"
             onClick={() => setMenuOpen(false)}
-            className="flex items-center justify-center gap-2 w-full py-4 rounded-xl text-white text-[15px] font-bold no-underline tracking-wide bg-linear-to-r from-[#2563EB] to-[#050B14] shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] transition-all"
+            className="flex items-center justify-center gap-2 w-full py-4 md:py-6 rounded-xl text-white text-[15px] md:text-lg font-bold no-underline tracking-wide bg-linear-to-r from-[#2563EB] to-[#050B14] shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] transition-all"
           >
             Submit Interview Request →
           </Link>

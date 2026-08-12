@@ -34,7 +34,7 @@ export default function dCurriculumSection() {
           <div>
 
 
-            <div className="relative mb-4">
+            <div className="relative mb-4 flex flex-col items-center lg:items-start text-center lg:text-left">
               <h2 className="font-serif font-bold text-4xl md:text-5xl lg:text-5xl leading-tight tracking-tight text-white mb-2">
                 Everything You
                 <br />

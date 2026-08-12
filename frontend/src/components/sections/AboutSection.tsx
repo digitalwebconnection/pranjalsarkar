@@ -92,7 +92,7 @@ export default function AboutSection() {
 
           {/* Left Column (Desktop): Premium Image Card with Floating Animation */}
           <motion.div
-            className="lg:col-span-5 w-full max-w-xl mx-auto  relative"
+            className="lg:col-span-5 w-full max-w-full lg:max-w-xl mx-auto relative"
             variants={itemVariants}
             {...floatAnimation}
           >
