@@ -60,7 +60,7 @@ function TestimonialCard({ t, onExpandChange }: { t: typeof testimonials[0], onE
       <div className="relative flex flex-col h-full w-full bg-linear-to-b from-[#080d1a] to-[#04060d] md:bg-[#080d1a] pb-10 sm:pb-12 shadow-[0_0_20px_rgba(0,168,255,0.15)] md:shadow-[0_0_35px_rgba(0,168,255,0.25)] border border-[#00a8ff]/20 rounded-xl overflow-visible transition-all duration-300 md:hover:shadow-[0_0_50px_rgba(0,168,255,0.4)] md:hover:-translate-y-1">
 
         {/* Upper Half: Image with Blue Border */}
-        <div className="w-full shrink-0 h-64 sm:h-74 pb-0">
+        <div className="w-full shrink-0 h-74 pb-0">
           <div className="w-full h-full border border-[#00a8ff]/30 rounded-t-xl overflow-hidden shadow-[0_0_15px_rgba(0,168,255,0.1)]">
             <img src={t.image} alt={t.name} className="w-full h-full object-cover object-top" loading="lazy" />
           </div>
