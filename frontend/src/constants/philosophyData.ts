@@ -1,8 +1,8 @@
 import img1 from "../assets/PhilosophySection/Conviction Under Pressure.png";
 import img2 from "../assets/PhilosophySection/Thinking Before The Room Does.png";
-import img3 from "../assets/PhilosophySection/Reading The Full Picture.png";
+import img3 from "../assets/PhilosophySection/Reading The Full Picture1.png";
 import img4 from "../assets/PhilosophySection/Deciding Above AI.png";
-import img5 from "../assets/PhilosophySection/Fluent In The Boardroom.png";
+import img5 from "../assets/PhilosophySection/Fluent In The Boardroom1.png";
 import img6 from "../assets/PhilosophySection/Owning The Full Leadership Table.png";
 import img7 from "../assets/PhilosophySection/Your Honest Leadership Mirror.png";
 // import img8 from "../assets/PhilosophySection/Your Next Step.png";
