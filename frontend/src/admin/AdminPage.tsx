@@ -6,6 +6,7 @@ import { Login } from "./components/Login";
 import { Sidebar } from "./components/Sidebar";
 import { OverviewTab } from "./components/OverviewTab";
 import { LeadsTab } from "./components/LeadsTab";
+import { UsersTab } from "./components/UsersTab";
 import { LeadModal } from "./components/LeadModal";
 import { LogoutModal } from "./components/LogoutModal";
 import { Helmet } from "react-helmet-async";
@@ -14,7 +15,20 @@ export const AdminPage: React.FC = () => {
   const [token, setToken] = useState<string | null>(() =>
     localStorage.getItem("adminToken"),
   );
-  const [activeTab, setActiveTab] = useState<"overview" | "leads">("overview");
+  
+  // Extract role from token safely
+  const getUserRole = () => {
+    if (!token) return undefined;
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.role;
+    } catch {
+      return undefined;
+    }
+  };
+  const userRole = getUserRole();
+
+  const [activeTab, setActiveTab] = useState<"overview" | "leads" | "users">("overview");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -240,6 +254,7 @@ export const AdminPage: React.FC = () => {
       <Sidebar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
+        userRole={userRole}
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
         isCollapsed={isCollapsed}
@@ -271,6 +286,9 @@ export const AdminPage: React.FC = () => {
               handleStatusChange={handleStatusChange}
               openLeadModal={openLeadModal}
             />
+          )}
+          {activeTab === "users" && userRole === 'super_admin' && (
+            <UsersTab token={token} />
           )}
         </div>
       </main>

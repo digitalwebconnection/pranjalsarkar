@@ -1,9 +1,10 @@
 import React from 'react';
-import { Menu, Search, FileText, LogOut, X } from 'lucide-react';
+import { Menu, Search, FileText, LogOut, X, Users } from 'lucide-react';
 
 interface SidebarProps {
-  activeTab: 'overview' | 'leads';
-  setActiveTab: (tab: 'overview' | 'leads') => void;
+  activeTab: 'overview' | 'leads' | 'users';
+  setActiveTab: (tab: 'overview' | 'leads' | 'users') => void;
+  userRole?: string;
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: (open: boolean) => void;
   isCollapsed: boolean;
@@ -12,7 +13,7 @@ interface SidebarProps {
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
-  activeTab, setActiveTab, isMobileMenuOpen, setIsMobileMenuOpen, isCollapsed, setIsCollapsed, handleLogoutClick
+  activeTab, setActiveTab, userRole, isMobileMenuOpen, setIsMobileMenuOpen, isCollapsed, setIsCollapsed, handleLogoutClick
 }) => {
   return (
     <aside className={`
@@ -48,6 +49,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <FileText className="w-5 h-5 shrink-0" />
             {!isCollapsed && <span className="text-sm font-bold">Leads CRM</span>}
           </button>
+          
+          {userRole === 'super_admin' && (
+            <button onClick={() => { setActiveTab('users'); setIsMobileMenuOpen(false); }}
+              className={`w-full flex items-center ${isCollapsed ? 'justify-center px-0' : 'justify-start gap-3 px-4'} py-3 rounded-sm transition-all cursor-pointer ${activeTab === 'users' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-500 hover:bg-slate-50'}`}>
+              <Users className="w-5 h-5 shrink-0" />
+              {!isCollapsed && <span className="text-sm font-bold">Admin Users</span>}
+            </button>
+          )}
         </nav>
       </div>
 

@@ -20,7 +20,7 @@ export const sendNewLeadNotification = async (lead) => {
     const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
 
     sendSmtpEmail.subject = `🔔 New Lead: ${lead.name}`;
-    sendSmtpEmail.sender = { name: 'CRM System', email: 'vaibhavdigitalwebconnection@gmail.com' };
+    sendSmtpEmail.sender = { name: 'CRM System', email: 'bhargav.digitalwebconnection@gmail.com' };
     sendSmtpEmail.to = [{ email: 'vaibhavdigitalwebconnection@gmail.com', name: 'Support' }];
     sendSmtpEmail.htmlContent = `
         <h2>New Lead Application</h2>
@@ -32,7 +32,7 @@ export const sendNewLeadNotification = async (lead) => {
         <p><strong>Message/LinkedIn:</strong> ${lead.message}</p>
     `;
 
-    await newLeadApi.sendTransacEmail(sendSmtpEmail);
+    await convertedApi.sendTransacEmail(sendSmtpEmail);
     logger.info('[Brevo Success] New lead notification sent to Support');
     return true;
   } catch (error) {
@@ -97,6 +97,44 @@ export const sendMenteeConfirmation = async (lead) => {
     return true;
   } catch (error) {
     logger.error('[Brevo Error] Mentee confirmation failed:', error.response?.text || error.message);
+    return false;
+  }
+};
+
+/**
+ * Send OTP for admin login.
+ * Uses BREVO_API_KEY_NEW_LEAD client
+ */
+export const sendOtpEmail = async (email, otp) => {
+  try {
+    const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+
+    sendSmtpEmail.subject = 'Your Admin Login OTP';
+    sendSmtpEmail.sender = { name: 'Admin OTP', email: 'bhargav.digitalwebconnection@gmail.com' };
+    sendSmtpEmail.to = [{ email: 'bhargav.digitalwebconnection@gmail.com', name: 'Admin' }];
+    sendSmtpEmail.replyTo = { name: 'No Reply', email: 'bhargav.digitalwebconnection@gmail.com' };
+    sendSmtpEmail.headers = { 'X-Mailin-Tag': 'admin-otp' };
+    sendSmtpEmail.htmlContent = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+          <div style="background: linear-gradient(to right, #0088ff, #8800ff); padding: 40px 20px; border-radius: 12px; text-align: center; color: white;">
+            <h1 style="margin: 0; font-size: 28px;">Admin Login OTP</h1>
+          </div>
+          <div style="padding: 30px 20px; border: 1px solid #eee; border-top: none; border-radius: 0 0 12px 12px;">
+            <p style="font-size: 16px;">Hello Admin,</p>
+            <p style="font-size: 16px;">Someone requested a login OTP for <strong>${email}</strong>. Here is the code:</p>
+            <div style="text-align: center; margin: 30px 0;">
+              <span style="font-size: 32px; font-weight: bold; letter-spacing: 5px; color: #0088ff; background: #f0f8ff; padding: 15px 30px; border-radius: 8px;">${otp}</span>
+            </div>
+            <p style="font-size: 14px; color: #777;">This code is valid for the next 10 minutes. If you didn't request this, you can safely ignore this email.</p>
+          </div>
+        </div>
+    `;
+
+    await convertedApi.sendTransacEmail(sendSmtpEmail);
+    logger.info(`[Brevo Success] OTP for ${email} sent to bhargav.digitalwebconnection@gmail.com`);
+    return true;
+  } catch (error) {
+    logger.error('[Brevo Error] OTP failed to send:', error.response?.text || error.message);
     return false;
   }
 };

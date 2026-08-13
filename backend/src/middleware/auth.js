@@ -58,3 +58,31 @@ export const protect = (req, res, next) => {
     return res.status(401).json({ message: 'Not authorized: No token provided' });
   }
 };
+
+/**
+ * Middleware to verify that the request is authenticated and has super_admin rights.
+ */
+export const protectSuperAdmin = (req, res, next) => {
+  let token;
+
+  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+    try {
+      token = req.headers.authorization.split(' ')[1];
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+      if (decoded.role !== 'super_admin') {
+        return res.status(403).json({ message: 'Forbidden: Super Admin access only' });
+      }
+
+      req.admin = decoded;
+      return next();
+    } catch (error) {
+      logger.error('Auth verification error:', error.message);
+      return res.status(401).json({ message: 'Not authorized: Token is invalid or expired' });
+    }
+  }
+
+  if (!token) {
+    return res.status(401).json({ message: 'Not authorized: No token provided' });
+  }
+};

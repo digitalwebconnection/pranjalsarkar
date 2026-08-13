@@ -9,6 +9,7 @@ import corsMiddleware from "./src/config/cors.js";
 
 import authRoutes from "./src/routes/auth.js";
 import leadRoutes from "./src/routes/leads.js";
+import userRoutes from "./src/routes/users.js";
 
 // Load Environment Variables
 dotenv.config();
@@ -49,6 +50,8 @@ connectDB();
 app.use("/api/auth", authRoutes);
 
 app.use("/api/leads", leadRoutes);
+
+app.use("/api/users", userRoutes);
 
 
 // ===============================
