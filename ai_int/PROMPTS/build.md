@@ -1,6 +1,6 @@
 # Use this when: building a new feature or page
 
-Read `README.md`, `PROJECT.md`, and `RULES.md` first if you haven't already this session.
+Read `README.md`, `PROJECT.md`, and `RULES.md` first if you haven't already this session. If this is a genuinely new project (not a feature on top of AIPLS), skim `MERN_PRODUCTION_CHECKLIST.md` §0-2 (planning, stack, folder structure) too.
 
 ## Steps to follow
 

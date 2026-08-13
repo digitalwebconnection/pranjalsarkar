@@ -3,7 +3,7 @@ import {  Video, Box, Layers, Users, Calendar, Presentation, Handshake, FileText
 
 import { modules } from '../../constants/curriculumData';
 
-export default function dCurriculumSection() {
+export default function CurriculumSection() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (

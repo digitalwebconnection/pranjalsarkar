@@ -48,3 +48,8 @@ uploads/
 
 # Agent files
 .agent/
+
+ai_int/
+.husky/
+docs/
+files (8)/

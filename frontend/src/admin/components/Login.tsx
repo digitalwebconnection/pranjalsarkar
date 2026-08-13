@@ -30,7 +30,7 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
       } else {
         setErrorMsg(data.message || 'Login failed');
       }
-    } catch (error) {
+    } catch {
       setErrorMsg('Network error. Please try again.');
     } finally {
       setIsLoggingIn(false);

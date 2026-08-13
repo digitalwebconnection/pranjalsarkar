@@ -10,12 +10,14 @@ Don't just make code that runs. Make code that is: secure, fast, bug-free, mobil
 
 | File | When to read it |
 |---|---|
-| `PROJECT.md` | Always — read this second, every time. It's the stack, structure, and design rules for this specific project. |
-| `RULES.md` | Always keep active while coding. This is the actual rulebook: security, performance, accessibility, code quality. |
+| `PROJECT.md` | Always — read this second, every time. It's the stack, structure, and design rules for this specific project. **This is the only file in this folder that changes per-project** — everything else below is reused as-is across every new build. |
+| `PROJECT_TEMPLATE.md` | Not read during normal work — only used once, at the very start of a brand-new project, by copying it to `PROJECT.md` and filling in the blanks. Keep this file blank/untouched so it's ready for the next project too. |
+| `RULES.md` | Always keep active while coding. This is the actual rulebook: security, validation, auth, performance, accessibility, deployment, monitoring, code quality. It's the day-to-day distillation of `MERN_PRODUCTION_CHECKLIST.md` for this project's stack. |
+| `MERN_PRODUCTION_CHECKLIST.md` | Reference, not a step-by-step read every time. This is the full generic MERN build-to-production master checklist. `RULES.md` and `audit.md` are already built from it. Go back to it directly when you hit something specific it covers in more depth than `RULES.md` does — e.g. Git/branching workflow, environment variable matrix, API response/status-code conventions, SEO/sitemap setup, payments/webhooks, VPS/Nginx/PM2 deployment — or when starting a brand-new project from scratch (its "Full Build Order" and site-planning section). |
 | `PROMPTS/build.md` | When I ask you to build or add a new feature/page. |
 | `PROMPTS/fix.md` | When I ask you to fix a bug. |
 | `PROMPTS/review.md` | When I ask you to review, clean up, or check existing code. |
-| `PROMPTS/audit.md` | When I say "audit the project" or before I launch/deploy. |
+| `PROMPTS/audit.md` | When I say "audit the project" or before I launch/deploy. Also pulls the Pre-Launch Smoke Test and Final Security Audit questions from `MERN_PRODUCTION_CHECKLIST.md`. |
 
 ## Auto-routing — figure this out yourself, don't ask me
 
@@ -30,17 +32,12 @@ You decide which file applies based on my short prompt — I will not tell you w
 
 ## How to work, every single time
 
-1. **Read `PROJECT.md` and `RULES.md`** before touching any code.
+1. **Read `PROJECT.md` and `RULES.md`** before touching any code. Skim `MERN_PRODUCTION_CHECKLIST.md` too if the task touches something `RULES.md` doesn't cover in detail (new infra, payments, SEO, a brand-new project).
 2. **Look at the existing code first.** Before adding anything new, check if something similar already exists in the project and reuse it. Don't duplicate components, functions, or styles that already exist.
 3. **Plan briefly, out loud, before coding.** A few sentences: what you're building, which files you'll touch, anything you're assuming.
 4. **Build it**, following `RULES.md`.
 5. **Test it yourself.** Use the browser tool to actually click through what you built. Don't just say it's done because it compiled.
-6. **Self-check before handing back:**
-   - No secrets or API keys in the code
-   - No `console.log` left in
-   - Works on mobile-sized screens too
-   - Forms/buttons are actually usable with keyboard/screen reader
-   - No obvious security holes (unvalidated input, missing auth checks)
+6. **Self-check before handing back:** Run `npm run check` in the folder(s) you touched, and confirm it passes.
 7. **Tell me clearly:** what you built, what you tested, and anything you're unsure about. Don't hide uncertainty — flag it.
 
 ## The one rule that overrides everything
