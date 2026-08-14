@@ -1,13 +1,14 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import logger from '../utils/logger.js';
+import User from '../models/User.js';
 
 dotenv.config();
 
 /**
  * Middleware to verify that the request is authenticated and has admin rights.
  */
-export const protectAdmin = (req, res, next) => {
+export const protectAdmin = async (req, res, next) => {
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     try {
       const token = req.headers.authorization.split(' ')[1];
@@ -18,6 +19,12 @@ export const protectAdmin = (req, res, next) => {
 
       if (decoded.role !== 'admin' && decoded.role !== 'super_admin') {
         return res.status(403).json({ message: 'Forbidden: Admin access only' });
+      }
+
+      // Check if user still exists (and is not deleted)
+      const user = await User.findById(decoded.id);
+      if (!user) {
+        return res.status(401).json({ message: 'Not authorized: User account has been removed' });
       }
 
       req.admin = decoded;
@@ -34,7 +41,7 @@ export const protectAdmin = (req, res, next) => {
 /**
  * Middleware to verify that the request is authenticated (Admin or Customer).
  */
-export const protect = (req, res, next) => {
+export const protect = async (req, res, next) => {
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     try {
       const token = req.headers.authorization.split(' ')[1];
@@ -42,6 +49,13 @@ export const protect = (req, res, next) => {
         issuer: 'pranjalsarkar-crm',
         audience: 'admin-panel'
       });
+
+      // Check if user still exists (and is not deleted)
+      const user = await User.findById(decoded.id);
+      if (!user) {
+        return res.status(401).json({ message: 'Not authorized: User account has been removed' });
+      }
+
       req.user = decoded; // Contains id, email, role
       return next();
     } catch (error) {
@@ -56,7 +70,7 @@ export const protect = (req, res, next) => {
 /**
  * Middleware to verify that the request is authenticated and has super_admin rights.
  */
-export const protectSuperAdmin = (req, res, next) => {
+export const protectSuperAdmin = async (req, res, next) => {
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     try {
       const token = req.headers.authorization.split(' ')[1];
@@ -67,6 +81,12 @@ export const protectSuperAdmin = (req, res, next) => {
 
       if (decoded.role !== 'super_admin') {
         return res.status(403).json({ message: 'Forbidden: Super Admin access only' });
+      }
+
+      // Check if user still exists (and is not deleted)
+      const user = await User.findById(decoded.id);
+      if (!user) {
+        return res.status(401).json({ message: 'Not authorized: User account has been removed' });
       }
 
       req.admin = decoded;

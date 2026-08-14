@@ -33,6 +33,16 @@ router.post('/', protectSuperAdmin, asyncHandler(async (req, res) => {
     return res.status(400).json({ success: false, message: 'User already exists' });
   }
 
+  // Check if a soft-deleted user exists with this email
+  let deletedUser = await User.findOne({ email: inputEmail, deletedAt: { $ne: null } });
+  if (deletedUser) {
+    // Restore the soft-deleted user instead of creating a duplicate
+    deletedUser.deletedAt = null;
+    deletedUser.role = role || 'admin';
+    await deletedUser.save();
+    return res.status(201).json({ success: true, user: { _id: deletedUser._id, email: deletedUser.email, role: deletedUser.role, createdAt: deletedUser.createdAt } });
+  }
+
   user = new User({
     email: inputEmail,
     role: role || 'admin'

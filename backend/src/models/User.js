@@ -33,8 +33,6 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-const User = mongoose.model('User', userSchema);
-
 // Soft Delete Hooks
 userSchema.pre(/^find/, function (next) {
   if (this.getFilter().deletedAt !== undefined) return next();
@@ -46,5 +44,7 @@ userSchema.pre('aggregate', function (next) {
   this.pipeline().unshift({ $match: { deletedAt: null } });
   next();
 });
+
+const User = mongoose.model('User', userSchema);
 
 export default User;
