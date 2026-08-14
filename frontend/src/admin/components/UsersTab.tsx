@@ -28,6 +28,15 @@ export const UsersTab: React.FC = () => {
     fetchUsers();
   }, []);
 
+  useEffect(() => {
+    if (errorMsg) {
+      const timer = setTimeout(() => {
+        setErrorMsg('');
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [errorMsg]);
+
   const fetchUsers = async () => {
     setIsLoading(true);
     try {
@@ -117,8 +126,18 @@ export const UsersTab: React.FC = () => {
       </div>
 
       {errorMsg && (
-        <div className="p-4 m-4 bg-red-50 text-red-600 rounded-md text-sm font-semibold border border-red-200">
-          {errorMsg}
+        <div className="fixed bottom-4 right-4 bg-red-600 text-white pl-4 pr-3 py-3 rounded-xl shadow-2xl font-bold text-sm animate-in slide-in-from-bottom-5 fade-in duration-300 z-[100] flex items-center justify-between min-w-[320px]">
+          <div className="flex items-center gap-2.5">
+            <AlertTriangle className="w-5 h-5 text-red-200" />
+            <span>{errorMsg}</span>
+          </div>
+          <button
+            onClick={() => setErrorMsg('')}
+            className="text-red-200 hover:text-white hover:bg-red-700 p-1.5 rounded-lg transition-colors ml-4"
+            aria-label="Close"
+          >
+            <X className="w-4 h-4" />
+          </button>
         </div>
       )}
 
