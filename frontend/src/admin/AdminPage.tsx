@@ -72,6 +72,25 @@ export const AdminPage: React.FC = () => {
     return () => window.removeEventListener("auth-expired", handleAuthExpired);
   }, []);
 
+  // Poll to quickly log out deleted/revoked users
+  useEffect(() => {
+    if (!token) return;
+
+    const verifySession = async () => {
+      try {
+        await fetchWithAuth("/api/auth/verify");
+        // If 401, fetchWithAuth automatically dispatches 'auth-expired'
+      } catch (err) {
+        console.error("Session verification failed", err);
+      }
+    };
+
+    // Check every 15 seconds
+    const interval = setInterval(verifySession, 15000); 
+    
+    return () => clearInterval(interval);
+  }, [token]);
+
   // Fetch Logic
   const fetchLeads = useCallback(async () => {
     if (!token) return;
