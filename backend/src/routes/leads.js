@@ -190,7 +190,14 @@ router.get('/', protectAdmin, asyncHandler(async (req, res) => {
   }
 
   if (search) {
-    filter.$text = { $search: search };
+    const searchRegex = new RegExp(escapeRegex(search), 'i');
+    filter.$or = [
+      { name: searchRegex },
+      { email: searchRegex },
+      { phone: searchRegex },
+      { company: searchRegex },
+      { role: searchRegex }
+    ];
   }
 
   const parsedPage = parseInt(page, 10);

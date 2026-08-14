@@ -16,6 +16,18 @@ router.get('/', protectSuperAdmin, asyncHandler(async (req, res) => {
 }));
 
 /**
+ * @route   GET /api/users/stats
+ * @desc    Get counts of admin and super admin users
+ * @access  Private/SuperAdmin
+ */
+router.get('/stats', protectSuperAdmin, asyncHandler(async (req, res) => {
+  // Use countDocuments instead of fetching all users to be more efficient
+  const adminCount = await User.countDocuments({ role: 'admin', deletedAt: null });
+  const superAdminCount = await User.countDocuments({ role: 'super_admin', deletedAt: null });
+  res.json({ success: true, stats: { admin: adminCount, super_admin: superAdminCount } });
+}));
+
+/**
  * @route   POST /api/users
  * @desc    Add a new admin user
  * @access  Private/SuperAdmin

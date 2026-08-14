@@ -283,7 +283,7 @@ export const AdminPage: React.FC = () => {
       {/* Main Content */}
       <main className="flex-1 w-full md:h-screen md:overflow-y-auto bg-slate-50 p-4 sm:p-8">
         <div className="max-w-6xl mx-auto">
-          {activeTab === "overview" && <OverviewTab leadStats={leadStats} />}
+          {activeTab === "overview" && <OverviewTab leadStats={leadStats} userRole={userRole} />}
           {activeTab === "leads" && (
             <LeadsTab
               leads={leads}

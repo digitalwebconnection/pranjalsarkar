@@ -1,16 +1,44 @@
-import React from 'react';
-import { Users, UserPlus } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Users, UserPlus, ShieldAlert, ShieldCheck } from 'lucide-react';
 import { type LeadStatsResponse } from '../types';
+import { fetchWithAuth } from '../../utils/apiClient';
 
 interface OverviewTabProps {
   leadStats: LeadStatsResponse | null;
+  userRole?: string;
 }
 
-export const OverviewTab: React.FC<OverviewTabProps> = ({ leadStats }) => {
+export const OverviewTab: React.FC<OverviewTabProps> = ({ leadStats, userRole }) => {
+  const [userStats, setUserStats] = useState<{ admin: number; super_admin: number } | null>(null);
+
+  useEffect(() => {
+    if (userRole === 'super_admin') {
+      const fetchUserStats = async () => {
+        try {
+          const res = await fetchWithAuth('/api/users/stats');
+          const data = await res.json();
+          if (res.ok && data.success) {
+            setUserStats(data.stats);
+          }
+        } catch (err) {
+          console.error("Failed to fetch user stats", err);
+        }
+      };
+      fetchUserStats();
+    }
+  }, [userRole]);
+
   const overviewStats = [
     { label: 'Total Leads', value: leadStats?.stats?.total || 0, icon: Users, color: 'text-blue-600', bg: 'bg-blue-50' },
     { label: 'New Apps', value: leadStats?.stats?.NEW || 0, icon: UserPlus, color: 'text-emerald-600', bg: 'bg-emerald-50' }
   ];
+
+  if (userRole === 'super_admin' && userStats) {
+    overviewStats.push(
+      { label: 'Total Admins', value: userStats.admin, icon: ShieldCheck, color: 'text-indigo-600', bg: 'bg-indigo-50' },
+      { label: 'Super Admins', value: userStats.super_admin, icon: ShieldAlert, color: 'text-amber-600', bg: 'bg-amber-50' }
+    );
+  }
 
   return (
     <div className="space-y-6">
