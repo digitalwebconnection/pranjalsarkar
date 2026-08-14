@@ -13,6 +13,10 @@ export default function TermsOfUse() {
       <Helmet>
         <title>Terms of Use | Pranjal Sarkar</title>
         <meta name="description" content="Terms of Use for Pranjal Sarkar's AI Product Leadership Studio. Read our guidelines, intellectual property policies, and terms of service." />
+        <meta property="og:title" content="Terms of Use | Pranjal Sarkar" />
+        <meta property="og:description" content="Terms of Use for Pranjal Sarkar's AI Product Leadership Studio. Read our guidelines, intellectual property policies, and terms of service." />
+        <meta name="twitter:title" content="Terms of Use | Pranjal Sarkar" />
+        <meta name="twitter:description" content="Terms of Use for Pranjal Sarkar's AI Product Leadership Studio. Read our guidelines, intellectual property policies, and terms of service." />
       </Helmet>
       {/* Background ambient lighting */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-64 bg-[#0080C7] blur-[150px] opacity-20 pointer-events-none z-0" />

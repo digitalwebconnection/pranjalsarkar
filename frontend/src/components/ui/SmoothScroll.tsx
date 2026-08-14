@@ -16,12 +16,10 @@ export default function SmoothScroll() {
 
     lenisRef.current = lenis;
 
-    // Expose lenis instance globally for ease of access / debugging
-    (window as any).lenis = lenis;
-
     // 2. If there's a hash in the URL on load (e.g. from cross-page navigation), scroll to it
+    let timeoutId: number;
     if (window.location.hash) {
-      setTimeout(() => {
+      timeoutId = window.setTimeout(() => {
         const targetElement = document.querySelector(window.location.hash) as HTMLElement | null;
         if (targetElement) {
           lenis.scrollTo(targetElement, { offset: -72, immediate: true });
@@ -60,7 +58,7 @@ export default function SmoothScroll() {
     return () => {
       lenis.destroy();
       document.removeEventListener('click', handleAnchorClick);
-      delete (window as any).lenis;
+      if (timeoutId) window.clearTimeout(timeoutId);
     };
   }, []);
 

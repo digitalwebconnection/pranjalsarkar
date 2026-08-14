@@ -32,6 +32,7 @@ const footerLinkHashes: Record<string, string> = {
   'Facebook': 'https://facebook.com/thepsprinciples',
   'Instagram': 'https://instagram.com/thepsprinciples',
   'Medium': 'https://medium.com/@pranjalsarkar',
+  'ProductLeadership.Studio': '/#hero',
 };
 
 export default function Footer() {

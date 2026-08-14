@@ -8,18 +8,15 @@ dotenv.config();
  * Middleware to verify that the request is authenticated and has admin rights.
  */
 export const protectAdmin = (req, res, next) => {
-  let token;
-
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     try {
-      // Extract token
-      token = req.headers.authorization.split(' ')[1];
+      const token = req.headers.authorization.split(' ')[1];
+      const decoded = jwt.verify(token, process.env.JWT_SECRET, {
+        issuer: 'pranjalsarkar-crm',
+        audience: 'admin-panel'
+      });
 
-      // Verify token
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-      // Check role
-      if (decoded.role !== 'admin') {
+      if (decoded.role !== 'admin' && decoded.role !== 'super_admin') {
         return res.status(403).json({ message: 'Forbidden: Admin access only' });
       }
 
@@ -31,21 +28,20 @@ export const protectAdmin = (req, res, next) => {
     }
   }
 
-  if (!token) {
-    return res.status(401).json({ message: 'Not authorized: No token provided' });
-  }
+  return res.status(401).json({ message: 'Not authorized: No token provided or invalid format' });
 };
 
 /**
  * Middleware to verify that the request is authenticated (Admin or Customer).
  */
 export const protect = (req, res, next) => {
-  let token;
-
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     try {
-      token = req.headers.authorization.split(' ')[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const token = req.headers.authorization.split(' ')[1];
+      const decoded = jwt.verify(token, process.env.JWT_SECRET, {
+        issuer: 'pranjalsarkar-crm',
+        audience: 'admin-panel'
+      });
       req.user = decoded; // Contains id, email, role
       return next();
     } catch (error) {
@@ -54,21 +50,20 @@ export const protect = (req, res, next) => {
     }
   }
 
-  if (!token) {
-    return res.status(401).json({ message: 'Not authorized: No token provided' });
-  }
+  return res.status(401).json({ message: 'Not authorized: No token provided or invalid format' });
 };
 
 /**
  * Middleware to verify that the request is authenticated and has super_admin rights.
  */
 export const protectSuperAdmin = (req, res, next) => {
-  let token;
-
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     try {
-      token = req.headers.authorization.split(' ')[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const token = req.headers.authorization.split(' ')[1];
+      const decoded = jwt.verify(token, process.env.JWT_SECRET, {
+        issuer: 'pranjalsarkar-crm',
+        audience: 'admin-panel'
+      });
 
       if (decoded.role !== 'super_admin') {
         return res.status(403).json({ message: 'Forbidden: Super Admin access only' });
@@ -82,7 +77,5 @@ export const protectSuperAdmin = (req, res, next) => {
     }
   }
 
-  if (!token) {
-    return res.status(401).json({ message: 'Not authorized: No token provided' });
-  }
+  return res.status(401).json({ message: 'Not authorized: No token provided or invalid format' });
 };

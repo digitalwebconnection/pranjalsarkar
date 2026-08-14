@@ -48,6 +48,17 @@ function LandingPage() {
   return (
     <>
       <Helmet>
+        <title>AI Product Leadership Studio | Pranjal Sarkar</title>
+        <meta name="description" content="A highly selective, live cohort program for senior PMs, EMs, and growth leads transitioning to Director and Head of Product roles." />
+        <meta property="og:title" content="AI Product Leadership Studio | Pranjal Sarkar" />
+        <meta property="og:description" content="A highly selective, live cohort program for senior PMs, EMs, and growth leads transitioning to Director and Head of Product roles." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://productleadership.studio" />
+        <meta property="og:image" content="https://productleadership.studio/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AI Product Leadership Studio | Pranjal Sarkar" />
+        <meta name="twitter:description" content="A highly selective, live cohort program for senior PMs, EMs, and growth leads transitioning to Director and Head of Product roles." />
+        <meta name="twitter:image" content="https://productleadership.studio/og-image.jpg" />
         <script type="application/ld+json">
           {JSON.stringify(schemaMarkup)}
         </script>

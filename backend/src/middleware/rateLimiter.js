@@ -24,4 +24,7 @@ export const createRateLimiter = ({ maxRequests = 100, windowMs = 15 * 60 * 1000
 // Default rate limiter (100 requests per 15 minutes)
 const rateLimiter = createRateLimiter();
 
+// Strict rate limiter for lead submissions (5 requests per hour)
+export const submitLeadLimiter = createRateLimiter({ maxRequests: 5, windowMs: 60 * 60 * 1000 });
+
 export default rateLimiter;

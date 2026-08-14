@@ -13,6 +13,7 @@ const leadSchema = new mongoose.Schema(
       required: [true, 'Email is required'],
       trim: true,
       lowercase: true,
+      match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address'],
     },
     phone: {
       type: String,
@@ -78,15 +79,30 @@ const leadSchema = new mongoose.Schema(
     // Status change history
     statusHistory: [
       {
-        from: String,
-        to: String,
+        from: {
+          type: String,
+          enum: ['NEW', 'QUALIFIED', 'NOT_QUALIFIED', 'OPPORTUNITY', 'CONVERTED', null],
+        },
+        to: {
+          type: String,
+          enum: ['NEW', 'QUALIFIED', 'NOT_QUALIFIED', 'OPPORTUNITY', 'CONVERTED'],
+        },
         changedAt: {
           type: Date,
           default: Date.now,
         },
         note: String,
+        changedBy: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'User',
+        },
       },
     ],
+    // Soft delete timestamp
+    deletedAt: {
+      type: Date,
+      default: null,
+    },
   },
   {
     timestamps: true,
@@ -95,8 +111,22 @@ const leadSchema = new mongoose.Schema(
 
 // Index for efficient querying
 leadSchema.index({ status: 1, createdAt: -1 });
-leadSchema.index({ email: 1 });
+leadSchema.index({ email: 1, createdAt: -1 });
+leadSchema.index({ createdAt: -1 });
+leadSchema.index({ name: 'text', email: 'text', company: 'text', role: 'text', phone: 'text' });
 
 const Lead = mongoose.model('Lead', leadSchema);
+
+// Soft Delete Hooks
+leadSchema.pre(/^find/, function (next) {
+  if (this.getFilter().deletedAt !== undefined) return next(); // allow querying deleted if explicitly asked
+  this.find({ deletedAt: null });
+  next();
+});
+
+leadSchema.pre('aggregate', function (next) {
+  this.pipeline().unshift({ $match: { deletedAt: null } });
+  next();
+});
 
 export default Lead;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Loader2, Plus, Trash2, Mail, ShieldAlert, AlertTriangle, X } from 'lucide-react';
-import { API_URL } from '../../../config';
+import { fetchWithAuth } from '../../utils/apiClient';
 
 interface AdminUser {
   _id: string;
@@ -9,11 +9,7 @@ interface AdminUser {
   createdAt: string;
 }
 
-interface UsersTabProps {
-  token: string;
-}
-
-export const UsersTab: React.FC<UsersTabProps> = ({ token }) => {
+export const UsersTab: React.FC = () => {
   const [users, setUsers] = useState<AdminUser[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState('');
@@ -35,9 +31,7 @@ export const UsersTab: React.FC<UsersTabProps> = ({ token }) => {
   const fetchUsers = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`${API_URL}/api/users`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const response = await fetchWithAuth(`/api/users`);
       const data = await response.json();
       if (response.ok && data.success) {
         setUsers(data.users);
@@ -58,11 +52,10 @@ export const UsersTab: React.FC<UsersTabProps> = ({ token }) => {
     setIsSubmitting(true);
     setErrorMsg('');
     try {
-      const response = await fetch(`${API_URL}/api/users`, {
+      const response = await fetchWithAuth(`/api/users`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}` 
         },
         body: JSON.stringify({ email: newEmail, role: newRole })
       });
@@ -86,9 +79,8 @@ export const UsersTab: React.FC<UsersTabProps> = ({ token }) => {
     if (!deleteTarget) return;
     setIsDeleting(true);
     try {
-      const response = await fetch(`${API_URL}/api/users/${deleteTarget.id}`, {
+      const response = await fetchWithAuth(`/api/users/${deleteTarget.id}`, {
         method: 'DELETE',
-        headers: { Authorization: `Bearer ${token}` }
       });
       const data = await response.json();
       if (response.ok && data.success) {

@@ -2,12 +2,13 @@ import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema(
   {
-    email: {
+      email: {
       type: String,
       required: [true, 'Email is required'],
       unique: true,
       trim: true,
       lowercase: true,
+      match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address'],
     },
     role: {
       type: String,
@@ -22,6 +23,10 @@ const userSchema = new mongoose.Schema(
       type: Date,
       default: null,
     },
+    deletedAt: {
+      type: Date,
+      default: null,
+    },
   },
   {
     timestamps: true,
@@ -29,5 +34,17 @@ const userSchema = new mongoose.Schema(
 );
 
 const User = mongoose.model('User', userSchema);
+
+// Soft Delete Hooks
+userSchema.pre(/^find/, function (next) {
+  if (this.getFilter().deletedAt !== undefined) return next();
+  this.find({ deletedAt: null });
+  next();
+});
+
+userSchema.pre('aggregate', function (next) {
+  this.pipeline().unshift({ $match: { deletedAt: null } });
+  next();
+});
 
 export default User;

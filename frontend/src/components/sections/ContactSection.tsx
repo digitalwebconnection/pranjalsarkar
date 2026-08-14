@@ -22,8 +22,12 @@ export default function ContactSection() {
 
     const handleResize = () => {
       if (!canvas || !canvas.parentElement) return;
-      width = canvas.width = canvas.parentElement.offsetWidth;
-      height = canvas.height = canvas.parentElement.offsetHeight;
+      const newWidth = canvas.parentElement.offsetWidth;
+      const newHeight = canvas.parentElement.offsetHeight;
+      if (width !== newWidth || height !== newHeight) {
+        width = canvas.width = newWidth;
+        height = canvas.height = newHeight;
+      }
     };
     window.addEventListener('resize', handleResize);
 
@@ -125,9 +129,9 @@ export default function ContactSection() {
       return;
     }
 
-    const phoneRegex = /^\d{10}$/;
+    const phoneRegex = /^\+?[0-9\s\-()]{7,15}$/;
     if (!phoneRegex.test(form.phone)) {
-      setSubmitError('Mobile number must be exactly 10 digits.');
+      setSubmitError('Please enter a valid phone number.');
       setIsSubmitting(false);
       return;
     }
@@ -282,16 +286,15 @@ export default function ContactSection() {
                     <label htmlFor="contact-phone" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase mb-1 sm:mb-2 truncate">
                       WhatsApp Number
                     </label>
-                    <div className={`flex items-center gap-2 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-lg border ${form.phone.length > 0 && form.phone.length !== 10 ? 'border-red-500/50 focus-within:border-red-500/50 focus-within:shadow-[0_0_15px_rgba(239,68,68,0.25)]' : 'border-[#172740] focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]'} bg-[#070e1b] transition-all`}>
+                    <div className={`flex items-center gap-2 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-lg border ${form.phone.length > 0 && !/^\+?[0-9\s\-()]{7,15}$/.test(form.phone) ? 'border-red-500/50 focus-within:border-red-500/50 focus-within:shadow-[0_0_15px_rgba(239,68,68,0.25)]' : 'border-[#172740] focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]'} bg-[#070e1b] transition-all`}>
                       <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-[#0070f3] shrink-0" />
                       <input
                         id="contact-phone"
                         type="tel"
-                        required
                         value={form.phone}
                         onChange={e => {
-                          const value = e.target.value.replace(/[^\d]/g, '');
-                          if (value.length <= 10) {
+                          const value = e.target.value.replace(/[^\d+\s()-]/g, '');
+                          if (value.length <= 15) {
                             setForm(f => ({ ...f, phone: value }));
                           }
                         }}
@@ -299,7 +302,7 @@ export default function ContactSection() {
                         className="bg-transparent border-none outline-none text-white text-xs sm:text-sm w-full placeholder:text-[#99a1ac]"
                       />
                     </div>
-                    {form.phone.length > 0 && form.phone.length !== 10 && (
+                    {form.phone.length > 0 && !/^\+?[0-9\s\-()]{7,15}$/.test(form.phone) && (
                       <span className="text-red-400 text-[10px] sm:text-xs mt-1.5 ml-1 font-medium">Invalid phone</span>
                     )}
                   </div>
@@ -346,7 +349,7 @@ export default function ContactSection() {
                 {/* Why applying */}
                 <div className="flex flex-col">
                   <label htmlFor="contact-message" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase mb-1 sm:mb-2">
-                    Paste your linkedin address
+                    Message or LinkedIn Profile
                   </label>
                   <div className="flex items-start gap-2 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-lg border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
                     <Pencil className="w-4 h-4 sm:w-5 sm:h-5 text-[#0070f3] mt-0.5 shrink-0" />

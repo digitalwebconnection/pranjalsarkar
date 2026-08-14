@@ -7,7 +7,7 @@ export default function CurriculumSection() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section id="" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 bg-[#010308]">
+    <section id="curriculum" className="relative py-8 md:py-14 overflow-hidden border-b border-white/8 bg-[#010308]">
 
       {/* Enhanced Multi-Layer Ambient Background Glows */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">

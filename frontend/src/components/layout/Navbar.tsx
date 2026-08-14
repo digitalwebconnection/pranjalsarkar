@@ -12,18 +12,19 @@ const navLinks = [
 
 const sectionToNavLinkMap: Record<string, string> = {
   hero: '',
-  mirror: 'mirror',
-  'ai-product': 'ai-product',
-  judgment: 'ai-product',
+  mirror: '',
+  program: 'program',
+  simulation: 'simulation',
+  exposure: 'exposure',
   transformation: 'transformation',
-  about: 'about',
-  testimonials: 'about',
-  logos: 'about',
-  'who-should-apply': 'curriculum',
+  about: '',
+  testimonials: '',
+  logos: '',
+  'who-should-apply': '',
   curriculum: 'curriculum',
-  events: 'curriculum',
-  faq: 'faq',
-  'final-cta': 'faq',
+  events: '',
+  faq: '',
+  'final-cta': '',
   contact: '',
 };
 
@@ -67,6 +68,13 @@ export default function Navbar() {
     const close = () => { if (menuOpen) setMenuOpen(false); };
     window.addEventListener('scroll', close, { passive: true });
 
+    const handleResize = () => {
+      if (window.innerWidth >= 1024 && menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize, { passive: true });
+
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -75,6 +83,7 @@ export default function Navbar() {
 
     return () => {
       window.removeEventListener('scroll', close);
+      window.removeEventListener('resize', handleResize);
       document.body.style.overflow = '';
     };
   }, [menuOpen]);

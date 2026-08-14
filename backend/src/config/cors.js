@@ -1,28 +1,26 @@
 import cors from "cors";
 
-const allowedOrigins = process.env.FRONTEND_URL
-  ? process.env.FRONTEND_URL
-      .split(",")
-      .map(origin => origin.trim().replace(/\/$/, ""))
-  : [];
-
 const corsOptions = {
 
   origin(origin, callback) {
 
-    // Allow Postman, Mobile Apps & Server-to-Server Requests
-    if (!origin) {
-      return callback(null, true);
-    }
+    const cleanOrigin = origin ? origin.replace(/\/$/, "") : "";
 
-    const cleanOrigin = origin.replace(/\/$/, "");
+    // Allow requests with no origin (like Postman or same-origin requests)
+    if (!origin) return callback(null, true);
 
-    // Allow localhost only during development
+    const allowedOrigins = process.env.FRONTEND_URL
+      ? process.env.FRONTEND_URL
+          .split(",")
+          .map(o => o.trim().replace(/\/$/, ""))
+      : [];
+
+    // Allow localhost frontend only during development
     if (
-      process.env.NODE_ENV !== "production" &&
+      process.env.NODE_ENV === "development" &&
       (
-        cleanOrigin.startsWith("http://localhost:") ||
-        cleanOrigin.startsWith("http://127.0.0.1:")
+        cleanOrigin === "http://localhost:5173" ||
+        cleanOrigin === "http://127.0.0.1:5173"
       )
     ) {
       return callback(null, true);

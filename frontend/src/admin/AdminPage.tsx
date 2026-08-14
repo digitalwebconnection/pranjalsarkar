@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Menu, X, CheckCircle2 } from "lucide-react";
-import { API_URL } from "../../config";
+import { fetchWithAuth } from "../utils/apiClient";
 import { type Lead, type LeadStatsResponse } from "./types";
 import { Login } from "./components/Login";
 import { Sidebar } from "./components/Sidebar";
@@ -64,6 +64,14 @@ export const AdminPage: React.FC = () => {
     customEndDate,
   ]);
 
+  useEffect(() => {
+    const handleAuthExpired = () => {
+      setToken(null);
+    };
+    window.addEventListener("auth-expired", handleAuthExpired);
+    return () => window.removeEventListener("auth-expired", handleAuthExpired);
+  }, []);
+
   // Fetch Logic
   const fetchLeads = useCallback(async () => {
     if (!token) return;
@@ -82,12 +90,7 @@ export const AdminPage: React.FC = () => {
         }
       }
 
-      const response = await fetch(
-        `${API_URL}/api/leads?${params.toString()}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        },
-      );
+      const response = await fetchWithAuth(`/api/leads?${params.toString()}`);
       if (response.ok) {
         const data = await response.json();
         setLeads(data.leads || []);
@@ -111,9 +114,7 @@ export const AdminPage: React.FC = () => {
   const fetchLeadStats = useCallback(async () => {
     if (!token) return;
     try {
-      const response = await fetch(`${API_URL}/api/leads/stats`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await fetchWithAuth("/api/leads/stats");
       if (response.ok) {
         setLeadStats(await response.json());
       }
@@ -140,13 +141,12 @@ export const AdminPage: React.FC = () => {
     setIsLogoutModalOpen(false);
   };
 
-  const handleStatusChange = async (leadId: string, newStatus: string) => {
+  const handleStatusChange = useCallback(async (leadId: string, newStatus: string) => {
     try {
-      const response = await fetch(`${API_URL}/api/leads/${leadId}/status`, {
+      const response = await fetchWithAuth(`/api/leads/${leadId}/status`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ status: newStatus }),
       });
@@ -154,7 +154,7 @@ export const AdminPage: React.FC = () => {
         fetchLeads();
         fetchLeadStats();
         if (selectedLead && selectedLead._id === leadId) {
-          setSelectedLead({ ...selectedLead, status: newStatus as any });
+          setSelectedLead({ ...selectedLead, status: newStatus as Lead['status'] });
         }
       }
     } catch (err) {
@@ -162,7 +162,7 @@ export const AdminPage: React.FC = () => {
       setToastMessage("Failed to update status");
       setTimeout(() => setToastMessage(null), 3000);
     }
-  };
+  }, [fetchLeads, fetchLeadStats, selectedLead]);
 
   const handleUpdateLeadDetails = async () => {
     if (!selectedLead) return;
@@ -176,11 +176,10 @@ export const AdminPage: React.FC = () => {
     }
 
     try {
-      const response = await fetch(`${API_URL}/api/leads/${selectedLead._id}`, {
+      const response = await fetchWithAuth(`/api/leads/${selectedLead._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           notes: finalNotes,
@@ -201,13 +200,13 @@ export const AdminPage: React.FC = () => {
     }
   };
 
-  const openLeadModal = (lead: Lead) => {
+  const openLeadModal = useCallback((lead: Lead) => {
     setSelectedLead(lead);
     setLeadNotes(lead.notes || "");
     setNewNoteText("");
     setIsAddingNote(false);
     setIsLeadModalOpen(true);
-  };
+  }, []);
 
   if (!token) {
     return (
@@ -288,7 +287,7 @@ export const AdminPage: React.FC = () => {
             />
           )}
           {activeTab === "users" && userRole === 'super_admin' && (
-            <UsersTab token={token} />
+            <UsersTab />
           )}
         </div>
       </main>

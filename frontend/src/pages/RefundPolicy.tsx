@@ -13,6 +13,10 @@ export default function RefundPolicy() {
       <Helmet>
         <title>Refund Policy | Pranjal Sarkar</title>
         <meta name="description" content="Refund Policy for Pranjal Sarkar's AI Product Leadership Studio masterclasses and workshops." />
+        <meta property="og:title" content="Refund Policy | Pranjal Sarkar" />
+        <meta property="og:description" content="Refund Policy for Pranjal Sarkar's AI Product Leadership Studio masterclasses and workshops." />
+        <meta name="twitter:title" content="Refund Policy | Pranjal Sarkar" />
+        <meta name="twitter:description" content="Refund Policy for Pranjal Sarkar's AI Product Leadership Studio masterclasses and workshops." />
       </Helmet>
       {/* Background ambient lighting */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-64 bg-[#0080C7] blur-[150px] opacity-20 pointer-events-none z-0" />
