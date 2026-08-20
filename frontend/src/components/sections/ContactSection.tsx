@@ -120,21 +120,77 @@ export default function ContactSection() {
     };
   }, []);
 
+  const getWordCount = (text: string) => {
+    const trimmed = text.trim();
+    if (!trimmed) return 0;
+    return trimmed.split(/\s+/).length;
+  };
+
+  const messageWordCount = getWordCount(form.message);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitError('');
     setIsSubmitting(true);
 
+    if (!form.name.trim()) {
+      setSubmitError('Please enter your full name.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (form.name.trim().length > 50) {
+      setSubmitError('Full name must be 50 characters or less.');
+      setIsSubmitting(false);
+      return;
+    }
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(form.email)) {
+    if (!emailRegex.test(form.email.trim())) {
       setSubmitError('Please enter a valid email address.');
       setIsSubmitting(false);
       return;
     }
 
     const phoneRegex = /^\+?[0-9\s\-()]{7,15}$/;
-    if (!phoneRegex.test(form.phone)) {
+    if (form.phone && !phoneRegex.test(form.phone.trim())) {
       setSubmitError('Please enter a valid phone number.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!form.role.trim()) {
+      setSubmitError('Please enter your current role.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (form.role.trim().length > 50) {
+      setSubmitError('Current role must be 50 characters or less.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!form.company.trim()) {
+      setSubmitError('Please enter your company name.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (form.company.trim().length > 50) {
+      setSubmitError('Company name must be 50 characters or less.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!form.message.trim()) {
+      setSubmitError('Please enter a message or LinkedIn profile.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (messageWordCount > 250) {
+      setSubmitError(`Message exceeds the 250 words limit (currently ${messageWordCount} words).`);
       setIsSubmitting(false);
       return;
     }
@@ -144,12 +200,12 @@ export default function ContactSection() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          role: form.role,
-          company: form.company,
-          message: form.message,
+          name: form.name.trim(),
+          email: form.email.trim(),
+          phone: form.phone.trim(),
+          role: form.role.trim(),
+          company: form.company.trim(),
+          message: form.message.trim(),
           recaptchaToken,
         }),
       });
@@ -247,17 +303,23 @@ export default function ContactSection() {
                 <div className="grid grid-cols-2 gap-3 sm:gap-5">
                   {/* Name */}
                   <div className="flex flex-col">
-                    <label htmlFor="contact-name" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase mb-1 sm:mb-2">
-                      FULL NAME
-                    </label>
+                    <div className="flex justify-between items-center mb-1 sm:mb-2">
+                      <label htmlFor="contact-name" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase truncate">
+                        FULL NAME
+                      </label>
+                      <span className="text-[#99a1ac] text-[9px] sm:text-[10px] ml-1">
+                        {form.name.length}/50
+                      </span>
+                    </div>
                     <div className="flex items-center gap-2 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-lg border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
                       <User className="w-4 h-4 sm:w-5 sm:h-5 text-[#0070f3] shrink-0" />
                       <input
                         id="contact-name"
                         type="text"
                         required
+                        maxLength={50}
                         value={form.name}
-                        onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                        onChange={e => setForm(f => ({ ...f, name: e.target.value.slice(0, 50) }))}
                         placeholder="Your Name"
                         className="bg-transparent border-none outline-none text-white text-xs sm:text-sm w-full placeholder:text-[#99a1ac]"
                       />
@@ -266,15 +328,18 @@ export default function ContactSection() {
 
                   {/* Email */}
                   <div className="flex flex-col">
-                    <label htmlFor="contact-email" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase mb-1 sm:mb-2">
-                      WORK EMAIL
-                    </label>
+                    <div className="flex justify-between items-center mb-1 sm:mb-2">
+                      <label htmlFor="contact-email" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase truncate">
+                        WORK EMAIL
+                      </label>
+                    </div>
                     <div className={`flex items-center gap-2 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-lg border ${form.email.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) ? 'border-red-500/50 focus-within:border-red-500/50 focus-within:shadow-[0_0_15px_rgba(239,68,68,0.25)]' : 'border-[#172740] focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]'} bg-[#070e1b] transition-all`}>
                       <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-[#0070f3] shrink-0" />
                       <input
                         id="contact-email"
                         type="email"
                         required
+                        maxLength={100}
                         value={form.email}
                         onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                         placeholder="you@company.com"
@@ -282,7 +347,7 @@ export default function ContactSection() {
                       />
                     </div>
                     {form.email.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) && (
-                      <span className="text-red-400 text-[10px] sm:text-xs mt-1.5 ml-1 font-medium">Invalid email</span>
+                      <span className="text-red-400 text-[10px] sm:text-xs mt-1.5 ml-1 font-medium">Invalid email format</span>
                     )}
                   </div>
                 </div>
@@ -291,9 +356,11 @@ export default function ContactSection() {
                 <div className="grid grid-cols-2 gap-3 sm:gap-5">
                   {/* Phone */}
                   <div className="flex flex-col">
-                    <label htmlFor="contact-phone" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase mb-1 sm:mb-2 truncate">
-                      WhatsApp Number
-                    </label>
+                    <div className="flex justify-between items-center mb-1 sm:mb-2">
+                      <label htmlFor="contact-phone" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase truncate">
+                        WhatsApp Number
+                      </label>
+                    </div>
                     <div className={`flex items-center gap-2 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-lg border ${form.phone.length > 0 && !/^\+?[0-9\s\-()]{7,15}$/.test(form.phone) ? 'border-red-500/50 focus-within:border-red-500/50 focus-within:shadow-[0_0_15px_rgba(239,68,68,0.25)]' : 'border-[#172740] focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]'} bg-[#070e1b] transition-all`}>
                       <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-[#0070f3] shrink-0" />
                       <input
@@ -317,17 +384,23 @@ export default function ContactSection() {
 
                   {/* Role */}
                   <div className="flex flex-col">
-                    <label htmlFor="contact-role" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase mb-1 sm:mb-2">
-                      CURRENT ROLE
-                    </label>
+                    <div className="flex justify-between items-center mb-1 sm:mb-2">
+                      <label htmlFor="contact-role" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase truncate">
+                        CURRENT ROLE
+                      </label>
+                      <span className="text-[#99a1ac] text-[9px] sm:text-[10px] ml-1">
+                        {form.role.length}/50
+                      </span>
+                    </div>
                     <div className="flex items-center gap-2 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-lg border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
                       <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-[#0070f3] shrink-0" />
                       <input
                         id="contact-role"
                         type="text"
                         required
+                        maxLength={50}
                         value={form.role}
-                        onChange={e => setForm(f => ({ ...f, role: e.target.value }))}
+                        onChange={e => setForm(f => ({ ...f, role: e.target.value.slice(0, 50) }))}
                         placeholder="PM, EM, etc."
                         className="bg-transparent border-none outline-none text-white text-xs sm:text-sm w-full placeholder:text-[#99a1ac]"
                       />
@@ -337,17 +410,23 @@ export default function ContactSection() {
 
                 {/* Company */}
                 <div className="flex flex-col">
-                  <label htmlFor="contact-company" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase mb-1 sm:mb-2">
-                    COMPANY
-                  </label>
+                  <div className="flex justify-between items-center mb-1 sm:mb-2">
+                    <label htmlFor="contact-company" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase truncate">
+                      COMPANY
+                    </label>
+                    <span className="text-[#99a1ac] text-[9px] sm:text-[10px] ml-1">
+                      {form.company.length}/50
+                    </span>
+                  </div>
                   <div className="flex items-center gap-2 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-lg border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
                     <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#0070f3] shrink-0" />
                     <input
                       id="contact-company"
                       type="text"
                       required
+                      maxLength={50}
                       value={form.company}
-                      onChange={e => setForm(f => ({ ...f, company: e.target.value }))}
+                      onChange={e => setForm(f => ({ ...f, company: e.target.value.slice(0, 50) }))}
                       placeholder="Where you work"
                       className="bg-transparent border-none outline-none text-white text-xs sm:text-sm w-full placeholder:text-[#99a1ac]"
                     />
@@ -356,10 +435,15 @@ export default function ContactSection() {
 
                 {/* Why applying */}
                 <div className="flex flex-col">
-                  <label htmlFor="contact-message" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase mb-1 sm:mb-2">
-                    Message or LinkedIn Profile
-                  </label>
-                  <div className="flex items-start gap-2 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-lg border border-[#172740] bg-[#070e1b] transition-all focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]">
+                  <div className="flex justify-between items-center mb-1 sm:mb-2">
+                    <label htmlFor="contact-message" className="text-[#b2c0d3] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase truncate">
+                      Message or LinkedIn Profile
+                    </label>
+                    <span className={`text-[9px] sm:text-[10px] font-semibold ${messageWordCount > 250 ? 'text-red-400 font-bold' : 'text-[#99a1ac]'}`}>
+                      {messageWordCount}/250 words
+                    </span>
+                  </div>
+                  <div className={`flex items-start gap-2 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-lg border ${messageWordCount > 250 ? 'border-red-500/50 focus-within:border-red-500/50 focus-within:shadow-[0_0_15px_rgba(239,68,68,0.25)]' : 'border-[#172740] focus-within:border-[#0070f3] focus-within:shadow-[0_0_15px_rgba(0,112,243,0.25)]'} bg-[#070e1b] transition-all`}>
                     <Pencil className="w-4 h-4 sm:w-5 sm:h-5 text-[#0070f3] mt-0.5 shrink-0" />
                     <textarea
                       id="contact-message"
@@ -371,6 +455,9 @@ export default function ContactSection() {
                       className="bg-transparent border-none outline-none text-white text-xs sm:text-sm w-full placeholder:text-[#99a1ac] resize-none"
                     />
                   </div>
+                  {messageWordCount > 250 && (
+                    <span className="text-red-400 text-[10px] sm:text-xs mt-1.5 ml-1 font-medium">Message exceeds the 250 words limit (currently {messageWordCount} words).</span>
+                  )}
                 </div>
 
                 {/* Error Message */}
@@ -394,7 +481,7 @@ export default function ContactSection() {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  disabled={isSubmitting || !recaptchaToken}
+                  disabled={isSubmitting || !recaptchaToken || messageWordCount > 250}
                   className="w-full mt-2 sm:mt-4 py-3.5 sm:py-4 px-6 rounded-lg text-white font-bold text-base sm:text-lg bg-linear-to-r from-[#0088ff] via-[#0066ff] to-[#0052eb] hover:from-[#0096ff] hover:via-[#0075ff] hover:to-[#005eff] border-t border-white/40 transition-all duration-300 shadow-[0_0_25px_rgba(0,120,255,0.6)] hover:shadow-[0_0_40px_rgba(0,140,255,0.8)] flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
