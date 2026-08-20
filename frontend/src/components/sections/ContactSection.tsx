@@ -470,12 +470,18 @@ export default function ContactSection() {
 
                 {/* reCAPTCHA Widget */}
                 <div className="mt-2 flex justify-center sm:justify-start">
-                  <ReCAPTCHA
-                    ref={recaptchaRef}
-                    sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY || ''}
-                    theme="dark"
-                    onChange={(token) => setRecaptchaToken(token)}
-                  />
+                  {import.meta.env.VITE_RECAPTCHA_SITE_KEY ? (
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+                      theme="dark"
+                      onChange={(token) => setRecaptchaToken(token)}
+                    />
+                  ) : (
+                    <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-xs font-semibold">
+                      reCAPTCHA is missing. Please add VITE_RECAPTCHA_SITE_KEY to your environment variables.
+                    </div>
+                  )}
                 </div>
 
                 {/* Submit Button */}
