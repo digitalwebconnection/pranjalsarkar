@@ -110,9 +110,9 @@ export const sendOtpEmail = async (email, otp) => {
     const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
 
     sendSmtpEmail.subject = 'Your Admin Login OTP';
-    sendSmtpEmail.sender = { name: 'Admin OTP', email: 'hello@pranjalsarkar.com' };
-    sendSmtpEmail.to = [{ email: 'hello@pranjalsarkar.com', name: 'Admin' }];
-    sendSmtpEmail.replyTo = { name: 'No Reply', email: 'hello@pranjalsarkar.com' };
+    sendSmtpEmail.sender = { name: 'Admin OTP', email: 'office@pranjalsarkar.com' };
+    sendSmtpEmail.to = [{ email: 'office@pranjalsarkar.com', name: 'Admin' }];
+    sendSmtpEmail.replyTo = { name: 'No Reply', email: 'office@pranjalsarkar.com' };
     sendSmtpEmail.headers = { 'X-Mailin-Tag': 'admin-otp' };
     sendSmtpEmail.htmlContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
@@ -130,8 +130,8 @@ export const sendOtpEmail = async (email, otp) => {
         </div>
     `;
 
-    await helloApi.sendTransacEmail(sendSmtpEmail);
-    logger.info(`[Brevo Success] OTP for ${email} sent to hello@pranjalsarkar.com`);
+    await officeApi.sendTransacEmail(sendSmtpEmail);
+    logger.info(`[Brevo Success] OTP for ${email} sent to office@pranjalsarkar.com`);
     return true;
   } catch (error) {
     logger.error('[Brevo Error] OTP failed to send:', error.response?.text || error.message);
