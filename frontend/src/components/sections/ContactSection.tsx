@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Phone, Calendar, User, Mail, Briefcase, Building2, Pencil, ShieldCheck, ArrowRight, Loader2, CheckCircle } from 'lucide-react';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 import { API_URL } from '../../../config';
 
@@ -8,6 +9,8 @@ export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -147,6 +150,7 @@ export default function ContactSection() {
           role: form.role,
           company: form.company,
           message: form.message,
+          recaptchaToken,
         }),
       });
 
@@ -155,11 +159,15 @@ export default function ContactSection() {
       if (response.ok && data.success) {
         setSubmitted(true);
         setForm({ name: '', email: '', phone: '', role: '', company: '', message: '' });
+        setRecaptchaToken(null);
+        recaptchaRef.current?.reset();
         setTimeout(() => {
           setSubmitted(false);
         }, 3000);
       } else {
         setSubmitError(data.message || 'Something went wrong. Please try again.');
+        setRecaptchaToken(null);
+        recaptchaRef.current?.reset();
       }
     } catch (err) {
       console.error('Form submission error:', err);
@@ -373,10 +381,20 @@ export default function ContactSection() {
                   </div>
                 )}
 
+                {/* reCAPTCHA Widget */}
+                <div className="mt-2 flex justify-center sm:justify-start">
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY || ''}
+                    theme="dark"
+                    onChange={(token) => setRecaptchaToken(token)}
+                  />
+                </div>
+
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !recaptchaToken}
                   className="w-full mt-2 sm:mt-4 py-3.5 sm:py-4 px-6 rounded-lg text-white font-bold text-base sm:text-lg bg-linear-to-r from-[#0088ff] via-[#0066ff] to-[#0052eb] hover:from-[#0096ff] hover:via-[#0075ff] hover:to-[#005eff] border-t border-white/40 transition-all duration-300 shadow-[0_0_25px_rgba(0,120,255,0.6)] hover:shadow-[0_0_40px_rgba(0,140,255,0.8)] flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
@@ -413,6 +431,7 @@ export default function ContactSection() {
                 className="flex-1 flex items-center gap-4 sm:gap-5 p-3.5 sm:p-4 rounded-xl border border-[#0070f3]/25 bg-[#060d1a]/25 backdrop-blur-md shadow-[0_0_25px_rgba(0,100,255,0.06)] hover:border-[#25D366]/50 hover:shadow-[0_0_25px_rgba(37,211,102,0.15)] transition-all duration-300 group cursor-pointer no-underline w-full max-w-sm sm:max-w-none mx-auto lg:mx-0 lg:max-w-xs"
               >
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#0070f3]/50 group-hover:border-[#25D366]/60 bg-[#00142c] text-[#38bdf8] group-hover:text-[#25D366] flex items-center justify-center shadow-[inset_0_0_12px_rgba(0,136,255,0.35)] group-hover:shadow-[inset_0_0_15px_rgba(37,211,102,0.35)] shrink-0 transition-all duration-300">
+                
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor">
                     <path d="M12.031 0C5.405 0 .028 5.378.028 12.003c0 2.115.548 4.183 1.593 6.002L.038 23.999l6.147-1.611c1.761.966 3.743 1.477 5.845 1.477 6.626 0 12.004-5.377 12.004-12.003C24.034 5.378 18.657 0 12.031 0zm6.577 17.387c-.267.753-1.547 1.439-2.127 1.503-.58.064-1.285.234-4.103-.941-3.385-1.413-5.59-4.872-5.76-5.097-.17-.225-1.377-1.83-1.377-3.489 0-1.658.85-2.476 1.157-2.793.307-.317.674-.396.896-.396.222 0 .445.006.634.015.202.01.472-.078.736.56.28.673.955 2.336 1.04 2.505.085.17.142.368.028.593-.114.225-.17.368-.34.566-.17.198-.354.437-.505.58-.17.16-.35.34-.146.689.204.35 1.115 1.838 2.456 3.036 1.733 1.549 3.197 2.036 3.553 2.193.355.157.562.13.771-.115.21-.245.912-1.06 1.156-1.425.245-.365.489-.304.815-.184.326.12 2.062.973 2.416 1.152.354.179.59.266.674.412.085.146.085.844-.182 1.597z" />
                   </svg>

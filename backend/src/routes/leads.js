@@ -15,6 +15,7 @@ const leadSchema = z.object({
   role: z.string().max(100).optional().or(z.literal('')),
   company: z.string().max(100).optional().or(z.literal('')),
   message: z.string().max(2000).optional().or(z.literal('')),
+  recaptchaToken: z.string().min(1, 'reCAPTCHA verification is required'),
 });
 
 const updateLeadSchema = z.object({
@@ -55,7 +56,24 @@ router.post('/', submitLeadLimiter, asyncHandler(async (req, res) => {
     });
   }
 
-  const { name, email, phone, role, company, message } = result.data;
+  const { name, email, phone, role, company, message, recaptchaToken } = result.data;
+
+  // Verify reCAPTCHA token
+  try {
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+    const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${recaptchaToken}`;
+    
+    const recaptchaRes = await fetch(verifyUrl, { method: 'POST' });
+    const recaptchaData = await recaptchaRes.json();
+    
+    if (!recaptchaData.success) {
+      return res.status(400).json({ success: false, message: 'reCAPTCHA verification failed. Please try again.' });
+    }
+  } catch (error) {
+    logger.error('[Lead Route] reCAPTCHA verification error:', error.message);
+    return res.status(500).json({ success: false, message: 'Error verifying reCAPTCHA. Please try again later.' });
+  }
+
   const normalizedEmail = email.toLowerCase().trim();
 
   // In-memory lock to prevent exact-millisecond double-click race conditions
