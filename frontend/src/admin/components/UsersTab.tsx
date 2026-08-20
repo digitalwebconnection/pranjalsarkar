@@ -233,7 +233,7 @@ export const UsersTab: React.FC = () => {
                       {new Date(user.createdAt).toLocaleDateString()}
                     </td>
                     <td className="p-4 text-right">
-                      {user.email !== 'hello@pranjalsarkar.com' && (
+                      {user.email !== 'office@pranjalsarkar.com' && (
                         <button
                           onClick={() => setDeleteTarget({ id: user._id, email: user.email })}
                           className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"

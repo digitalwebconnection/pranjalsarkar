@@ -37,7 +37,7 @@ export default function TermsOfUse() {
         
         <div className="space-y-5 sm:space-y-6 text-gray-300 leading-[1.65] sm:leading-relaxed text-[14.5px] md:text-[16px] text-justify sm:text-left">
           <p>This page is currently under construction. Please check back later for our full Terms of Use.</p>
-          <p>For any immediate questions, please write to <a href="mailto:hello@pranjalsarkar.com" className="text-[#3B82F6] hover:underline">hello@pranjalsarkar.com</a></p>
+          <p>For any immediate questions, please write to <a href="mailto:office@pranjalsarkar.com" className="text-[#3B82F6] hover:underline">office@pranjalsarkar.com</a></p>
         </div>
       </main>
       <Footer />

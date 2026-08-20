@@ -1,15 +1,10 @@
 import SibApiV3Sdk from 'sib-api-v3-sdk';
 import logger from './logger.js';
 
-// Brevo client for Office emails (office@pranjalsarkar.com)
+// Brevo client for all emails (office@pranjalsarkar.com)
 const officeClient = new SibApiV3Sdk.ApiClient();
 officeClient.authentications['api-key'].apiKey = process.env.BREVO_API_KEY_OFFICE;
 const officeApi = new SibApiV3Sdk.TransactionalEmailsApi(officeClient);
-
-// Brevo client for Hello emails (hello@pranjalsarkar.com)
-const helloClient = new SibApiV3Sdk.ApiClient();
-helloClient.authentications['api-key'].apiKey = process.env.BREVO_API_KEY_HELLO;
-const helloApi = new SibApiV3Sdk.TransactionalEmailsApi(helloClient);
 
 /**
  * Send internal notification email when a new lead submits the form.

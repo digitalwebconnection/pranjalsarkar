@@ -37,7 +37,7 @@ export default function PrivacyPolicy() {
         
         <div className="space-y-5 sm:space-y-6 text-gray-300 leading-[1.65] sm:leading-relaxed text-[14.5px] md:text-[16px] text-justify sm:text-left">
           <p>This Privacy Policy explains how Pranjal Sarkar collects, uses, and protects information when you visit pranjalsarkar.com, register for a masterclass or workshop, use any free tool on this site, or get in touch directly.</p>
-          <p>For any questions about this policy, write to <a href="mailto:hello@pranjalsarkar.com" className="text-[#3B82F6] hover:underline">hello@pranjalsarkar.com</a></p>
+          <p>For any questions about this policy, write to <a href="mailto:office@pranjalsarkar.com" className="text-[#3B82F6] hover:underline">office@pranjalsarkar.com</a></p>
           
           <h3 className="text-[20px] sm:text-xl md:text-2xl font-serif font-bold text-white mt-8 sm:mt-10 mb-3 sm:mb-4">1. Who This Policy Applies To</h3>
           <p>This policy applies to all visitors and users of pranjalsarkar.com, including people who:</p>
@@ -92,7 +92,7 @@ export default function PrivacyPolicy() {
 
           <h3 className="text-[20px] sm:text-xl md:text-2xl font-serif font-bold text-white mt-8 sm:mt-10 mb-3 sm:mb-4">5. Email Communication</h3>
           <p>If you register for a session or contact through the website, you may receive emails related to your registration, GST invoice, or enquiry response.</p>
-          <p>Promotional emails about upcoming sessions or resources are only sent if you have opted in. You can opt out at any time by replying to any email with the word Unsubscribe or by writing to <a href="mailto:hello@pranjalsarkar.com" className="text-[#3B82F6] hover:underline">hello@pranjalsarkar.com</a></p>
+          <p>Promotional emails about upcoming sessions or resources are only sent if you have opted in. You can opt out at any time by replying to any email with the word Unsubscribe or by writing to <a href="mailto:office@pranjalsarkar.com" className="text-[#3B82F6] hover:underline">office@pranjalsarkar.com</a></p>
 
           <h3 className="text-[20px] sm:text-xl md:text-2xl font-serif font-bold text-white mt-8 sm:mt-10 mb-3 sm:mb-4">6. Cookies</h3>
           <p>This website uses cookies to improve your browsing experience and to understand how visitors use the site. Cookies are small text files stored on your device.</p>
@@ -130,10 +130,10 @@ export default function PrivacyPolicy() {
             <li>Withdraw consent for communications at any time.</li>
             <li>Ask questions about how your data is being used.</li>
           </ul>
-          <p>To exercise any of these rights, write to <a href="mailto:hello@pranjalsarkar.com" className="text-[#3B82F6] hover:underline">hello@pranjalsarkar.com</a> Your request will be responded to within 7 working days.</p>
+          <p>To exercise any of these rights, write to <a href="mailto:office@pranjalsarkar.com" className="text-[#3B82F6] hover:underline">office@pranjalsarkar.com</a> Your request will be responded to within 7 working days.</p>
 
           <h3 className="text-[20px] sm:text-xl md:text-2xl font-serif font-bold text-white mt-8 sm:mt-10 mb-3 sm:mb-4">10. Children</h3>
-          <p>This website and its services are intended for adults. No services are directed at individuals under the age of 18. If you believe a minor has submitted personal information through this website, write to <a href="mailto:hello@pranjalsarkar.com" className="text-[#3B82F6] hover:underline">hello@pranjalsarkar.com</a> and the information will be removed promptly.</p>
+          <p>This website and its services are intended for adults. No services are directed at individuals under the age of 18. If you believe a minor has submitted personal information through this website, write to <a href="mailto:office@pranjalsarkar.com" className="text-[#3B82F6] hover:underline">office@pranjalsarkar.com</a> and the information will be removed promptly.</p>
 
           <h3 className="text-[20px] sm:text-xl md:text-2xl font-serif font-bold text-white mt-8 sm:mt-10 mb-3 sm:mb-4">11. Links to Other Websites</h3>
           <p>This website contains links to third-party websites including LinkedIn, YouTube, Instagram, ProductTank, DigiFixKit, and HyperPolling. Once you leave this website, this Privacy Policy no longer applies. The privacy practices of those sites are governed by their own policies.</p>
@@ -145,7 +145,7 @@ export default function PrivacyPolicy() {
           <p>For any questions, concerns, or requests related to this Privacy Policy, please contact:</p>
           <p>
             Pranjal Sarkar<br />
-            Email: <a href="mailto:hello@pranjalsarkar.com" className="text-[#3B82F6] hover:underline">hello@pranjalsarkar.com</a><br />
+            Email: <a href="mailto:office@pranjalsarkar.com" className="text-[#3B82F6] hover:underline">office@pranjalsarkar.com</a><br />
             Website: pranjalsarkar.com<br />
             Location: Ahmedabad, Gujarat, India
           </p>
