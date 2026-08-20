@@ -2,8 +2,8 @@ const requiredEnv = [
   "MONGODB_URI",
   "JWT_SECRET",
   "FRONTEND_URL",
-  "BREVO_API_KEY_NEW_LEAD",
-  "BREVO_API_KEY_CONVERTED"
+  "BREVO_API_KEY_OFFICE",
+  "BREVO_API_KEY_HELLO"
 ];
 
 requiredEnv.forEach((key) => {

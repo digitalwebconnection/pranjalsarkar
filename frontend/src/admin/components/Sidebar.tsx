@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Menu, Search, FileText, LogOut, X, Users } from 'lucide-react';
 
 interface SidebarProps {
@@ -15,6 +15,38 @@ interface SidebarProps {
 export const Sidebar: React.FC<SidebarProps> = ({
   activeTab, setActiveTab, userRole, isMobileMenuOpen, setIsMobileMenuOpen, isCollapsed, setIsCollapsed, handleLogoutClick
 }) => {
+  const [, setClickCount] = useState(0);
+  const [showTestMenu, setShowTestMenu] = useState(false);
+  const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleTitleClick = () => {
+    setClickCount((prev) => {
+      const newCount = prev + 1;
+      if (newCount >= 7) {
+        setShowTestMenu(true);
+        return 0;
+      }
+      return newCount;
+    });
+
+    if (clickTimeoutRef.current) {
+      clearTimeout(clickTimeoutRef.current);
+    }
+    
+    clickTimeoutRef.current = setTimeout(() => {
+      setClickCount(0);
+    }, 1000); // reset after 1 second of inactivity
+  };
+
+  // Cleanup timeout
+  useEffect(() => {
+    return () => {
+      if (clickTimeoutRef.current) {
+        clearTimeout(clickTimeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
     <aside className={`
       fixed md:static inset-y-0 left-0 z-50 md:z-20
@@ -26,7 +58,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div className="p-6 border-b border-slate-100 flex items-center justify-between">
         {!isCollapsed && (
           <div className="animate-in fade-in zoom-in duration-200">
-            <h2 className="text-lg font-black tracking-tighter text-slate-800 uppercase">Product Leadership</h2>
+            <h2 
+              onClick={handleTitleClick}
+              className="text-lg font-black tracking-tighter text-slate-800 uppercase  select-none transition-colors"
+            >
+              Product Leadership
+            </h2>
           </div>
         )}
         <button onClick={() => setIsCollapsed(!isCollapsed)} className="hidden md:flex p-1.5 rounded-sm bg-slate-50 hover:bg-slate-100 text-slate-400 cursor-ew-resize">
@@ -36,6 +73,30 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <X className="w-4 h-4" />
         </button>
       </div>
+
+      {showTestMenu && (
+        <div className="m-4 p-4 border border-blue-200 bg-blue-50 rounded-md shadow-sm relative animate-in slide-in-from-left-2">
+          <button 
+            onClick={() => setShowTestMenu(false)}
+            className="absolute top-2 right-2 text-slate-400 hover:text-slate-600 cursor-pointer"
+          >
+            <X className="w-4 h-4" />
+          </button>
+          <h3 className="font-bold text-sm text-blue-800 mb-2">Secret Test Menu</h3>
+          <ul className="space-y-1 text-sm">
+            <li>
+              <button className="text-blue-600 hover:underline w-full text-left cursor-pointer">
+                Mock Action 1
+              </button>
+            </li>
+            <li>
+              <button className="text-blue-600 hover:underline w-full text-left cursor-pointer">
+                Mock Action 2
+              </button>
+            </li>
+          </ul>
+        </div>
+      )}
 
       <div className="p-4 flex-1 overflow-y-auto">
         <nav className="space-y-1">

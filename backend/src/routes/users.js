@@ -76,7 +76,7 @@ router.delete('/:id', protectSuperAdmin, asyncHandler(async (req, res) => {
   }
 
   // Prevent deleting the primary super admin
-  if (user.email === 'bhargav.digitalwebconnection@gmail.com') {
+  if (user.email === 'hello@pranjalsarkar.com') {
     return res.status(403).json({ success: false, message: 'Cannot delete primary super admin' });
   }
 

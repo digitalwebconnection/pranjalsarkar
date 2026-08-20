@@ -1,15 +1,15 @@
 import SibApiV3Sdk from 'sib-api-v3-sdk';
 import logger from './logger.js';
 
-// Brevo client for New Lead notifications (BREVO_API_KEY_NEW_LEAD)
-const newLeadClient = new SibApiV3Sdk.ApiClient();
-newLeadClient.authentications['api-key'].apiKey = process.env.BREVO_API_KEY_NEW_LEAD;
-const newLeadApi = new SibApiV3Sdk.TransactionalEmailsApi(newLeadClient);
+// Brevo client for Office emails (office@pranjalsarkar.com)
+const officeClient = new SibApiV3Sdk.ApiClient();
+officeClient.authentications['api-key'].apiKey = process.env.BREVO_API_KEY_OFFICE;
+const officeApi = new SibApiV3Sdk.TransactionalEmailsApi(officeClient);
 
-// Brevo client for Converted Lead / Mentee confirmation (BREVO_API_KEY_CONVERTED)
-const convertedClient = new SibApiV3Sdk.ApiClient();
-convertedClient.authentications['api-key'].apiKey = process.env.BREVO_API_KEY_CONVERTED;
-const convertedApi = new SibApiV3Sdk.TransactionalEmailsApi(convertedClient);
+// Brevo client for Hello emails (hello@pranjalsarkar.com)
+const helloClient = new SibApiV3Sdk.ApiClient();
+helloClient.authentications['api-key'].apiKey = process.env.BREVO_API_KEY_HELLO;
+const helloApi = new SibApiV3Sdk.TransactionalEmailsApi(helloClient);
 
 /**
  * Send internal notification email when a new lead submits the form.
@@ -20,8 +20,8 @@ export const sendNewLeadNotification = async (lead) => {
     const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
 
     sendSmtpEmail.subject = `🔔 New Lead: ${lead.name}`;
-    sendSmtpEmail.sender = { name: 'CRM System', email: 'bhargav.digitalwebconnection@gmail.com' };
-    sendSmtpEmail.to = [{ email: 'bhargav.digitalwebconnection@gmail.com', name: 'Support' }];
+    sendSmtpEmail.sender = { name: 'CRM System', email: 'office@pranjalsarkar.com' };
+    sendSmtpEmail.to = [{ email: 'office@pranjalsarkar.com', name: 'Support' }];
     sendSmtpEmail.htmlContent = `
         <h2>New Lead Application</h2>
         <p><strong>Name:</strong> ${lead.name}</p>
@@ -32,7 +32,7 @@ export const sendNewLeadNotification = async (lead) => {
         <p><strong>Message/LinkedIn:</strong> ${lead.message}</p>
     `;
 
-    await convertedApi.sendTransacEmail(sendSmtpEmail);
+    await officeApi.sendTransacEmail(sendSmtpEmail);
     logger.info('[Brevo Success] New lead notification sent to Support');
     return true;
   } catch (error) {
@@ -50,8 +50,8 @@ export const sendMenteeConfirmation = async (lead) => {
     const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
 
     sendSmtpEmail.subject = '🎊 Welcome Aboard! AI Product Leadership Studio';
-    sendSmtpEmail.sender = { name: 'Team Pranjal Sarkar', email: 'bhargav.digitalwebconnection@gmail.com' };
-    sendSmtpEmail.to = [{ email: 'vaibhavdigitalwebconnection@gmail.com', name: lead.name }];
+    sendSmtpEmail.sender = { name: 'Team Pranjal Sarkar', email: 'office@pranjalsarkar.com' };
+    sendSmtpEmail.to = [{ email: lead.email, name: lead.name }];
     sendSmtpEmail.htmlContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
           <!-- Header Gradient Banner -->
@@ -92,7 +92,7 @@ export const sendMenteeConfirmation = async (lead) => {
         </div>
       `;
 
-    await convertedApi.sendTransacEmail(sendSmtpEmail);
+    await officeApi.sendTransacEmail(sendSmtpEmail);
     logger.info(`[Brevo Success] Mentee confirmation sent to ${lead.email}`);
     return true;
   } catch (error) {
@@ -110,9 +110,9 @@ export const sendOtpEmail = async (email, otp) => {
     const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
 
     sendSmtpEmail.subject = 'Your Admin Login OTP';
-    sendSmtpEmail.sender = { name: 'Admin OTP', email: 'bhargav.digitalwebconnection@gmail.com' };
-    sendSmtpEmail.to = [{ email: 'bhargav.digitalwebconnection@gmail.com', name: 'Admin' }];
-    sendSmtpEmail.replyTo = { name: 'No Reply', email: 'bhargav.digitalwebconnection@gmail.com' };
+    sendSmtpEmail.sender = { name: 'Admin OTP', email: 'hello@pranjalsarkar.com' };
+    sendSmtpEmail.to = [{ email: 'hello@pranjalsarkar.com', name: 'Admin' }];
+    sendSmtpEmail.replyTo = { name: 'No Reply', email: 'hello@pranjalsarkar.com' };
     sendSmtpEmail.headers = { 'X-Mailin-Tag': 'admin-otp' };
     sendSmtpEmail.htmlContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
@@ -130,8 +130,8 @@ export const sendOtpEmail = async (email, otp) => {
         </div>
     `;
 
-    await convertedApi.sendTransacEmail(sendSmtpEmail);
-    logger.info(`[Brevo Success] OTP for ${email} sent to bhargav.digitalwebconnection@gmail.com`);
+    await helloApi.sendTransacEmail(sendSmtpEmail);
+    logger.info(`[Brevo Success] OTP for ${email} sent to hello@pranjalsarkar.com`);
     return true;
   } catch (error) {
     logger.error('[Brevo Error] OTP failed to send:', error.response?.text || error.message);
