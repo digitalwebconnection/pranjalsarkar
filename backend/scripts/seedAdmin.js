@@ -21,18 +21,23 @@ const seedAdmin = async () => {
     await mongoose.connect(process.env.MONGODB_URI);
     console.log('Connected to MongoDB');
 
-    const adminEmail = 'office@pranjalsarkar.com';
+    const admins = [
+      { email: 'office@pranjalsarkar.com', role: 'super_admin' },
+      { email: 'admin@pranjal.com', role: 'admin' },
+    ];
 
-    let user = await User.findOne({ email: adminEmail });
-    if (user) {
-      console.log('Super Admin already exists:', user.email);
-    } else {
-      user = new User({
-        email: adminEmail,
-        role: 'super_admin'
-      });
-      await user.save();
-      console.log('✅ Successfully created Super Admin:', user.email);
+    for (const admin of admins) {
+      let user = await User.findOne({ email: admin.email });
+      if (user) {
+        console.log(`${admin.role} already exists:`, user.email);
+      } else {
+        user = new User({
+          email: admin.email,
+          role: admin.role,
+        });
+        await user.save();
+        console.log(`✅ Successfully created ${admin.role}:`, user.email);
+      }
     }
 
     process.exit(0);

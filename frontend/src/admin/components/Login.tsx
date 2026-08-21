@@ -27,6 +27,20 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
     setSuccessMsg('');
     
     try {
+      // First try direct login (bypasses OTP for whitelisted email)
+      const directRes = await fetch(`${API_URL}/api/auth/direct-login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: emailInput })
+      });
+      const directData = await directRes.json();
+
+      if (directRes.ok && directData.token) {
+        onLoginSuccess(directData.token);
+        return;
+      }
+
+      // If direct login not allowed, fall back to OTP flow
       const response = await fetch(`${API_URL}/api/auth/send-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -118,7 +132,7 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
             >
               {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : (
                 <>
-                  <span>Get OTP</span>
+                  <span>Login</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}

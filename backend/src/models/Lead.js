@@ -49,16 +49,6 @@ const leadSchema = new mongoose.Schema(
       default: '',
     },
 
-    // Zoom meeting details
-    zoomLink: {
-      type: String,
-      default: '',
-    },
-    zoomDate: {
-      type: Date,
-      default: null,
-    },
-
     // Payment tracking
     paymentStatus: {
       type: String,
@@ -67,37 +57,11 @@ const leadSchema = new mongoose.Schema(
     },
 
     // Onboarding flags
-    whatsappAdded: {
-      type: Boolean,
-      default: false,
-    },
     confirmationEmailSent: {
       type: Boolean,
       default: false,
     },
 
-    // Status change history
-    statusHistory: [
-      {
-        from: {
-          type: String,
-          enum: ['NEW', 'QUALIFIED', 'NOT_QUALIFIED', 'OPPORTUNITY', 'CONVERTED', null],
-        },
-        to: {
-          type: String,
-          enum: ['NEW', 'QUALIFIED', 'NOT_QUALIFIED', 'OPPORTUNITY', 'CONVERTED'],
-        },
-        changedAt: {
-          type: Date,
-          default: Date.now,
-        },
-        note: String,
-        changedBy: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'User',
-        },
-      },
-    ],
     // Soft delete timestamp
     deletedAt: {
       type: Date,
@@ -115,8 +79,6 @@ leadSchema.index({ email: 1, createdAt: -1 });
 leadSchema.index({ createdAt: -1 });
 leadSchema.index({ name: 'text', email: 'text', company: 'text', role: 'text', phone: 'text' });
 
-const Lead = mongoose.model('Lead', leadSchema);
-
 // Soft Delete Hooks
 leadSchema.pre(/^find/, function (next) {
   if (this.getFilter().deletedAt !== undefined) return next(); // allow querying deleted if explicitly asked
@@ -128,5 +90,7 @@ leadSchema.pre('aggregate', function (next) {
   this.pipeline().unshift({ $match: { deletedAt: null } });
   next();
 });
+
+const Lead = mongoose.model('Lead', leadSchema);
 
 export default Lead;

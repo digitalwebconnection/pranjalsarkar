@@ -9,6 +9,7 @@ import { LeadsTab } from "./components/LeadsTab";
 import { UsersTab } from "./components/UsersTab";
 import { LeadModal } from "./components/LeadModal";
 import { LogoutModal } from "./components/LogoutModal";
+import { DeleteConfirmationModal } from "./components/DeleteConfirmationModal";
 import { Helmet } from "react-helmet-async";
 
 export const AdminPage: React.FC = () => {
@@ -47,6 +48,9 @@ export const AdminPage: React.FC = () => {
   const [newNoteText, setNewNoteText] = useState("");
   const [isAddingNote, setIsAddingNote] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const [leadToDelete, setLeadToDelete] = useState<string | null>(null);
+  const [isDeletingLead, setIsDeletingLead] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -183,6 +187,36 @@ export const AdminPage: React.FC = () => {
     }
   }, [fetchLeads, fetchLeadStats, selectedLead]);
 
+  const handleDeleteLead = useCallback((leadId: string) => {
+    setLeadToDelete(leadId);
+  }, []);
+
+  const confirmDeleteLead = async () => {
+    if (!leadToDelete) return;
+    setIsDeletingLead(true);
+    try {
+      const response = await fetchWithAuth(`/api/leads/${leadToDelete}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        fetchLeads();
+        fetchLeadStats();
+        setToastMessage("Lead deleted successfully!");
+        setTimeout(() => setToastMessage(null), 3000);
+      } else {
+        setToastMessage("Failed to delete lead");
+        setTimeout(() => setToastMessage(null), 3000);
+      }
+    } catch (err) {
+      console.error(err);
+      setToastMessage("Failed to delete lead");
+      setTimeout(() => setToastMessage(null), 3000);
+    } finally {
+      setIsDeletingLead(false);
+      setLeadToDelete(null);
+    }
+  };
+
   const handleUpdateLeadDetails = async () => {
     if (!selectedLead) return;
     setIsUpdatingLead(true);
@@ -303,6 +337,7 @@ export const AdminPage: React.FC = () => {
               setCustomEndDate={setCustomEndDate}
               handleStatusChange={handleStatusChange}
               openLeadModal={openLeadModal}
+              handleDeleteLead={handleDeleteLead}
             />
           )}
           {activeTab === "users" && userRole === 'super_admin' && (
@@ -344,6 +379,13 @@ export const AdminPage: React.FC = () => {
         isLogoutModalOpen={isLogoutModalOpen}
         setIsLogoutModalOpen={setIsLogoutModalOpen}
         confirmLogout={confirmLogout}
+      />
+
+      <DeleteConfirmationModal
+        isOpen={!!leadToDelete}
+        onClose={() => setLeadToDelete(null)}
+        onConfirm={confirmDeleteLead}
+        isDeleting={isDeletingLead}
       />
     </div>
   );

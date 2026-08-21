@@ -20,9 +20,6 @@ const leadSchema = z.object({
 
 const updateLeadSchema = z.object({
   notes: z.string().max(50000).optional().or(z.literal('')),
-  zoomLink: z.string().max(500).optional().or(z.literal('')),
-  zoomDate: z.string().optional().or(z.literal('')),
-  whatsappAdded: z.boolean().optional(),
   paymentStatus: z.enum(['PENDING', 'RECEIVED']).optional(),
 });
 const router = express.Router();
@@ -107,14 +104,6 @@ router.post('/', submitLeadLimiter, asyncHandler(async (req, res) => {
     company: company?.trim() || '',
     message: message?.trim() || '',
     status: 'NEW',
-    statusHistory: [
-      {
-        from: null,
-        to: 'NEW',
-        changedAt: new Date(),
-        note: 'Lead submitted via website form',
-      },
-    ],
   });
 
   // Send internal notification email (non-blocking)
@@ -240,6 +229,90 @@ router.get('/', protectAdmin, asyncHandler(async (req, res) => {
 }));
 
 /**
+ * @route   GET /api/leads/export-csv
+ * @desc    Export leads as a CSV file (respects all filters)
+ * @access  Private/Admin
+ */
+router.get('/export-csv', protectAdmin, asyncHandler(async (req, res) => {
+  let { status, dateFilter, search, startDate, endDate } = req.query;
+
+  let filter = {};
+
+  if (status && status !== 'ALL') {
+    filter.status = status;
+  }
+
+  if (dateFilter && dateFilter !== 'All') {
+    const now = new Date();
+    if (dateFilter === 'Today') {
+      const today = new Date(now);
+      filter.createdAt = { $gte: new Date(today.setHours(0, 0, 0, 0)) };
+    } else if (dateFilter === '7days') {
+      const sevenDaysAgo = new Date(now);
+      sevenDaysAgo.setDate(now.getDate() - 7);
+      filter.createdAt = { $gte: sevenDaysAgo };
+    } else if (dateFilter === '30days') {
+      const thirtyDaysAgo = new Date(now);
+      thirtyDaysAgo.setDate(now.getDate() - 30);
+      filter.createdAt = { $gte: thirtyDaysAgo };
+    } else if (dateFilter === 'Custom' && startDate && endDate) {
+      filter.createdAt = {
+        $gte: new Date(startDate),
+        $lte: new Date(new Date(endDate).setHours(23, 59, 59, 999)),
+      };
+    }
+  }
+
+  if (search) {
+    const searchRegex = new RegExp(escapeRegex(search), 'i');
+    filter.$or = [
+      { name: searchRegex },
+      { email: searchRegex },
+      { phone: searchRegex },
+      { company: searchRegex },
+      { role: searchRegex },
+    ];
+  }
+
+  const leads = await Lead.find(filter).sort({ createdAt: -1 }).lean();
+
+  // CSV helper: escape a field value for CSV
+  const csvEscape = (val) => {
+    if (val === null || val === undefined) return '';
+    const str = String(val);
+    if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+      return `"${str.replace(/"/g, '""')}"`;
+    }
+    return str;
+  };
+
+  const headers = ['Name', 'Email', 'Phone', 'Role', 'Company', 'Message', 'Status', 'Payment Status', 'Applied Date'];
+  const csvRows = [headers.join(',')];
+
+  for (const lead of leads) {
+    const row = [
+      csvEscape(lead.name),
+      csvEscape(lead.email),
+      csvEscape(lead.phone),
+      csvEscape(lead.role),
+      csvEscape(lead.company),
+      csvEscape(lead.message),
+      csvEscape(lead.status),
+      csvEscape(lead.paymentStatus),
+      csvEscape(lead.createdAt ? new Date(lead.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : ''),
+    ];
+    csvRows.push(row.join(','));
+  }
+
+  const csvContent = csvRows.join('\r\n');
+  const filename = `leads_export_${new Date().toISOString().slice(0, 10)}.csv`;
+
+  res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+  res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+  res.send(csvContent);
+}));
+
+/**
  * @route   GET /api/leads/:id
  * @desc    Get a single lead by ID
  * @access  Private/Admin
@@ -285,15 +358,6 @@ router.put('/:id/status', protectAdmin, asyncHandler(async (req, res) => {
 
   const updatePayload = {
     $set: { status: status },
-    $push: {
-      statusHistory: {
-        from: oldStatus,
-        to: status,
-        changedAt: new Date(),
-        note: note || `Status changed from ${oldStatus} to ${status}`,
-        changedBy: req.admin?.id,
-      }
-    }
   };
 
   if (status === 'CONVERTED') {
@@ -342,7 +406,7 @@ router.put('/:id/status', protectAdmin, asyncHandler(async (req, res) => {
 
 /**
  * @route   PUT /api/leads/:id
- * @desc    Update lead details (notes, zoom link, whatsapp, etc.)
+ * @desc    Update lead details (notes, payment status)
  * @access  Private/Admin
  */
 router.put('/:id', protectAdmin, asyncHandler(async (req, res) => {
@@ -355,7 +419,7 @@ router.put('/:id', protectAdmin, asyncHandler(async (req, res) => {
     });
   }
 
-  const { notes, zoomLink, zoomDate, whatsappAdded, paymentStatus } = result.data;
+  const { notes, paymentStatus } = result.data;
 
   const lead = await Lead.findById(req.params.id);
 
@@ -365,9 +429,6 @@ router.put('/:id', protectAdmin, asyncHandler(async (req, res) => {
 
   // Only update fields that are provided
   if (notes !== undefined) lead.notes = notes;
-  if (zoomLink !== undefined) lead.zoomLink = zoomLink;
-  if (zoomDate !== undefined) lead.zoomDate = zoomDate;
-  if (whatsappAdded !== undefined) lead.whatsappAdded = whatsappAdded;
   if (paymentStatus !== undefined) lead.paymentStatus = paymentStatus;
 
   await lead.save();

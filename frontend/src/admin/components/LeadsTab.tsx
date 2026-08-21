@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Search,
   Calendar,
   User,
   Loader2,
-
+  Download,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
 import { type Lead } from "../types";
 import { STATUS_CONFIG } from "../constants";
+import { fetchWithAuth } from "../../utils/apiClient";
 
 interface LeadsTabProps {
   leads: Lead[];
@@ -29,6 +30,7 @@ interface LeadsTabProps {
   setCustomEndDate: (date: string) => void;
   handleStatusChange: (leadId: string, newStatus: string) => void;
   openLeadModal: (lead: Lead) => void;
+  handleDeleteLead: (leadId: string) => void;
 }
 
 const LeadRow = React.memo(
@@ -38,12 +40,14 @@ const LeadRow = React.memo(
     currentPage,
     handleStatusChange,
     openLeadModal,
+    handleDeleteLead,
   }: {
     lead: Lead;
     idx: number;
     currentPage: number;
     handleStatusChange: (leadId: string, newStatus: string) => void;
     openLeadModal: (lead: Lead) => void;
+    handleDeleteLead: (leadId: string) => void;
   }) => (
     <tr className="hover:bg-slate-50/50 transition-colors">
       <td className="p-4 text-center text-xs font-black text-slate-400">
@@ -102,6 +106,12 @@ const LeadRow = React.memo(
           >
             View / Edit
           </button>
+          <button
+            onClick={() => handleDeleteLead(lead._id)}
+            className="text-xs font-bold bg-white border border-red-200 text-red-600 hover:bg-red-50 px-3 py-2 rounded-sm w-full text-center cursor-pointer"
+          >
+            Delete
+          </button>
         </div>
       </td>
     </tr>
@@ -126,7 +136,43 @@ export const LeadsTab: React.FC<LeadsTabProps> = ({
   setCustomEndDate,
   handleStatusChange,
   openLeadModal,
+  handleDeleteLead,
 }) => {
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  const downloadCSV = async () => {
+    setIsDownloading(true);
+    try {
+      const params = new URLSearchParams();
+      if (leadStatusFilter !== "All") params.append("status", leadStatusFilter);
+      if (leadSearchQuery) params.append("search", leadSearchQuery);
+      if (dateFilter !== "All") {
+        params.append("dateFilter", dateFilter);
+        if (dateFilter === "Custom" && customStartDate && customEndDate) {
+          params.append("startDate", customStartDate);
+          params.append("endDate", customEndDate);
+        }
+      }
+
+      const response = await fetchWithAuth(`/api/leads/export-csv?${params.toString()}`);
+      if (!response.ok) throw new Error("Export failed");
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `leads_export_${new Date().toISOString().slice(0, 10)}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error("CSV download failed:", err);
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-5 rounded-sm border border-slate-200 shadow-sm">
@@ -202,6 +248,18 @@ export const LeadsTab: React.FC<LeadsTabProps> = ({
               </option>
             ))}
           </select>
+          <button
+            onClick={downloadCSV}
+            disabled={isDownloading}
+            className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-sm text-sm font-bold transition-colors disabled:opacity-50 cursor-pointer whitespace-nowrap"
+          >
+            {isDownloading ? (
+              <Loader2 className="w-4 h-4 animate-spin" />
+            ) : (
+              <Download className="w-4 h-4" />
+            )}
+            {isDownloading ? "Exporting..." : "Download CSV"}
+          </button>
         </div>
       </div>
 
@@ -242,6 +300,7 @@ export const LeadsTab: React.FC<LeadsTabProps> = ({
                     currentPage={currentPage}
                     handleStatusChange={handleStatusChange}
                     openLeadModal={openLeadModal}
+                    handleDeleteLead={handleDeleteLead}
                   />
                 ))
               )}

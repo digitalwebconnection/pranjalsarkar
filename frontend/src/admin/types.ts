@@ -10,9 +10,6 @@ export interface Lead {
   linkedinProfile?: string;
   status: 'NEW' | 'QUALIFIED' | 'NOT_QUALIFIED' | 'OPPORTUNITY' | 'CONVERTED';
   notes?: string;
-  zoomLink?: string;
-  zoomDate?: string;
-  addedToWhatsApp?: boolean;
   createdAt: string;
 }
 

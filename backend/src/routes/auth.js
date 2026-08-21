@@ -64,6 +64,44 @@ router.post('/send-otp', loginLimiter, asyncHandler(async (req, res) => {
 }));
 
 /**
+ * @route   POST /api/auth/direct-login
+ * @desc    Direct login without OTP for a specific whitelisted email
+ * @access  Public
+ */
+router.post('/direct-login', loginLimiter, asyncHandler(async (req, res) => {
+  const { email } = req.body;
+  const inputEmail = (email || '').toLowerCase().trim();
+
+  if (!inputEmail) {
+    return res.status(400).json({ success: false, message: 'Email is required' });
+  }
+
+  const directLoginEmail = (process.env.ADMIN_DIRECT_LOGIN_EMAIL || '').toLowerCase().trim();
+
+  if (!directLoginEmail || inputEmail !== directLoginEmail) {
+    return res.status(401).json({ success: false, message: 'Direct login not allowed for this email.' });
+  }
+
+  // Verify the email exists in the database
+  const user = await User.findOne({ email: inputEmail });
+  if (!user) {
+    return res.status(401).json({ success: false, message: 'Access denied. Email not registered.' });
+  }
+
+  const token = generateToken({ id: user._id, email: user.email, role: user.role });
+  return res.json({
+    success: true,
+    token,
+    user: {
+      email: user.email,
+      name: 'Admin',
+      role: user.role,
+      avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=150'
+    }
+  });
+}));
+
+/**
  * @route   POST /api/auth/verify-otp
  * @desc    Verify OTP and login
  * @access  Public
