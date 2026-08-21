@@ -18,11 +18,32 @@ const generateToken = (payload) => {
     payload,
     process.env.JWT_SECRET,
     { 
+      expiresIn: '15m',
+      issuer: 'pranjalsarkar-crm',
+      audience: 'admin-panel'
+    }
+  );
+};
+
+const generateRefreshToken = (payload) => {
+  return jwt.sign(
+    payload,
+    process.env.JWT_SECRET,
+    { 
       expiresIn: '7d',
       issuer: 'pranjalsarkar-crm',
       audience: 'admin-panel'
     }
   );
+};
+
+const setRefreshTokenCookie = (res, token) => {
+  res.cookie('refreshToken', token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
+    maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+  });
 };
 
 const generateOTP = () => {
@@ -89,6 +110,11 @@ router.post('/direct-login', loginLimiter, asyncHandler(async (req, res) => {
   }
 
   const token = generateToken({ id: user._id, email: user.email, role: user.role });
+  const refreshToken = generateRefreshToken({ id: user._id });
+  user.refreshToken = refreshToken;
+  await user.save();
+  setRefreshTokenCookie(res, refreshToken);
+
   return res.json({
     success: true,
     token,
@@ -126,6 +152,11 @@ router.post('/verify-otp', loginLimiter, asyncHandler(async (req, res) => {
   await user.save();
 
   const token = generateToken({ id: user._id, email: user.email, role: user.role });
+  const refreshToken = generateRefreshToken({ id: user._id });
+  user.refreshToken = refreshToken;
+  await user.save();
+  setRefreshTokenCookie(res, refreshToken);
+
   return res.json({
     success: true,
     token,
@@ -146,5 +177,57 @@ router.post('/verify-otp', loginLimiter, asyncHandler(async (req, res) => {
 router.get('/verify', protectAdmin, (req, res) => {
   res.json({ success: true, message: 'Token is valid' });
 });
+
+/**
+ * @route   POST /api/auth/refresh
+ * @desc    Refresh access token
+ * @access  Public
+ */
+router.post('/refresh', asyncHandler(async (req, res) => {
+  const refreshToken = req.cookies.refreshToken;
+
+  if (!refreshToken) {
+    return res.status(401).json({ success: false, message: 'Refresh token not found' });
+  }
+
+  try {
+    const decoded = jwt.verify(refreshToken, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.id);
+
+    if (!user || user.refreshToken !== refreshToken) {
+      return res.status(401).json({ success: false, message: 'Invalid refresh token' });
+    }
+
+    const token = generateToken({ id: user._id, email: user.email, role: user.role });
+    return res.json({ success: true, token });
+  } catch (error) {
+    return res.status(401).json({ success: false, message: 'Invalid or expired refresh token' });
+  }
+}));
+
+/**
+ * @route   POST /api/auth/logout
+ * @desc    Logout user
+ * @access  Public
+ */
+router.post('/logout', asyncHandler(async (req, res) => {
+  const refreshToken = req.cookies.refreshToken;
+  
+  if (refreshToken) {
+    try {
+      const decoded = jwt.verify(refreshToken, process.env.JWT_SECRET, { ignoreExpiration: true });
+      const user = await User.findById(decoded.id);
+      if (user) {
+        user.refreshToken = null;
+        await user.save();
+      }
+    } catch (e) {
+      logger.error('Error during logout:', e);
+    }
+  }
+
+  res.clearCookie('refreshToken');
+  return res.json({ success: true, message: 'Logged out successfully' });
+}));
 
 export default router;

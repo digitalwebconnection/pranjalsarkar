@@ -16,12 +16,12 @@ export const AdminPage: React.FC = () => {
   const [token, setToken] = useState<string | null>(() =>
     localStorage.getItem("adminToken"),
   );
-  
+
   // Extract role from token safely
   const getUserRole = () => {
     if (!token) return undefined;
     try {
-      const payload = JSON.parse(atob(token.split('.')[1]));
+      const payload = JSON.parse(atob(token.split(".")[1]));
       return payload.role;
     } catch {
       return undefined;
@@ -29,7 +29,9 @@ export const AdminPage: React.FC = () => {
   };
   const userRole = getUserRole();
 
-  const [activeTab, setActiveTab] = useState<"overview" | "leads" | "users">("overview");
+  const [activeTab, setActiveTab] = useState<"overview" | "leads" | "users">(
+    "overview",
+  );
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -38,6 +40,7 @@ export const AdminPage: React.FC = () => {
   const [loadingLeads, setLoadingLeads] = useState(true);
 
   const [leadSearchQuery, setLeadSearchQuery] = useState("");
+  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState("");
   const [leadStatusFilter, setLeadStatusFilter] = useState("All");
 
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
@@ -59,10 +62,17 @@ export const AdminPage: React.FC = () => {
   const [customEndDate, setCustomEndDate] = useState("");
 
   useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearchQuery(leadSearchQuery);
+    }, 400);
+    return () => clearTimeout(handler);
+  }, [leadSearchQuery]);
+
+  useEffect(() => {
     setCurrentPage(1);
   }, [
     leadStatusFilter,
-    leadSearchQuery,
+    debouncedSearchQuery,
     dateFilter,
     customStartDate,
     customEndDate,
@@ -90,8 +100,8 @@ export const AdminPage: React.FC = () => {
     };
 
     // Check every 15 seconds
-    const interval = setInterval(verifySession, 15000); 
-    
+    const interval = setInterval(verifySession, 15000);
+
     return () => clearInterval(interval);
   }, [token]);
 
@@ -102,7 +112,7 @@ export const AdminPage: React.FC = () => {
       setLoadingLeads(true);
       const params = new URLSearchParams();
       if (leadStatusFilter !== "All") params.append("status", leadStatusFilter);
-      if (leadSearchQuery) params.append("search", leadSearchQuery);
+      if (debouncedSearchQuery) params.append("search", debouncedSearchQuery);
       params.append("page", currentPage.toString());
       params.append("limit", "10");
       if (dateFilter !== "All") {
@@ -127,7 +137,7 @@ export const AdminPage: React.FC = () => {
   }, [
     token,
     leadStatusFilter,
-    leadSearchQuery,
+    debouncedSearchQuery,
     currentPage,
     dateFilter,
     customStartDate,
@@ -158,34 +168,46 @@ export const AdminPage: React.FC = () => {
     localStorage.setItem("adminToken", newToken);
   };
 
-  const confirmLogout = () => {
-    setToken(null);
-    localStorage.removeItem("adminToken");
-    setIsLogoutModalOpen(false);
+  const confirmLogout = async () => {
+    try {
+      await fetchWithAuth("/api/auth/logout", { method: "POST" });
+    } catch (e) {
+      console.error("Logout failed", e);
+    } finally {
+      setToken(null);
+      localStorage.removeItem("adminToken");
+      setIsLogoutModalOpen(false);
+    }
   };
 
-  const handleStatusChange = useCallback(async (leadId: string, newStatus: string) => {
-    try {
-      const response = await fetchWithAuth(`/api/leads/${leadId}/status`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ status: newStatus }),
-      });
-      if (response.ok) {
-        fetchLeads();
-        fetchLeadStats();
-        if (selectedLead && selectedLead._id === leadId) {
-          setSelectedLead({ ...selectedLead, status: newStatus as Lead['status'] });
+  const handleStatusChange = useCallback(
+    async (leadId: string, newStatus: string) => {
+      try {
+        const response = await fetchWithAuth(`/api/leads/${leadId}/status`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ status: newStatus }),
+        });
+        if (response.ok) {
+          fetchLeads();
+          fetchLeadStats();
+          if (selectedLead && selectedLead._id === leadId) {
+            setSelectedLead({
+              ...selectedLead,
+              status: newStatus as Lead["status"],
+            });
+          }
         }
+      } catch (err) {
+        console.error(err);
+        setToastMessage("Failed to update status");
+        setTimeout(() => setToastMessage(null), 3000);
       }
-    } catch (err) {
-      console.error(err);
-      setToastMessage("Failed to update status");
-      setTimeout(() => setToastMessage(null), 3000);
-    }
-  }, [fetchLeads, fetchLeadStats, selectedLead]);
+    },
+    [fetchLeads, fetchLeadStats, selectedLead],
+  );
 
   const handleDeleteLead = useCallback((leadId: string) => {
     setLeadToDelete(leadId);
@@ -273,15 +295,16 @@ export const AdminPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col md:flex-row font-sans text-slate-800 selection:bg-blue-300 selection:text-black">
+    <div className="h-screen bg-[#F8FAFC] flex flex-col md:flex-row font-sans text-slate-800 selection:bg-blue-300 selection:text-black overflow-hidden">
       <Helmet>
         <title>Admin Dashboard</title>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
+
       {/* Mobile Header */}
-      <div className="md:hidden bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-30 shadow-sm">
-        <h1 className="text-lg font-black tracking-tight text-slate-800">
-          CRM Dashboard
+      <div className="md:hidden bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-30 shadow-sm shrink-0">
+        <h1 className="text-lg font-black tracking-tight text-slate-800 uppercase">
+          Pranjal Sarkar <span className="text-blue-600">Logo</span>
         </h1>
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -314,37 +337,49 @@ export const AdminPage: React.FC = () => {
         handleLogoutClick={() => setIsLogoutModalOpen(true)}
       />
 
-      {/* Main Content */}
-      <main className="flex-1 w-full md:h-screen md:overflow-y-auto bg-slate-50 p-4 sm:p-8">
-        <div className="max-w-6xl mx-auto">
-          {activeTab === "overview" && <OverviewTab leadStats={leadStats} userRole={userRole} />}
-          {activeTab === "leads" && (
-            <LeadsTab
-              leads={leads}
-              loadingLeads={loadingLeads}
-              totalPages={totalPages}
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-              leadSearchQuery={leadSearchQuery}
-              setLeadSearchQuery={setLeadSearchQuery}
-              leadStatusFilter={leadStatusFilter}
-              setLeadStatusFilter={setLeadStatusFilter}
-              dateFilter={dateFilter}
-              setDateFilter={setDateFilter}
-              customStartDate={customStartDate}
-              setCustomStartDate={setCustomStartDate}
-              customEndDate={customEndDate}
-              setCustomEndDate={setCustomEndDate}
-              handleStatusChange={handleStatusChange}
-              openLeadModal={openLeadModal}
-              handleDeleteLead={handleDeleteLead}
-            />
-          )}
-          {activeTab === "users" && userRole === 'super_admin' && (
-            <UsersTab />
-          )}
-        </div>
-      </main>
+      {/* Right Content Area */}
+      <div className="flex flex-1 flex-col overflow-hidden relative">
+        {/* Top Static Navbar (Desktop) */}
+        <header className="hidden md:flex w-full h-16 bg-white border-b border-slate-200 items-center justify-center shrink-0 z-10 relative">
+          <h1 className="text-xl font-black tracking-widest text-slate-800 uppercase">
+            Pranjal Sarkar
+          </h1>
+        </header>
+
+        {/* Main Content */}
+        <main className="flex-1 w-full overflow-y-auto bg-slate-50 p-4 sm:p-6 md:p-8">
+          <div className="max-w-[1600px] mx-auto">
+            {activeTab === "overview" && (
+              <OverviewTab leadStats={leadStats} userRole={userRole} />
+            )}
+            {activeTab === "leads" && (
+              <LeadsTab
+                leads={leads}
+                loadingLeads={loadingLeads}
+                totalPages={totalPages}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+                leadSearchQuery={leadSearchQuery}
+                setLeadSearchQuery={setLeadSearchQuery}
+                leadStatusFilter={leadStatusFilter}
+                setLeadStatusFilter={setLeadStatusFilter}
+                dateFilter={dateFilter}
+                setDateFilter={setDateFilter}
+                customStartDate={customStartDate}
+                setCustomStartDate={setCustomStartDate}
+                customEndDate={customEndDate}
+                setCustomEndDate={setCustomEndDate}
+                handleStatusChange={handleStatusChange}
+                openLeadModal={openLeadModal}
+                handleDeleteLead={handleDeleteLead}
+              />
+            )}
+            {activeTab === "users" && userRole === "super_admin" && (
+              <UsersTab />
+            )}
+          </div>
+        </main>
+      </div>
 
       <LeadModal
         selectedLead={selectedLead}

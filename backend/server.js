@@ -1,6 +1,7 @@
 import express from "express";
 import helmet from "helmet";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 import logger from "./src/utils/logger.js";
 
 import { initSentry, Sentry } from "./src/config/sentry.js";
@@ -28,6 +29,7 @@ const app = express();
 // ===============================
 
 app.use(helmet());
+app.use(cookieParser());
 
 app.use(corsMiddleware);
 

@@ -11,7 +11,7 @@ const router = express.Router();
  * @access  Private/SuperAdmin
  */
 router.get('/', protectSuperAdmin, asyncHandler(async (req, res) => {
-  const users = await User.find().select('-otp -otpExpiry').sort({ createdAt: -1 });
+  const users = await User.find().select('-otp -otpExpiry').sort({ createdAt: -1 }).lean();
   res.json({ success: true, users });
 }));
 

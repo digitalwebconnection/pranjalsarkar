@@ -22,6 +22,17 @@ const updateLeadSchema = z.object({
   notes: z.string().max(50000).optional().or(z.literal('')),
   paymentStatus: z.enum(['PENDING', 'RECEIVED']).optional(),
 });
+
+const getLeadsQuerySchema = z.object({
+  page: z.string().optional(),
+  limit: z.string().optional(),
+  status: z.string().optional(),
+  dateFilter: z.string().optional(),
+  search: z.string().optional(),
+  startDate: z.string().optional(),
+  endDate: z.string().optional(),
+});
+
 const router = express.Router();
 
 /**
@@ -164,7 +175,13 @@ router.get('/stats', protectAdmin, asyncHandler(async (req, res) => {
  * @access  Private/Admin
  */
 router.get('/', protectAdmin, asyncHandler(async (req, res) => {
-  let { page = 1, limit = 10, status, dateFilter, search, startDate, endDate } = req.query;
+  const queryResult = getLeadsQuerySchema.safeParse(req.query);
+
+  if (!queryResult.success) {
+    return res.status(400).json({ success: false, message: 'Invalid query parameters' });
+  }
+
+  let { page = '1', limit = '10', status, dateFilter, search, startDate, endDate } = queryResult.data;
 
   const parsedLimit = parseInt(limit, 10);
   limit = Math.max(1, Math.min(isNaN(parsedLimit) ? 10 : parsedLimit, 100));
@@ -197,13 +214,13 @@ router.get('/', protectAdmin, asyncHandler(async (req, res) => {
   }
 
   if (search) {
-    const searchRegex = new RegExp(escapeRegex(search), 'i');
+    const safeSearch = escapeRegex(search);
     filter.$or = [
-      { name: searchRegex },
-      { email: searchRegex },
-      { phone: searchRegex },
-      { company: searchRegex },
-      { role: searchRegex }
+      { name: { $regex: safeSearch, $options: 'i' } },
+      { email: { $regex: safeSearch, $options: 'i' } },
+      { company: { $regex: safeSearch, $options: 'i' } },
+      { role: { $regex: safeSearch, $options: 'i' } },
+      { phone: { $regex: safeSearch, $options: 'i' } },
     ];
   }
 
@@ -234,7 +251,13 @@ router.get('/', protectAdmin, asyncHandler(async (req, res) => {
  * @access  Private/Admin
  */
 router.get('/export-csv', protectAdmin, asyncHandler(async (req, res) => {
-  let { status, dateFilter, search, startDate, endDate } = req.query;
+  const queryResult = getLeadsQuerySchema.safeParse(req.query);
+
+  if (!queryResult.success) {
+    return res.status(400).json({ success: false, message: 'Invalid query parameters' });
+  }
+
+  let { status, dateFilter, search, startDate, endDate } = queryResult.data;
 
   let filter = {};
 
@@ -264,17 +287,20 @@ router.get('/export-csv', protectAdmin, asyncHandler(async (req, res) => {
   }
 
   if (search) {
-    const searchRegex = new RegExp(escapeRegex(search), 'i');
+    const safeSearch = escapeRegex(search);
     filter.$or = [
-      { name: searchRegex },
-      { email: searchRegex },
-      { phone: searchRegex },
-      { company: searchRegex },
-      { role: searchRegex },
+      { name: { $regex: safeSearch, $options: 'i' } },
+      { email: { $regex: safeSearch, $options: 'i' } },
+      { company: { $regex: safeSearch, $options: 'i' } },
+      { role: { $regex: safeSearch, $options: 'i' } },
+      { phone: { $regex: safeSearch, $options: 'i' } },
     ];
   }
 
-  const leads = await Lead.find(filter).sort({ createdAt: -1 }).lean();
+  const filename = `leads_export_${new Date().toISOString().slice(0, 10)}.csv`;
+
+  res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+  res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
 
   // CSV helper: escape a field value for CSV
   const csvEscape = (val) => {
@@ -287,9 +313,11 @@ router.get('/export-csv', protectAdmin, asyncHandler(async (req, res) => {
   };
 
   const headers = ['Name', 'Email', 'Phone', 'Role', 'Company', 'Message', 'Status', 'Payment Status', 'Applied Date'];
-  const csvRows = [headers.join(',')];
+  res.write(headers.join(',') + '\r\n');
 
-  for (const lead of leads) {
+  const cursor = Lead.find(filter).sort({ createdAt: -1 }).lean().cursor();
+
+  for await (const lead of cursor) {
     const row = [
       csvEscape(lead.name),
       csvEscape(lead.email),
@@ -301,15 +329,10 @@ router.get('/export-csv', protectAdmin, asyncHandler(async (req, res) => {
       csvEscape(lead.paymentStatus),
       csvEscape(lead.createdAt ? new Date(lead.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : ''),
     ];
-    csvRows.push(row.join(','));
+    res.write(row.join(',') + '\r\n');
   }
 
-  const csvContent = csvRows.join('\r\n');
-  const filename = `leads_export_${new Date().toISOString().slice(0, 10)}.csv`;
-
-  res.setHeader('Content-Type', 'text/csv; charset=utf-8');
-  res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
-  res.send(csvContent);
+  res.end();
 }));
 
 /**
