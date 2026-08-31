@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import psHeadshot from '../../assets/pranjalsarkar/imagep.png';
-const youtubeVideo = '/video/Aipls%20Simulation%20Explainer%20Video6.mp4';
+const youtubeVideo = '/video/Aipls%20Simulation%20Explainer%20Video1.mp4';
 import { Play } from 'lucide-react';
 
 const containerVariants = {
@@ -233,6 +233,13 @@ export default function AboutSection() {
 
             {!isVideoPlaying && (
               <>
+                {/* Thumbnail overlay */}
+                <img
+                  src="/thumbnail/image (2).jpg"
+                  alt="Video thumbnail"
+                  className="absolute inset-0 w-full h-full object-fill z-[5] pointer-events-none"
+                />
+
                 {/* Play Button Glow */}
                 <div className="absolute w-16 h-16 sm:w-24 sm:h-24 bg-[#0080C7]/30 blur-[20px] sm:blur-[30px] rounded-full group-hover:bg-[#0080C7]/50 transition-all duration-500 z-20 pointer-events-none" />
 

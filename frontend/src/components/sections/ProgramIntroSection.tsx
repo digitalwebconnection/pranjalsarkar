@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { useState, useRef } from 'react';
-const introVideo = '/video/Aipls Introduction Video.mp4';
+const introVideo = '/video/Aipls Introduction Video1.mp4';
 import { Play } from 'lucide-react';
 import { leadershipSteps, leadershipDetails } from '../../constants/programIntroData';
 
@@ -211,6 +211,13 @@ export default function ProgramIntroSection() {
 
               {!isVideoPlaying && (
                 <>
+                  {/* Thumbnail overlay */}
+                  <img
+                    src="/thumbnail/image (3).jpg"
+                    alt="Video thumbnail"
+                    className="absolute inset-0 w-full h-full object-fill z-[5] pointer-events-none"
+                  />
+
                   {/* Play Button Glow */}
                   <div className="absolute w-24 h-24 bg-[#0080C7]/30 blur-[30px] rounded-full group-hover:bg-[#0080C7]/50 transition-all duration-500 z-20 pointer-events-none" />
 
