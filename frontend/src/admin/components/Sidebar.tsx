@@ -7,6 +7,7 @@ import {
   X,
   UserCog,
 } from "lucide-react";
+import Logo from "../../assets/SignatureSticker.webp";
 
 interface SidebarProps {
   activeTab: "overview" | "leads" | "users";
@@ -41,10 +42,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
     >
       <div className="h-16 px-6 border-b border-slate-100 flex items-center justify-between shrink-0">
         {!isCollapsed && (
-          <div className="animate-in fade-in zoom-in duration-200">
-            <h2 className="text-lg font-black tracking-tighter text-slate-800 uppercase select-none transition-colors">
-              Product Leadership
-            </h2>
+          <div className="animate-in fade-in zoom-in duration-200 flex items-center h-full">
+            <img src={Logo} alt="Pranjal Sarkar" className="h-20 w-auto object-contain select-none pointer-events-none drop-shadow-sm filter brightness-0" />
           </div>
         )}
         <button

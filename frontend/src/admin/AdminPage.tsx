@@ -303,8 +303,8 @@ export const AdminPage: React.FC = () => {
 
       {/* Mobile Header */}
       <div className="md:hidden bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-30 shadow-sm shrink-0">
-        <h1 className="text-lg font-black tracking-tight text-slate-800 uppercase">
-          Pranjal Sarkar <span className="text-blue-600">Logo</span>
+        <h1 className="text-lg font-black tracking-widest text-slate-800 uppercase">
+          Product Management
         </h1>
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -342,7 +342,7 @@ export const AdminPage: React.FC = () => {
         {/* Top Static Navbar (Desktop) */}
         <header className="hidden md:flex w-full h-16 bg-white border-b border-slate-200 items-center justify-center shrink-0 z-10 relative">
           <h1 className="text-xl font-black tracking-widest text-slate-800 uppercase">
-            Pranjal Sarkar
+            Product Management
           </h1>
         </header>
 
