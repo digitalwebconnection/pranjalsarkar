@@ -224,7 +224,7 @@ export default function AboutSection() {
 
             <video
               ref={videoRef}
-              className="absolute inset-0 w-full h-full object-cover z-0"
+              className="absolute inset-0 w-full h-full object-cover [&:fullscreen]:object-contain [&:-webkit-full-screen]:object-contain z-0"
               src={youtubeVideo}
               onPlay={() => setIsVideoPlaying(true)}
               onPause={() => setIsVideoPlaying(false)}
