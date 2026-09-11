@@ -213,8 +213,8 @@ export default function ProgramIntroSection() {
                 <>
                   {/* Thumbnail overlay */}
                   <img
-                    src="/thumbnail/image (3).jpg"
-                    alt="Video thumbnail"
+                    src="/thumbnail/program-intro-thumbnail.webp"
+                    alt="AI Product Leadership Studio Introduction Video Preview by Pranjal Sarkar"
                     className="absolute inset-0 w-full h-full object-fill z-[5] pointer-events-none"
                   />
 

@@ -72,7 +72,7 @@ function TestimonialCard({ t, onExpandChange }: { t: typeof testimonials[0], onE
             <img
               src={`https://flagcdn.com/w40/${flagCode}.png`}
               width="28"
-              alt="flag"
+              alt={`${t.location} flag`}
               className="drop-shadow-sm object-contain"
             />
           )}

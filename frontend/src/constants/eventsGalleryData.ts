@@ -7,11 +7,11 @@ const event6 = '/events/Pranjal-Sarkar-Delivering-Session-06.webp';
 const event7 = '/events/Pranjal-Sarkar-Delivering-Session-07.webp';
 const event8 = '/events/Pranjal-Sarkar-Delivering-Session-08.webp';
 const event9 = '/events/Pranjal-Sarkar-Delivering-Session-09.webp';
-const event10 = '/events/20251120_143802.webp';
-const event12 = '/events/20251120_144745.webp';
-const event13 = '/events/20251120_144814.webp';
-const event14 = '/events/20251120_152313.webp';
-const event15 = '/events/20251120_155544.webp';
+const event10 = '/events/Pranjal-Sarkar-Delivering-Session-10.webp';
+const event12 = '/events/Pranjal-Sarkar-Delivering-Session-11.webp';
+const event13 = '/events/Pranjal-Sarkar-Delivering-Session-12.webp';
+const event14 = '/events/Pranjal-Sarkar-Delivering-Session-13.webp';
+const event15 = '/events/Pranjal-Sarkar-Delivering-Session-14.webp';
 
 export interface EventImage {
   src: string;

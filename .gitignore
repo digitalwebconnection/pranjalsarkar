@@ -49,8 +49,16 @@ uploads/
 # Agent files
 .agent/
 
+# Database backups (prevents PII leakage)
+backups/
+backend/backups/
+*_backup.json
+
 ai_int/
 .husky/
 docs/
 files (8)/
 AI_INSTRUCTION/
+
+# Backend maintenance and utility scripts
+backend/scripts/

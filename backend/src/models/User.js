@@ -31,6 +31,14 @@ const userSchema = new mongoose.Schema(
       type: Date,
       default: null,
     },
+    failedOtpAttempts: {
+      type: Number,
+      default: 0,
+    },
+    otpLockedUntil: {
+      type: Date,
+      default: null,
+    },
   },
   {
     timestamps: true,
@@ -41,6 +49,12 @@ const userSchema = new mongoose.Schema(
 userSchema.pre(/^find/, function (next) {
   if (this.getFilter().deletedAt !== undefined) return next();
   this.find({ deletedAt: null });
+  next();
+});
+
+userSchema.pre('countDocuments', function (next) {
+  if (this.getFilter().deletedAt !== undefined) return next();
+  this.where({ deletedAt: null });
   next();
 });
 

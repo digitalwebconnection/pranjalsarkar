@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Menu, X, CheckCircle2 } from "lucide-react";
+import { Menu, X, CheckCircle2, AlertCircle } from "lucide-react";
 import { fetchWithAuth } from "../utils/apiClient";
 import { type Lead, type LeadStatsResponse } from "./types";
+import { STATUS_CONFIG, VALID_TRANSITIONS } from "./constants";
 import { Login } from "./components/Login";
 import { Sidebar } from "./components/Sidebar";
 import { OverviewTab } from "./components/OverviewTab";
@@ -47,10 +48,26 @@ export const AdminPage: React.FC = () => {
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const [isUpdatingLead, setIsUpdatingLead] = useState(false);
+  const [updatingLeadIds, setUpdatingLeadIds] = useState<Set<string>>(
+    new Set(),
+  );
   const [leadNotes, setLeadNotes] = useState("");
   const [newNoteText, setNewNoteText] = useState("");
   const [isAddingNote, setIsAddingNote] = useState(false);
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "error";
+  } | null>(null);
+
+  const showToast = useCallback(
+    (message: string, type: "success" | "error" = "success") => {
+      setToast({ message, type });
+      setTimeout(() => {
+        setToast((curr) => (curr?.message === message ? null : curr));
+      }, 4000);
+    },
+    [],
+  );
 
   const [leadToDelete, setLeadToDelete] = useState<string | null>(null);
   const [isDeletingLead, setIsDeletingLead] = useState(false);
@@ -182,6 +199,30 @@ export const AdminPage: React.FC = () => {
 
   const handleStatusChange = useCallback(
     async (leadId: string, newStatus: string) => {
+      const currentLead = leads.find((l) => l._id === leadId);
+      if (!currentLead || currentLead.status === newStatus) return;
+      const previousStatus = currentLead.status;
+
+      // Validate status transition against pipeline funnel rules
+      const allowedTransitions = VALID_TRANSITIONS[currentLead.status] || [];
+      if (!allowedTransitions.includes(newStatus)) {
+        showToast(
+          `Cannot transition from ${STATUS_CONFIG[currentLead.status as keyof typeof STATUS_CONFIG]?.label || currentLead.status} to ${STATUS_CONFIG[newStatus as keyof typeof STATUS_CONFIG]?.label || newStatus}. Follow pipeline progression.`,
+          "error",
+        );
+        return;
+      }
+
+      // 1. Mark only this row as processing
+      setUpdatingLeadIds((prev) => new Set(prev).add(leadId));
+
+      // 2. Optimistic UI update for instantaneous responsiveness
+      setLeads((prev) =>
+        prev.map((l) =>
+          l._id === leadId ? { ...l, status: newStatus as Lead["status"] } : l,
+        ),
+      );
+
       try {
         const response = await fetchWithAuth(`/api/leads/${leadId}/status`, {
           method: "PUT",
@@ -190,23 +231,61 @@ export const AdminPage: React.FC = () => {
           },
           body: JSON.stringify({ status: newStatus }),
         });
-        if (response.ok) {
-          fetchLeads();
-          fetchLeadStats();
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          // Merge server response to keep lead consistent
+          setLeads((prev) =>
+            prev.map((l) => (l._id === leadId ? { ...l, ...data.lead } : l)),
+          );
+
           if (selectedLead && selectedLead._id === leadId) {
-            setSelectedLead({
-              ...selectedLead,
-              status: newStatus as Lead["status"],
-            });
+            setSelectedLead((prev) =>
+              prev ? { ...prev, ...data.lead } : null,
+            );
           }
+
+          // Silently update statistics in background without table refresh
+          fetchLeadStats();
+
+          // If filtering by specific status, smoothly remove after brief visual confirmation
+          if (leadStatusFilter !== "All" && newStatus !== leadStatusFilter) {
+            setTimeout(() => {
+              setLeads((prev) => prev.filter((l) => l._id !== leadId));
+            }, 350);
+          }
+
+          const statusLabel =
+            STATUS_CONFIG[newStatus as keyof typeof STATUS_CONFIG]?.label ||
+            newStatus;
+          showToast(`Status updated to ${statusLabel}`, "success");
+        } else {
+          // Rollback on server error
+          setLeads((prev) =>
+            prev.map((l) =>
+              l._id === leadId ? { ...l, status: previousStatus } : l,
+            ),
+          );
+          showToast(data?.message || "Failed to update status", "error");
         }
       } catch (err) {
-        console.error(err);
-        setToastMessage("Failed to update status");
-        setTimeout(() => setToastMessage(null), 3000);
+        console.error("Status update error:", err);
+        setLeads((prev) =>
+          prev.map((l) =>
+            l._id === leadId ? { ...l, status: previousStatus } : l,
+          ),
+        );
+        showToast("Network error: Failed to update status", "error");
+      } finally {
+        setUpdatingLeadIds((prev) => {
+          const next = new Set(prev);
+          next.delete(leadId);
+          return next;
+        });
       }
     },
-    [fetchLeads, fetchLeadStats, selectedLead],
+    [leads, fetchLeadStats, selectedLead, leadStatusFilter, showToast],
   );
 
   const handleDeleteLead = useCallback((leadId: string) => {
@@ -223,16 +302,13 @@ export const AdminPage: React.FC = () => {
       if (response.ok) {
         fetchLeads();
         fetchLeadStats();
-        setToastMessage("Lead deleted successfully!");
-        setTimeout(() => setToastMessage(null), 3000);
+        showToast("Lead deleted successfully!", "success");
       } else {
-        setToastMessage("Failed to delete lead");
-        setTimeout(() => setToastMessage(null), 3000);
+        showToast("Failed to delete lead", "error");
       }
     } catch (err) {
       console.error(err);
-      setToastMessage("Failed to delete lead");
-      setTimeout(() => setToastMessage(null), 3000);
+      showToast("Failed to delete lead", "error");
     } finally {
       setIsDeletingLead(false);
       setLeadToDelete(null);
@@ -263,13 +339,11 @@ export const AdminPage: React.FC = () => {
       if (response.ok) {
         fetchLeads();
         setIsLeadModalOpen(false);
-        setToastMessage("Lead details updated successfully!");
-        setTimeout(() => setToastMessage(null), 3000);
+        showToast("Lead details updated successfully!", "success");
       }
     } catch (err) {
       console.error(err);
-      setToastMessage("Failed to update lead");
-      setTimeout(() => setToastMessage(null), 3000);
+      showToast("Failed to update lead", "error");
     } finally {
       setIsUpdatingLead(false);
     }
@@ -372,6 +446,7 @@ export const AdminPage: React.FC = () => {
                 handleStatusChange={handleStatusChange}
                 openLeadModal={openLeadModal}
                 handleDeleteLead={handleDeleteLead}
+                updatingLeadIds={updatingLeadIds}
               />
             )}
             {activeTab === "users" && userRole === "super_admin" && (
@@ -394,15 +469,27 @@ export const AdminPage: React.FC = () => {
         isUpdatingLead={isUpdatingLead}
       />
 
-      {toastMessage && (
-        <div className="fixed bottom-4 right-4 bg-emerald-600 text-white pl-4 pr-3 py-3 rounded-xl shadow-2xl font-bold text-sm animate-in slide-in-from-bottom-5 fade-in duration-300 z-100 flex items-center justify-between min-w-[320px]">
+      {toast && (
+        <div
+          className={`fixed bottom-4 right-4 text-white pl-4 pr-3 py-3 rounded-xl shadow-2xl font-bold text-sm animate-in slide-in-from-bottom-5 fade-in duration-300 z-100 flex items-center justify-between min-w-[320px] ${
+            toast.type === "error" ? "bg-red-600" : "bg-emerald-600"
+          }`}
+        >
           <div className="flex items-center gap-2.5">
-            <CheckCircle2 className="w-5 h-5 text-emerald-200" />
-            <span>{toastMessage}</span>
+            {toast.type === "error" ? (
+              <AlertCircle className="w-5 h-5 text-red-200 shrink-0" />
+            ) : (
+              <CheckCircle2 className="w-5 h-5 text-emerald-200 shrink-0" />
+            )}
+            <span>{toast.message}</span>
           </div>
           <button
-            onClick={() => setToastMessage(null)}
-            className="text-emerald-200 hover:text-white hover:bg-emerald-700 p-1.5 rounded-lg transition-colors ml-4"
+            onClick={() => setToast(null)}
+            className={`p-1.5 rounded-lg transition-colors ml-4 cursor-pointer ${
+              toast.type === "error"
+                ? "text-red-200 hover:text-white hover:bg-red-700"
+                : "text-emerald-200 hover:text-white hover:bg-emerald-700"
+            }`}
             aria-label="Close"
           >
             <X className="w-4 h-4" />

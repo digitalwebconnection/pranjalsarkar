@@ -4,14 +4,14 @@
 
 ## Tech Stack
 
-| Layer    | Technology                          |
-| -------- | ----------------------------------- |
-| Frontend | React 18 · TypeScript · Vite       |
-| Backend  | Express.js · Node.js 18+ (ESM)     |
-| Database | MongoDB (Mongoose)                  |
-| Auth     | JWT (single admin)                  |
-| Email    | Nodemailer (Gmail SMTP)             |
-| Deploy   | Vercel (frontend) · Render (backend)|
+| Layer    | Technology                           |
+| -------- | ------------------------------------ |
+| Frontend | React 18 · TypeScript · Vite         |
+| Backend  | Express.js · Node.js 18+ (ESM)       |
+| Database | MongoDB (Mongoose)                   |
+| Auth     | JWT (single admin)                   |
+| Email    | Nodemailer (Gmail SMTP)              |
+| Deploy   | Vercel (frontend) · Render (backend) |
 
 ## Project Structure
 
@@ -27,7 +27,7 @@ pranjalsarkar-r/
 │   │   ├── controllers/      # Route controllers
 │   │   ├── errors/           # AppError + error codes
 │   │   ├── jobs/             # Background tasks
-│   │   ├── middleware/       # Auth, error handler, rate limiter
+│   │   ├── middlewares/       # Auth, error handler, rate limiter
 │   │   ├── models/           # Mongoose schemas
 │   │   ├── routes/           # Express routes + aggregator
 │   │   ├── services/         # Business logic

@@ -13,19 +13,19 @@ const footerLinks = {
 
   ],
   CONNECT: ['LinkedIn', 'Twitter / X', 'YouTube', 'Instagram', 'Facebook', 'Medium'],
-  STUDIO: ['ProductLeadership.Studio'],
+  STUDIO: ['ProductLeadership.Studio', 'Blog'],
 };
 
 const footerLinkHashes: Record<string, string> = {
-  'Program Framework': '#judgment',
-  'Post-Week 5': '#post-week-5',
-  'Curriculum': '#curriculum',
-  'Who Should Apply': '#who-should-apply',
-  'FAQ': '#faq',
-  'Events': '#events',
-  'About Pranjal Sarkar': '#about',
-  'Testimonials': '#testimonials',
-  'Application Process': '#contact',
+  'Program Framework': '/#judgment',
+  'Post-Week 5': '/#post-week-5',
+  'Curriculum': '/#curriculum',
+  'Who Should Apply': '/#who-should-apply',
+  'FAQ': '/#faq',
+  'Events': '/#events',
+  'About Pranjal Sarkar': '/#about',
+  'Testimonials': '/#testimonials',
+  'Application Process': '/#contact',
   'LinkedIn': 'https://linkedin.com/in/pranjalsarkar',
   'Twitter / X': 'https://x.com/thepsprinciples',
   'YouTube': 'https://youtube.com/@thepsprinciples',
@@ -33,17 +33,17 @@ const footerLinkHashes: Record<string, string> = {
   'Instagram': 'https://instagram.com/thepsprinciples',
   'Medium': 'https://medium.com/@pranjalsarkar',
   'ProductLeadership.Studio': '/#hero',
+  'Blog': '/blog',
 };
 
 export default function Footer() {
   return (
-    <footer className="bg-[#000000] pt-6 pb-6">
+    <footer className="bg-[#000000] pt-6 pb-6 border-t border-gray-700">
       <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
 
         {/* Top Section: Brand + Links */}
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-0 mb-6">
 
-          {/* Brand Info (Left Col) */}
           {/* Brand Info (Left Col) */}
           <div className="lg:w-[35%] lg:pr-16 lg:border-r lg:border-white/50 flex flex-col items-center lg:items-start text-center lg:text-left">
             <img src={Logo} alt="Pranjal Sarkar" className="w-56 h-auto mb-3" style={{ filter: 'brightness(0) invert(1)' }} />
@@ -81,21 +81,31 @@ export default function Footer() {
                 <div className="w-12 md:w-16 h-[2.5px] bg-linear-to-r from-[#3B82F6] to-transparent mb-6 md:mb-8 rounded-full" />
                 <ul className="flex flex-col gap-4 md:gap-5">
                   {links.map(l => {
-                    const href = footerLinkHashes[l] || '#contact';
+                    const href = footerLinkHashes[l] || '/#contact';
                     const isExternal = href.startsWith('http');
+                    const isInternal = href.startsWith('/');
                     return (
                       <li key={l} className="flex items-start md:items-center gap-2.5 md:gap-3.5">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] mt-2 md:mt-0 shrink-0" />
-                        <a
-                          href={href}
-                          target={isExternal ? '_blank' : undefined}
-                          rel={isExternal ? 'noopener noreferrer' : undefined}
-                          className="text-[#D1D5DB] text-[13px] md:text-[14px] font-medium hover:text-white transition-colors duration-150 leading-snug"
-                        >
-                          {l}
-                        </a>
+                        {isInternal ? (
+                          <Link
+                            to={href}
+                            className="text-[#D1D5DB] text-[13px] md:text-[14px] font-medium hover:text-white transition-colors duration-150 leading-snug"
+                          >
+                            {l}
+                          </Link>
+                        ) : (
+                          <a
+                            href={href}
+                            target={isExternal ? '_blank' : undefined}
+                            rel={isExternal ? 'noopener noreferrer' : undefined}
+                            className="text-[#D1D5DB] text-[13px] md:text-[14px] font-medium hover:text-white transition-colors duration-150 leading-snug"
+                          >
+                            {l}
+                          </a>
+                        )}
                       </li>
-                    )
+                    );
                   })}
                 </ul>
               </div>

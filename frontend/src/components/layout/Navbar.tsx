@@ -104,7 +104,7 @@ export default function Navbar() {
 
             {/* ── Logo ── */}
             <Link to="/#hero" className="flex items-center gap-3 no-underline shrink-0">
-              <img src={Logo} alt="Logo" className="w-40 md:w-52 h-auto object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
+              <img src={Logo} alt="Pranjal Sarkar" className="w-40 md:w-52 h-auto object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
             </Link>
 
             {/* ── Center: Desktop nav links ── */}
@@ -196,7 +196,7 @@ export default function Navbar() {
         {/* Sidebar Header */}
         <div className="flex items-center justify-between p-5 md:p-8 border-b border-white/5">
           <Link to="/#hero" onClick={() => setMenuOpen(false)} className="no-underline shrink-0">
-            <img src={Logo} alt="Logo" className="w-32 md:w-48 h-auto object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
+            <img src={Logo} alt="Pranjal Sarkar" className="w-32 md:w-48 h-auto object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
           </Link>
           <button
             onClick={() => setMenuOpen(false)}

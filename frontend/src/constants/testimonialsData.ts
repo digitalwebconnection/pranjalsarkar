@@ -1,15 +1,15 @@
-import krishnaImg from "../assets/testimonial/Krishna.jpg";
-import neelimaImg from "../assets/testimonial/Neelima.jpg";
-import jaganImg from "../assets/testimonial/Jagan.jpeg";
-import vikasImg from "../assets/testimonial/VikasDubey.jpg";
-import ashutoshImg from "../assets/testimonial/Ashutosh-01.jpg";
-import pritamImg from "../assets/testimonial/Pritam-01.jpeg";
-import christyImg from "../assets/testimonial/Christy.jpg";
-import vineelaImg from "../assets/testimonial/Vineela-3.jpeg";
-import sumaImg from "../assets/testimonial/Suma.jpeg";
-import kritikaImg from "../assets/testimonial/Krittika-2.jpg";
-import virenImg from "../assets/testimonial/VirenShah.png";
-import johnImg from "../assets/testimonial/John.jpg";
+import krishnaImg from "../assets/testimonial/Krishna.webp";
+import neelimaImg from "../assets/testimonial/Neelima.webp";
+import jaganImg from "../assets/testimonial/Jagan.webp";
+import vikasImg from "../assets/testimonial/VikasDubey.webp";
+import ashutoshImg from "../assets/testimonial/Ashutosh-01.webp";
+import pritamImg from "../assets/testimonial/Pritam-01.webp";
+import christyImg from "../assets/testimonial/Christy.webp";
+import vineelaImg from "../assets/testimonial/Vineela-3.webp";
+import sumaImg from "../assets/testimonial/Suma.webp";
+import kritikaImg from "../assets/testimonial/Krittika-2.webp";
+import virenImg from "../assets/testimonial/VirenShah.webp";
+import johnImg from "../assets/testimonial/John.webp";
 
 export const testimonials = [
   {

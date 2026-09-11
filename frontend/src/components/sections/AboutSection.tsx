@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion } from 'motion/react';
-import psHeadshot from '../../assets/pranjalsarkar/imagep.png';
+import psHeadshot from '../../assets/pranjalsarkar/pranjal-sarkar-about-headshot.webp';
 const youtubeVideo = '/video/Aipls%20Simulation%20Explainer%20Video1.mp4';
 import { Play } from 'lucide-react';
 
@@ -103,7 +103,7 @@ export default function AboutSection() {
 
                 <img
                   src={psHeadshot}
-                  alt="Pranjal Sarkar"
+                  alt="Pranjal Sarkar - Founder and Lead Mentor"
                   className="w-full h-full object-cover transition-all duration-700 transform "
                 />
 
@@ -235,8 +235,8 @@ export default function AboutSection() {
               <>
                 {/* Thumbnail overlay */}
                 <img
-                  src="/thumbnail/image (2).jpg"
-                  alt="Video thumbnail"
+                  src="/thumbnail/about-video-thumbnail.webp"
+                  alt="Pranjal Sarkar Simulation and Explainer Video Preview"
                   className="absolute inset-0 w-full h-full object-fill z-[5] pointer-events-none"
                 />
 

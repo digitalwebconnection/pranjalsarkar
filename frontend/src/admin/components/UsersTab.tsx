@@ -7,6 +7,7 @@ interface AdminUser {
   email: string;
   role: string;
   createdAt: string;
+  isProtected?: boolean;
 }
 
 export const UsersTab: React.FC = () => {
@@ -43,7 +44,7 @@ export const UsersTab: React.FC = () => {
       const response = await fetchWithAuth(`/api/users`);
       const data = await response.json();
       if (response.ok && data.success) {
-        setUsers(data.users);
+        setUsers(data.users || []);
       } else {
         setErrorMsg(data.message || 'Failed to fetch users');
       }
@@ -233,10 +234,10 @@ export const UsersTab: React.FC = () => {
                       {new Date(user.createdAt).toLocaleDateString()}
                     </td>
                     <td className="p-4 text-right">
-                      {user.email !== 'office@pranjalsarkar.com' && (
+                      {!user.isProtected && (
                         <button
                           onClick={() => setDeleteTarget({ id: user._id, email: user.email })}
-                          className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                          className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
                           title="Delete user"
                         >
                           <Trash2 className="w-4 h-4" />

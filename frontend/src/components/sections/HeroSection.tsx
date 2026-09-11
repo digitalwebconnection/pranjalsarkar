@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Users, TrendingUp } from 'lucide-react';
-import pranjalsarkar from "../../assets/pranjalsarkar/18.webp"
+import pranjalsarkar from "../../assets/pranjalsarkar/pranjal-sarkar-portrait.webp";
 import { stats } from '../../constants/heroData';
 
 export default function HeroSection() {

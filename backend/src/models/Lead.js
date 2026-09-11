@@ -86,6 +86,12 @@ leadSchema.pre(/^find/, function (next) {
   next();
 });
 
+leadSchema.pre('countDocuments', function (next) {
+  if (this.getFilter().deletedAt !== undefined) return next();
+  this.where({ deletedAt: null });
+  next();
+});
+
 leadSchema.pre('aggregate', function (next) {
   this.pipeline().unshift({ $match: { deletedAt: null } });
   next();

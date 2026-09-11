@@ -1,5 +1,5 @@
-import personImage from '../../assets/pranjalsarkar/Untitled design.png'
-import mobilePersonImage from '../../assets/pranjalsarkar/for mobile.png'
+import personImage from '../../assets/pranjalsarkar/pranjal-sarkar-cta-desktop.webp';
+import mobilePersonImage from '../../assets/pranjalsarkar/pranjal-sarkar-cta-mobile.webp';
 import { PiTarget, PiUsersThree, PiBuildings, PiChartLineUp } from 'react-icons/pi'
 
 export default function FinalCTASection() {
@@ -57,7 +57,7 @@ export default function FinalCTASection() {
             >
               <img
                 src={mobilePersonImage}
-                alt="Product Leader"
+                alt="Pranjal Sarkar - AI Product Leadership Studio"
                 className="w-full h-full object-cover object-top scale-105 pointer-events-none select-none"
                 draggable="false"
                 onContextMenu={(e) => e.preventDefault()}
@@ -67,16 +67,10 @@ export default function FinalCTASection() {
           {/* Desktop Image */}
           <img
             src={personImage}
-            alt="Product Leader"
+            alt="Pranjal Sarkar - AI Product Leadership Studio"
             className="hidden lg:block w-full lg:max-w-lg object-contain relative z-20 drop-shadow-[0_0_40px_rgba(0,0,0,0.9)] pt-40 pointer-events-none select-none"
             draggable="false"
             onContextMenu={(e) => e.preventDefault()}
-            onError={(e) => {
-              // Fallback to previous image if the new one isn't placed yet
-              if (e.currentTarget.src.includes('pranjal.png')) {
-                e.currentTarget.src = '/events/benner.png';
-              }
-            }}
           />
           {/* Shadow/gradient at the bottom of the image to blend it nicely */}
           <div className="absolute hidden lg:block  bottom-0 left-0 w-full h-1/3 bg-linear-to-t from-[#02050A] to-transparent z-30 pointer-events-none" />
@@ -120,7 +114,7 @@ export default function FinalCTASection() {
 
           {/* CTA Button */}
           <a
-            href="#contact"
+            href="/#contact"
             className="group flex items-stretch bg-linear-to-t from-[#0023a1] to-[#0066FF] hover:from-[#0044FF] hover:to-[#0077FF] text-white rounded-xl transition-all duration-300 shadow-[0_0_25px_rgba(0,102,255,0.5)] hover:shadow-[0_0_40px_rgba(0,102,255,0.7)] border border-[#ffffff10]  lg:w-fit mb-10 hover:-translate-y-1 overflow-hidden mx-auto lg:mx-0"
           >
             {/* Arrow section */}

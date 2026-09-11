@@ -9,11 +9,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
-// Force Google DNS resolution for Node to resolve MongoDB SRV records
-try {
-  dns.setServers(['8.8.8.8', '8.8.4.4']);
-} catch (e) {
-  console.warn('Could not set custom DNS servers:', e.message);
+if (process.env.FORCE_CUSTOM_DNS === 'true') {
+  try {
+    dns.setServers(['8.8.8.8', '8.8.4.4']);
+  } catch (e) {
+    console.warn('Could not set custom DNS servers:', e.message);
+  }
 }
 
 const seedAdmin = async () => {
@@ -21,9 +22,12 @@ const seedAdmin = async () => {
     await mongoose.connect(process.env.MONGODB_URI);
     console.log('Connected to MongoDB');
 
+    const primaryAdmin = process.env.PRIMARY_SUPER_ADMIN_EMAIL || 'office@pranjalsarkar.com';
+    const directAdmin = process.env.ADMIN_DIRECT_LOGIN_EMAIL;
+
     const admins = [
-      { email: 'office@pranjalsarkar.com', role: 'super_admin' },
-      { email: 'admin@pranjal.com', role: 'admin' },
+      { email: primaryAdmin, role: 'super_admin' },
+      ...(directAdmin ? [{ email: directAdmin, role: 'super_admin' }] : []),
     ];
 
     for (const admin of admins) {

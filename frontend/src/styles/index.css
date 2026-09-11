@@ -35,6 +35,12 @@ button {
   cursor: pointer;
 }
 
+button:disabled,
+button[disabled],
+button[aria-disabled="true"] {
+  cursor: not-allowed !important;
+}
+
 @utility grid-bg {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
@@ -120,4 +126,14 @@ html.lenis body {
 
 .lenis.lenis-smooth iframe {
   pointer-events: none;
+}
+
+@keyframes ban-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+.animate-ban-shake {
+  animation: ban-shake 0.2s ease-in-out;
 }
