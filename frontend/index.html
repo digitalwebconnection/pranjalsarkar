@@ -5,6 +5,11 @@
       name="google-site-verification"
       content="Vs3a_OvAj8eKjTg70-c-j_yiagmynTUOjEqwJa8-xNk"
     />
+    <meta
+      name="google-site-verification"
+      content="G_BTPBddawg9PshVr_TC3knmbJMfYGUnX71O8U-WxYs"
+    />
+
     <!-- Google tag (gtag.js) -->
     <script
       async
@@ -27,6 +32,7 @@
       href="/src/assets/pranjalsarkar/pranjal-sarkar-portrait.webp"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href="https://pranjalsarkar.com/" />
 
     <!-- SEO Meta Tags -->
     <title>
@@ -92,46 +98,37 @@
         "@context": "https://schema.org",
         "@graph": [
           {
+            "@type": "WebSite",
+            "@id": "https://pranjalsarkar.com/#website",
+            "url": "https://pranjalsarkar.com/",
+            "name": "Pranjal Sarkar",
+            "description": "Official website of Pranjal Sarkar, product leader, founder, author and speaker.",
+            "publisher": { "@id": "https://pranjalsarkar.com/#person" }
+          },
+          {
             "@type": "Person",
             "@id": "https://pranjalsarkar.com/#person",
             "name": "Pranjal Sarkar",
             "url": "https://pranjalsarkar.com/",
             "jobTitle": "Product Leader, Founder, Author and Speaker",
-            "description": "Pranjal Sarkar is a product leader, 3x founder, author and speaker focused on product leadership, decision making, AI and work, careers and leadership.",
+            "description": "Product leader, 3x founder, author and speaker focused on product leadership, decision making, AI and work, careers and leadership.",
+            "email": "mailto:producteneur@gmail.com",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Ahmedabad",
+              "addressRegion": "Gujarat",
+              "addressCountry": "IN"
+            },
             "knowsAbout": [
               "Product Management",
               "Product Leadership",
               "Product Strategy",
               "Decision Making",
-              "Strategic Thinking",
               "Artificial Intelligence",
-              "AI and Work",
               "Career Decisions",
               "Leadership"
             ],
             "sameAs": ["https://www.linkedin.com/in/pranjalsarkar/"]
-          },
-          {
-            "@type": "WebSite",
-            "@id": "https://pranjalsarkar.com/#website",
-            "url": "https://pranjalsarkar.com/",
-            "name": "Pranjal Sarkar",
-            "description": "Official website of Pranjal Sarkar.",
-            "publisher": {
-              "@id": "https://pranjalsarkar.com/#person"
-            }
-          },
-          {
-            "@type": "WebPage",
-            "@id": "https://pranjalsarkar.com/#webpage",
-            "url": "https://pranjalsarkar.com/",
-            "name": "Product Leader, 3x Founder & Author - Pranjal Sarkar",
-            "isPartOf": {
-              "@id": "https://pranjalsarkar.com/#website"
-            },
-            "about": {
-              "@id": "https://pranjalsarkar.com/#person"
-            }
           }
         ]
       }

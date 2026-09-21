@@ -1,11 +1,8 @@
-# Robots.txt for Pranjal Sarkar
+# robots.txt for Pranjal Sarkar
 # https://pranjalsarkar.com/
 
 User-agent: *
-Allow: /
 Disallow: /admin
-Disallow: /admin/
 Disallow: /blog-admin
-Disallow: /blog-admin/
 
 Sitemap: https://pranjalsarkar.com/sitemap.xml
