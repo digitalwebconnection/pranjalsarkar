@@ -26,7 +26,7 @@ const AboutSection = lazy(() => import("./components/sections/AboutSection"));
 const TestimonialsSection = lazy(
   () => import("./components/sections/TestimonialsSection"),
 );
-const LogosSection = lazy(() => import("./components/sections/LogosSection"));
+const CompanyLogosSection = lazy(() => import("./components/sections/CompanyLogosSection"));
 const WhoShouldApplySection = lazy(
   () => import("./components/sections/WhoShouldApplySection"),
 );
@@ -151,7 +151,7 @@ function LandingPage() {
           <TestimonialsSection />
 
           {/* 10. Logos Strip — #9*/}
-          <LogosSection />
+          <CompanyLogosSection />
 
           {/* 11. Who Should Apply  #10*/}
           <WhoShouldApplySection />

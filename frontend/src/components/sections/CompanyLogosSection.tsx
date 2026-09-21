@@ -12,7 +12,7 @@ function CompanyLogo({ name, logo }: { name: string; logo: string }) {
   );
 }
 
-export default function LogosSection() {
+export default function CompanyLogosSection() {
   // Double list to create seamless infinite scrolling effect
   const all = [...companies, ...companies];
 
