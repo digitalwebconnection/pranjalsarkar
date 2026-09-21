@@ -41,7 +41,7 @@ export default function HeroSection() {
 
               {/* Sub-headline Part 2 */}
               <p className="text-gray-200 text-[16px] md:text-[18px] leading-relaxed max-w-2xl mx-auto mb-4">
-                AIPLS is a 5-week leadership development system followed by up to 30 days of real company exposure. Every week you make executive decisions, face the consequences inside a realistic business simulation and discover exactly where your judgment is strong and where it needs to grow.
+                AIPLS is a 5-week leadership development system followed by up to 30 days of real company exposure. Every week, you make executive product decisions, face the consequences inside a realistic business simulation, and discover exactly where you are strong in Product Leadership and where you need to grow. 
               </p>
 
               {/* CTA Buttons */}

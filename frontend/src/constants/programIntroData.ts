@@ -14,9 +14,9 @@ export const leadershipSteps = [
 
 export const leadershipDetails = [
   {
-    title: "Product Leadership Decision Principles",
-    whatIsIt: "Think with 50+ Product Leadership Decision Principles drawn from real executive situations, covering strategy, business trade-offs, AI leadership, organizational decisions and executive influence.",
-    howItWorks: "Decision principle is delivered as pre-work before each simulation weekend. You understand it before you face the situation, then experience why it matters when the consequences land.",
+    title: "Product Leadership Thinking Principles",
+    whatIsIt: "Think with 50+ Product Leadership Thinking Principles drawn from real executive situations in product world, covering strategy, business trade-offs, AI leadership, organizational decisions and executive influence.",
+    howItWorks: "Each Thinking Principle is delivered as pre-work before the simulation weekend. You understand the principle first, then experience why it matters when you have to make the decision and face its consequences.",
     transformation: "You stop making decisions based on instinct or incomplete thinking and start arriving at difficult situations already prepared."
   },
   {

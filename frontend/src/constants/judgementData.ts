@@ -1,9 +1,9 @@
 export const stages = [
   {
     phase: "Week 1",
-    title: "From Operational Reaction to Structured Executive Judgment",
+    title: "Learn to Make Structured Decisions",
     weeks: "Week 1",
-    transformation: "You become more deliberate about reading the situation, identifying the real risk and considering what your decision could set in motion before making the call.",
+    transformation: "ou learn to pause before making the call, understand what is really happening, identify the key risk and think through the long-term consequences of your decision.",
     curriculum: [
       {
         category: "Decision Principle Study",
@@ -44,9 +44,9 @@ export const stages = [
   },
   {
     phase: "Week 2",
-    title: "From Product Ownership to Business Ownership",
+    title: "Understanding Product Business Ownership",
     weeks: "Week 2",
-    transformation: "You begin to see every major product decision as a business bet, with a return to create, a cost to carry and something else the organization may have to give up.",
+    transformation: "ou learn to see the business impact behind your product decisions, like what they can earn, what they cost, what they require and what you may have to give up.",
     curriculum: [
       {
         category: "Decision Principle Study",
@@ -88,9 +88,9 @@ export const stages = [
   },
   {
     phase: "Week 3",
-    title: "From AI Adoption to AI Leadership",
+    title: "How AI Product Leadership Works",
     weeks: "Week 3",
-    transformation: "AI becomes a leadership decision, where you can judge what is worth pursuing, what should remain human-led and what risks you are willing to own.",
+    transformation: "You learn to judge where AI can create real product value, what should stay human-led and what risks you need to take responsibility for.",
     curriculum: [
       {
         category: "Decision Principle Study",
@@ -132,7 +132,7 @@ export const stages = [
   },
   {
     phase: "Week 4",
-    title: "From Managing Stakeholders to Leading the Organization",
+    title: "Leading A Product Organization",
     weeks: "Week 4",
     transformation: "You can recognize when the real problem is ownership, decision rights or conflicting incentives, and know where to intervene to get the organization moving again.",
     curriculum: [

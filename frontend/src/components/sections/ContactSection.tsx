@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Phone, Calendar, User, Mail, Briefcase, Building2, Pencil, ShieldCheck, ArrowRight, Loader2, CheckCircle } from 'lucide-react';
+import { Phone, Calendar, User, Mail, Briefcase, Building2, Pencil, ShieldCheck, ArrowRight, Loader2, CheckCircle, AlertTriangle } from 'lucide-react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 import { API_URL } from '../../../config';
@@ -292,12 +292,7 @@ export default function ContactSection() {
                 </p>
               </div>
 
-              {submitted && (
-                <div className="flex items-center gap-2 p-3 rounded-xl bg-green-500/10 border border-green-500/30 text-green-300 text-sm font-semibold mb-2">
-                  <CheckCircle className="w-5 h-5 shrink-0" />
-                  <span>Application received! We'll respond within 24 hours.</span>
-                </div>
-              )}
+
 
                 {/* Name + Email */}
                 <div className="grid grid-cols-2 gap-3 sm:gap-5">
@@ -463,7 +458,7 @@ export default function ContactSection() {
                 {/* Error Message */}
                 {submitError && (
                   <div className="flex items-center gap-2 p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-xs font-semibold">
-                    <span>⚠️</span>
+                    <AlertTriangle className="w-4 h-4 shrink-0" />
                     <span>{submitError}</span>
                   </div>
                 )}
@@ -550,6 +545,27 @@ export default function ContactSection() {
 
         </div>
       </div>
+
+      {/* Success Modal */}
+      {submitted && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSubmitted(false)} />
+          <div className="relative overflow-hidden flex flex-col items-center gap-4 p-8 rounded-2xl bg-[#00140d] border border-green-500/40 text-green-300 max-w-sm w-full shadow-[0_0_50px_rgba(34,197,94,0.2)] animate-in zoom-in-95 fade-in duration-300">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,197,94,0.15)_0%,transparent_70%)] pointer-events-none" />
+            
+            {/* Success Icon */}
+            <div className="relative w-16 h-16 rounded-full bg-green-500/20 border border-green-500/30 flex items-center justify-center shadow-[0_0_20px_rgba(34,197,94,0.4)]">
+              <CheckCircle className="w-8 h-8 text-green-400" strokeWidth={2.5} />
+            </div>
+            
+            {/* Header Text */}
+            <div className="relative flex flex-col text-center z-10 w-full mb-2">
+              <h3 className="text-white text-xl sm:text-2xl font-bold tracking-wide mb-2">Application Received Successfully</h3>
+              <p className="text-green-300/80 text-sm sm:text-base font-medium">Thank you for your interest in the AIPLS program. Your application is now under review.</p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
